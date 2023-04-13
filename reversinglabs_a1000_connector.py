@@ -286,7 +286,7 @@ class ReversinglabsA1000Connector(BaseConnector):
         for result in response:
             action_result.add_data(result)
 
-    def _handle_create_dynamic_analysis_report(self, action_result,  param):
+    def _handle_create_dynamic_analysis_report(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
 
         response = self.a1000.create_dynamic_analysis_report(
