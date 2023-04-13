@@ -3,11 +3,12 @@ def advanced_search(provides, all_app_runs, context):
         for result in action_results:
             for x in result.get_data():
                 x["classification_color"] = color_code_classification(x.get("classification").upper())
-            context['data'] = result.get_data()            
+            context['data'] = result.get_data()
             context['results_found'] = f"Results found: {str(len(result.get_data()))}"
             context['param'] = result.get_param()
 
     return 'views/reversinglabs_advanced_search.html'
+
 
 def get_classification(provides, all_app_runs, context):
     for summary, action_results in all_app_runs:
@@ -16,6 +17,7 @@ def get_classification(provides, all_app_runs, context):
             context["classification"] = context['data'].get("classification", "UNAVAILABLE").upper()
             context["classification_color"] = color_code_classification(context["classification"])
     return 'views/reversinglabs_get_classification.html'
+
 
 def get_detailed_report(provides, all_app_runs, context):
     for summary, action_results in all_app_runs:
@@ -27,6 +29,7 @@ def get_detailed_report(provides, all_app_runs, context):
 
     return 'views/reversinglabs_get_detailed_report.html'
 
+
 def get_summary_report(provides, all_app_runs, context):
     for summary, action_results in all_app_runs:
         for result in action_results:
@@ -37,17 +40,19 @@ def get_summary_report(provides, all_app_runs, context):
 
     return 'views/reversinglabs_get_summary_report.html'
 
+
 def get_titaniumcore_report(provides, all_app_runs, context):
     for summary, action_results in all_app_runs:
         for result in action_results:
             context['data'] = result.get_data()[0]
             context["classification"] = get_status_from_ticore_classification(
                 context['data'].get("classification").get("classification")
-                ).upper()
+            ).upper()
             context["classification_color"] = color_code_classification(context["classification"])
             context['param'] = result.get_param()
 
     return 'views/reversinglabs_get_titaniumcore_report.html'
+
 
 def url_reputation(provides, all_app_runs, context):
     for summary, action_results in all_app_runs:
@@ -57,34 +62,31 @@ def url_reputation(provides, all_app_runs, context):
             context["classification_color"] = color_code_classification(context["classification"])
 
     return 'views/reversinglabs_url_reputation.html'
-    
+
+
 def domain_reputation(provides, all_app_runs, context):
     for summary, action_results in all_app_runs:
         for result in action_results:
             context['data'] = result.get_data()[0]
 
     return 'views/reversinglabs_domain_reputation.html'
-    
+
+
 def ip_reputation(provides, all_app_runs, context):
     for summary, action_results in all_app_runs:
         for result in action_results:
             context['data'] = result.get_data()[0]
 
     return 'views/reversinglabs_ip_reputation.html'
-    
-def network_files_from_ip(provides, all_app_runs, context):
-    for summary, action_results in all_app_runs:
-        for result in action_results:
-            context['data'] = result.get_data()[0]
 
-    return 'views/reversinglabs_files_from_ip.html'
-    
+
 def network_ip_to_domain(provides, all_app_runs, context):
     for summary, action_results in all_app_runs:
         for result in action_results:
             context['data'] = result.get_data()[0]
 
     return 'views/reversinglabs_network_ip_to_domain.html'
+
 
 def network_urls_from_ip(provides, all_app_runs, context):
     for summary, action_results in all_app_runs:
@@ -93,55 +95,59 @@ def network_urls_from_ip(provides, all_app_runs, context):
 
     return 'views/reversinglabs_network_urls_from_ip.html'
 
+
 def network_files_from_ip(provides, all_app_runs, context):
     for summary, action_results in all_app_runs:
         for result in action_results:
             context['data'] = result.get_data()[0]
             for x in context['data'].get("downloaded_files"):
-                x["classification_color"] = color_code_classification(x.get("classification").upper())           
+                x["classification_color"] = color_code_classification(x.get("classification").upper())
 
     return 'views/reversinglabs_network_files_from_ip.html'
+
 
 def check_dynamic_analysis_report_status(provides, all_app_runs, context):
     for summary, action_results in all_app_runs:
         for result in action_results:
             context['data'] = result.get_data()[0]
             context['param'] = result.get_param()
-                     
+
     return 'views/reversinglabs_check_dynamic_analysis_report_status.html'
+
 
 def check_pdf_report_status(provides, all_app_runs, context):
     for summary, action_results in all_app_runs:
         for result in action_results:
             context['data'] = result.get_data()[0]
             context['param'] = result.get_param()
-                     
+
     return 'views/reversinglabs_check_pdf_report_status.html'
+
 
 def check_submitted_url_status(provides, all_app_runs, context):
     for summary, action_results in all_app_runs:
         for result in action_results:
             context['data'] = result.get_data()[0]
             context['param'] = result.get_param()
-            if context['data'].get('report',{}).get('sample_summary',{}).get('classification',{}):
+            if context['data'].get('report', {}).get('sample_summary', {}).get('classification', {}):
                 classification = context['data']['report']['sample_summary']['classification'].upper()
                 context['classification_color'] = color_code_classification(classification)
                 context['classification'] = classification
 
-
-                     
     return 'views/reversinglabs_check_submitted_url_status.html'
+
 
 def submit_url(provides, all_app_runs, context):
     for summary, action_results in all_app_runs:
         for result in action_results:
             context['data'] = result.get_data()[0]
             context['param'] = result.get_param()
-                     
+
     return 'views/reversinglabs_submit_url.html'
 
+
 def color_code_classification(classification):
-    color=""
+    color = ""
     classification = classification.upper()
     if classification == 'MALICIOUS':
         color = "red"
@@ -153,6 +159,7 @@ def color_code_classification(classification):
         color = "green"
 
     return color
+
 
 def get_status_from_ticore_classification(classification_int):
     status_mapping = {
