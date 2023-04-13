@@ -1264,7 +1264,7 @@
                     "name": "fields"
                 },
                 "include_network_threat_intelligence": {
-                    "description": "include network threat intelligence in the summary report",
+                    "description": "Include network threat intelligence in the summary report",
                     "data_type": "boolean",
                     "required": false,
                     "primary": false,
