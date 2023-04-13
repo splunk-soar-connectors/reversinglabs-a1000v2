@@ -1,0 +1,98 @@
+{% extends 'widgets/widget_template.html' %}
+{% load custom_template %}
+{% block custom_title_prop %}{% if title_logo %}style="background-size: auto 60%; background-position: 50%;
+background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo }}');"{% endif %}{% endblock %}
+{% block widget_content %}
+<style>
+    .widget-container {
+        width: 1170px !important;
+        height: 600px;
+    }
+
+    .c-app-run-widget {
+        height: 680px;
+        width: 100%;
+        position: relative;
+    }
+
+    .rl-table {
+        line-break: auto;
+    }
+
+    .rl-table th {
+        text-align: center;
+        font-size: 1.4rem;
+    }
+
+    .rl-table td {
+        padding: 7px;
+    }
+
+    .rl-content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .rl-results {
+        font-weight: normal;
+        font-size: small;
+        text-transform: lowercase;
+    }
+
+    .rl-table td:first-child {
+        color: #6c818b;
+        text-transform: uppercase;
+        font-weight: 500;
+        white-space: nowrap;
+        padding-left: 0.8rem;
+        padding-right: 2rem;
+        width: 0;
+    }
+
+    #rl-target {
+        padding-top: 0.5rem;
+        text-transform: initial;
+        font-size: 1.4rem;
+        font-weight: bold;
+        -moz-user-select: text;
+        -khtml-user-select: text;
+        -webkit-user-select: text;
+        -ms-user-select: text;
+        user-select: text;
+    }
+</style>
+<div class="rl-content">
+    <table class="rl-table">
+        <thead>
+            <tr>
+                <th colspan="7">ReversingLabs A1000 Files From IP<br/>
+                    <div id="rl-target" class="main-grid">{{data.requested_ip}}</div>
+                    <div class="rl-results" style="padding-top:0.5rem;">Results found: {{data.downloaded_files|length}}</div>
+            </tr>
+            <tr>
+                <th> </th>
+                <th> SHA1</th>
+                <th> Sample type</th>
+                <th> Threat name</th>
+                <th> Risk score</th>
+                <th> Classification</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for x in data.downloaded_files %}
+            <tr>
+                <td>{{ forloop.counter}}.</td>
+                <td>{{ x.sha1}}</td>
+                <td>{{ x.sample_type }}</td>
+                <td>{{ x.threat_name }}</td>
+                <td>{{ x.risk_score }}</td>
+                <td>
+                    <font color={{x.classification_color}}>{{ x.classification }}</font>
+                </td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+{% endblock %}

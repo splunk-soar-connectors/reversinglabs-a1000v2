@@ -1,0 +1,89 @@
+{% extends 'widgets/widget_template.html' %}
+{% load custom_template %}
+{% block custom_title_prop %}{% if title_logo %}style="background-size: auto 60%; background-position: 50%;
+background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo }}');"{% endif %}{% endblock %}
+{% block widget_content %}
+<style>
+    .widget-container {
+        width: 1170px !important;
+        height: 600px;
+    }
+
+    .c-app-run-widget {
+        height: 680px;
+        width: 100%;
+        position: relative;
+    }
+
+    .rl-table {
+        line-break: auto;
+    }
+
+    .rl-table th {
+        text-align: center;
+        font-size: 1.4rem;
+    }
+
+    .rl-table td {
+        padding: 7px;
+    }
+
+    .rl-content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .rl-results {
+        font-weight: normal;
+        font-size: small;
+        text-transform: lowercase;
+    }
+
+    .rl-table td:first-child {
+        color: #6c818b;
+        text-transform: uppercase;
+        font-weight: 500;
+        white-space: nowrap;
+        padding-left: 0.8rem;
+        padding-right: 2rem;
+        width: 0%;
+    }
+</style>
+<div class="rl-content">
+    <table class="rl-table">
+        <thead>
+            <tr>
+                <th colspan="7">ReversingLabs A1000 Advanced Search For<br />
+                    <div id="rl-target" class="main-grid">{{param.query}}</div>
+                    <span class="rl-results">{{results_found}}</span>
+                </th>
+            </tr>
+            <tr>
+                <th> </th>
+                <th> SHA1</th>
+                <th> Sample type</th>
+                <th> Threat type</th>
+                <th> Threat family</th>
+                <th> Risk score</th>
+                <th> Classification</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for x in data %}
+            <tr>
+                <td>{{ forloop.counter}}.</td>
+                <td>{{ x.sha1}}</td>
+                <td>{{ x.sample_type }}</td>
+                <td>{{ x.threat_type }}</td>
+                <td>{{ x.threat_family }}</td>
+                <td>{{ x.riskscore }}</td>
+                <td>
+                    <span style="color:{{x.classification_color}};">{{ x.classification }}</span>
+                </td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+{% endblock %}
