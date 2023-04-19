@@ -16,7 +16,7 @@
         }
     ],
     "license": "Copyright (c) ReversingLabs, 2023",
-    "app_version": "3.0.0",
+    "app_version": "1.0.0",
     "utctime_updated": "2023-04-05T05:26:10.159217Z",
     "package_name": "phantom_reversinglabs_a1000",
     "main_module": "reversinglabs_a1000_connector.py",
