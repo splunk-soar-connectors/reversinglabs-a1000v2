@@ -1,11 +1,11 @@
 {
     "appid": "3b35341f-c26b-490d-9802-82b23d5524c0",
-    "name": "Reversinglabs A1000 v2",
+    "name": "Reversinglabs A1000",
     "description": "App integrates with ReversingLabs A1000 Malware Analysis Appliance APIs",
     "type": "reputation",
     "product_vendor": "ReversingLabs",
-    "logo": "reversinglabs_a1000v2.svg",
-    "logo_dark": "reversinglabs_a1000v2_dark.svg",
+    "logo": "logo_reversinglabs_a1000v2.svg",
+    "logo_dark": "logo_reversinglabs_a1000v2_dark.svg",
     "product_name": "A1000",
     "python_version": "3",
     "product_version_regex": ".*",
@@ -27,8 +27,6 @@
             "description": "A1000 url",
             "data_type": "string",
             "required": true,
-            "value_list": [],
-            "default": "",
             "order": 0,
             "name": "url",
             "id": 0
@@ -77,8 +75,6 @@
                         "xls",
                         "ppt"
                     ],
-                    "value_list": [],
-                    "default": "",
                     "order": 0,
                     "name": "vault_id"
                 },
@@ -90,13 +86,17 @@
                     "contains": [
                         "file name"
                     ],
-                    "value_list": [],
-                    "default": "",
                     "order": 1,
                     "name": "file_name"
                 }
             },
             "output": [
+                    {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 2
+                },
                 {
                     "data_path": "action_result.parameter.vault_id",
                     "data_type": "string",
@@ -123,10 +123,12 @@
                     "column_order": 1
                 },
                 {
-                    "data_path": "action_result.status",
-                    "data_type": "string",
-                    "column_name": "status",
-                    "column_order": 2
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
                 },
                 {
                     "data_path": "action_result.message",
@@ -139,10 +141,6 @@
                 {
                     "data_path": "summary.total_objects_successful",
                     "data_type": "numeric"
-                },
-                {
-                    "data_path": "action_result.data",
-                    "data_type": "string"
                 }
             ],
             "render": {
@@ -163,9 +161,6 @@
                     "data_type": "string",
                     "required": true,
                     "primary": true,
-                    "contains": [],
-                    "value_list": [],
-                    "default": "",
                     "order": 0,
                     "name": "file_url",
                     "id": 1,
@@ -176,9 +171,6 @@
                     "data_type": "string",
                     "required": false,
                     "primary": false,
-                    "contains": [],
-                    "value_list": [],
-                    "default": "",
                     "order": 1,
                     "name": "crawler",
                     "id": 2,
@@ -189,9 +181,6 @@
                     "data_type": "string",
                     "required": false,
                     "primary": false,
-                    "contains": [],
-                    "value_list": [],
-                    "default": "",
                     "order": 2,
                     "name": "archive_password",
                     "id": 3,
@@ -202,9 +191,6 @@
                     "data_type": "string",
                     "required": false,
                     "primary": false,
-                    "contains": [],
-                    "value_list": [],
-                    "default": "",
                     "order": 3,
                     "name": "rl_cloud_sandbox_platform",
                     "id": 4,
@@ -213,38 +199,42 @@
             },
             "output": [
                 {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 4
+                },
+                {
                     "data_path": "action_result.parameter.file_url",
                     "data_type": "string",
-                    "contains": [],
                     "column_name": "file_url",
                     "column_order": 0
                 },
                 {
                     "data_path": "action_result.parameter.crawler",
                     "data_type": "string",
-                    "contains": [],
                     "column_name": "crawler",
                     "column_order": 1
                 },
                 {
                     "data_path": "action_result.parameter.archive_password",
                     "data_type": "string",
-                    "contains": [],
                     "column_name": "archive_password",
                     "column_order": 2
                 },
                 {
                     "data_path": "action_result.parameter.rl_cloud_sandbox_platform",
                     "data_type": "string",
-                    "contains": [],
                     "column_name": "rl_cloud_sandbox_platform",
                     "column_order": 3
                 },
                 {
-                    "data_path": "action_result.status",
-                    "data_type": "string",
-                    "column_name": "status",
-                    "column_order": 4
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
                 },
                 {
                     "data_path": "action_result.message",
@@ -257,10 +247,6 @@
                 {
                     "data_path": "summary.total_objects_successful",
                     "data_type": "numeric"
-                },
-                {
-                    "data_path": "action_result.data",
-                    "data_type": "string"
                 }
             ],
             "render": {
@@ -285,9 +271,6 @@
                     "data_type": "string",
                     "required": true,
                     "primary": true,
-                    "contains": [],
-                    "value_list": [],
-                    "default": "",
                     "order": 0,
                     "name": "task_id",
                     "id": 1,
@@ -296,17 +279,24 @@
             },
             "output": [
                 {
-                    "data_path": "action_result.parameter.task_id",
-                    "data_type": "string",
-                    "contains": [],
-                    "column_name": "task_id",
-                    "column_order": 0
-                },
-                {
                     "data_path": "action_result.status",
                     "data_type": "string",
                     "column_name": "status",
                     "column_order": 1
+                },
+                {
+                    "data_path": "action_result.parameter.task_id",
+                    "data_type": "string",
+                    "column_name": "task_id",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
                 },
                 {
                     "data_path": "action_result.message",
@@ -319,10 +309,6 @@
                 {
                     "data_path": "summary.total_objects_successful",
                     "data_type": "numeric"
-                },
-                {
-                    "data_path": "action_result.data",
-                    "data_type": "string"
                 }
             ],
             "render": {
@@ -347,26 +333,30 @@
                     "data_type": "string",
                     "required": true,
                     "primary": true,
-                    "contains": [],
-                    "value_list": [],
-                    "default": "",
                     "order": 0,
                     "name": "hash"
                 }
             },
             "output": [
                 {
-                    "data_path": "action_result.parameter.hash",
-                    "data_type": "string",
-                    "contains": [],
-                    "column_name": "hash",
-                    "column_order": 0
-                },
-                {
                     "data_path": "action_result.status",
                     "data_type": "string",
                     "column_name": "status",
                     "column_order": 1
+                },
+                {
+                    "data_path": "action_result.parameter.hash",
+                    "data_type": "string",
+                    "column_name": "hash",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
                 },
                 {
                     "data_path": "action_result.message",
@@ -379,10 +369,6 @@
                 {
                     "data_path": "summary.total_objects_successful",
                     "data_type": "numeric"
-                },
-                {
-                    "data_path": "action_result.data",
-                    "data_type": "string"
                 }
             ],
             "render": {
@@ -403,9 +389,6 @@
                     "data_type": "string",
                     "required": true,
                     "primary": true,
-                    "contains": [],
-                    "value_list": [],
-                    "default": "",
                     "order": 0,
                     "name": "hash",
                     "id": 1,
@@ -414,17 +397,24 @@
             },
             "output": [
                 {
-                    "data_path": "action_result.parameter.hash",
-                    "data_type": "string",
-                    "contains": [],
-                    "column_name": "hash",
-                    "column_order": 0
-                },
-                {
                     "data_path": "action_result.status",
                     "data_type": "string",
                     "column_name": "status",
                     "column_order": 1
+                },
+                {
+                    "data_path": "action_result.parameter.hash",
+                    "data_type": "string",
+                    "column_name": "hash",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
                 },
                 {
                     "data_path": "action_result.message",
@@ -437,10 +427,6 @@
                 {
                     "data_path": "summary.total_objects_successful",
                     "data_type": "numeric"
-                },
-                {
-                    "data_path": "action_result.data",
-                    "data_type": "string"
                 }
             ],
             "render": {
@@ -465,26 +451,30 @@
                     "data_type": "string",
                     "required": true,
                     "primary": true,
-                    "contains": [],
-                    "value_list": [],
-                    "default": "",
                     "order": 0,
                     "name": "hash"
                 }
             },
             "output": [
                 {
-                    "data_path": "action_result.parameter.hash",
-                    "data_type": "string",
-                    "contains": [],
-                    "column_name": "hash",
-                    "column_order": 0
-                },
-                {
                     "data_path": "action_result.status",
                     "data_type": "string",
                     "column_name": "status",
                     "column_order": 1
+                },
+                {
+                    "data_path": "action_result.parameter.hash",
+                    "data_type": "string",
+                    "column_name": "hash",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
                 },
                 {
                     "data_path": "action_result.message",
@@ -497,10 +487,6 @@
                 {
                     "data_path": "summary.total_objects_successful",
                     "data_type": "numeric"
-                },
-                {
-                    "data_path": "action_result.data",
-                    "data_type": "string"
                 }
             ],
             "render": {
@@ -521,26 +507,30 @@
                     "data_type": "string",
                     "required": true,
                     "primary": true,
-                    "contains": [],
-                    "value_list": [],
-                    "default": "",
                     "order": 0,
                     "name": "hash"
                 }
             },
             "output": [
                 {
-                    "data_path": "action_result.parameter.hash",
-                    "data_type": "string",
-                    "contains": [],
-                    "column_name": "hash",
-                    "column_order": 0
-                },
-                {
                     "data_path": "action_result.status",
                     "data_type": "string",
                     "column_name": "status",
                     "column_order": 1
+                },
+                {
+                    "data_path": "action_result.parameter.hash",
+                    "data_type": "string",
+                    "column_name": "hash",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
                 },
                 {
                     "data_path": "action_result.message",
@@ -553,10 +543,6 @@
                 {
                     "data_path": "summary.total_objects_successful",
                     "data_type": "numeric"
-                },
-                {
-                    "data_path": "action_result.data",
-                    "data_type": "string"
                 }
             ],
             "render": {
@@ -584,13 +570,17 @@
                     "contains": [
                         "url"
                     ],
-                    "value_list": [],
-                    "default": "",
                     "order": 0,
                     "name": "url"
                 }
             },
             "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 1
+                },
                 {
                     "data_path": "action_result.parameter.url",
                     "data_type": "string",
@@ -601,10 +591,12 @@
                     "column_order": 0
                 },
                 {
-                    "data_path": "action_result.status",
-                    "data_type": "string",
-                    "column_name": "status",
-                    "column_order": 1
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
                 },
                 {
                     "data_path": "action_result.message",
@@ -617,10 +609,6 @@
                 {
                     "data_path": "summary.total_objects_successful",
                     "data_type": "numeric"
-                },
-                {
-                    "data_path": "action_result.data",
-                    "data_type": "string"
                 }
             ],
             "render": {
@@ -649,13 +637,17 @@
                         "domain",
                         "url"
                     ],
-                    "value_list": [],
-                    "default": "",
                     "order": 0,
                     "name": "domain"
                 }
             },
             "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 1
+                },
                 {
                     "data_path": "action_result.parameter.domain",
                     "data_type": "string",
@@ -667,10 +659,12 @@
                     "column_order": 0
                 },
                 {
-                    "data_path": "action_result.status",
-                    "data_type": "string",
-                    "column_name": "status",
-                    "column_order": 1
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
                 },
                 {
                     "data_path": "action_result.message",
@@ -683,10 +677,6 @@
                 {
                     "data_path": "summary.total_objects_successful",
                     "data_type": "numeric"
-                },
-                {
-                    "data_path": "action_result.data",
-                    "data_type": "string"
                 }
             ],
             "render": {
@@ -714,13 +704,17 @@
                     "contains": [
                         "ip"
                     ],
-                    "value_list": [],
-                    "default": "",
                     "order": 0,
                     "name": "ip"
                 }
             },
             "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 1
+                },
                 {
                     "data_path": "action_result.parameter.ip",
                     "data_type": "string",
@@ -731,10 +725,12 @@
                     "column_order": 0
                 },
                 {
-                    "data_path": "action_result.status",
-                    "data_type": "string",
-                    "column_name": "status",
-                    "column_order": 1
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
                 },
                 {
                     "data_path": "action_result.message",
@@ -747,10 +743,6 @@
                 {
                     "data_path": "summary.total_objects_successful",
                     "data_type": "numeric"
-                },
-                {
-                    "data_path": "action_result.data",
-                    "data_type": "string"
                 }
             ],
             "render": {
@@ -775,9 +767,6 @@
                     "data_type": "string",
                     "required": true,
                     "primary": true,
-                    "contains": [],
-                    "value_list": [],
-                    "default": "",
                     "order": 0,
                     "name": "ip",
                     "id": 1,
@@ -786,17 +775,24 @@
             },
             "output": [
                 {
-                    "data_path": "action_result.parameter.ip",
-                    "data_type": "string",
-                    "contains": [],
-                    "column_name": "ip",
-                    "column_order": 0
-                },
-                {
                     "data_path": "action_result.status",
                     "data_type": "string",
                     "column_name": "status",
                     "column_order": 1
+                },
+                {
+                    "data_path": "action_result.parameter.ip",
+                    "data_type": "string",
+                    "column_name": "ip",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
                 },
                 {
                     "data_path": "action_result.message",
@@ -833,9 +829,6 @@
                     "data_type": "string",
                     "required": true,
                     "primary": true,
-                    "contains": [],
-                    "value_list": [],
-                    "default": "",
                     "order": 0,
                     "name": "ip",
                     "id": 1,
@@ -844,17 +837,24 @@
             },
             "output": [
                 {
-                    "data_path": "action_result.parameter.ip",
-                    "data_type": "string",
-                    "contains": [],
-                    "column_name": "ip",
-                    "column_order": 0
-                },
-                {
                     "data_path": "action_result.status",
                     "data_type": "string",
                     "column_name": "status",
                     "column_order": 1
+                },
+                {
+                    "data_path": "action_result.parameter.ip",
+                    "data_type": "string",
+                    "column_name": "ip",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
                 },
                 {
                     "data_path": "action_result.message",
@@ -867,10 +867,6 @@
                 {
                     "data_path": "summary.total_objects_successful",
                     "data_type": "numeric"
-                },
-                {
-                    "data_path": "action_result.data",
-                    "data_type": "string"
                 }
             ],
             "render": {
@@ -895,9 +891,6 @@
                     "data_type": "string",
                     "required": true,
                     "primary": true,
-                    "contains": [],
-                    "value_list": [],
-                    "default": "",
                     "order": 0,
                     "name": "ip",
                     "id": 1,
@@ -906,17 +899,24 @@
             },
             "output": [
                 {
-                    "data_path": "action_result.parameter.ip",
-                    "data_type": "string",
-                    "contains": [],
-                    "column_name": "ip",
-                    "column_order": 0
-                },
-                {
                     "data_path": "action_result.status",
                     "data_type": "string",
                     "column_name": "status",
                     "column_order": 1
+                },
+                {
+                    "data_path": "action_result.parameter.ip",
+                    "data_type": "string",
+                    "column_name": "ip",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
                 },
                 {
                     "data_path": "action_result.message",
@@ -929,10 +929,6 @@
                 {
                     "data_path": "summary.total_objects_successful",
                     "data_type": "numeric"
-                },
-                {
-                    "data_path": "action_result.data",
-                    "data_type": "string"
                 }
             ],
             "render": {
@@ -957,9 +953,6 @@
                     "data_type": "string",
                     "required": true,
                     "primary": true,
-                    "contains": [],
-                    "value_list": [],
-                    "default": "",
                     "order": 0,
                     "name": "query",
                     "id": 1,
@@ -970,8 +963,6 @@
                     "data_type": "numeric",
                     "required": false,
                     "primary": false,
-                    "contains": [],
-                    "value_list": [],
                     "default": 5000,
                     "order": 1,
                     "name": "limit",
@@ -983,7 +974,6 @@
                     "data_type": "boolean",
                     "required": false,
                     "primary": false,
-                    "contains": [],
                     "default": false,
                     "order": 2,
                     "name": "only_cloud_results",
@@ -993,31 +983,36 @@
             },
             "output": [
                 {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 3
+                },
+                {
                     "data_path": "action_result.parameter.query",
                     "data_type": "string",
-                    "contains": [],
                     "column_name": "query",
                     "column_order": 0
                 },
                 {
                     "data_path": "action_result.parameter.limit",
                     "data_type": "numeric",
-                    "contains": [],
                     "column_name": "limit",
                     "column_order": 1
                 },
                 {
                     "data_path": "action_result.parameter.only_cloud_results",
                     "data_type": "boolean",
-                    "contains": [],
                     "column_name": "only_cloud_results",
                     "column_order": 2
                 },
                 {
-                    "data_path": "action_result.status",
-                    "data_type": "string",
-                    "column_name": "status",
-                    "column_order": 3
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
                 },
                 {
                     "data_path": "action_result.message",
@@ -1054,9 +1049,6 @@
                     "data_type": "string",
                     "required": true,
                     "primary": true,
-                    "contains": [],
-                    "value_list": [],
-                    "default": "",
                     "order": 0,
                     "name": "hash",
                     "id": 1,
@@ -1065,17 +1057,24 @@
             },
             "output": [
                 {
-                    "data_path": "action_result.parameter.hash",
-                    "data_type": "string",
-                    "contains": [],
-                    "column_name": "hash",
-                    "column_order": 0
-                },
-                {
                     "data_path": "action_result.status",
                     "data_type": "string",
                     "column_name": "status",
                     "column_order": 1
+                },
+                {
+                    "data_path": "action_result.parameter.hash",
+                    "data_type": "string",
+                    "column_name": "hash",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
                 },
                 {
                     "data_path": "action_result.message",
@@ -1088,10 +1087,6 @@
                 {
                     "data_path": "summary.total_objects_successful",
                     "data_type": "numeric"
-                },
-                {
-                    "data_path": "action_result.data",
-                    "data_type": "string"
                 }
             ],
             "render": {
@@ -1112,9 +1107,6 @@
                     "data_type": "string",
                     "required": true,
                     "primary": true,
-                    "contains": [],
-                    "value_list": [],
-                    "default": "",
                     "order": 0,
                     "name": "hash",
                     "id": 1,
@@ -1123,17 +1115,24 @@
             },
             "output": [
                 {
-                    "data_path": "action_result.parameter.hash",
-                    "data_type": "string",
-                    "contains": [],
-                    "column_name": "hash",
-                    "column_order": 0
-                },
-                {
                     "data_path": "action_result.status",
                     "data_type": "string",
                     "column_name": "status",
                     "column_order": 1
+                },
+                {
+                    "data_path": "action_result.parameter.hash",
+                    "data_type": "string",
+                    "column_name": "hash",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
                 },
                 {
                     "data_path": "action_result.message",
@@ -1146,10 +1145,6 @@
                 {
                     "data_path": "summary.total_objects_successful",
                     "data_type": "numeric"
-                },
-                {
-                    "data_path": "action_result.data",
-                    "data_type": "string"
                 }
             ],
             "render": {
@@ -1174,9 +1169,6 @@
                     "data_type": "string",
                     "required": true,
                     "primary": true,
-                    "contains": [],
-                    "value_list": [],
-                    "default": "",
                     "order": 0,
                     "name": "hash",
                     "id": 1,
@@ -1185,17 +1177,24 @@
             },
             "output": [
                 {
-                    "data_path": "action_result.parameter.hash",
-                    "data_type": "string",
-                    "contains": [],
-                    "column_name": "hash",
-                    "column_order": 0
-                },
-                {
                     "data_path": "action_result.status",
                     "data_type": "string",
                     "column_name": "status",
                     "column_order": 1
+                },
+                {
+                    "data_path": "action_result.parameter.hash",
+                    "data_type": "string",
+                    "column_name": "hash",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
                 },
                 {
                     "data_path": "action_result.message",
@@ -1208,10 +1207,6 @@
                 {
                     "data_path": "summary.total_objects_successful",
                     "data_type": "numeric"
-                },
-                {
-                    "data_path": "action_result.data",
-                    "data_type": "string"
                 }
             ],
             "render": {
@@ -1232,9 +1227,6 @@
                     "data_type": "string",
                     "required": true,
                     "primary": true,
-                    "contains": [],
-                    "value_list": [],
-                    "default": "",
                     "order": 0,
                     "name": "hash"
                 },
@@ -1243,7 +1235,6 @@
                     "data_type": "boolean",
                     "required": false,
                     "primary": false,
-                    "contains": [],
                     "default": true,
                     "order": 1,
                     "name": "retry"
@@ -1253,9 +1244,6 @@
                     "data_type": "string",
                     "required": false,
                     "primary": false,
-                    "contains": [],
-                    "value_list": [],
-                    "default": "",
                     "order": 2,
                     "name": "fields"
                 },
@@ -1264,7 +1252,6 @@
                     "data_type": "boolean",
                     "required": false,
                     "primary": false,
-                    "contains": [],
                     "default": true,
                     "order": 3,
                     "name": "include_network_threat_intelligence"
@@ -1274,7 +1261,6 @@
                     "data_type": "boolean",
                     "required": false,
                     "primary": false,
-                    "contains": [],
                     "default": false,
                     "order": 4,
                     "name": "skip_reanalysis"
@@ -1282,45 +1268,48 @@
             },
             "output": [
                 {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 5
+                },
+                {
                     "data_path": "action_result.parameter.hash",
                     "data_type": "string",
-                    "contains": [],
                     "column_name": "hash",
                     "column_order": 0
                 },
                 {
                     "data_path": "action_result.parameter.retry",
                     "data_type": "boolean",
-                    "contains": [],
                     "column_name": "retry",
                     "column_order": 1
                 },
                 {
                     "data_path": "action_result.parameter.fields",
                     "data_type": "string",
-                    "contains": [],
                     "column_name": "fields",
                     "column_order": 2
                 },
                 {
                     "data_path": "action_result.parameter.include_network_threat_intelligence",
                     "data_type": "boolean",
-                    "contains": [],
                     "column_name": "include_network_threat_intelligence",
                     "column_order": 3
                 },
                 {
                     "data_path": "action_result.parameter.skip_reanalysis",
                     "data_type": "boolean",
-                    "contains": [],
                     "column_name": "skip_reanalysis",
                     "column_order": 4
                 },
                 {
-                    "data_path": "action_result.status",
-                    "data_type": "string",
-                    "column_name": "status",
-                    "column_order": 5
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
                 },
                 {
                     "data_path": "action_result.message",
@@ -1333,10 +1322,6 @@
                 {
                     "data_path": "summary.total_objects_successful",
                     "data_type": "numeric"
-                },
-                {
-                    "data_path": "action_result.data",
-                    "data_type": "string"
                 }
             ],
             "render": {
@@ -1361,9 +1346,6 @@
                     "data_type": "string",
                     "required": true,
                     "primary": true,
-                    "contains": [],
-                    "value_list": [],
-                    "default": "",
                     "order": 0,
                     "name": "hash",
                     "id": 1,
@@ -1374,7 +1356,6 @@
                     "data_type": "boolean",
                     "required": false,
                     "primary": false,
-                    "contains": [],
                     "default": true,
                     "order": 1,
                     "name": "retry",
@@ -1386,9 +1367,6 @@
                     "data_type": "string",
                     "required": false,
                     "primary": false,
-                    "contains": [],
-                    "value_list": [],
-                    "default": "",
                     "order": 2,
                     "name": "fields",
                     "id": 3,
@@ -1399,7 +1377,6 @@
                     "data_type": "boolean",
                     "required": false,
                     "primary": false,
-                    "contains": [],
                     "default": false,
                     "order": 3,
                     "name": "skip_reanalysis",
@@ -1409,38 +1386,42 @@
             },
             "output": [
                 {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 4
+                },
+                {
                     "data_path": "action_result.parameter.hash",
                     "data_type": "string",
-                    "contains": [],
                     "column_name": "hash",
                     "column_order": 0
                 },
                 {
                     "data_path": "action_result.parameter.retry",
                     "data_type": "boolean",
-                    "contains": [],
                     "column_name": "retry",
                     "column_order": 1
                 },
                 {
                     "data_path": "action_result.parameter.fields",
                     "data_type": "string",
-                    "contains": [],
                     "column_name": "fields",
                     "column_order": 2
                 },
                 {
                     "data_path": "action_result.parameter.skip_reanalysis",
                     "data_type": "boolean",
-                    "contains": [],
                     "column_name": "skip_reanalysis",
                     "column_order": 3
                 },
                 {
-                    "data_path": "action_result.status",
-                    "data_type": "string",
-                    "column_name": "status",
-                    "column_order": 4
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
                 },
                 {
                     "data_path": "action_result.message",
@@ -1453,10 +1434,6 @@
                 {
                     "data_path": "summary.total_objects_successful",
                     "data_type": "numeric"
-                },
-                {
-                    "data_path": "action_result.data",
-                    "data_type": "string"
                 }
             ],
             "render": {
@@ -1481,9 +1458,6 @@
                     "data_type": "string",
                     "required": true,
                     "primary": true,
-                    "contains": [],
-                    "value_list": [],
-                    "default": "",
                     "order": 0,
                     "name": "hash",
                     "id": 1,
@@ -1494,7 +1468,6 @@
                     "data_type": "boolean",
                     "required": false,
                     "primary": false,
-                    "contains": [],
                     "default": false,
                     "order": 1,
                     "name": "local_only",
@@ -1506,7 +1479,6 @@
                     "data_type": "boolean",
                     "required": false,
                     "primary": false,
-                    "contains": [],
                     "default": false,
                     "order": 2,
                     "name": "av_scanners",
@@ -1516,31 +1488,36 @@
             },
             "output": [
                 {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 3
+                },
+                {
                     "data_path": "action_result.parameter.hash",
                     "data_type": "string",
-                    "contains": [],
                     "column_name": "hash",
                     "column_order": 0
                 },
                 {
                     "data_path": "action_result.parameter.local_only",
                     "data_type": "boolean",
-                    "contains": [],
                     "column_name": "local_only",
                     "column_order": 1
                 },
                 {
                     "data_path": "action_result.parameter.av_scanners",
                     "data_type": "boolean",
-                    "contains": [],
                     "column_name": "av_scanners",
                     "column_order": 2
                 },
                 {
-                    "data_path": "action_result.status",
-                    "data_type": "string",
-                    "column_name": "status",
-                    "column_order": 3
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
                 },
                 {
                     "data_path": "action_result.message",
@@ -1553,10 +1530,6 @@
                 {
                     "data_path": "summary.total_objects_successful",
                     "data_type": "numeric"
-                },
-                {
-                    "data_path": "action_result.data",
-                    "data_type": "string"
                 }
             ],
             "render": {
@@ -1569,21 +1542,6 @@
             "versions": "EQ(*)"
         }
     ],
-    "custom_made": true,
-    "directory": "reversinglabs_a1000v2_3b35341f-c26b-490d-9802-82b23d5524c0",
-    "version": 1,
-    "appname": "-",
-    "executable": "spawn3",
-    "disabled": false,
-    "copied_from_id": 38,
-    "copied_from_version": "1.4.0",
-    "pip3_dependencies": {
-        "pypi": [
-            {
-                "module": "reversinglabs-sdk-py3"
-            }
-        ]
-    },
     "pip39_dependencies": {
         "wheel": [
             {
