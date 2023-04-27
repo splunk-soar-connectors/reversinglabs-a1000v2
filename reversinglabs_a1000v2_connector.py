@@ -1,10 +1,18 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-# -----------------------------------------
-# Phantom sample App Connector python file
-# -----------------------------------------
-
-# Python 3 Compatibility imports
+# File: reversinglabs_a1000v2_connector.py
+#
+# Copyright (c) ReversingLabs, 2023
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software distributed under
+# the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+# either express or implied. See the License for the specific language governing permissions
+# and limitations under the License.
+#
 from __future__ import print_function, unicode_literals
 
 import json
@@ -48,7 +56,7 @@ def new_delete(url, **kwargs):
 phantom.requests.delete = new_delete
 
 
-class ReversinglabsA1000Connector(BaseConnector):
+class ReversinglabsA1000V2Connector(BaseConnector):
     post_url = "post_url"
     USER_AGENT = "ReversingLabs Splunk SOAR A1000 v1.0.0"
     TITANIUM_CORE_FIELDS = "sha1, sha256, sha512, md5, imphash, info, application, protection, security, behaviour," \
@@ -80,7 +88,7 @@ class ReversinglabsA1000Connector(BaseConnector):
 
     def __init__(self):
         # Call the BaseConnectors init first
-        super(ReversinglabsA1000Connector, self).__init__()
+        super(ReversinglabsA1000V2Connector, self).__init__()
 
         self.ACTIONS = {
             self.ACTION_ID_TEST_CONNECTIVITY: self._handle_test_connectivity,
@@ -391,6 +399,7 @@ class ReversinglabsA1000Connector(BaseConnector):
         action_result.add_data(response.json())
 
     def _handle_test_connectivity(self, action_result, param):
+        self.debug_print("Action handler", self.get_action_identifier())
         self.a1000.test_connection()
 
         self.save_progress("Test Connectivity Passed")
@@ -405,7 +414,7 @@ def main():
         in_json = f.read()
         in_json = json.loads(in_json)
 
-        connector = ReversinglabsA1000Connector()
+        connector = ReversinglabsA1000V2Connector()
         connector.print_progress_message = True
 
         connector._handle_action(json.dumps(in_json), None)

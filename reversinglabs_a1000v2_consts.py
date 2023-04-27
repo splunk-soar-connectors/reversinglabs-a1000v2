@@ -1,4 +1,4 @@
-# File: __init__.py
+# File: reversinglabs_a1000v2_consts.py
 #
 # Copyright (c) ReversingLabs, 2023
 #

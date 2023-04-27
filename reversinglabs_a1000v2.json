@@ -1,11 +1,11 @@
 {
     "appid": "3b35341f-c26b-490d-9802-82b23d5524c0",
-    "name": "Reversinglabs A1000",
+    "name": "Reversinglabs A1000 v2",
     "description": "App integrates with ReversingLabs A1000 Malware Analysis Appliance APIs",
     "type": "reputation",
     "product_vendor": "ReversingLabs",
-    "logo": "reversinglabs_a1000.svg",
-    "logo_dark": "reversinglabs_a1000_dark.svg",
+    "logo": "reversinglabs_a1000v2.svg",
+    "logo_dark": "reversinglabs_a1000v2_dark.svg",
     "product_name": "A1000",
     "python_version": "3",
     "product_version_regex": ".*",
@@ -18,9 +18,9 @@
     "license": "Copyright (c) ReversingLabs, 2023",
     "app_version": "1.0.0",
     "utctime_updated": "2023-04-05T05:26:10.159217Z",
-    "package_name": "phantom_reversinglabs_a1000",
-    "main_module": "reversinglabs_a1000_connector.py",
-    "min_phantom_version": "5.5.0.108488",
+    "package_name": "phantom_reversinglabs_a1000v2",
+    "main_module": "reversinglabs_a1000v2_connector.py",
+    "min_phantom_version": "5.5.0",
     "app_wizard_version": "1.0.0",
     "configuration": {
         "url": {
@@ -261,17 +261,13 @@
                 {
                     "data_path": "action_result.data",
                     "data_type": "string"
-                },
-                {
-                    "data_path": "action_result.data",
-                    "data_type": "string"
                 }
             ],
             "render": {
                 "type": "custom",
                 "width": 10,
                 "height": 5,
-                "view": "reversinglabs_a1000_views.submit_url",
+                "view": "reversinglabs_a1000v2_views.submit_url",
                 "title": "A1000 Submitted Url"
             },
             "versions": "EQ(*)"
@@ -333,7 +329,7 @@
                 "type": "custom",
                 "width": 10,
                 "height": 5,
-                "view": "reversinglabs_a1000_views.check_submitted_url_status",
+                "view": "reversinglabs_a1000v2_views.check_submitted_url_status",
                 "title": "A1000 check submitted url status"
             },
             "versions": "EQ(*)"
@@ -451,7 +447,7 @@
                 "type": "custom",
                 "width": 10,
                 "height": 5,
-                "view": "reversinglabs_a1000_views.check_pdf_report_status",
+                "view": "reversinglabs_a1000v2_views.check_pdf_report_status",
                 "title": "A1000 PDF Report Status"
             },
             "versions": "EQ(*)"
@@ -567,7 +563,7 @@
                 "type": "custom",
                 "width": 10,
                 "height": 5,
-                "view": "reversinglabs_a1000_views.get_titaniumcore_report",
+                "view": "reversinglabs_a1000v2_views.get_titaniumcore_report",
                 "title": "A1000 Url Reputation"
             },
             "versions": "EQ(*)"
@@ -631,7 +627,7 @@
                 "type": "custom",
                 "width": 10,
                 "height": 5,
-                "view": "reversinglabs_a1000_views.url_reputation",
+                "view": "reversinglabs_a1000v2_views.url_reputation",
                 "title": "A1000 Url Reputation"
             },
             "versions": "EQ(*)"
@@ -697,7 +693,7 @@
                 "type": "custom",
                 "width": 10,
                 "height": 5,
-                "view": "reversinglabs_a1000_views.domain_reputation",
+                "view": "reversinglabs_a1000v2_views.domain_reputation",
                 "title": "A1000 Domain Reputation"
             },
             "versions": "EQ(*)"
@@ -761,7 +757,7 @@
                 "type": "custom",
                 "width": 10,
                 "height": 5,
-                "view": "reversinglabs_a1000_views.ip_reputation",
+                "view": "reversinglabs_a1000v2_views.ip_reputation",
                 "title": "A1000 IP Reputation"
             },
             "versions": "EQ(*)"
@@ -819,7 +815,7 @@
                 "type": "custom",
                 "width": 10,
                 "height": 5,
-                "view": "reversinglabs_a1000_views.network_ip_to_domain",
+                "view": "reversinglabs_a1000v2_views.network_ip_to_domain",
                 "title": "A1000 Network IP To Domain"
             },
             "versions": "EQ(*)"
@@ -881,7 +877,7 @@
                 "type": "custom",
                 "width": 10,
                 "height": 5,
-                "view": "reversinglabs_a1000_views.network_urls_from_ip",
+                "view": "reversinglabs_a1000v2_views.network_urls_from_ip",
                 "title": "A1000 Network Urls From IP"
             },
             "versions": "EQ(*)"
@@ -943,7 +939,7 @@
                 "type": "custom",
                 "width": 10,
                 "height": 5,
-                "view": "reversinglabs_a1000_views.network_files_from_ip",
+                "view": "reversinglabs_a1000v2_views.network_files_from_ip",
                 "title": "A1000 Network Files From IP"
             },
             "versions": "EQ(*)"
@@ -1040,7 +1036,7 @@
                 "type": "custom",
                 "width": 10,
                 "height": 5,
-                "view": "reversinglabs_a1000_views.advanced_search",
+                "view": "reversinglabs_a1000v2_views.advanced_search",
                 "title": "A1000 Advanced Search"
             },
             "versions": "EQ(*)"
@@ -1160,7 +1156,7 @@
                 "type": "custom",
                 "width": 10,
                 "height": 5,
-                "view": "reversinglabs_a1000_views.check_dynamic_analysis_report_status",
+                "view": "reversinglabs_a1000v2_views.check_dynamic_analysis_report_status",
                 "title": "A1000 Check Dynamic Analysis Report Status"
             },
             "versions": "EQ(*)"
@@ -1347,7 +1343,7 @@
                 "type": "custom",
                 "width": 10,
                 "height": 5,
-                "view": "reversinglabs_a1000_views.get_summary_report",
+                "view": "reversinglabs_a1000v2_views.get_summary_report",
                 "title": "A1000 Get Summary Report"
             },
             "versions": "EQ(*)"
@@ -1467,7 +1463,7 @@
                 "type": "custom",
                 "width": 10,
                 "height": 5,
-                "view": "reversinglabs_a1000_views.get_detailed_report",
+                "view": "reversinglabs_a1000v2_views.get_detailed_report",
                 "title": "A1000 Get Detailed Report"
             },
             "versions": "EQ(*)"
@@ -1567,14 +1563,14 @@
                 "type": "custom",
                 "width": 10,
                 "height": 5,
-                "view": "reversinglabs_a1000_views.get_classification",
+                "view": "reversinglabs_a1000v2_views.get_classification",
                 "title": "A1000 Get Classification"
             },
             "versions": "EQ(*)"
         }
     ],
     "custom_made": true,
-    "directory": "reversinglabs_a1000_3b35341f-c26b-490d-9802-82b23d5524c0",
+    "directory": "reversinglabs_a1000v2_3b35341f-c26b-490d-9802-82b23d5524c0",
     "version": 1,
     "appname": "-",
     "executable": "spawn3",
@@ -1585,6 +1581,34 @@
         "pypi": [
             {
                 "module": "reversinglabs-sdk-py3"
+            }
+        ]
+    },
+    "pip39_dependencies": {
+        "wheel": [
+            {
+                "module": "certifi",
+                "input_file": "wheels/py3/certifi-2022.12.7-py3-none-any.whl"
+            },
+            {
+                "module": "charset_normalizer",
+                "input_file": "wheels/py3/charset_normalizer-2.1.1-py3-none-any.whl"
+            },
+            {
+                "module": "idna",
+                "input_file": "wheels/py3/idna-3.4-py3-none-any.whl"
+            },
+            {
+                "module": "requests",
+                "input_file": "wheels/py3/requests-2.28.1-py3-none-any.whl"
+            },
+            {
+                "module": "reversinglabs_sdk_py3",
+                "input_file": "wheels/py3/reversinglabs_sdk_py3-2.1.1-py3-none-any.whl"
+            },
+            {
+                "module": "urllib3",
+                "input_file": "wheels/shared/urllib3-1.26.13-py2.py3-none-any.whl"
             }
         ]
     }
