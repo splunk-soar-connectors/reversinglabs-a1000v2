@@ -92,7 +92,7 @@
                 }
             },
             "output": [
-                    {
+                {
                     "data_path": "action_result.status",
                     "data_type": "string",
                     "column_name": "status",
