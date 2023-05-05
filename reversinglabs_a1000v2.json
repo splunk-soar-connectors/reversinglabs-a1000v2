@@ -67,14 +67,14 @@
                     "required": true,
                     "primary": true,
                     "contains": [
-                        "pe file",
-                        "pdf",
-                        "flash",
                         "apk",
-                        "jar",
                         "doc",
-                        "xls",
-                        "ppt"
+                        "flash",
+                        "jar",
+                        "pdf",
+                        "pe file",
+                        "ppt",
+                        "xls"
                     ],
                     "order": 0,
                     "name": "vault_id"
