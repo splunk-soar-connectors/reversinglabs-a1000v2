@@ -1,0 +1,1574 @@
+{
+    "appid": "3b35341f-c26b-490d-9802-82b23d5524c0",
+    "name": "Reversinglabs A1000 v2",
+    "description": "App integrates with ReversingLabs A1000 Malware Analysis Appliance APIs",
+    "type": "reputation",
+    "product_vendor": "ReversingLabs",
+    "logo": "logo_reversinglabs_a1000v2.svg",
+    "logo_dark": "logo_reversinglabs_a1000v2_dark.svg",
+    "product_name": "A1000",
+    "python_version": "3",
+    "product_version_regex": ".*",
+    "publisher": "ReversingLabs",
+    "contributors": [
+        {
+            "name": "ivukovicRL"
+        }
+    ],
+    "license": "Copyright (c) ReversingLabs, 2023",
+    "app_version": "1.0.1",
+    "utctime_updated": "2023-04-05T05:26:10.159217Z",
+    "package_name": "phantom_reversinglabs_a1000v2",
+    "main_module": "reversinglabs_a1000v2_connector.py",
+    "min_phantom_version": "5.5.0",
+    "fips_compliant": false,
+    "app_wizard_version": "1.0.0",
+    "configuration": {
+        "url": {
+            "description": "A1000 url",
+            "data_type": "string",
+            "required": true,
+            "order": 0,
+            "name": "url",
+            "id": 0
+        },
+        "token": {
+            "description": "A1000 token",
+            "data_type": "password",
+            "required": true,
+            "order": 1,
+            "name": "token",
+            "id": 1
+        }
+    },
+    "actions": [
+        {
+            "action": "test connectivity",
+            "identifier": "test_connectivity",
+            "description": "Validate the asset configuration for connectivity using supplied configuration",
+            "verbose": "Validate the asset configuration for connectivity using supplied configuration.",
+            "type": "test",
+            "read_only": true,
+            "parameters": {},
+            "output": [],
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "detonate file",
+            "identifier": "detonate_file",
+            "description": "Upload file to A1000",
+            "verbose": "Upload file to A1000.",
+            "type": "investigate",
+            "read_only": true,
+            "parameters": {
+                "vault_id": {
+                    "description": "Vault ID of file to detonate",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [
+                        "apk",
+                        "doc",
+                        "flash",
+                        "jar",
+                        "pdf",
+                        "pe file",
+                        "ppt",
+                        "xls"
+                    ],
+                    "order": 0,
+                    "name": "vault_id"
+                },
+                "file_name": {
+                    "description": "Filename to use",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": false,
+                    "contains": [
+                        "file name"
+                    ],
+                    "order": 1,
+                    "name": "file_name"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 2
+                },
+                {
+                    "data_path": "action_result.parameter.file_name",
+                    "data_type": "string",
+                    "contains": [
+                        "file name"
+                    ],
+                    "column_name": "file_name",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.parameter.vault_id",
+                    "data_type": "string",
+                    "contains": [
+                        "pe file",
+                        "pdf",
+                        "flash",
+                        "apk",
+                        "jar",
+                        "doc",
+                        "xls",
+                        "ppt"
+                    ],
+                    "column_name": "vault_id",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "submit url",
+            "identifier": "detonate_file_from_url",
+            "description": "Detonate file from url",
+            "verbose": "Detonate file from url.",
+            "type": "generic",
+            "read_only": false,
+            "parameters": {
+                "file_url": {
+                    "description": "URL from which the appliance should download the data",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "order": 0,
+                    "name": "file_url",
+                    "id": 1,
+                    "param_name": "file_url"
+                },
+                "crawler": {
+                    "description": "Crawler method (local or cloud)",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": false,
+                    "order": 1,
+                    "name": "crawler",
+                    "id": 2,
+                    "param_name": "crawler"
+                },
+                "archive_password": {
+                    "description": "Password, if file is a password-protected archive",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": false,
+                    "order": 2,
+                    "name": "archive_password",
+                    "id": 3,
+                    "param_name": "archive_password"
+                },
+                "rl_cloud_sandbox_platform": {
+                    "description": "Cloud Sandbox platform (windows7 or windows10)",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": false,
+                    "order": 3,
+                    "name": "rl_cloud_sandbox_platform",
+                    "id": 4,
+                    "param_name": "rl_cloud_sandbox_platform"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 4
+                },
+                {
+                    "data_path": "action_result.parameter.archive_password",
+                    "data_type": "string",
+                    "column_name": "archive_password",
+                    "column_order": 2
+                },
+                {
+                    "data_path": "action_result.parameter.crawler",
+                    "data_type": "string",
+                    "column_name": "crawler",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.parameter.file_url",
+                    "data_type": "string",
+                    "column_name": "file_url",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.parameter.rl_cloud_sandbox_platform",
+                    "data_type": "string",
+                    "column_name": "rl_cloud_sandbox_platform",
+                    "column_order": 3
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                }
+            ],
+            "render": {
+                "type": "custom",
+                "width": 10,
+                "height": 5,
+                "view": "reversinglabs_a1000v2_views.submit_url",
+                "title": "A1000 Submitted Url"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "check submitted url status",
+            "identifier": "check_submitted_url_status",
+            "description": "Check submitted url status",
+            "verbose": "Check submitted url status. Returns report if ready.",
+            "type": "generic",
+            "read_only": false,
+            "parameters": {
+                "task_id": {
+                    "description": "Id of the task",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "order": 0,
+                    "name": "task_id",
+                    "id": 1,
+                    "param_name": "task_id"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.parameter.task_id",
+                    "data_type": "string",
+                    "column_name": "task_id",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                }
+            ],
+            "render": {
+                "type": "custom",
+                "width": 10,
+                "height": 5,
+                "view": "reversinglabs_a1000v2_views.check_submitted_url_status",
+                "title": "A1000 check submitted url status"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "create pdf report",
+            "identifier": "create_pdf_report",
+            "description": "Create pdf report",
+            "verbose": "Initiate pdf report creation.",
+            "type": "generic",
+            "read_only": false,
+            "parameters": {
+                "hash": {
+                    "description": "Hash",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "order": 0,
+                    "name": "hash"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.parameter.hash",
+                    "data_type": "string",
+                    "column_name": "hash",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "check pdf report creation",
+            "identifier": "check_pdf_report_creation",
+            "description": "Check pdf report creation",
+            "verbose": "Check pdf report creation status.",
+            "type": "generic",
+            "read_only": false,
+            "parameters": {
+                "hash": {
+                    "description": "Hash",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "order": 0,
+                    "name": "hash",
+                    "id": 1,
+                    "param_name": "hash"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.parameter.hash",
+                    "data_type": "string",
+                    "column_name": "hash",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                }
+            ],
+            "render": {
+                "type": "custom",
+                "width": 10,
+                "height": 5,
+                "view": "reversinglabs_a1000v2_views.check_pdf_report_status",
+                "title": "A1000 PDF Report Status"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "download pdf report",
+            "identifier": "download_pdf_report",
+            "description": "Download pdf report",
+            "verbose": "Download pdf report.",
+            "type": "generic",
+            "read_only": false,
+            "parameters": {
+                "hash": {
+                    "description": "Hash",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "order": 0,
+                    "name": "hash"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.parameter.hash",
+                    "data_type": "string",
+                    "column_name": "hash",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "get titaniumcore report",
+            "identifier": "get_titaniumcore_report",
+            "description": "Get TitaniumCore report",
+            "verbose": "Accepts a single hash string and gets the full TitaniumCore static analysis report for the requested sample.The requested sample must be present on the appliance. If the optional fields parameter is not provided in the request, all available parts of the static analysis report are returned in the response.",
+            "type": "generic",
+            "read_only": false,
+            "parameters": {
+                "hash": {
+                    "description": "Hash",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "order": 0,
+                    "name": "hash"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.parameter.hash",
+                    "data_type": "string",
+                    "column_name": "hash",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                }
+            ],
+            "render": {
+                "type": "custom",
+                "width": 10,
+                "height": 5,
+                "view": "reversinglabs_a1000v2_views.get_titaniumcore_report",
+                "title": "A1000 Url Reputation"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "url reputation",
+            "identifier": "url_reputation",
+            "description": "Queries URL info",
+            "verbose": "Queries URL info.",
+            "type": "investigate",
+            "read_only": true,
+            "parameters": {
+                "url": {
+                    "description": "URL to query",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [
+                        "url"
+                    ],
+                    "order": 0,
+                    "name": "url"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.parameter.url",
+                    "data_type": "string",
+                    "contains": [
+                        "url"
+                    ],
+                    "column_name": "url",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                }
+            ],
+            "render": {
+                "type": "custom",
+                "width": 10,
+                "height": 5,
+                "view": "reversinglabs_a1000v2_views.url_reputation",
+                "title": "A1000 Url Reputation"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "domain reputation",
+            "identifier": "domain_reputation",
+            "description": "Queries domain info",
+            "verbose": "Queries domain info.",
+            "type": "investigate",
+            "read_only": true,
+            "parameters": {
+                "domain": {
+                    "description": "Domain to query",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [
+                        "domain",
+                        "url"
+                    ],
+                    "order": 0,
+                    "name": "domain"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.parameter.domain",
+                    "data_type": "string",
+                    "contains": [
+                        "domain",
+                        "url"
+                    ],
+                    "column_name": "domain",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                }
+            ],
+            "render": {
+                "type": "custom",
+                "width": 10,
+                "height": 5,
+                "view": "reversinglabs_a1000v2_views.domain_reputation",
+                "title": "A1000 Domain Reputation"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "ip reputation",
+            "identifier": "ip_reputation",
+            "description": "Queries IP info",
+            "verbose": "Queries IP info.",
+            "type": "investigate",
+            "read_only": true,
+            "parameters": {
+                "ip": {
+                    "description": "IP to query",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [
+                        "ip"
+                    ],
+                    "order": 0,
+                    "name": "ip"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.parameter.ip",
+                    "data_type": "string",
+                    "contains": [
+                        "ip"
+                    ],
+                    "column_name": "ip",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                }
+            ],
+            "render": {
+                "type": "custom",
+                "width": 10,
+                "height": 5,
+                "view": "reversinglabs_a1000v2_views.ip_reputation",
+                "title": "A1000 IP Reputation"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "network ip to domain",
+            "identifier": "network_ip_to_domain",
+            "description": "Get a list of IP-to-domain mappings",
+            "verbose": "Accepts an IP address string and returns a list of IP-to-domain mappings.",
+            "type": "generic",
+            "read_only": false,
+            "parameters": {
+                "ip": {
+                    "description": "IP address",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "order": 0,
+                    "name": "ip",
+                    "id": 1,
+                    "param_name": "ip"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.parameter.ip",
+                    "data_type": "string",
+                    "column_name": "ip",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                }
+            ],
+            "render": {
+                "type": "custom",
+                "width": 10,
+                "height": 5,
+                "view": "reversinglabs_a1000v2_views.network_ip_to_domain",
+                "title": "A1000 Network IP To Domain"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "network urls from ip",
+            "identifier": "network_urls_from_ip",
+            "description": "Get a list of URLs hosted on the requested IP address",
+            "verbose": "Accepts an IP address string and returns a list of URLs hosted on the requested IP address.",
+            "type": "generic",
+            "read_only": false,
+            "parameters": {
+                "ip": {
+                    "description": "IP address",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "order": 0,
+                    "name": "ip",
+                    "id": 1,
+                    "param_name": "ip"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.parameter.ip",
+                    "data_type": "string",
+                    "column_name": "ip",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                }
+            ],
+            "render": {
+                "type": "custom",
+                "width": 10,
+                "height": 5,
+                "view": "reversinglabs_a1000v2_views.network_urls_from_ip",
+                "title": "A1000 Network Urls From IP"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "network files from ip",
+            "identifier": "network_files_from_ip",
+            "description": "Get a a list of hashes and classifications for files found on the requested IP address",
+            "verbose": "Accepts an IP address string and returns a list of hashes and classifications for files found on the requested IP address.",
+            "type": "generic",
+            "read_only": false,
+            "parameters": {
+                "ip": {
+                    "description": "IP address",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "order": 0,
+                    "name": "ip",
+                    "id": 1,
+                    "param_name": "ip"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.parameter.ip",
+                    "data_type": "string",
+                    "column_name": "ip",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                }
+            ],
+            "render": {
+                "type": "custom",
+                "width": 10,
+                "height": 5,
+                "view": "reversinglabs_a1000v2_views.network_files_from_ip",
+                "title": "A1000 Network Files From IP"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "advanced search",
+            "identifier": "advanced_search",
+            "description": "Search for samples using multi-part search criteria",
+            "verbose": "Search for samples available on the local A1000 instance and TitaniumCloud using the Advanced Search capabilities.",
+            "type": "generic",
+            "read_only": false,
+            "parameters": {
+                "query": {
+                    "description": "Advanced Search query",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "order": 0,
+                    "name": "query",
+                    "id": 1,
+                    "param_name": "query"
+                },
+                "limit": {
+                    "description": "Maximum number of results",
+                    "data_type": "numeric",
+                    "required": false,
+                    "primary": false,
+                    "default": 5000,
+                    "order": 1,
+                    "name": "limit",
+                    "id": 2,
+                    "param_name": "limit"
+                },
+                "only_cloud_results": {
+                    "description": "Show only Titanimcloud results",
+                    "data_type": "boolean",
+                    "required": false,
+                    "primary": false,
+                    "default": false,
+                    "order": 2,
+                    "name": "only_cloud_results",
+                    "id": 3,
+                    "param_name": "only_cloud_results"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 3
+                },
+                {
+                    "data_path": "action_result.parameter.limit",
+                    "data_type": "numeric",
+                    "column_name": "limit",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.parameter.only_cloud_results",
+                    "data_type": "boolean",
+                    "column_name": "only_cloud_results",
+                    "column_order": 2
+                },
+                {
+                    "data_path": "action_result.parameter.query",
+                    "data_type": "string",
+                    "column_name": "query",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                }
+            ],
+            "render": {
+                "type": "custom",
+                "width": 10,
+                "height": 5,
+                "view": "reversinglabs_a1000v2_views.advanced_search",
+                "title": "A1000 Advanced Search"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "create dynamic analysis report",
+            "identifier": "create_dynamic_analysis_report",
+            "description": "Initiate the creation of dynamic analysis PDF report",
+            "verbose": "Accepts a single hash string and and a report format and initiates the creation of PDF or HTML reports for samples that have gone through dynamic analysis in the ReversingLabs Cloud Sandbox.",
+            "type": "generic",
+            "read_only": false,
+            "parameters": {
+                "hash": {
+                    "description": "Hash",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "order": 0,
+                    "name": "hash",
+                    "id": 1,
+                    "param_name": "hash"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.parameter.hash",
+                    "data_type": "string",
+                    "column_name": "hash",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "check dynamic analysis report status",
+            "identifier": "check_dynamic_analysis_report_status",
+            "description": "Get status of the report previously requested",
+            "verbose": "Accepts a single hash string and report format parameters that should correspond to the parameters used in the request with create_dynamic_analysis_report method. The response includes an informative message about the status of the report previously requested.",
+            "type": "generic",
+            "read_only": false,
+            "parameters": {
+                "hash": {
+                    "description": "Hash",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "order": 0,
+                    "name": "hash",
+                    "id": 1,
+                    "param_name": "hash"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.parameter.hash",
+                    "data_type": "string",
+                    "column_name": "hash",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                }
+            ],
+            "render": {
+                "type": "custom",
+                "width": 10,
+                "height": 5,
+                "view": "reversinglabs_a1000v2_views.check_dynamic_analysis_report_status",
+                "title": "A1000 Check Dynamic Analysis Report Status"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "download dynamic analysis report",
+            "identifier": "download_dynamic_analysis_report",
+            "description": "Download previously requested dynamic analysis report in pdf",
+            "verbose": "Accepts a single hash string and report format parameters that should correspond to the parameters used in the request with create_dynamic_analysis_report method.",
+            "type": "generic",
+            "read_only": false,
+            "parameters": {
+                "hash": {
+                    "description": "Hash",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "order": 0,
+                    "name": "hash",
+                    "id": 1,
+                    "param_name": "hash"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.parameter.hash",
+                    "data_type": "string",
+                    "column_name": "hash",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "get summary report",
+            "identifier": "get_summary_report",
+            "description": "Get a summary report for hash",
+            "verbose": "Get a summary report for hash.",
+            "type": "generic",
+            "read_only": false,
+            "parameters": {
+                "hash": {
+                    "description": "Hash",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "order": 0,
+                    "name": "hash"
+                },
+                "retry": {
+                    "description": "If set to False there will only be one try at obtaining the analysis report",
+                    "data_type": "boolean",
+                    "required": false,
+                    "primary": false,
+                    "default": true,
+                    "order": 1,
+                    "name": "retry"
+                },
+                "fields": {
+                    "description": "List of A1000 report 'fields' to query",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": false,
+                    "order": 2,
+                    "name": "fields"
+                },
+                "include_network_threat_intelligence": {
+                    "description": "Include network threat intelligence in the summary report",
+                    "data_type": "boolean",
+                    "required": false,
+                    "primary": false,
+                    "default": true,
+                    "order": 3,
+                    "name": "include_network_threat_intelligence"
+                },
+                "skip_reanalysis": {
+                    "description": "Skip sample reanalysis when fetching the summary report",
+                    "data_type": "boolean",
+                    "required": false,
+                    "primary": false,
+                    "default": false,
+                    "order": 4,
+                    "name": "skip_reanalysis"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 5
+                },
+                {
+                    "data_path": "action_result.parameter.fields",
+                    "data_type": "string",
+                    "column_name": "fields",
+                    "column_order": 2
+                },
+                {
+                    "data_path": "action_result.parameter.hash",
+                    "data_type": "string",
+                    "column_name": "hash",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.parameter.include_network_threat_intelligence",
+                    "data_type": "boolean",
+                    "column_name": "include_network_threat_intelligence",
+                    "column_order": 3
+                },
+                {
+                    "data_path": "action_result.parameter.retry",
+                    "data_type": "boolean",
+                    "column_name": "retry",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.parameter.skip_reanalysis",
+                    "data_type": "boolean",
+                    "column_name": "skip_reanalysis",
+                    "column_order": 4
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                }
+            ],
+            "render": {
+                "type": "custom",
+                "width": 10,
+                "height": 5,
+                "view": "reversinglabs_a1000v2_views.get_summary_report",
+                "title": "A1000 Get Summary Report"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "get detailed report",
+            "identifier": "get_detailed_report",
+            "description": "Get detailed analysis report",
+            "verbose": "Get detailed analysis report for sample.",
+            "type": "generic",
+            "read_only": false,
+            "parameters": {
+                "hash": {
+                    "description": "Hash",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "order": 0,
+                    "name": "hash",
+                    "id": 1,
+                    "param_name": "hash"
+                },
+                "retry": {
+                    "description": "If set to False there will only be one try at obtaining the analysis report",
+                    "data_type": "boolean",
+                    "required": false,
+                    "primary": false,
+                    "default": true,
+                    "order": 1,
+                    "name": "retry",
+                    "id": 2,
+                    "param_name": "retry"
+                },
+                "fields": {
+                    "description": "List of A1000 report 'fields' to query",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": false,
+                    "order": 2,
+                    "name": "fields",
+                    "id": 3,
+                    "param_name": "fields"
+                },
+                "skip_reanalysis": {
+                    "description": "Skip sample reanalysis when fetching the summary report",
+                    "data_type": "boolean",
+                    "required": false,
+                    "primary": false,
+                    "default": false,
+                    "order": 3,
+                    "name": "skip_reanalysis",
+                    "id": 4,
+                    "param_name": "skip_reanalysis"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 4
+                },
+                {
+                    "data_path": "action_result.parameter.fields",
+                    "data_type": "string",
+                    "column_name": "fields",
+                    "column_order": 2
+                },
+                {
+                    "data_path": "action_result.parameter.hash",
+                    "data_type": "string",
+                    "column_name": "hash",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.parameter.retry",
+                    "data_type": "boolean",
+                    "column_name": "retry",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.parameter.skip_reanalysis",
+                    "data_type": "boolean",
+                    "column_name": "skip_reanalysis",
+                    "column_order": 3
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                }
+            ],
+            "render": {
+                "type": "custom",
+                "width": 10,
+                "height": 5,
+                "view": "reversinglabs_a1000v2_views.get_detailed_report",
+                "title": "A1000 Get Detailed Report"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "get classification",
+            "identifier": "get_classification",
+            "description": "Get classification for a sample",
+            "verbose": "Get classification for one sample. The default value of local_only is False, which, if not changed, will send a request to TitaniumCloud to get the sample. The av_scanners parameter decides if the AV scanner results will be included in the classification report.",
+            "type": "generic",
+            "read_only": false,
+            "parameters": {
+                "hash": {
+                    "description": "Hash",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "order": 0,
+                    "name": "hash",
+                    "id": 1,
+                    "param_name": "hash"
+                },
+                "local_only": {
+                    "description": "Return only local samples without querying TitaniumCloud",
+                    "data_type": "boolean",
+                    "required": false,
+                    "primary": false,
+                    "default": false,
+                    "order": 1,
+                    "name": "local_only",
+                    "id": 2,
+                    "param_name": "local_only"
+                },
+                "av_scanners": {
+                    "description": "Return AV scanner results",
+                    "data_type": "boolean",
+                    "required": false,
+                    "primary": false,
+                    "default": false,
+                    "order": 2,
+                    "name": "av_scanners",
+                    "id": 3,
+                    "param_name": "av_scanners"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 3
+                },
+                {
+                    "data_path": "action_result.parameter.av_scanners",
+                    "data_type": "boolean",
+                    "column_name": "av_scanners",
+                    "column_order": 2
+                },
+                {
+                    "data_path": "action_result.parameter.hash",
+                    "data_type": "string",
+                    "column_name": "hash",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.parameter.local_only",
+                    "data_type": "boolean",
+                    "column_name": "local_only",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                }
+            ],
+            "render": {
+                "type": "custom",
+                "width": 10,
+                "height": 5,
+                "view": "reversinglabs_a1000v2_views.get_classification",
+                "title": "A1000 Get Classification"
+            },
+            "versions": "EQ(*)"
+        }
+    ],
+    "pip39_dependencies": {
+        "wheel": [
+            {
+                "module": "certifi",
+                "input_file": "wheels/py3/certifi-2022.12.7-py3-none-any.whl"
+            },
+            {
+                "module": "charset_normalizer",
+                "input_file": "wheels/py3/charset_normalizer-2.1.1-py3-none-any.whl"
+            },
+            {
+                "module": "idna",
+                "input_file": "wheels/py3/idna-3.4-py3-none-any.whl"
+            },
+            {
+                "module": "requests",
+                "input_file": "wheels/py3/requests-2.28.1-py3-none-any.whl"
+            },
+            {
+                "module": "reversinglabs_sdk_py3",
+                "input_file": "wheels/py3/reversinglabs_sdk_py3-2.1.1-py3-none-any.whl"
+            },
+            {
+                "module": "urllib3",
+                "input_file": "wheels/shared/urllib3-1.26.13-py2.py3-none-any.whl"
+            }
+        ]
+    }
+}
