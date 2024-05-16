@@ -161,6 +161,33 @@ def submit_url(provides, all_app_runs, context):
     return 'views/reversinglabs_submit_url.html'
 
 
+def retrieve_user_tags(provides, all_app_runs, context):
+    for summary, action_results in all_app_runs:
+        for result in action_results:
+            context['data'] = result.get_data()[0]
+            context['param'] = result.get_param()
+
+    return 'views/reversinglabs_retrieve_user_tags.html'
+
+
+def create_user_tags(provides, all_app_runs, context):
+    for summary, action_results in all_app_runs:
+        for result in action_results:
+            context['data'] = result.get_data()[0]
+            context['param'] = result.get_param()
+
+    return 'views/reversinglabs_create_user_tags.html'
+
+
+def delete_user_tags(provides, all_app_runs, context):
+    for summary, action_results in all_app_runs:
+        for result in action_results:
+            context['data'] = result.get_data()[0]
+            context['param'] = result.get_param()
+
+    return 'views/reversinglabs_delete_user_tags.html'
+
+
 def color_code_classification(classification):
     color = ""
     classification = classification.upper()

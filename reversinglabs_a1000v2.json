@@ -1541,6 +1541,224 @@
                 "title": "A1000 Get Classification"
             },
             "versions": "EQ(*)"
+        },
+        {
+            "action": "retrieve user tags",
+            "identifier": "retrieve_user_tags",
+            "description": "List existing tags for the requested sample",
+            "verbose": "List existing tags for the requested sample, if there are any.",
+            "type": "generic",
+            "read_only": true,
+            "parameters": {
+                "hash": {
+                    "description": "Hash",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "order": 0,
+                    "name": "hash",
+                    "id": 1,
+                    "param_name": "hash"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.parameter.hash",
+                    "data_type": "string",
+                    "column_name": "hash",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                }
+            ],
+            "render": {
+                "type": "custom",
+                "width": 10,
+                "height": 5,
+                "view": "reversinglabs_a1000v2_views.retrieve_user_tags",
+                "title": "A1000 Retrieve User Tags for a sample"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "create user tags",
+            "identifier": "create_user_tags",
+            "description": "Add one or more user tags",
+            "verbose": "Add one or more User Tags to the requested sample, regardless of whether the sample already has any tags.",
+            "type": "generic",
+            "read_only": false,
+            "parameters": {
+                "hash": {
+                    "description": "Hash",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "order": 0,
+                    "name": "hash",
+                    "id": 1,
+                    "param_name": "hash"
+                },
+                "tags": {
+                    "description": "List of comma separated tags",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": false,
+                    "order": 1,
+                    "name": "tags",
+                    "id": 2,
+                    "param_name": "tags"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.parameter.hash",
+                    "data_type": "string",
+                    "column_name": "hash",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.parameter.tags",
+                    "data_type": "string",
+                    "column_name": "tags",
+                    "column_order": 1
+                },
+                {
+                  "data_path": "action_result.status",
+                  "data_type": "string",
+                  "column_name": "status",
+                  "column_order": 2
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                }
+            ],
+            "render": {
+                "type": "custom",
+                "width": 10,
+                "height": 5,
+                "view": "reversinglabs_a1000v2_views.create_user_tags",
+                "title": "A1000 Create User Tags for a sample"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "delete user tags",
+            "identifier": "delete_user_tags",
+            "description": "Remove one or more user tags",
+            "verbose": "Remove one or more User Tags from the requested sample.",
+            "type": "generic",
+            "read_only": false,
+            "parameters": {
+                "hash": {
+                    "description": "Hash",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "order": 0,
+                    "name": "hash",
+                    "id": 1,
+                    "param_name": "hash"
+                },
+                "tags": {
+                    "description": "List of comma separated tags",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": false,
+                    "order": 1,
+                    "name": "tags",
+                    "id": 2,
+                    "param_name": "tags"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.parameter.hash",
+                    "data_type": "string",
+                    "column_name": "hash",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.parameter.tags",
+                    "data_type": "string",
+                    "column_name": "tags",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 2
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                }
+            ],
+            "render": {
+                "type": "custom",
+                "width": 10,
+                "height": 5,
+                "view": "reversinglabs_a1000v2_views.delete_user_tags",
+                "title": "A1000 Delete User Tags from a sample"
+            },
+            "versions": "EQ(*)"
         }
     ],
     "pip39_dependencies": {

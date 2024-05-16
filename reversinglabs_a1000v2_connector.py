@@ -85,6 +85,28 @@ class ReversinglabsA1000V2Connector(BaseConnector):
     ACTION_ID_GET_SUMMARY_REPORT = "get_summary_report"
     ACTION_ID_GET_DETAILED_REPORT = "get_detailed_report"
     ACTION_ID_GET_CLASSIFICATION = "get_classification"
+    ACTION_ID_RETRIEVE_USER_TAGS = "retrieve_user_tags"
+    ACTION_ID_CREATE_USER_TAGS = "create_user_tags"
+    ACTION_ID_DELETE_USER_TAGS = "delete_user_tags"
+    ACTION_ID_SET_SAMPLE_CLASSIFICATION = "set_sample_classification"
+    ACTION_ID_UNSET_SAMPLE_CLASSIFICATION = "unset_sample_classification"
+    ACTION_ID_YARA_GET_RULES = "yara_get_rules"
+    ACTION_ID_YARA_GET_RULE_CONTENT = "yara_get_rule_content"
+    ACTION_ID_YARA_MATCHES = "yara_matches"
+    ACTION_ID_YARA_CREATE_RULE = "yara_create_rule"
+    ACTION_ID_YARA_DELETE_RULE = "yara_delete_rule"
+    ACTION_ID_YARA_TOGGLE_RULE = "yara_toggle_rule"
+    ACTION_ID_YARA_GET_SYNC_TIME = "yara_get_sync_time"
+    ACTION_ID_YARA_SET_SYNC_TIME = "yara_set_sync_time"
+    ACTION_ID_YARA_TOGGLE_RETRO_SCAN_LOCAL = "yara_toggle_retro_scan_local"
+    ACTION_ID_YARA_MANAGE_RETRO_SCAN_CLOUD = "yara_manage_retro_scan_cloud"
+    ACTION_ID_YARA_CHECK_RETRO_SCAN_LOCAL = "yara_check_retro_scan_local"
+    ACTION_ID_YARA_STATUS_RETRO_SCAN_LOCAL = "yara_status_retro_scan_local"
+    ACTION_ID_YARA_STATUS_RETRO_SCAN_CLOUD = "yara_status_retro_scan_cloud"
+    ACTION_ID_LIST_CONTAINERS_FOR_HASH = "list_containers_for_hash"
+    ACTION_ID_DELETE_SAMPLE = "delete_sample"
+    ACTION_ID_DOWNLOAD_EXTRACTED_FILES = "download_extracted_files"
+    ACTION_ID_REANALYZE_SAMPLES = "reanalyze_samples"
 
     def __init__(self):
         # Call the BaseConnectors init first
@@ -111,7 +133,30 @@ class ReversinglabsA1000V2Connector(BaseConnector):
             self.ACTION_ID_DOWNLOAD_DYNAMIC_ANALYSIS_REPORT: self._handle_download_dynamic_analysis_report,
             self.ACTION_ID_GET_SUMMARY_REPORT: self._handle_get_summary_report,
             self.ACTION_ID_GET_DETAILED_REPORT: self._handle_get_detailed_report,
-            self.ACTION_ID_GET_CLASSIFICATION: self._handle_get_classification
+            self.ACTION_ID_GET_CLASSIFICATION: self._handle_get_classification,
+
+            self.ACTION_ID_RETRIEVE_USER_TAGS: self._handle_retrieve_user_tags,
+            self.ACTION_ID_CREATE_USER_TAGS: self._handle_create_user_tags,
+            self.ACTION_ID_DELETE_USER_TAGS: self._handle_delete_user_tags,
+            self.ACTION_ID_SET_SAMPLE_CLASSIFICATION: self._handle_set_sample_classification,
+            self.ACTION_ID_UNSET_SAMPLE_CLASSIFICATION: self._handle_unset_sample_classification,
+            self.ACTION_ID_YARA_GET_RULES: self._handle_yara_get_rules,
+            self.ACTION_ID_YARA_GET_RULE_CONTENT: self._handle_get_rule_content,
+            self.ACTION_ID_YARA_MATCHES: self._handle_yara_matches,
+            self.ACTION_ID_YARA_CREATE_RULE: self._handle_yara_create_rule,
+            self.ACTION_ID_YARA_DELETE_RULE: self._handle_yara_delete_rule,
+            self.ACTION_ID_YARA_TOGGLE_RULE: self._handle_yara_toggle_rule,
+            self.ACTION_ID_YARA_GET_SYNC_TIME: self._handle_yara_get_sync_time,
+            self.ACTION_ID_YARA_SET_SYNC_TIME: self._handle_yara_set_sync_time,
+            self.ACTION_ID_YARA_TOGGLE_RETRO_SCAN_LOCAL: self._handle_yara_toggle_retro_scan_local,
+            self.ACTION_ID_YARA_MANAGE_RETRO_SCAN_CLOUD: self._handle_yara_manage_retro_scan_cloud,
+            self.ACTION_ID_YARA_CHECK_RETRO_SCAN_LOCAL: self._handle_check_retro_scan_local,
+            self.ACTION_ID_YARA_STATUS_RETRO_SCAN_LOCAL: self._handle_yara_status_retro_scan_local,
+            self.ACTION_ID_YARA_STATUS_RETRO_SCAN_CLOUD: self._handle_yara_status_retro_scan_cloud,
+            self.ACTION_ID_LIST_CONTAINERS_FOR_HASH: self._handle_list_containers_for_hash,
+            self.ACTION_ID_DELETE_SAMPLE: self._handle_delete_sample,
+            self.ACTION_ID_DOWNLOAD_EXTRACTED_FILES: self._handle_download_extracted_files,
+            self.ACTION_ID_REANALYZE_SAMPLES: self._handle_reanalyze_samples
         }
 
         self._state = None
@@ -357,6 +402,7 @@ class ReversinglabsA1000V2Connector(BaseConnector):
         action_result.add_data(response.json())
 
     def _handle_get_detailed_report(self, action_result, param):
+        # TODO: check how parameters are handled
         self.debug_print("Action handler", self.get_action_identifier())
 
         fields = None
@@ -403,6 +449,139 @@ class ReversinglabsA1000V2Connector(BaseConnector):
         self.a1000.test_connection()
 
         self.save_progress("Test Connectivity Passed")
+
+    def _handle_retrieve_user_tags(self, action_result, param):
+        self.debug_print("Action handler", self.get_action_identifier())
+
+        sample_hash = param.get("hash")
+        response = self.a1000.get_user_tags(sample_hash=sample_hash)
+
+        self.debug_print("Executed", self.get_action_identifier())
+
+        action_result.add_data(response.json())
+
+    def _handle_create_user_tags(self, action_result, param):
+        self.debug_print("Action handler", self.get_action_identifier())
+
+        sample_hash = param.get("hash")
+        tags = param.get("tags").split(",")
+        response = self.a1000.post_user_tags(
+            sample_hash=sample_hash,
+            tags=tags
+        )
+
+        self.debug_print("Executed", self.get_action_identifier())
+
+        action_result.add_data(response.json())
+
+    def _handle_delete_user_tags(self, action_result, param):
+        self.debug_print("Action handler", self.get_action_identifier())
+
+        sample_hash = param.get("hash")
+        tags = param.get("tags").split(",")
+        response = self.a1000.delete_user_tags(
+            sample_hash=sample_hash,
+            tags=tags
+        )
+
+        self.debug_print("Executed", self.get_action_identifier())
+
+        action_result.add_data(response.json())
+
+    def _handle_set_sample_classification(self, action_result, param):
+        # TODO
+        self.debug_print("Action handler", self.get_action_identifier())
+        pass
+
+    def _handle_unset_sample_classification(self, action_result, param):
+        # TODO
+        self.debug_print("Action handler", self.get_action_identifier())
+        pass
+
+    def _handle_yara_get_rules(self, action_result, param):
+        # TODO
+        self.debug_print("Action handler", self.get_action_identifier())
+        pass
+
+    def _handle_get_rule_content(self, action_result, param):
+        # TODO
+        self.debug_print("Action handler", self.get_action_identifier())
+        pass
+
+    def _handle_yara_matches(self, action_result, param):
+        # TODO
+        self.debug_print("Action handler", self.get_action_identifier())
+        pass
+
+    def _handle_yara_create_rule(self, action_result, param):
+        # TODO
+        self.debug_print("Action handler", self.get_action_identifier())
+        pass
+
+    def _handle_yara_delete_rule(self, action_result, param):
+        # TODO
+        self.debug_print("Action handler", self.get_action_identifier())
+        pass
+
+    def _handle_yara_toggle_rule(self, action_result, param):
+        # TODO
+        self.debug_print("Action handler", self.get_action_identifier())
+        pass
+
+    def _handle_yara_get_sync_time(self, action_result, param):
+        # TODO
+        self.debug_print("Action handler", self.get_action_identifier())
+        pass
+
+    def _handle_yara_set_sync_time(self, action_result, param):
+        # TODO
+        self.debug_print("Action handler", self.get_action_identifier())
+        pass
+
+    def _handle_yara_toggle_retro_scan_local(self, action_result, param):
+        # TODO
+        self.debug_print("Action handler", self.get_action_identifier())
+        pass
+
+    def _handle_yara_manage_retro_scan_cloud(self, action_result, param):
+        # TODO
+        self.debug_print("Action handler", self.get_action_identifier())
+        pass
+
+    def _handle_check_retro_scan_local(self, action_result, param):
+        # TODO
+        self.debug_print("Action handler", self.get_action_identifier())
+        pass
+
+    def _handle_yara_status_retro_scan_local(self, action_result, param):
+        # TODO
+        self.debug_print("Action handler", self.get_action_identifier())
+        pass
+
+    def _handle_yara_status_retro_scan_cloud(self, action_result, param):
+        # TODO
+        self.debug_print("Action handler", self.get_action_identifier())
+        pass
+
+    def _handle_list_containers_for_hash(self, action_result, param):
+        # TODO
+        self.debug_print("Action handler", self.get_action_identifier())
+        pass
+
+    def _handle_delete_sample(self, action_result, param):
+        # TODO
+        self.debug_print("Action handler", self.get_action_identifier())
+        pass
+
+    def _handle_download_extracted_files(self, action_result, param):
+        # TODO
+        self.debug_print("Action handler", self.get_action_identifier())
+        pass
+
+    def _handle_reanalyze_samples(self, action_result, param):
+        # TODO
+        self.debug_print("Action handler", self.get_action_identifier())
+        pass
 
 
 def main():
