@@ -89,7 +89,7 @@ class ReversinglabsA1000V2Connector(BaseConnector):
     ACTION_ID_CREATE_USER_TAGS = "create_user_tags"
     ACTION_ID_DELETE_USER_TAGS = "delete_user_tags"
     ACTION_ID_SET_SAMPLE_CLASSIFICATION = "set_sample_classification"
-    ACTION_ID_UNSET_SAMPLE_CLASSIFICATION = "unset_sample_classification"
+    ACTION_ID_DELETE_SAMPLE_CLASSIFICATION = "delete_sample_classification"
     ACTION_ID_YARA_GET_RULES = "yara_get_rules"
     ACTION_ID_YARA_GET_RULE_CONTENT = "yara_get_rule_content"
     ACTION_ID_YARA_MATCHES = "yara_matches"
@@ -139,7 +139,7 @@ class ReversinglabsA1000V2Connector(BaseConnector):
             self.ACTION_ID_CREATE_USER_TAGS: self._handle_create_user_tags,
             self.ACTION_ID_DELETE_USER_TAGS: self._handle_delete_user_tags,
             self.ACTION_ID_SET_SAMPLE_CLASSIFICATION: self._handle_set_sample_classification,
-            self.ACTION_ID_UNSET_SAMPLE_CLASSIFICATION: self._handle_unset_sample_classification,
+            self.ACTION_ID_DELETE_SAMPLE_CLASSIFICATION: self._handle_delete_sample_classification,
             self.ACTION_ID_YARA_GET_RULES: self._handle_yara_get_rules,
             self.ACTION_ID_YARA_GET_RULE_CONTENT: self._handle_get_rule_content,
             self.ACTION_ID_YARA_MATCHES: self._handle_yara_matches,
@@ -489,14 +489,35 @@ class ReversinglabsA1000V2Connector(BaseConnector):
         action_result.add_data({"tags": response.json()})
 
     def _handle_set_sample_classification(self, action_result, param):
-        # TODO
         self.debug_print("Action handler", self.get_action_identifier())
-        pass
+        system = param.get("system")
+        response = self.a1000.set_classification(
+            sample_hash=param.get("hash"),
+            classification=param.get("classification").split(),
+            system=system,
+            risk_score=param.get("riskscore"),
+            threat_platform=param.get("threat_platform"),
+            threat_type=param.get("threat_type"),
+            threat_name=param.get("threat_name"),
+        )
+        self.debug_print("Executed", self.get_action_identifier())
 
-    def _handle_unset_sample_classification(self, action_result, param):
-        # TODO
+        content = response.json() if system == "local" else None
+
+        action_result.add_data({"source": system, content: content})
+
+    def _handle_delete_sample_classification(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
-        pass
+        system = param.get("system")
+        response = self.a1000.delete_classification(
+            sample_hash=param.get("hash"),
+            system=system,
+        )
+        self.debug_print("Executed", self.get_action_identifier())
+
+        content = response.json() if system == "local" else None
+
+        action_result.add_data({"source": system, content: content})
 
     def _handle_yara_get_rules(self, action_result, param):
         # TODO

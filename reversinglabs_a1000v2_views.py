@@ -188,6 +188,29 @@ def delete_user_tags(provides, all_app_runs, context):
     return 'views/reversinglabs_delete_user_tags.html'
 
 
+def set_sample_classification(provides, all_app_runs, context):
+    for summary, action_results in all_app_runs:
+        for result in action_results:
+            data = result.get_data()[0]
+            context["param"] = result.get_param()
+            context['data'] = data
+            if data["source"] == "local":
+                classification = data.get("classification", "UNAVAILABLE").upper()
+                context["classification_color"] = color_code_classification(classification)
+
+    return 'views/reversinglabs_set_sample_classification.html'
+
+
+def delete_sample_classification(provides, all_app_runs, context):
+    for summary, action_results in all_app_runs:
+        for result in action_results:
+            data = result.get_data()[0]
+            context["param"] = result.get_param()
+            context['data'] = data
+
+    return 'views/reversinglabs_delete_sample_classification.html'
+
+
 def color_code_classification(classification):
     color = ""
     classification = classification.upper()
