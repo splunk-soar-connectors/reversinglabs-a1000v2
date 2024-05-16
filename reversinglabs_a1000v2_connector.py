@@ -458,7 +458,7 @@ class ReversinglabsA1000V2Connector(BaseConnector):
 
         self.debug_print("Executed", self.get_action_identifier())
 
-        action_result.add_data(response.json())
+        action_result.add_data({"tags": response.json()})
 
     def _handle_create_user_tags(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
@@ -472,7 +472,7 @@ class ReversinglabsA1000V2Connector(BaseConnector):
 
         self.debug_print("Executed", self.get_action_identifier())
 
-        action_result.add_data(response.json())
+        action_result.add_data({"tags": response.json()})
 
     def _handle_delete_user_tags(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
@@ -486,7 +486,7 @@ class ReversinglabsA1000V2Connector(BaseConnector):
 
         self.debug_print("Executed", self.get_action_identifier())
 
-        action_result.add_data(response.json())
+        action_result.add_data({"tags": response.json()})
 
     def _handle_set_sample_classification(self, action_result, param):
         # TODO

@@ -74,16 +74,17 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
     <table class="rl-table">
         <thead>
             <tr>
-                <th colspan="2">ReversingLabs A1000 User Tags for
+                <th colspan="1">ReversingLabs A1000 User Tags for
                     <div id="rl-target" class="main-grid">{{param.hash}}</div>
                 </th>
             </tr>
         </thead>
         <tbody>
+            {% for t in data.tags %}
             <tr>
-                <td>tags</td>
-                <td>{{ data }}</td>
+                <td>{{ t }}</td>
             </tr>
+            {% endfor %}
         </tbody>
     </table>
     {% endif %}
