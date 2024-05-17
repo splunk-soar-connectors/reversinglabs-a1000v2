@@ -1773,15 +1773,22 @@
                     "data_type": "string",
                     "required": true,
                     "primary": true,
-                    "order": 0
+                    "order": 0,
+                    "id": 1,
+                    "name": "hash",
+                    "param_name": "hash"
                 },
                 "system": {
                     "description": "Where to set the desired classification",
                     "data_type": "string",
                     "value_list": ["local", "ticloud"],
+                    "default": "local",
                     "required": true,
                     "primary": false,
-                    "order": 1
+                    "order": 1,
+                    "id": 2,
+                    "name": "system",
+                    "param_name": "system"
                 },
                 "classification": {
                     "description": "Classification to set",
@@ -1789,7 +1796,10 @@
                     "value_list": ["goodware", "suspicious", "malicious"],
                     "required": true,
                     "primary": false,
-                    "order": 2
+                    "order": 2,
+                    "id": 3,
+                    "name": "classification",
+                    "param_name": "classification"
                 },
                 "risk_score": {
                     "description": "Risk score to set for classification",
@@ -1797,28 +1807,39 @@
                     "required": false,
                     "primary": false,
                     "order": 3,
-                    "name": "risk_score"
+                    "id": 4,
+                    "name": "risk_score",
+                    "param_name": "risk_score"
                 },
                 "threat_platform": {
                     "description": "Threat platform to set, must be on the supported list",
                     "data_type": "string",
                     "required": false,
                     "primary": false,
-                    "order": 4
+                    "order": 4,
+                    "id": 5,
+                    "name": "threat_platform",
+                    "param_name": "threat_platform"
                 },
                 "threat_type": {
                     "description": "Threat type to set, must be on the supported list",
                     "data_type": "string",
                     "required": false,
                     "primary": false,
-                    "order": 5
+                    "order": 5,
+                    "id": 6,
+                    "name": "threat_type",
+                    "param_name": "threat_type"
                 },
                 "threat_name": {
                     "description": "Threat name to set, must be on the supported list",
                     "data_type": "string",
                     "required": false,
                     "primary": false,
-                    "order": 6
+                    "order": 6,
+                    "id": 7,
+                    "name": "threat_name",
+                    "param_name": "threat_name"
                 }
             },
             "output": [
@@ -1919,6 +1940,7 @@
                     "description": "Where to delete the desired classification",
                     "data_type": "string",
                     "value_list": ["local", "ticloud"],
+                    "default": "local",
                     "required": true,
                     "primary": false,
                     "order": 1
