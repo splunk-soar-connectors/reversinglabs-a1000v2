@@ -235,6 +235,14 @@ def yara_get_matches(provides, all_app_runs, context):
     return 'views/reversinglabs_yara_get_matches.html'
 
 
+def yara_create_rule(provides, all_app_runs, context):
+    for summary, action_results in all_app_runs:
+        for result in action_results:
+            context["data"] = result.get_data()
+            context["param"] = result.get_param()
+    return 'views/reversinglabs_yara_create_rule.html'
+
+
 def color_code_classification(classification):
     color = ""
     classification = classification.upper()
