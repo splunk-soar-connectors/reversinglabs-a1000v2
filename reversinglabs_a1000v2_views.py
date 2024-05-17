@@ -201,6 +201,14 @@ def set_sample_classification(provides, all_app_runs, context):
     return 'views/reversinglabs_set_sample_classification.html'
 
 
+def yara_get_rules(provides, all_app_runs, context):
+    for summary, action_results in all_app_runs:
+        for result in action_results:
+            context["data"] = result.get_data()
+            context["param"] = result.get_param()
+    return 'views/reversinglabs_yara_get_rules.html'
+
+
 def delete_sample_classification(provides, all_app_runs, context):
     for summary, action_results in all_app_runs:
         for result in action_results:

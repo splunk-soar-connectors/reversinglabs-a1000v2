@@ -1994,6 +1994,137 @@
                 "title": "A1000 Delete sample classification"
             },
             "versions": "EQ(*)"
+        },
+
+
+         {
+            "action": "yara get rules",
+            "identifier": "yara_get_rules",
+            "description": "Retrieve a list of YARA rules that are on the A1000",
+            "verbose": "For every ruleset in the list, the output includes additional info such as: rule name, number of matches, last matched date, and more.",
+            "type": "generic",
+            "read_only": true,
+            "parameters": {
+                "type": {
+                    "description": "Owner type",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": false,
+                    "value_list": ["my", "user", "system", "all"],
+                    "order": 0,
+                    "name": "type",
+                    "id": 1,
+                    "param_name": "type"
+                },
+                "status": {
+                    "description": "Status",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": false,
+                    "value_list": ["all", "error", "active", "disabled", "pending", "invalid", "capped"],
+                    "order": 1,
+                    "name": "status",
+                    "id": 2,
+                    "param_name": "status"
+                },
+                "source": {
+                    "description": "Source",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": false,
+                    "value_list": ["all", "local", "cloud"],
+                    "order": 2,
+                    "name": "source",
+                    "id": 3,
+                    "param_name": "source"
+                },
+                "page": {
+                    "description": "Page",
+                    "data_type": "numeric",
+                    "required": false,
+                    "primary": false,
+                    "order": 3,
+                    "name": "page",
+                    "id": 4,
+                    "param_name": "page"
+                },
+                "page_size": {
+                    "description": "Page size",
+                    "data_type": "numeric",
+                    "required": false,
+                    "primary": false,
+                    "order": 4,
+                    "name": "page_size",
+                    "id": 5,
+                    "param_name": "page_size"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.parameter_type",
+                    "data_type": "string",
+                    "column_name": "type",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.parameter.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.parameter.source",
+                    "data_type": "string",
+                    "column_name": "source",
+                    "column_order": 2
+                },
+                {
+                    "data_path": "action_result.parameter.page",
+                    "data_type": "numeric",
+                    "column_name": "page",
+                    "column_order": 3
+                },
+                {
+                    "data_path": "action_result.parameter.page_size",
+                    "data_type": "numeric",
+                    "column_name": "page_size",
+                    "column_order": 4
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 5
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                }
+            ],
+            "render": {
+                "type": "custom",
+                "width": 10,
+                "height": 5,
+                "view": "reversinglabs_a1000v2_views.yara_get_rules",
+                "title": "A1000 Retrieve YARA rules"
+            },
+            "versions": "EQ(*)"
         }
     ],
     "pip39_dependencies": {
