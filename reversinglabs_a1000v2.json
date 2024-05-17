@@ -2613,6 +2613,69 @@
                 "title": "A1000 Enable/Disable YARA rule"
             },
             "versions": "EQ(*)"
+        },
+
+        {
+            "action": "yara set ruleset synchronization time",
+            "identifier": "yara_set_sync_time",
+            "description": "Modify the TiCloud sync time for TiCloud enabled rulesets",
+            "verbose": "Modify the TiCloud sync time for TiCLoud enabled rulesets. Time parameter must be a UTC timestamp <YYYY-MM-DD hh:mm:ss>",
+            "type": "generic",
+            "read_only": false,
+            "parameters": {
+                "time": {
+                    "description": "Synchronization time",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "order": 0,
+                    "name": "time",
+                    "id": 1,
+                    "param_name": "time"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.time",
+                    "data_type": "string",
+                    "column_name": "time",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                }
+            ],
+            "render": {
+                "type": "custom",
+                "width": 10,
+                "height": 5,
+                "view": "reversinglabs_a1000v2_views.yara_set_sync_time",
+                "title": "A1000 YARA Set ruleset synchronization time"
+            },
+            "versions": "EQ(*)"
         }
 
     ],
