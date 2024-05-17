@@ -201,6 +201,16 @@ def set_sample_classification(provides, all_app_runs, context):
     return 'views/reversinglabs_set_sample_classification.html'
 
 
+def delete_sample_classification(provides, all_app_runs, context):
+    for summary, action_results in all_app_runs:
+        for result in action_results:
+            data = result.get_data()[0]
+            context["param"] = result.get_param()
+            context['data'] = data
+
+    return 'views/reversinglabs_delete_sample_classification.html'
+
+
 def yara_get_rules(provides, all_app_runs, context):
     for summary, action_results in all_app_runs:
         for result in action_results:
@@ -217,14 +227,12 @@ def yara_get_rule_content(provides, all_app_runs, context):
     return 'views/reversinglabs_yara_get_rule_content.html'
 
 
-def delete_sample_classification(provides, all_app_runs, context):
+def yara_get_matches(provides, all_app_runs, context):
     for summary, action_results in all_app_runs:
         for result in action_results:
-            data = result.get_data()[0]
+            context["data"] = result.get_data()
             context["param"] = result.get_param()
-            context['data'] = data
-
-    return 'views/reversinglabs_delete_sample_classification.html'
+    return 'views/reversinglabs_yara_get_matches.html'
 
 
 def color_code_classification(classification):

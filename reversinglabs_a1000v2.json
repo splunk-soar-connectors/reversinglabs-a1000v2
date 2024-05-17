@@ -1996,7 +1996,7 @@
             "versions": "EQ(*)"
         },
 
-         {
+        {
             "action": "yara get rules",
             "identifier": "yara_get_rules",
             "description": "Retrieve a list of YARA rules that are on the A1000",
@@ -2187,10 +2187,102 @@
                 "title": "A1000 Retrieve YARA rule content"
             },
             "versions": "EQ(*)"
+        },
+
+        {
+            "action": "yara get matches",
+            "identifier": "yara_matches",
+            "description": "Retrieve the list of YARA matches",
+            "verbose": "Retrieve the list of YARA matches (local & cloud) for requested rulesets. Names are case sensitive.",
+            "type": "generic",
+            "read_only": true,
+            "parameters": {
+                "name": {
+                    "description": "Ruleset name",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": false,
+                    "order": 0,
+                    "name": "name",
+                    "id": 1,
+                    "param_name": "name"
+                },
+                "page": {
+                    "description": "Page",
+                    "data_type": "numeric",
+                    "required": false,
+                    "primary": false,
+                    "order": 1,
+                    "name": "page",
+                    "id": 2,
+                    "param_name": "page"
+                },
+                "page_size": {
+                    "description": "Page size",
+                    "data_type": "numeric",
+                    "required": false,
+                    "primary": false,
+                    "order": 2,
+                    "name": "page_size",
+                    "id": 3,
+                    "param_name": "page_size"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.name",
+                    "data_type": "string",
+                    "column_name": "name",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.parameter.page",
+                    "data_type": "numeric",
+                    "column_name": "page",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.parameter.page_size",
+                    "data_type": "numeric",
+                    "column_name": "page_size",
+                    "column_order": 2
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 3
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                }
+            ],
+            "render": {
+                "type": "custom",
+                "width": 10,
+                "height": 5,
+                "view": "reversinglabs_a1000v2_views.yara_get_matches",
+                "title": "A1000 Retrieve YARA rule matches"
+            },
+            "versions": "EQ(*)"
         }
-
-
-
     ],
     "pip39_dependencies": {
         "wheel": [
