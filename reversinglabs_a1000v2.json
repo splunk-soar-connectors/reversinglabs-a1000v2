@@ -2393,8 +2393,86 @@
                 "title": "A1000 Create or Update YARA rule"
             },
             "versions": "EQ(*)"
-        }
+        },
 
+        {
+            "action": "yara delete rule",
+            "identifier": "yara_delete_rule",
+            "description": "Delete a specific YARA ruleset and its matches",
+            "verbose": "Delete a specific YARA ruleset and its matches from the appliance.",
+            "type": "generic",
+            "read_only": false,
+            "parameters": {
+                "name": {
+                    "description": "Ruleset name",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "order": 0,
+                    "name": "name",
+                    "id": 1,
+                    "param_name": "name"
+                },
+                "publish": {
+                    "description": "Publish to C1000 in the same cluster",
+                    "data_type": "boolean",
+                    "required": false,
+                    "primary": false,
+                    "order": 1,
+                    "name": "publish",
+                    "id": 2,
+                    "param_name": "publish"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.name",
+                    "data_type": "string",
+                    "column_name": "name",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.parameter.publish",
+                    "data_type": "boolean",
+                    "column_name": "publish",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 2
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                }
+            ],
+            "render": {
+                "type": "custom",
+                "width": 10,
+                "height": 5,
+                "view": "reversinglabs_a1000v2_views.yara_delete_rule",
+                "title": "A1000 Delete YARA rule"
+            },
+            "versions": "EQ(*)"
+        }
 
 
 
