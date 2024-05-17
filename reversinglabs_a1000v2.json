@@ -2472,8 +2472,102 @@
                 "title": "A1000 Delete YARA rule"
             },
             "versions": "EQ(*)"
-        }
+        },
 
+        {
+            "action": "yara enable or disable rule",
+            "identifier": "yara_toggle_rule",
+            "description": "Enable or disable a ruleset on the appliance",
+            "verbose": "Administrators can manage any ruleset while regular A1000 users can only manage their own.",
+            "type": "generic",
+            "read_only": false,
+            "parameters": {
+                "name": {
+                    "description": "Ruleset name",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "order": 0,
+                    "name": "name",
+                    "id": 1,
+                    "param_name": "name"
+                },
+                "enabled": {
+                    "description": "Enable or disable the ruleset",
+                    "data_type": "boolean",
+                    "required": true,
+                    "primary": false,
+                    "order": 1,
+                    "name": "enabled",
+                    "id": 2,
+                    "param_name": "enabled"
+                },
+                "publish": {
+                    "description": "Publish to C1000 in the same cluster",
+                    "data_type": "boolean",
+                    "required": false,
+                    "primary": false,
+                    "order": 2,
+                    "name": "publish",
+                    "id": 3,
+                    "param_name": "publish"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.name",
+                    "data_type": "string",
+                    "column_name": "name",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.enabled",
+                    "data_type": "string",
+                    "column_name": "enabled",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.parameter.publish",
+                    "data_type": "boolean",
+                    "column_name": "publish",
+                    "column_order": 2
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 3
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                }
+            ],
+            "render": {
+                "type": "custom",
+                "width": 10,
+                "height": 5,
+                "view": "reversinglabs_a1000v2_views.yara_toggle_rule",
+                "title": "A1000 Enable/Disable YARA rule"
+            },
+            "versions": "EQ(*)"
+        }
 
 
     ],
