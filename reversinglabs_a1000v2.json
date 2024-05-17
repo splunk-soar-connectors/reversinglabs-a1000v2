@@ -1996,7 +1996,6 @@
             "versions": "EQ(*)"
         },
 
-
          {
             "action": "yara get rules",
             "identifier": "yara_get_rules",
@@ -2125,7 +2124,73 @@
                 "title": "A1000 Retrieve YARA rules"
             },
             "versions": "EQ(*)"
+        },
+
+        {
+            "action": "yara get rule content",
+            "identifier": "yara_get_rule_content",
+            "description": "Retrieve the full contents of the requested ruleset",
+            "verbose": "Retrieve the full contents of the requested ruleset in raw text. All rulesets can be retrieved.",
+            "type": "generic",
+            "read_only": true,
+            "parameters": {
+                "name": {
+                    "description": "Ruleset Name",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "order": 0,
+                    "name": "name",
+                    "id": 1,
+                    "param_name": "name"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.parameter.name",
+                    "data_type": "string",
+                    "column_name": "name",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                }
+            ],
+            "render": {
+                "type": "custom",
+                "width": 10,
+                "height": 5,
+                "view": "reversinglabs_a1000v2_views.yara_get_rule_content",
+                "title": "A1000 Retrieve YARA rule content"
+            },
+            "versions": "EQ(*)"
         }
+
+
+
     ],
     "pip39_dependencies": {
         "wheel": [
