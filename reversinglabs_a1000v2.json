@@ -2676,6 +2676,70 @@
                 "title": "A1000 YARA Set ruleset synchronization time"
             },
             "versions": "EQ(*)"
+        },
+
+        {
+            "action": "yara start or stop local retro scan",
+            "identifier": "yara_toggle_retro_scan_local",
+            "description": "Allow users to start or stop the Local Retro scan on the appliance",
+            "verbose": "Allow users to start or stop the Local Retro scan on the appliance.",
+            "type": "generic",
+            "read_only": false,
+            "parameters": {
+                "operation": {
+                    "description": "START or STOP",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "value_list": ["START", "STOP"],
+                    "order": 0,
+                    "name": "operation",
+                    "id": 1,
+                    "param_name": "operation"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.operation",
+                    "data_type": "string",
+                    "column_name": "operation",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                }
+            ],
+            "render": {
+                "type": "custom",
+                "width": 10,
+                "height": 5,
+                "view": "reversinglabs_a1000v2_views.yara_toggle_retro_scan_local",
+                "title": "A1000 YARA Start/Stop a Local Retro scan"
+            },
+            "versions": "EQ(*)"
         }
 
     ],
