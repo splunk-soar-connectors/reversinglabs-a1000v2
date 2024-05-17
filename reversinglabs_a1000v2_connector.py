@@ -504,7 +504,7 @@ class ReversinglabsA1000V2Connector(BaseConnector):
 
         content = response.json() if system == "local" else None
 
-        action_result.add_data({"source": system, content: content})
+        action_result.add_data({"source": system, "content": content})
 
     def _handle_delete_sample_classification(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
@@ -517,7 +517,7 @@ class ReversinglabsA1000V2Connector(BaseConnector):
 
         content = response.json() if system == "local" else None
 
-        action_result.add_data({"source": system, content: content})
+        action_result.add_data({"source": system, "content": content})
 
     def _handle_yara_get_rules(self, action_result, param):
         # TODO
