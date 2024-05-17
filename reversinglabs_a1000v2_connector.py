@@ -580,6 +580,7 @@ class ReversinglabsA1000V2Connector(BaseConnector):
         action_result.add_data(response.json())
 
     def _handle_yara_get_sync_time(self, action_result, param):
+        # TODO: check how to handle the 405 error here, should we enrich the action output or just let it fail
         self.debug_print("Action handler", self.get_action_identifier())
         response = self.a1000.get_yara_ruleset_synchronization_time()
         self.debug_print("Executed", self.get_action_identifier())
