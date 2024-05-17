@@ -2567,8 +2567,53 @@
                 "title": "A1000 Enable/Disable YARA rule"
             },
             "versions": "EQ(*)"
-        }
+        },
 
+        {
+            "action": "yara get synchronization time",
+            "identifier": "yara_get_sync_time",
+            "description": "Enable or disable a ruleset on the appliance",
+            "verbose": "Administrators can manage any ruleset while regular A1000 users can only manage their own.",
+            "type": "generic",
+            "read_only": true,
+            "parameters": {},
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                }
+            ],
+            "render": {
+                "type": "custom",
+                "width": 10,
+                "height": 5,
+                "view": "reversinglabs_a1000v2_views.yara_get_sync_time",
+                "title": "A1000 Enable/Disable YARA rule"
+            },
+            "versions": "EQ(*)"
+        }
 
     ],
     "pip39_dependencies": {
