@@ -495,7 +495,7 @@ class ReversinglabsA1000V2Connector(BaseConnector):
             sample_hash=param.get("hash"),
             classification=param.get("classification").split(),
             system=system,
-            risk_score=param.get("riskscore"),
+            risk_score=param.get("risk_score"),
             threat_platform=param.get("threat_platform"),
             threat_type=param.get("threat_type"),
             threat_name=param.get("threat_name"),
