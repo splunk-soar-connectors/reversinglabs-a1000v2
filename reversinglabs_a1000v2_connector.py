@@ -150,7 +150,6 @@ class ReversinglabsA1000V2Connector(BaseConnector):
             self.ACTION_ID_YARA_SET_SYNC_TIME: self._handle_yara_set_sync_time,
             self.ACTION_ID_YARA_TOGGLE_RETRO_SCAN_LOCAL: self._handle_yara_toggle_retro_scan_local,
             self.ACTION_ID_YARA_MANAGE_RETRO_SCAN_CLOUD: self._handle_yara_manage_retro_scan_cloud,
-            self.ACTION_ID_YARA_CHECK_RETRO_SCAN_LOCAL: self._handle_check_retro_scan_local,
             self.ACTION_ID_YARA_STATUS_RETRO_SCAN_LOCAL: self._handle_yara_status_retro_scan_local,
             self.ACTION_ID_YARA_STATUS_RETRO_SCAN_CLOUD: self._handle_yara_status_retro_scan_cloud,
             self.ACTION_ID_LIST_CONTAINERS_FOR_HASH: self._handle_list_containers_for_hash,
@@ -611,16 +610,11 @@ class ReversinglabsA1000V2Connector(BaseConnector):
         self.debug_print("Executed", self.get_action_identifier())
         action_result.add_data(response.json())
 
-    def _handle_check_retro_scan_local(self, action_result, param):
+    def _handle_yara_status_retro_scan_local(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
         response = self.a1000.get_yara_local_retro_scan_status()
         self.debug_print("Executed", self.get_action_identifier())
         action_result.add_data(response.json())
-
-    def _handle_yara_status_retro_scan_local(self, action_result, param):
-        # TODO
-        self.debug_print("Action handler", self.get_action_identifier())
-        pass
 
     def _handle_yara_status_retro_scan_cloud(self, action_result, param):
         # TODO
