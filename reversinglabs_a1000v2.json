@@ -2992,9 +2992,102 @@
                 "title": "A1000 List containers for every requested hash"
             },
             "versions": "EQ(*)"
+        },
+
+        {
+            "action": "delete sample",
+            "identifier": "delete_sample",
+            "description": "Delete the sample with the requested hash value.",
+            "verbose": "All related data, including extracted samples and metadata, will be deleted from the current A1000 instance.",
+            "type": "generic",
+            "read_only": false,
+            "parameters": {
+                "hash_value": {
+                    "description": "Hash of a sample to be deleted",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "order": 0,
+                    "name": "hash_value",
+                    "id": 1,
+                    "param_name": "hash_value"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.hash_value",
+                    "data_type": "string",
+                    "column_name": "hash_value",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data.*.code",
+                    "data_type": "numeric",
+                    "column_name": "response_code",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.data.*.message",
+                    "data_type": "string",
+                    "column_name": "message",
+                    "column_order": 2
+                },
+                {
+                    "data_path": "action_result.data.*.detail.md5",
+                    "data_type": "string",
+                    "column_name": "md5",
+                    "column_order": 3
+                },
+                {
+                    "data_path": "action_result.data.*.detail.sha1",
+                    "data_type": "string",
+                    "column_name": "sha1",
+                    "column_order": 4
+                },
+                {
+                    "data_path": "action_result.data.*.detail.sha256",
+                    "data_type": "string",
+                    "column_name": "sha256",
+                    "column_order": 5
+                },
+                {
+                    "data_path": "action_result.data.*.detail.sha512",
+                    "data_type": "string",
+                    "column_name": "sha512",
+                    "column_order": 6
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 7
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
         }
-
-
 
     ],
     "pip39_dependencies": {
