@@ -297,6 +297,14 @@ def yara_status_retro_scan_local(provides, all_app_runs, context):
     return 'views/yara_status_retro_scan_local.html'
 
 
+def yara_status_retro_scan_cloud(provides, all_app_runs, context):
+    for summary, action_results in all_app_runs:
+        for result in action_results:
+            context["data"] = result.get_data()
+            context["param"] = result.get_param()
+    return 'views/yara_status_retro_scan_cloud.html'
+
+
 def color_code_classification(classification):
     color = ""
     classification = classification.upper()
