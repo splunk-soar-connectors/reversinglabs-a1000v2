@@ -192,7 +192,6 @@
                     "data_type": "string",
                     "required": false,
                     "primary": false,
-                    "value_list": ["windows7", "windows10", "macos_11", "windows11", "linux"],
                     "order": 3,
                     "name": "rl_cloud_sandbox_platform",
                     "id": 4,
