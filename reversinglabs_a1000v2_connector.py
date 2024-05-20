@@ -658,9 +658,20 @@ class ReversinglabsA1000V2Connector(BaseConnector):
             raise Exception('Unable to store file in Vault. Error details: {0}'.format(msg))
 
     def _handle_reanalyze_samples(self, action_result, param):
-        # TODO
         self.debug_print("Action handler", self.get_action_identifier())
-        pass
+        response = self.a1000.reanalyze_samples_v2(
+            hash_input=param.get("hash_value").strip().split(","),
+            titanium_cloud=param.get("titanium_cloud", False),
+            titanium_core=param.get("titanium_core", False),
+            rl_cloud_sandbox=param.get("rl_cloud_sandbox", False),
+            cuckoo_sandbox=param.get("cuckoo_sandbox", False),
+            fireeye=param.get("fireeye", False),
+            joe_sandbox=param.get("joe_sandbox", False),
+            cape=param.get("cape", False),
+            rl_cloud_sandbox_platform=param.get("rl_cloud_sandbox_platform"),
+        )
+        self.debug_print("Executed", self.get_action_identifier())
+        action_result.add_data(response.json())
 
 
 def main():
