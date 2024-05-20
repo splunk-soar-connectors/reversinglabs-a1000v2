@@ -1995,7 +1995,6 @@
             },
             "versions": "EQ(*)"
         },
-
         {
             "action": "yara get rules",
             "identifier": "yara_get_rules",
@@ -2125,7 +2124,6 @@
             },
             "versions": "EQ(*)"
         },
-
         {
             "action": "yara get rule content",
             "identifier": "yara_get_rule_content",
@@ -2188,7 +2186,6 @@
             },
             "versions": "EQ(*)"
         },
-
         {
             "action": "yara get matches",
             "identifier": "yara_matches",
@@ -2283,7 +2280,6 @@
             },
             "versions": "EQ(*)"
         },
-
         {
             "action": "yara create or update rule",
             "identifier": "yara_create_rule",
@@ -2394,7 +2390,6 @@
             },
             "versions": "EQ(*)"
         },
-
         {
             "action": "yara delete rule",
             "identifier": "yara_delete_rule",
@@ -2473,7 +2468,6 @@
             },
             "versions": "EQ(*)"
         },
-
         {
             "action": "yara enable or disable rule",
             "identifier": "yara_toggle_rule",
@@ -2568,7 +2562,6 @@
             },
             "versions": "EQ(*)"
         },
-
         {
             "action": "yara get synchronization time",
             "identifier": "yara_get_sync_time",
@@ -2614,7 +2607,6 @@
             },
             "versions": "EQ(*)"
         },
-
         {
             "action": "yara set ruleset synchronization time",
             "identifier": "yara_set_sync_time",
@@ -2677,7 +2669,6 @@
             },
             "versions": "EQ(*)"
         },
-
         {
             "action": "yara start or stop local retro scan",
             "identifier": "yara_toggle_retro_scan_local",
@@ -2741,7 +2732,6 @@
             },
             "versions": "EQ(*)"
         },
-
         {
             "action": "yara start or stop cloud retro scan",
             "identifier": "yara_manage_retro_scan_cloud",
@@ -2821,7 +2811,6 @@
             },
             "versions": "EQ(*)"
         },
-
         {
             "action": "yara status retro scan local",
             "identifier": "yara_status_retro_scan_local",
@@ -2867,7 +2856,6 @@
             },
             "versions": "EQ(*)"
         },
-
         {
             "action": "yara status retro scan cloud",
             "identifier": "yara_status_retro_scan_cloud",
@@ -2930,7 +2918,6 @@
             },
             "versions": "EQ(*)"
         },
-
         {
             "action": "list containers for hash",
             "identifier": "list_containers_for_hash",
@@ -2993,7 +2980,6 @@
             },
             "versions": "EQ(*)"
         },
-
         {
             "action": "delete sample",
             "identifier": "delete_sample",
@@ -3088,7 +3074,6 @@
             },
             "versions": "EQ(*)"
         },
-
         {
             "action": "download extracted files",
             "identifier": "download_extracted_files",
@@ -3147,7 +3132,6 @@
             },
             "versions": "EQ(*)"
         },
-
         {
             "action": "reanalyze local samples",
             "identifier": "reanalyze_samples",
@@ -3338,7 +3322,6 @@
             },
             "versions": "EQ(*)"
         }
-
     ],
     "pip39_dependencies": {
         "wheel": [
