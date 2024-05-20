@@ -641,9 +641,21 @@ class ReversinglabsA1000V2Connector(BaseConnector):
         action_result.add_data(response.json())
 
     def _handle_download_extracted_files(self, action_result, param):
-        # TODO
         self.debug_print("Action handler", self.get_action_identifier())
-        pass
+        response = self.a1000.download_extracted_files(
+            sample_hash=param.get("hash_value"),
+        )
+        self.debug_print("Executed", self.get_action_identifier())
+
+        file_path = os.path.join(Vault.get_vault_tmp_dir(), param.get("hash_value"))
+        with open(file_path, "wb") as file_obj:
+            file_obj.write(response.content)
+
+        success, msg, vault_id = vault.vault_add(file_location=file_path,
+                                                 container=self.get_container_id(),
+                                                 file_name="extracted_from-{0}.zip".format(param.get("hash_value")))
+        if not success:
+            raise Exception('Unable to store file in Vault. Error details: {0}'.format(msg))
 
     def _handle_reanalyze_samples(self, action_result, param):
         # TODO

@@ -3087,7 +3087,68 @@
                 "type": "table"
             },
             "versions": "EQ(*)"
+        },
+
+        {
+            "action": "download extracted files",
+            "identifier": "download_extracted_files",
+            "description": "Download files extracted from local sample",
+            "verbose": "The files are obtained through the unpacking process during sample analysis with the TitaniumCore static analysis engine.",
+            "type": "generic",
+            "read_only": true,
+            "parameters": {
+                "hash_value": {
+                    "description": "Hash of a sample to be deleted",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "order": 0,
+                    "name": "hash_value",
+                    "id": 1,
+                    "param_name": "hash_value"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.hash_value",
+                    "data_type": "string",
+                    "column_name": "hash_value",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
         }
+
+
 
     ],
     "pip39_dependencies": {
