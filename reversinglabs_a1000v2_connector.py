@@ -625,9 +625,12 @@ class ReversinglabsA1000V2Connector(BaseConnector):
         action_result.add_data(response.json())
 
     def _handle_list_containers_for_hash(self, action_result, param):
-        # TODO
         self.debug_print("Action handler", self.get_action_identifier())
-        pass
+        response = self.a1000.list_containers_for_hashes(
+            sample_hashes=param.get("hash_values").strip().split(","),
+        )
+        self.debug_print("Executed", self.get_action_identifier())
+        action_result.add_data(response.json())
 
     def _handle_delete_sample(self, action_result, param):
         # TODO
