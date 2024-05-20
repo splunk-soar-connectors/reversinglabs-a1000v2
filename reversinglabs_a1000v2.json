@@ -2765,7 +2765,7 @@
                     "data_type": "string",
                     "required": true,
                     "primary": false,
-                    "value_list": ["START", "STOP"],
+                    "value_list": ["START", "STOP", "CLEAR"],
                     "order": 1,
                     "name": "operation",
                     "id": 2,

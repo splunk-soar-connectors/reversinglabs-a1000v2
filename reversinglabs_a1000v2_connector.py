@@ -604,8 +604,8 @@ class ReversinglabsA1000V2Connector(BaseConnector):
     def _handle_yara_manage_retro_scan_cloud(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
         response = self.a1000.start_or_stop_yara_cloud_retro_scan(
+            ruleset_name=param.get("name"),
             operation=param.get("operation"),
-            ruleset_name=param.get("ruleset_name"),
         )
         self.debug_print("Executed", self.get_action_identifier())
         action_result.add_data(response.json())
