@@ -660,7 +660,7 @@ class ReversinglabsA1000V2Connector(BaseConnector):
     def _handle_reanalyze_samples(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
         response = self.a1000.reanalyze_samples_v2(
-            hash_input=param.get("hash_value").strip().split(","),
+            hash_input=param.get("hash_values").strip().split(","),
             titanium_cloud=param.get("titanium_cloud", False),
             titanium_core=param.get("titanium_core", False),
             rl_cloud_sandbox=param.get("rl_cloud_sandbox", False),
