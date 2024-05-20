@@ -2740,6 +2740,86 @@
                 "title": "A1000 YARA Start/Stop a Local Retro scan"
             },
             "versions": "EQ(*)"
+        },
+
+        {
+            "action": "yara start or stop cloud retro scan",
+            "identifier": "yara_manage_retro_scan_cloud",
+            "description": "Allow users to start/stop a Cloud Retro scan.",
+            "verbose": "Start/Stop a Cloud Retro scan for a specified ruleset on the A1000.",
+            "type": "generic",
+            "read_only": false,
+            "parameters": {
+                "name": {
+                    "description": "Ruleset name",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "order": 0,
+                    "name": "name",
+                    "id": 1,
+                    "param_name": "name"
+                },
+                "operation": {
+                    "description": "START, STOP or CLEAR",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": false,
+                    "value_list": ["START", "STOP"],
+                    "order": 1,
+                    "name": "operation",
+                    "id": 2,
+                    "param_name": "operation"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.name",
+                    "data_type": "string",
+                    "column_name": "name",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.operation",
+                    "data_type": "string",
+                    "column_name": "operation",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 2
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                }
+            ],
+            "render": {
+                "type": "custom",
+                "width": 10,
+                "height": 5,
+                "view": "reversinglabs_a1000v2_views.yara_manage_retro_scan_cloud",
+                "title": "A1000 YARA Start/Stop a Cloud Retro scan"
+            },
+            "versions": "EQ(*)"
         }
 
     ],
