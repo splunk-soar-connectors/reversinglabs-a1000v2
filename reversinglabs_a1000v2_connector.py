@@ -612,9 +612,10 @@ class ReversinglabsA1000V2Connector(BaseConnector):
         action_result.add_data(response.json())
 
     def _handle_check_retro_scan_local(self, action_result, param):
-        # TODO
         self.debug_print("Action handler", self.get_action_identifier())
-        pass
+        response = self.a1000.get_yara_local_retro_scan_status()
+        self.debug_print("Executed", self.get_action_identifier())
+        action_result.add_data(response.json())
 
     def _handle_yara_status_retro_scan_local(self, action_result, param):
         # TODO

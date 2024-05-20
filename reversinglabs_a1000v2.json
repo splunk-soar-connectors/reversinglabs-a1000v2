@@ -2820,6 +2820,52 @@
                 "title": "A1000 YARA Start/Stop a Cloud Retro scan"
             },
             "versions": "EQ(*)"
+        },
+
+        {
+            "action": "yara check local retro scan",
+            "identifier": "yara_check_retro_scan_local",
+            "description": "Allow users to check the status of a Local Retro scan",
+            "verbose": "The response indicates the current state of Local Retro, time and date when the latest Local Retro scan was started and/or stopped, and a list of previous Local Retro scans with same details.",
+            "type": "generic",
+            "read_only": true,
+            "parameters": {},
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                }
+            ],
+            "render": {
+                "type": "custom",
+                "width": 10,
+                "height": 5,
+                "view": "reversinglabs_a1000v2_views.yara_check_retro_scan_local",
+                "title": "A1000 YARA Local Retro status"
+            },
+            "versions": "EQ(*)"
         }
 
     ],
