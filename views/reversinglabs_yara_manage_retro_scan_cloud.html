@@ -83,8 +83,40 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
                 <td>{{data.success}}</td>
             </tr>
             <tr>
-                <td>State</td>
-                <td>{{data.status.state}}</td>
+                <td>Message</td>
+                <td>{{data.message}}</td>
+            </tr>
+            <tr>
+                <td>Reason</td>
+                <td>{{data.status.reason}}</td>
+            </tr>
+            <tr>
+                <td>Cloud status</td>
+                <td>{{data.status.cloud_status}}</td>
+            </tr>
+            <tr>
+                <td>Scale status</td>
+                <td>{{data.status.scale_status}}</td>
+            </tr>
+            <tr>
+                <td>Retrohunt status</td>
+                <td>{{data.status.retrohunt_status}}</td>
+            </tr>
+            <tr>
+                <td>Retrohunt progress</td>
+                <td>{{data.status.retrohunt_progress}}</td>
+            </tr>
+            <tr>
+                <td>Retrohunt start time</td>
+                <td>{{data.status.retrohunt_start_time}}</td>
+            </tr>
+            <tr>
+                <td>Retrohunt finish time</td>
+                <td>{{data.status.retrohunt_finish_time}}</td>
+            </tr>
+            <tr>
+                <td>Retrohunt estimated finish time</td>
+                <td>{{data.status.retrohunt_estimated_finish_time}}</td>
             </tr>
         </tbody>
     </table>

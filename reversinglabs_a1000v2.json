@@ -2733,7 +2733,7 @@
             "versions": "EQ(*)"
         },
         {
-            "action": "yara start or stop cloud retro scan",
+            "action": "yara manage cloud retro scan",
             "identifier": "yara_manage_retro_scan_cloud",
             "description": "Allow users to start/stop a Cloud Retro scan.",
             "verbose": "Start/Stop a Cloud Retro scan for a specified ruleset on the A1000.",
