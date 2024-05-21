@@ -3095,7 +3095,7 @@
             },
             "output": [
                 {
-                    "data_path": "action_result.hash_value",
+                    "data_path": "action_result.parameter.hash_value",
                     "data_type": "string",
                     "column_name": "hash_value",
                     "column_order": 0
