@@ -279,7 +279,7 @@ def yara_toggle_retro_scan_local(provides, all_app_runs, context):
         for result in action_results:
             context["data"] = result.get_data()[0]
             context["param"] = result.get_param()
-    return 'views/yara_toggle_retro_scan_local.html'
+    return 'views/reversinglabs_yara_toggle_retro_scan_local.html'
 
 
 def yara_manage_retro_scan_cloud(provides, all_app_runs, context):
@@ -287,14 +287,14 @@ def yara_manage_retro_scan_cloud(provides, all_app_runs, context):
         for result in action_results:
             context["data"] = result.get_data()[0]
             context["param"] = result.get_param()
-    return 'views/yara_manage_retro_scan_cloud.html'
+    return 'views/reversinglabs_yara_manage_retro_scan_cloud.html'
 
 
 def yara_status_retro_scan_local(provides, all_app_runs, context):
     for summary, action_result in all_app_runs:
         for result in action_result:
             context["data"] = result.get_data()[0]
-    return 'views/yara_status_retro_scan_local.html'
+    return 'views/reversinglabs_yara_status_retro_scan_local.html'
 
 
 def yara_status_retro_scan_cloud(provides, all_app_runs, context):
@@ -302,7 +302,7 @@ def yara_status_retro_scan_cloud(provides, all_app_runs, context):
         for result in action_results:
             context["data"] = result.get_data()[0]
             context["param"] = result.get_param()
-    return 'views/yara_status_retro_scan_cloud.html'
+    return 'views/reversinglabs_yara_status_retro_scan_cloud.html'
 
 
 def list_containers_for_hash(provides, all_app_runs, context):
@@ -310,7 +310,7 @@ def list_containers_for_hash(provides, all_app_runs, context):
         for result in action_results:
             context["data"] = result.get_data()[0]
             context["param"] = result.get_param()
-    return 'views/list_containers_for_hash.html'
+    return 'views/reversinglabs_list_containers_for_hash.html'
 
 
 def reanalyze_samples(provides, all_app_runs, context):
@@ -318,7 +318,7 @@ def reanalyze_samples(provides, all_app_runs, context):
         for result in action_results:
             context["data"] = result.get_data()[0]
             context["param"] = result.get_param()
-    return 'views/reanalyze_samples.html'
+    return 'views/reversinglabs_reanalyze_samples.html'
 
 
 def color_code_classification(classification):
