@@ -79,12 +79,16 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
 
         <tbody>
             <tr>
-                <td>Action success</td>
+                <td>Success</td>
                 <td>{{data.success}}</td>
             </tr>
             <tr>
-                <td>Action message</td>
+                <td>Message</td>
                 <td>{{data.message}}</td>
+            </tr>
+            <tr>
+                <td>Reason</td>
+                <td>{{data.status.reason}}</td>
             </tr>
             <tr>
                 <td>Cloud status</td>
@@ -99,24 +103,20 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
                 <td>{{data.status.retrohunt_status}}</td>
             </tr>
             <tr>
-                <td>Start time</td>
-                <td>{{data.status.retrohunt_start_time}}</td>
-            </tr>
-            <tr>
-                <td>Finish time</td>
-                <td>{{data.status.retrohunt_finish_time}}</td>
-            </tr>
-            <tr>
-                <td>Estimate finish time</td>
-                <td>{{data.status.retrohunt_estimate_finish_time}}</td>
-            </tr>
-            <tr>
-                <td>Progress</td>
+                <td>Retrohunt progress</td>
                 <td>{{data.status.retrohunt_progress}}</td>
             </tr>
             <tr>
-                <td>Error reason</td>
-                <td>{{data.status.reason}}</td>
+                <td>Retrohunt start time</td>
+                <td>{{data.status.retrohunt_start_time}}</td>
+            </tr>
+            <tr>
+                <td>Retrohunt finish time</td>
+                <td>{{data.status.retrohunt_finish_time}}</td>
+            </tr>
+            <tr>
+                <td>Retrohunt estimated finish time</td>
+                <td>{{data.status.retrohunt_estimated_finish_time}}</td>
             </tr>
         </tbody>
     </table>
