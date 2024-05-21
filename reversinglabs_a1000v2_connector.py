@@ -524,8 +524,8 @@ class ReversinglabsA1000V2Connector(BaseConnector):
             owner_type=param.get("owner"),
             status=param.get("status"),
             source=param.get("source"),
-            page=param.get("page"),
-            page_size=param.get("page_size")
+            page=str(param.get("page")) if param.get("page") else None,
+            page_size=str(param.get("page_size")) if param.get("page_size") else None
         )
         self.debug_print("Executed", self.get_action_identifier())
         action_result.add_data(response.json())
