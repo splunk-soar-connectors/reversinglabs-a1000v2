@@ -95,13 +95,6 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
                 <td>{{data.next}}</td>
             </tr>
         </tbody>
-        <tbody>
-            {% for t in data.tags %}
-            <tr>
-                <td>{{ t }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
     </table>
 
     {% for rr in data.results %}
