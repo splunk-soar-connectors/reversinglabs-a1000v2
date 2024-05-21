@@ -27,8 +27,15 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
         position: relative;
     }
 
+    .standalone-title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     .rl-table {
         line-break: auto;
+        margin-top: 50px;
     }
 
     .rl-table thead th {
@@ -37,6 +44,7 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
     }
 
     .rl-table td {
+        text-align: center;
         padding: 7px;
     }
 
@@ -68,13 +76,13 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
     }
 </style>
 <div class="rl-content">
-    <p>ReversingLabs A1000 reanalyze samples with selected services</p>
+    <div class="standalone-title"><h2>ReversingLabs A1000 reanalyze samples with selected services</h2></div>
 
     {% for rr in data.results %}
     <table class="rl-table">
         <thead>
             <tr>
-                <th colspan="3">Submission for
+                <th colspan="3">Reanalyze request results for
                     <div id="rl-target" class="main-grid">{{rr.detail.sha256}}</div>
                 </th>
             </tr>
@@ -88,11 +96,7 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
             {% for analysis in rr.analysis %}
             <tr>
                 <td>{{analysis.name}}</td>
-            </tr>
-            <tr>
                 <td>{{analysis.code}}</td>
-            </tr>
-            <tr>
                 <td>{{analysis.message}}</td>
             </tr>
             {% endfor %}
