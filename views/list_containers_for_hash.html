@@ -36,6 +36,10 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
         font-size: 1.4rem;
     }
 
+    .result-table {
+        margin-top: 50px;
+    }
+
     .rl-table td {
         padding: 7px;
     }
@@ -59,7 +63,7 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
 
     .rl-table td:first-child {
         color: #6c818b;
-        text-transform: uppercase;
+        text-transform: none;
         font-weight: 500;
         white-space: nowrap;
         padding-left: 0.8rem;
@@ -100,8 +104,8 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
         </tbody>
     </table>
 
-    {% for rr in data.results%}
-    <table class="rl-table">
+    {% for rr in data.results %}
+    <table class="rl-table result-table">
         <thead>
             <tr>
                 <th>Containers for
@@ -110,7 +114,7 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
             </tr>
         </thead>
         <tbody>
-            {% for container in rr %}
+            {% for container in rr.containers %}
                 <tr>
                     <td>{{container}}</td>
                 </tr>
