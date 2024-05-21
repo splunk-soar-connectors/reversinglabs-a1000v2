@@ -3001,43 +3001,43 @@
             },
             "output": [
                 {
-                    "data_path": "action_result.hash_value",
+                    "data_path": "action_result.param.hash_value",
                     "data_type": "string",
                     "column_name": "hash_value",
                     "column_order": 0
                 },
                 {
-                    "data_path": "action_result.data.*.code",
+                    "data_path": "action_result.data.*.results.code",
                     "data_type": "numeric",
                     "column_name": "response_code",
                     "column_order": 1
                 },
                 {
-                    "data_path": "action_result.data.*.message",
+                    "data_path": "action_result.data.*.results.message",
                     "data_type": "string",
                     "column_name": "message",
                     "column_order": 2
                 },
                 {
-                    "data_path": "action_result.data.*.detail.md5",
+                    "data_path": "action_result.data.*.results.detail.md5",
                     "data_type": "string",
                     "column_name": "md5",
                     "column_order": 3
                 },
                 {
-                    "data_path": "action_result.data.*.detail.sha1",
+                    "data_path": "action_result.data.*.results.detail.sha1",
                     "data_type": "string",
                     "column_name": "sha1",
                     "column_order": 4
                 },
                 {
-                    "data_path": "action_result.data.*.detail.sha256",
+                    "data_path": "action_result.data.*.results.detail.sha256",
                     "data_type": "string",
                     "column_name": "sha256",
                     "column_order": 5
                 },
                 {
-                    "data_path": "action_result.data.*.detail.sha512",
+                    "data_path": "action_result.data.*.results.detail.sha512",
                     "data_type": "string",
                     "column_name": "sha512",
                     "column_order": 6
