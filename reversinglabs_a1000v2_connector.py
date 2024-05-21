@@ -540,10 +540,12 @@ class ReversinglabsA1000V2Connector(BaseConnector):
 
     def _handle_yara_matches(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
+        page = str(param.get("page")) if param.get("page") else None
+        page_size = str(param.get("page_size")) if param.get("page_size") else None
         response = self.a1000.get_yara_ruleset_matches_v2(
             ruleset_name=param.get("name"),
-            page=param.get("page"),
-            page_size=param.get("page_size")
+            page=page,
+            page_size=page_size,
         )
         self.debug_print("Executed", self.get_action_identifier())
         action_result.add_data(response.json())
