@@ -283,6 +283,7 @@ def yara_toggle_retro_scan_local(provides, all_app_runs, context):
 
 
 def yara_manage_retro_scan_cloud(provides, all_app_runs, context):
+    # TODO: this and status view could be combined, response is same/similar
     for summary, action_results in all_app_runs:
         for result in action_results:
             context["data"] = result.get_data()[0]
