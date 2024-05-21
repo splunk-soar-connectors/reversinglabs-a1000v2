@@ -35,6 +35,9 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
 
     .rl-table {
         line-break: auto;
+    }
+
+    .result-table {
         margin-top: 50px;
     }
 
@@ -79,7 +82,7 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
     <div class="standalone-title"><h2>ReversingLabs A1000 reanalyze samples with selected services</h2></div>
 
     {% for rr in data.results %}
-    <table class="rl-table">
+    <table class="rl-table result-table">
         <thead>
             <tr>
                 <th colspan="3">Reanalyze request results for
