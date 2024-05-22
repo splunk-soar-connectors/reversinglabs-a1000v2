@@ -195,8 +195,8 @@ def set_sample_classification(provides, all_app_runs, context):
             context["param"] = result.get_param()
             context['data'] = data
             if data["source"] == "local":
-                classification = data.get("classification", "UNAVAILABLE").upper()
-                context["classification_color"] = color_code_classification(classification)
+                context["classification"] = data["content"].get("classification", "UNAVAILABLE").upper()
+                context["classification_color"] = color_code_classification(context["classification"])
 
     return 'views/reversinglabs_set_sample_classification.html'
 

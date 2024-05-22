@@ -81,8 +81,12 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
         </thead>
         <tbody>
             <tr>
+                <td>Source</td>
+                <td>{{data.source}}</td>
+            </tr>
+            <tr>
                 <td>Classification</td>
-                <td><font color={{classification_color}}>{{data.content.classification}}</font></td>
+                <td><font color={{classification_color}}>{{classification}}</font></td>
             </tr>
             <tr>
                 <td>Risk score</td>
