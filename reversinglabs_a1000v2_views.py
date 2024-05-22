@@ -108,6 +108,7 @@ def network_urls_from_ip(provides, all_app_runs, context):
     for summary, action_results in all_app_runs:
         for result in action_results:
             context['data'] = result.get_data()[0]
+            context['param'] = result.get_param()
 
     return 'views/reversinglabs_network_urls_from_ip.html'
 

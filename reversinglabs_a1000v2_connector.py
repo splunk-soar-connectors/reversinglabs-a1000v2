@@ -315,7 +315,11 @@ class ReversinglabsA1000V2Connector(BaseConnector):
     def _handle_network_urls_from_ip(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
 
-        response = self.a1000.network_urls_from_ip(ip_addr=param.get('ip'))
+        response = self.a1000.network_urls_from_ip(
+            ip_addr=param.get('ip'),
+            page=param.get('page'),
+            page_size=param.get('page_size', 500),
+        )
 
         self.debug_print("Executed", self.get_action_identifier())
 
