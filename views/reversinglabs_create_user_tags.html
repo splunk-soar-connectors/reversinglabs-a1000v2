@@ -29,6 +29,7 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
 
     .rl-table {
         line-break: auto;
+        margin: auto;
     }
 
     .rl-table thead th {
@@ -66,20 +67,27 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
         padding-right: 2rem;
         width: 11%;
     }
+
+    .tag-tbody td:first-child {
+        text-transform: none !important;
+    }
 </style>
 <div class="rl-content">
-    {% if data == None %}
-    There are no tags in the response JSON.
-    {% else%}
     <table class="rl-table">
         <thead>
             <tr>
+                {% if data == None or data.tags|length == 0 %}
+                <th colspan="1">ReversingLabs A1000 No User tags created for
+                    <div id="rl-target" class="main-grid">{{param.hash}}</div>
+                </th>
+                {% else %}
                 <th colspan="1">ReversingLabs A1000 User Tags created for
                     <div id="rl-target" class="main-grid">{{param.hash}}</div>
                 </th>
+                {% endif %}
             </tr>
         </thead>
-        <tbody>
+        <tbody class="tag-tbody">
             {% for t in data.tags %}
             <tr>
                 <td>{{ t }}</td>
@@ -87,6 +95,5 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
             {% endfor %}
         </tbody>
     </table>
-    {% endif %}
 </div>
 {% endblock %}
