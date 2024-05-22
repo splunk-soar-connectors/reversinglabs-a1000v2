@@ -507,15 +507,11 @@ class ReversinglabsA1000V2Connector(BaseConnector):
     def _handle_delete_sample_classification(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
         system = param.get("system")
-        response = self.a1000.delete_classification(
+        self.a1000.delete_classification(
             sample_hash=param.get("hash"),
             system=system,
         )
         self.debug_print("Executed", self.get_action_identifier())
-
-        content = response.json() if system == "local" else None
-
-        action_result.add_data({"source": system, "content": content})
 
     def _handle_yara_get_rules(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())

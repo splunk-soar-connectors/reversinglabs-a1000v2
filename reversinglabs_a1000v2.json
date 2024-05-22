@@ -1988,11 +1988,7 @@
                 }
             ],
             "render": {
-                "type": "custom",
-                "width": 10,
-                "height": 5,
-                "view": "reversinglabs_a1000v2_views.delete_sample_classification",
-                "title": "A1000 Delete sample classification"
+                "type": "table"
             },
             "versions": "EQ(*)"
         },
