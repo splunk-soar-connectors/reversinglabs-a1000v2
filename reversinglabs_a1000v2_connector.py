@@ -401,7 +401,6 @@ class ReversinglabsA1000V2Connector(BaseConnector):
         action_result.add_data(response.json())
 
     def _handle_get_detailed_report(self, action_result, param):
-        # TODO: check how parameters are handled
         self.debug_print("Action handler", self.get_action_identifier())
 
         fields = None
