@@ -1137,6 +1137,188 @@
             "versions": "EQ(*)"
         },
         {
+            "action": "advanced search v3",
+            "identifier": "advanced_search_v3",
+            "description": "Search for samples available on the local A1000 and TitaniumCloud",
+            "verbose": "All restricted words and characters mut be escaped with double quotation marks.",
+            "type": "generic",
+            "read_only": false,
+            "parameters": {
+                "query": {
+                    "description": "Advanced Search query",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "order": 0,
+                    "name": "query",
+                    "id": 1,
+                    "param_name": "query"
+                },
+                "only_cloud_results": {
+                    "description": "Show only TiCloud results",
+                    "data_type": "boolean",
+                    "required": false,
+                    "primary": false,
+                    "order": 1,
+                    "name": "only_cloud_results",
+                    "id": 2,
+                    "param_name": "only_cloud_results",
+                    "default": false
+                },
+                "start_search_date": {
+                    "description": "The starting date for the search (later date)",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": false,
+                    "order": 2,
+                    "name": "start_search_date",
+                    "id": 3,
+                    "param_name": "start_search_date"
+                },
+                "end_search_date": {
+                    "description": "The ending date for the search (earlier date)",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": false,
+                    "order": 3,
+                    "name": "end_search_date",
+                    "id": 4,
+                    "param_name": "end_search_date"
+                },
+                "sorting_order": {
+                    "description": "Ascending or descending",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": false,
+                    "order": 4,
+                    "name": "sorting_order",
+                    "id": 5,
+                    "param_name": "sorting_order",
+                    "value_list": ["desc", "asc"],
+                    "default": "desc"
+                },
+                "sorting_criteria": {
+                    "description": "Sort results on this column",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": false,
+                    "order": 5,
+                    "name": "sorting_criteria",
+                    "id": 6,
+                    "param_name": "sorting_criteria",
+                    "value_list": ["sha1", "firstseen", "threatname", "sampletype", "filecount", "size"],
+                    "default": "firstseen"
+                },
+                "page": {
+                    "description": "Page number, starting from 1",
+                    "data_type": "numeric",
+                    "required": false,
+                    "primary": false,
+                    "order": 6,
+                    "name": "page",
+                    "id": 7,
+                    "param_name": "page",
+                    "default": 1
+                },
+                "page_size": {
+                    "description": "Number of entries to include on a page",
+                    "data_type": "numeric",
+                    "required": false,
+                    "primary": false,
+                    "order": 7,
+                    "name": "page_size",
+                    "id": 8,
+                    "param_name": "page_size",
+                    "default": 20
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.parameter.query",
+                    "data_type": "string",
+                    "column_name": "query",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.parameter.only_cloud_results",
+                    "data_type": "boolean",
+                    "column_name": "only_cloud_results",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.parameter.start_search_date",
+                    "data_type": "string",
+                    "column_name": "start_search_date",
+                    "column_order": 2
+                },
+                {
+                    "data_path": "action_result.parameter.end_search_date",
+                    "data_type": "string",
+                    "column_name": "end_search_date",
+                    "column_order": 3
+                },
+                {
+                    "data_path": "action_result.parameter.sorting_order",
+                    "data_type": "string",
+                    "column_name": "sorting_order",
+                    "column_order": 4
+                },
+                {
+                    "data_path": "action_result.parameter.sorting_criteria",
+                    "data_type": "string",
+                    "column_name": "sorting_criteria",
+                    "column_order": 5
+                },
+                {
+                    "data_path": "action_result.parameter.page",
+                    "data_type": "numeric",
+                    "column_name": "page",
+                    "column_order": 6
+                },
+                {
+                    "data_path": "action_result.parameter.page_size",
+                    "data_type": "numeric",
+                    "column_name": "page_size",
+                    "column_order": 7
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 8
+                },
+
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                }
+            ],
+            "render": {
+                "type": "custom",
+                "width": 10,
+                "height": 5,
+                "view": "reversinglabs_a1000v2_views.advanced_search_v3",
+                "title": "A1000 Advanced Search v3"
+            },
+            "versions": "EQ(*)"
+        },
+        {
             "action": "create dynamic analysis report",
             "identifier": "create_dynamic_analysis_report",
             "description": "Initiate the creation of dynamic analysis PDF report",

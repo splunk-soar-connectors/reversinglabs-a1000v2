@@ -25,6 +25,18 @@ def advanced_search(provides, all_app_runs, context):
     return 'views/reversinglabs_advanced_search.html'
 
 
+def advanced_search_v3(provides, all_app_runs, context):
+    for summary, action_results in all_app_runs:
+        for result in action_results:
+            context['data'] = result.get_data()[0]
+            context['param'] = result.get_param()
+            entries = context['data']['rl']['web_search_api']['entries']
+            for entry in entries:
+                entry["classification_color"] = color_code_classification(entry["classification"].upper())
+
+    return 'views/reversinglabs_advanced_search_v3.html'
+
+
 def get_classification(provides, all_app_runs, context):
     for summary, action_results in all_app_runs:
         for result in action_results:
