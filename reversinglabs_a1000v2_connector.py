@@ -491,7 +491,7 @@ class ReversinglabsA1000V2Connector(BaseConnector):
         system = param.get("system")
         response = self.a1000.set_classification(
             sample_hash=param.get("hash"),
-            classification=param.get("classification").split(),
+            classification=param.get("classification"),
             system=system,
             risk_score=param.get("risk_score"),
             threat_platform=param.get("threat_platform"),

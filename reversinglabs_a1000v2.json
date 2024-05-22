@@ -1794,6 +1794,7 @@
                     "description": "Classification to set",
                     "data_type": "string",
                     "value_list": ["goodware", "suspicious", "malicious"],
+                    "default": "malicious",
                     "required": true,
                     "primary": false,
                     "order": 2,
