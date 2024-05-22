@@ -77,6 +77,29 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
     <table class="rl-table">
         <thead>
             <tr>
+                <th colspan="100%">Pagination</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Current page</td>
+                <td>{{param.page}}</td>
+            </tr>
+            <tr>
+                <td>Page size</td>
+                <td>{{param.page_size}}</td>
+            </tr>
+            {% if data.next_page != None %}
+            <tr>
+                <td>Next page</td>
+                <td>{{data.next_page}}</td>
+            </tr>
+            {% endif %}
+        </tbody>
+    </table>
+    <table class="rl-table">
+        <thead>
+            <tr>
                 <th colspan="7">ReversingLabs A1000 Files From IP<br/>
                     <div id="rl-target" class="main-grid">{{data.requested_ip}}</div>
                     <div class="rl-results" style="padding-top:0.5rem;">Results found: {{data.downloaded_files|length}}</div>

@@ -117,6 +117,7 @@ def network_files_from_ip(provides, all_app_runs, context):
     for summary, action_results in all_app_runs:
         for result in action_results:
             context['data'] = result.get_data()[0]
+            context['param'] = result.get_param()
             for x in context['data'].get("downloaded_files"):
                 x["classification_color"] = color_code_classification(x.get("classification").upper())
 
