@@ -624,7 +624,7 @@ class ReversinglabsA1000V2Connector(BaseConnector):
     def _handle_list_containers_for_hash(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
         response = self.a1000.list_containers_for_hashes(
-            sample_hashes=param.get("hash_values").strip().split(","),
+            sample_hashes=param.get("hashes").strip().split(","),
         )
         self.debug_print("Executed", self.get_action_identifier())
         action_result.add_data(response.json())
@@ -632,7 +632,7 @@ class ReversinglabsA1000V2Connector(BaseConnector):
     def _handle_delete_sample(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
         response = self.a1000.delete_samples(
-            hash_input=param.get("hash_value"),
+            hash_input=param.get("hash"),
         )
         self.debug_print("Executed", self.get_action_identifier())
         action_result.add_data(response.json())
@@ -640,24 +640,24 @@ class ReversinglabsA1000V2Connector(BaseConnector):
     def _handle_download_extracted_files(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
         response = self.a1000.download_extracted_files(
-            sample_hash=param.get("hash_value"),
+            sample_hash=param.get("hash"),
         )
         self.debug_print("Executed", self.get_action_identifier())
 
-        file_path = os.path.join(Vault.get_vault_tmp_dir(), param.get("hash_value"))
+        file_path = os.path.join(Vault.get_vault_tmp_dir(), param.get("hash"))
         with open(file_path, "wb") as file_obj:
             file_obj.write(response.content)
 
         success, msg, vault_id = vault.vault_add(file_location=file_path,
                                                  container=self.get_container_id(),
-                                                 file_name="extracted_from-{0}.zip".format(param.get("hash_value")))
+                                                 file_name="extracted_from-{0}.zip".format(param.get("hash")))
         if not success:
             raise Exception('Unable to store file in Vault. Error details: {0}'.format(msg))
 
     def _handle_reanalyze_samples(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
         response = self.a1000.reanalyze_samples_v2(
-            hash_input=param.get("hash_values").strip().split(","),
+            hash_input=param.get("hashes").strip().split(","),
             titanium_cloud=param.get("titanium_cloud", False),
             titanium_core=param.get("titanium_core", False),
             rl_cloud_sandbox=param.get("rl_cloud_sandbox", False),
