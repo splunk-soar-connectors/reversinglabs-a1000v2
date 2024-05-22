@@ -58,7 +58,7 @@ phantom.requests.delete = new_delete
 
 class ReversinglabsA1000V2Connector(BaseConnector):
     post_url = "post_url"
-    USER_AGENT = "ReversingLabs Splunk SOAR A1000 v1.0.0"
+    USER_AGENT = "ReversingLabs Splunk SOAR A1000 v1.1.0"
     TITANIUM_CORE_FIELDS = "sha1, sha256, sha512, md5, imphash, info, application, protection, security, behaviour," \
         " certificate, document, mobile, media, web, email, strings, interesting_strings," \
         " classification, indicators, tags, attack, story"
