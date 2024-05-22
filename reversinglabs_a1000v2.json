@@ -810,7 +810,7 @@
                 },
                 {
                     "data_path": "action_result.parameter.page_size",
-                    "data_type": "string",
+                    "data_type": "numeric",
                     "column_name": "page_size",
                     "column_order": 2
                 },
