@@ -69,7 +69,19 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
 </style>
 <div class="rl-content">
     {% if data.source != "local" %}
-    Setting a classification on the cloud does not return a response.
+    <table class="rl-table">
+        <thead>
+            <tr>
+                <th colspan="2">Setting a classification on the cloud does not return a response body.</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Source</td>
+                <td>{{data.source}}</td>
+            </tr>
+        </tbody>
+    </table>
     {% else %}
     <table class="rl-table">
         <thead>
