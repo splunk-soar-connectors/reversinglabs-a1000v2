@@ -260,7 +260,7 @@
                 },
                 "archive_password": {
                     "description": "Password, if file is a password-protected archive",
-                    "data_type": "string",
+                    "data_type": "password",
                     "required": false,
                     "primary": false,
                     "order": 2,
@@ -289,7 +289,7 @@
                 },
                 {
                     "data_path": "action_result.parameter.archive_password",
-                    "data_type": "string",
+                    "data_type": "password",
                     "column_name": "archive_password",
                     "column_order": 2
                 },
