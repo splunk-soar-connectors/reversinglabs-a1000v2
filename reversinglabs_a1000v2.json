@@ -2403,27 +2403,27 @@
             "versions": "EQ(*)"
         },
         {
-            "action": "yara get rule content",
-            "identifier": "yara_get_rule_content",
+            "action": "yara get ruleset tet ",
+            "identifier": "yara_get_ruleset_text",
             "description": "Get the full contents of the requested ruleset",
             "verbose": "Get the full contents of the requested ruleset in raw text. All rulesets can be retrieved.",
             "type": "generic",
             "read_only": true,
             "parameters": {
-                "name": {
+                "ruleset_name": {
                     "description": "Ruleset Name",
                     "data_type": "string",
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "name": "name",
+                    "name": "ruleset_name",
                     "id": 1,
-                    "param_name": "name"
+                    "param_name": "ruleset_name"
                 }
             },
             "output": [
                 {
-                    "data_path": "action_result.parameter.name",
+                    "data_path": "action_result.parameter.ruleset_name",
                     "data_type": "string",
                     "column_name": "name",
                     "column_order": 0
@@ -2459,28 +2459,28 @@
                 "type": "custom",
                 "width": 10,
                 "height": 5,
-                "view": "reversinglabs_a1000v2_views.yara_get_rule_content",
+                "view": "reversinglabs_a1000v2_views.yara_get_ruleset_text",
                 "title": "A1000 Retrieve the contents of a YARA ruleset"
             },
             "versions": "EQ(*)"
         },
         {
             "action": "yara get matches",
-            "identifier": "yara_matches",
+            "identifier": "yara_get_matches",
             "description": "Retrieve the list of YARA matches",
             "verbose": "Retrieve the list of YARA matches (local & cloud) for requested rulesets. Names are case sensitive.",
             "type": "generic",
             "read_only": true,
             "parameters": {
-                "name": {
+                "ruleset_name": {
                     "description": "Ruleset name",
                     "data_type": "string",
                     "required": false,
                     "primary": false,
                     "order": 0,
-                    "name": "name",
+                    "name": "ruleset_name",
                     "id": 1,
-                    "param_name": "name"
+                    "param_name": "ruleset_name"
                 },
                 "page": {
                     "description": "Page",
@@ -2505,7 +2505,7 @@
             },
             "output": [
                 {
-                    "data_path": "action_result.name",
+                    "data_path": "action_result.parameter.ruleset_name",
                     "data_type": "string",
                     "column_name": "name",
                     "column_order": 0
@@ -2559,32 +2559,32 @@
             "versions": "EQ(*)"
         },
         {
-            "action": "yara create or update rule",
-            "identifier": "yara_create_rule",
+            "action": "yara create or update ruleset",
+            "identifier": "yara_create_ruleset",
             "description": "Creates a new YARA ruleset if it doesn't exist",
             "verbose": "Creates a new YARA ruleset if it doesn't exist. If it exists a new revision is created. TiCLoud rules cannot be updated using this API.",
             "type": "generic",
             "read_only": false,
             "parameters": {
-                "name": {
+                "ruleset_name": {
                     "description": "Ruleset name",
                     "data_type": "string",
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "name": "name",
+                    "name": "ruleset_name",
                     "id": 1,
-                    "param_name": "name"
+                    "param_name": "ruleset_name"
                 },
-                "content": {
-                    "description": "Content of the yara ruleset",
+                "ruleset_text": {
+                    "description": "Text of the yara ruleset",
                     "data_type": "string",
                     "required": true,
                     "primary": false,
                     "order": 1,
-                    "name": "content",
+                    "name": "ruleset_text",
                     "id": 2,
-                    "param_name": "content"
+                    "param_name": "ruleset_text"
                 },
                 "publish": {
                     "description": "Publish to C1000 in the same cluster",
@@ -2609,15 +2609,15 @@
             },
             "output": [
                 {
-                    "data_path": "action_result.name",
+                    "data_path": "action_result.parameter.ruleset_name",
                     "data_type": "string",
-                    "column_name": "name",
+                    "column_name": "ruleset_name",
                     "column_order": 0
                 },
                 {
-                    "data_path": "action_result.parameter.content",
+                    "data_path": "action_result.parameter.ruleset_text",
                     "data_type": "string",
-                    "column_name": "content",
+                    "column_name": "ruleset_text",
                     "column_order": 1
                 },
                 {
@@ -2663,28 +2663,28 @@
                 "type": "custom",
                 "width": 10,
                 "height": 5,
-                "view": "reversinglabs_a1000v2_views.yara_create_rule",
-                "title": "A1000 Create or Update YARA rule"
+                "view": "reversinglabs_a1000v2_views.yara_create_ruleset",
+                "title": "A1000 Create or Update YARA ruleset"
             },
             "versions": "EQ(*)"
         },
         {
-            "action": "yara delete rule",
-            "identifier": "yara_delete_rule",
+            "action": "yara delete ruleset",
+            "identifier": "yara_delete_ruleset",
             "description": "Delete a specific YARA ruleset and its matches",
             "verbose": "Delete a specific YARA ruleset and its matches from the appliance.",
             "type": "generic",
             "read_only": false,
             "parameters": {
-                "name": {
+                "ruleset_name": {
                     "description": "Ruleset name",
                     "data_type": "string",
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "name": "name",
+                    "name": "ruleset_name",
                     "id": 1,
-                    "param_name": "name"
+                    "param_name": "ruleset_name"
                 },
                 "publish": {
                     "description": "Publish to C1000 in the same cluster",
@@ -2699,9 +2699,9 @@
             },
             "output": [
                 {
-                    "data_path": "action_result.name",
+                    "data_path": "action_result.parameter.ruleset_name",
                     "data_type": "string",
-                    "column_name": "name",
+                    "column_name": "ruleset_name",
                     "column_order": 0
                 },
                 {
@@ -2741,28 +2741,28 @@
                 "type": "custom",
                 "width": 10,
                 "height": 5,
-                "view": "reversinglabs_a1000v2_views.yara_delete_rule",
-                "title": "A1000 Delete YARA rule"
+                "view": "reversinglabs_a1000v2_views.yara_delete_ruleset",
+                "title": "A1000 Delete YARA ruleset"
             },
             "versions": "EQ(*)"
         },
         {
-            "action": "yara enable or disable rule",
-            "identifier": "yara_toggle_rule",
+            "action": "yara enable or disable ruleset",
+            "identifier": "yara_toggle_ruleset",
             "description": "Enable or disable a ruleset on the appliance",
             "verbose": "Administrators can manage any ruleset while regular A1000 users can only manage their own.",
             "type": "generic",
             "read_only": false,
             "parameters": {
-                "name": {
+                "ruleset_name": {
                     "description": "Ruleset name",
                     "data_type": "string",
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "name": "name",
+                    "name": "ruleset_name",
                     "id": 1,
-                    "param_name": "name"
+                    "param_name": "ruleset_name"
                 },
                 "enabled": {
                     "description": "Enable or disable the ruleset",
@@ -2787,13 +2787,13 @@
             },
             "output": [
                 {
-                    "data_path": "action_result.name",
+                    "data_path": "action_result.parameter.ruleset_name",
                     "data_type": "string",
-                    "column_name": "name",
+                    "column_name": "ruleset_name",
                     "column_order": 0
                 },
                 {
-                    "data_path": "action_result.enabled",
+                    "data_path": "action_result.parameter.enabled",
                     "data_type": "string",
                     "column_name": "enabled",
                     "column_order": 1
@@ -2835,8 +2835,8 @@
                 "type": "custom",
                 "width": 10,
                 "height": 5,
-                "view": "reversinglabs_a1000v2_views.yara_toggle_rule",
-                "title": "A1000 Enable/Disable YARA rule"
+                "view": "reversinglabs_a1000v2_views.yara_toggle_ruleset",
+                "title": "A1000 Enable/Disable YARA ruleset"
             },
             "versions": "EQ(*)"
         },
@@ -2969,7 +2969,7 @@
             },
             "output": [
                 {
-                    "data_path": "action_result.operation",
+                    "data_path": "action_result.parameter.operation",
                     "data_type": "string",
                     "column_name": "operation",
                     "column_order": 0
@@ -3018,15 +3018,15 @@
             "type": "generic",
             "read_only": false,
             "parameters": {
-                "name": {
+                "ruleset_name": {
                     "description": "Ruleset name",
                     "data_type": "string",
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "name": "name",
+                    "name": "ruleset_name",
                     "id": 1,
-                    "param_name": "name"
+                    "param_name": "ruleset_name"
                 },
                 "operation": {
                     "description": "START, STOP or CLEAR",
@@ -3042,13 +3042,13 @@
             },
             "output": [
                 {
-                    "data_path": "action_result.name",
+                    "data_path": "action_result.parameter.name",
                     "data_type": "string",
                     "column_name": "name",
                     "column_order": 0
                 },
                 {
-                    "data_path": "action_result.operation",
+                    "data_path": "action_result.parameter.operation",
                     "data_type": "string",
                     "column_name": "operation",
                     "column_order": 1
@@ -3142,20 +3142,20 @@
             "type": "generic",
             "read_only": true,
             "parameters": {
-                "name": {
+                "ruleset_name": {
                     "description": "Ruleset name",
                     "data_type": "string",
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "name": "name",
+                    "name": "ruleset_name",
                     "id": 1,
-                    "param_name": "name"
+                    "param_name": "ruleset_name"
                 }
             },
             "output": [
                 {
-                    "data_path": "action_result.name",
+                    "data_path": "action_result.parameter.ruleset_name",
                     "data_type": "string",
                     "column_name": "name",
                     "column_order": 0

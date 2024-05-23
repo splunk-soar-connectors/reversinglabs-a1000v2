@@ -216,20 +216,20 @@ def set_sample_classification(provides, all_app_runs, context):
     return 'views/reversinglabs_set_sample_classification.html'
 
 
-def yara_get_rules(provides, all_app_runs, context):
+def yara_get_rulesets(provides, all_app_runs, context):
     for summary, action_results in all_app_runs:
         for result in action_results:
             context["data"] = result.get_data()[0]
             context["param"] = result.get_param()
-    return 'views/reversinglabs_yara_get_rules.html'
+    return 'views/reversinglabs_yara_get_rulesets.html'
 
 
-def yara_get_rule_content(provides, all_app_runs, context):
+def yara_get_ruleset_text(provides, all_app_runs, context):
     for summary, action_results in all_app_runs:
         for result in action_results:
             context["data"] = result.get_data()[0]
             context["param"] = result.get_param()
-    return 'views/reversinglabs_yara_get_rule_content.html'
+    return 'views/reversinglabs_yara_get_ruleset_text.html'
 
 
 def yara_get_matches(provides, all_app_runs, context):
@@ -240,28 +240,28 @@ def yara_get_matches(provides, all_app_runs, context):
     return 'views/reversinglabs_yara_get_matches.html'
 
 
-def yara_create_rule(provides, all_app_runs, context):
+def yara_create_ruleset(provides, all_app_runs, context):
     for summary, action_results in all_app_runs:
         for result in action_results:
             context["data"] = result.get_data()[0]
             context["param"] = result.get_param()
-    return 'views/reversinglabs_yara_create_rule.html'
+    return 'views/reversinglabs_yara_create_ruleset.html'
 
 
-def yara_delete_rule(provides, all_app_runs, context):
+def yara_delete_ruleset(provides, all_app_runs, context):
     for summary, action_results in all_app_runs:
         for result in action_results:
             context["data"] = result.get_data()[0]
             context["param"] = result.get_param()
-    return 'views/reversinglabs_yara_delete_rule.html'
+    return 'views/reversinglabs_yara_delete_ruleset.html'
 
 
-def yara_toggle_rule(provides, all_app_runs, context):
+def yara_toggle_ruleset(provides, all_app_runs, context):
     for summary, action_results in all_app_runs:
         for result in action_results:
             context["data"] = result.get_data()[0]
             context["param"] = result.get_param()
-    return 'views/reversinglabs_yara_toggle_rule.html'
+    return 'views/reversinglabs_yara_toggle_ruleset.html'
 
 
 def yara_get_sync_time(provides, all_app_runs, context):

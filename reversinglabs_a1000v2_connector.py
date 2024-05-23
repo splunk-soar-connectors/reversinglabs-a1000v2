@@ -91,9 +91,9 @@ class ReversinglabsA1000V2Connector(BaseConnector):
     ACTION_ID_DELETE_USER_TAGS = "delete_user_tags"
     ACTION_ID_SET_SAMPLE_CLASSIFICATION = "set_sample_classification"
     ACTION_ID_DELETE_SAMPLE_CLASSIFICATION = "delete_sample_classification"
-    ACTION_ID_YARA_GET_RULES = "yara_get_rules"
-    ACTION_ID_YARA_GET_RULE_CONTENT = "yara_get_rule_content"
-    ACTION_ID_YARA_MATCHES = "yara_matches"
+    ACTION_ID_YARA_GET_RULESETS = "yara_get_rulesets"
+    ACTION_ID_YARA_GET_RULESET_TEXT = "yara_get_ruleset_text"
+    ACTION_ID_YARA_GET_MATCHES = "yara_get_matches"
     ACTION_ID_YARA_CREATE_RULE = "yara_create_rule"
     ACTION_ID_YARA_DELETE_RULE = "yara_delete_rule"
     ACTION_ID_YARA_TOGGLE_RULE = "yara_toggle_rule"
@@ -142,12 +142,12 @@ class ReversinglabsA1000V2Connector(BaseConnector):
             self.ACTION_ID_DELETE_USER_TAGS: self._handle_delete_user_tags,
             self.ACTION_ID_SET_SAMPLE_CLASSIFICATION: self._handle_set_sample_classification,
             self.ACTION_ID_DELETE_SAMPLE_CLASSIFICATION: self._handle_delete_sample_classification,
-            self.ACTION_ID_YARA_GET_RULES: self._handle_yara_get_rules,
-            self.ACTION_ID_YARA_GET_RULE_CONTENT: self._handle_get_rule_content,
-            self.ACTION_ID_YARA_MATCHES: self._handle_yara_matches,
-            self.ACTION_ID_YARA_CREATE_RULE: self._handle_yara_create_rule,
-            self.ACTION_ID_YARA_DELETE_RULE: self._handle_yara_delete_rule,
-            self.ACTION_ID_YARA_TOGGLE_RULE: self._handle_yara_toggle_rule,
+            self.ACTION_ID_YARA_GET_RULESETS: self._handle_yara_get_rulesets,
+            self.ACTION_ID_YARA_GET_RULESET_TEXT: self._handle_get_ruleset_text,
+            self.ACTION_ID_YARA_GET_MATCHES: self._handle_yara_get_matches,
+            self.ACTION_ID_YARA_CREATE_RULESET: self._handle_yara_create_ruleset,
+            self.ACTION_ID_YARA_DELETE_RULESET: self._handle_yara_delete_ruleset,
+            self.ACTION_ID_YARA_TOGGLE_RULESET: self._handle_yara_toggle_ruleset,
             self.ACTION_ID_YARA_GET_SYNC_TIME: self._handle_yara_get_sync_time,
             self.ACTION_ID_YARA_SET_SYNC_TIME: self._handle_yara_set_sync_time,
             self.ACTION_ID_YARA_TOGGLE_RETRO_SCAN_LOCAL: self._handle_yara_toggle_retro_scan_local,
@@ -544,7 +544,7 @@ class ReversinglabsA1000V2Connector(BaseConnector):
         )
         self.debug_print("Executed", self.get_action_identifier())
 
-    def _handle_yara_get_rules(self, action_result, param):
+    def _handle_yara_get_rulesets(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
         response = self.a1000.get_yara_rulesets_on_the_appliance_v2(
             owner_type=param.get("owner"),
@@ -556,7 +556,7 @@ class ReversinglabsA1000V2Connector(BaseConnector):
         self.debug_print("Executed", self.get_action_identifier())
         action_result.add_data(response.json())
 
-    def _handle_get_rule_content(self, action_result, param):
+    def _handle_get_ruleset_text(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
         response = self.a1000.get_yara_ruleset_contents(
             ruleset_name=param.get("name")
@@ -564,42 +564,42 @@ class ReversinglabsA1000V2Connector(BaseConnector):
         self.debug_print("Executed", self.get_action_identifier())
         action_result.add_data(response.json())
 
-    def _handle_yara_matches(self, action_result, param):
+    def _handle_yara_get_matches(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
         page = str(param.get("page")) if param.get("page") else None
         page_size = str(param.get("page_size")) if param.get("page_size") else None
         response = self.a1000.get_yara_ruleset_matches_v2(
-            ruleset_name=param.get("name"),
+            ruleset_name=param.get("ruleset_name"),
             page=page,
             page_size=page_size,
         )
         self.debug_print("Executed", self.get_action_identifier())
         action_result.add_data(response.json())
 
-    def _handle_yara_create_rule(self, action_result, param):
+    def _handle_yara_create_ruleset(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
         response = self.a1000.create_or_update_yara_ruleset(
-            name=param.get("name"),
-            content=param.get("content"),
+            name=param.get("ruleset_name"),
+            content=param.get("ruleset_text"),
             publish=param.get("publish"),
             ticloud=param.get("ticloud")
         )
         self.debug_print("Executed", self.get_action_identifier())
         action_result.add_data(response.json())
 
-    def _handle_yara_delete_rule(self, action_result, param):
+    def _handle_yara_delete_ruleset(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
         response = self.a1000.delete_yara_ruleset(
-            name=param.get("name"),
+            name=param.get("ruleset_name"),
             publish=param.get("publish"),
         )
         self.debug_print("Executed", self.get_action_identifier())
         action_result.add_data(response.json())
 
-    def _handle_yara_toggle_rule(self, action_result, param):
+    def _handle_yara_toggle_ruleset(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
         response = self.a1000.enable_or_disable_yara_ruleset(
-            name=param.get("name"),
+            name=param.get("ruleset_name"),
             enabled=param.get("enabled"),
             publish=param.get("publish"),
         )
@@ -632,7 +632,7 @@ class ReversinglabsA1000V2Connector(BaseConnector):
     def _handle_yara_manage_retro_scan_cloud(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
         response = self.a1000.start_or_stop_yara_cloud_retro_scan(
-            ruleset_name=param.get("name"),
+            ruleset_name=param.get("ruleset_name"),
             operation=param.get("operation"),
         )
         self.debug_print("Executed", self.get_action_identifier())
@@ -647,7 +647,7 @@ class ReversinglabsA1000V2Connector(BaseConnector):
     def _handle_yara_status_retro_scan_cloud(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
         response = self.a1000.get_yara_cloud_retro_scan_status(
-            ruleset_name=param.get("name"),
+            ruleset_name=param.get("ruleset_name"),
         )
         self.debug_print("Executed", self.get_action_identifier())
         action_result.add_data(response.json())

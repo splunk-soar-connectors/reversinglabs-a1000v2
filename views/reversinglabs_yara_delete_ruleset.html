@@ -59,9 +59,9 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
 
     .rl-table td:first-child {
         color: #6c818b;
-        text-transform: none;
+        text-transform: uppercase;
         font-weight: 500;
-        white-space: pre-wrap;
+        white-space: nowrap;
         padding-left: 0.8rem;
         padding-right: 2rem;
         width: 11%;
@@ -71,15 +71,20 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
     <table class="rl-table">
         <thead>
             <tr>
-                <th colspan="1">ReversingLabs A1000 Retrieve YARA rule content of
-                    <div id="rl-target" class="main-grid">{{param.name}}</div>
+                <th colspan="2">ReversingLabs A1000 Delete ruleset
+                    <div id="rl-target" class="main-grid">{{param.ruleset_name}}</div>
                 </th>
             </tr>
         </thead>
 
         <tbody>
             <tr>
-                <td>{{data.detail.content}}</td>
+                <td>Ruleset name</td>
+                <td>{{data.detail.name}}</td>
+            </tr>
+            <tr>
+                <td>Message</td>
+                <td>{{data.message}}</td>
             </tr>
         </tbody>
     </table>

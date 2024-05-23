@@ -31,10 +31,6 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
         line-break: auto;
     }
 
-    .result-table {
-        margin-top: 50px !important;
-    }
-
     .rl-table thead th {
         text-align: center;
         font-size: 1.4rem;
@@ -70,78 +66,28 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
         padding-right: 2rem;
         width: 11%;
     }
-
-    .result-table thead tr th {
-        text-transform: none !important;
-    }
 </style>
 <div class="rl-content">
     <table class="rl-table">
         <thead>
             <tr>
-                <th colspan="2">ReversingLabs A1000 Retrieve YARA rules</th>
+                <th colspan="2">ReversingLabs A1000 Enable/Disable YARA ruleset
+                    <div id="rl-target" class="main-grid">{{param.ruleset_name}}</div>
+                </th>
             </tr>
         </thead>
 
         <tbody>
             <tr>
-                <td>#rules</td>
-                <td>{{data.count}}</td>
+                <td>Ruleset name</td>
+                <td>{{data.detail.name}}</td>
             </tr>
             <tr>
-                <td>Next page</td>
-                <td>{{data.next}}</td>
+                <td>Message</td>
+                <td>{{data.message}}</td>
             </tr>
         </tbody>
     </table>
-
-    {% for rule in data.results %}
-    <table class="rl-table result-table">
-        <thead>
-            <tr>
-                <th colspan="2">{{rule.name}}</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Owner</td>
-                <td>{{rule.owner}}</td>
-            </tr>
-            <tr>
-                <td>Status</td>
-                <td>{{rule.status}}</td>
-            </tr>
-            <tr>
-                <td>Cloud synced</td>
-                <td>{{rule.cloud_synced}}</td>
-            </tr>
-            <tr>
-                <td>Malicious match count</td>
-                <td>{{rule.malicious_match_count}}</td>
-            </tr>
-            <tr>
-                <td>Suspicious match count</td>
-                <td>{{rule.suspicious_match_count}}</td>
-            </tr>
-            <tr>
-                <td>Unknown match count</td>
-                <td>{{rule.unknown_match_count}}</td>
-            </tr>
-            <tr>
-                <td>Goodware match count</td>
-                <td>{{rule.goodware_match_count}}</td>
-            </tr>
-            <tr>
-                <td>System ruleset</td>
-                <td>{{rule.system_ruleset}}</td>
-            </tr>
-            <tr>
-                <td>Last matched</td>
-                <td>{{rule.last_matched}}</td>
-            </tr>
-        </tbody>
-    </table>
-    {% endfor %}
 
 </div>
 {% endblock %}
