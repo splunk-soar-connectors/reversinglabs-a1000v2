@@ -214,7 +214,15 @@ class ReversinglabsA1000V2Connector(BaseConnector):
         if not file:
             raise Exception('Unable to get Vault item details. Error details: {0}'.format(msg))
 
-        self.a1000.upload_sample_from_path(file["path"])
+        self.a1000.upload_sample_from_path(
+            file["path"],
+            custom_filename=param.get("custom_file_name"),
+            archive_password=param.get("archive_password"),
+            rl_cloud_sandbox_platform=param.get("rl_cloud_sandbox_platform"),
+            tags=param.get("tags").strip().split(",") if param.get("tags") else None,
+            comment=param.get("comment"),
+            cloud_analysis=param.get("cloud_analysis", False),
+        )
 
         self.debug_print("Executed", self.get_action_identifier())
 

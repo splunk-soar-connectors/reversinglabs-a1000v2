@@ -89,24 +89,58 @@
                     ],
                     "order": 1,
                     "name": "file_name"
+                },
+                "custom_file_name": {
+                    "description": "Custom file name for upload",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": false,
+                    "order": 2,
+                    "name": "custom_file_name"
+                },
+                "archive_password": {
+                    "description": "password for the file if it is password protected",
+                    "data_type": "password",
+                    "required": false,
+                    "primary": false,
+                    "order": 3,
+                    "name": "archive_password"
+                },
+                "rl_cloud_sandbox_platform": {
+                    "description": "Cloud Sandbox platform (windows7 or windows10)",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": false,
+                    "order": 4,
+                    "name": "rl_cloud_sandbox_platform",
+                    "value_list": ["windows7", "windows10", "macos_11", "windows11", "linux"]
+                },
+                "tags": {
+                    "description": "Comma separated list of tags to assign to sample",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": false,
+                    "order": 5,
+                    "name": "tags"
+                },
+                "comment": {
+                    "description": "Comment to add to a sample",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": false,
+                    "order": 6,
+                    "name": "comment"
+                },
+                "cloud_analysis": {
+                    "description": "Use cloud analysis",
+                    "data_type": "boolean",
+                    "required": false,
+                    "primary": false,
+                    "order": 7,
+                    "name": "cloud_analysis"
                 }
             },
             "output": [
-                {
-                    "data_path": "action_result.status",
-                    "data_type": "string",
-                    "column_name": "status",
-                    "column_order": 2
-                },
-                {
-                    "data_path": "action_result.parameter.file_name",
-                    "data_type": "string",
-                    "contains": [
-                        "file name"
-                    ],
-                    "column_name": "file_name",
-                    "column_order": 1
-                },
                 {
                     "data_path": "action_result.parameter.vault_id",
                     "data_type": "string",
@@ -122,6 +156,51 @@
                     ],
                     "column_name": "vault_id",
                     "column_order": 0
+                },
+                {
+                    "data_path": "action_result.parameter.file_name",
+                    "data_type": "string",
+                    "contains": [
+                        "file name"
+                    ],
+                    "column_name": "file_name",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.parameter.custom_file_name",
+                    "data_type": "string",
+                    "column_name": "custom_file_name",
+                    "column_order": 2
+                },
+                {
+                    "data_path": "action_result.parameter.rl_cloud_sandbox_platform",
+                    "data_type": "string",
+                    "column_name": "rl_cloud_sandbox_platform",
+                    "column_order": 3
+                },
+                {
+                    "data_path": "action_result.parameter.tags",
+                    "data_type": "string",
+                    "column_name": "tags",
+                    "column_order": 4
+                },
+                {
+                    "data_path": "action_result.parameter.comment",
+                    "data_type": "string",
+                    "column_name": "comment",
+                    "column_order": 5
+                },
+                {
+                    "data_path": "action_result.parameter.cloud_analysis",
+                    "data_type": "boolean",
+                    "column_name": "cloud_analysis",
+                    "column_order": 6
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 7
                 },
                 {
                     "data_path": "action_result.data",
