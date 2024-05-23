@@ -343,9 +343,11 @@ class ReversinglabsA1000V2Connector(BaseConnector):
     def _handle_advanced_search(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
 
-        response = self.a1000.advanced_search_v2_aggregated(query_string=param.get('query'),
-                                                            max_results=param.get('limit'),
-                                                            ticloud=param.get('only_cloud_results'))
+        response = self.a1000.advanced_search_v3_aggregated(
+            query_string=param.get('query'),
+            max_results=param.get('limit'),
+            ticloud=param.get('only_cloud_results'),
+        )
 
         self.debug_print("Executed", self.get_action_identifier())
 
