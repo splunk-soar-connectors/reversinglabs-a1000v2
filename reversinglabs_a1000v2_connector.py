@@ -86,7 +86,7 @@ class ReversinglabsA1000V2Connector(BaseConnector):
     ACTION_ID_GET_SUMMARY_REPORT = "get_summary_report"
     ACTION_ID_GET_DETAILED_REPORT = "get_detailed_report"
     ACTION_ID_GET_CLASSIFICATION = "get_classification"
-    ACTION_ID_RETRIEVE_USER_TAGS = "retrieve_user_tags"
+    ACTION_ID_GET_USER_TAGS = "get_user_tags"
     ACTION_ID_CREATE_USER_TAGS = "create_user_tags"
     ACTION_ID_DELETE_USER_TAGS = "delete_user_tags"
     ACTION_ID_SET_SAMPLE_CLASSIFICATION = "set_sample_classification"
@@ -137,7 +137,7 @@ class ReversinglabsA1000V2Connector(BaseConnector):
             self.ACTION_ID_GET_DETAILED_REPORT: self._handle_get_detailed_report,
             self.ACTION_ID_GET_CLASSIFICATION: self._handle_get_classification,
 
-            self.ACTION_ID_RETRIEVE_USER_TAGS: self._handle_retrieve_user_tags,
+            self.ACTION_ID_GET_USER_TAGS: self._handle_get_user_tags,
             self.ACTION_ID_CREATE_USER_TAGS: self._handle_create_user_tags,
             self.ACTION_ID_DELETE_USER_TAGS: self._handle_delete_user_tags,
             self.ACTION_ID_SET_SAMPLE_CLASSIFICATION: self._handle_set_sample_classification,
@@ -479,7 +479,7 @@ class ReversinglabsA1000V2Connector(BaseConnector):
 
         self.save_progress("Test Connectivity Passed")
 
-    def _handle_retrieve_user_tags(self, action_result, param):
+    def _handle_get_user_tags(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
 
         sample_hash = param.get("hash")

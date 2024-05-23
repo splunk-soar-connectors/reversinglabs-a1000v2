@@ -1824,8 +1824,8 @@
             "versions": "EQ(*)"
         },
         {
-            "action": "retrieve user tags",
-            "identifier": "retrieve_user_tags",
+            "action": "get user tags",
+            "identifier": "get_user_tags",
             "description": "List existing tags for the requested sample",
             "verbose": "List existing tags for the requested sample, if there are any.",
             "type": "generic",
@@ -1880,7 +1880,7 @@
                 "type": "custom",
                 "width": 10,
                 "height": 5,
-                "view": "reversinglabs_a1000v2_views.retrieve_user_tags",
+                "view": "reversinglabs_a1000v2_views.get_user_tags",
                 "title": "A1000 Retrieve User Tags for a sample"
             },
             "versions": "EQ(*)"
@@ -2276,7 +2276,7 @@
         {
             "action": "yara get rules",
             "identifier": "yara_get_rules",
-            "description": "Retrieve a list of YARA rules that are on the A1000",
+            "description": "Get a list of YARA rules that are on the A1000",
             "verbose": "For every ruleset in the list, the output includes additional info such as: rule name, number of matches, last matched date, and more.",
             "type": "generic",
             "read_only": true,
@@ -2398,15 +2398,15 @@
                 "width": 10,
                 "height": 5,
                 "view": "reversinglabs_a1000v2_views.yara_get_rules",
-                "title": "A1000 Retrieve YARA rules"
+                "title": "A1000 Retrieve a list of YARA rulesets on the appliance"
             },
             "versions": "EQ(*)"
         },
         {
             "action": "yara get rule content",
             "identifier": "yara_get_rule_content",
-            "description": "Retrieve the full contents of the requested ruleset",
-            "verbose": "Retrieve the full contents of the requested ruleset in raw text. All rulesets can be retrieved.",
+            "description": "Get the full contents of the requested ruleset",
+            "verbose": "Get the full contents of the requested ruleset in raw text. All rulesets can be retrieved.",
             "type": "generic",
             "read_only": true,
             "parameters": {
@@ -2460,7 +2460,7 @@
                 "width": 10,
                 "height": 5,
                 "view": "reversinglabs_a1000v2_views.yara_get_rule_content",
-                "title": "A1000 Retrieve YARA rule content"
+                "title": "A1000 Retrieve the contents of a YARA ruleset"
             },
             "versions": "EQ(*)"
         },
@@ -2554,7 +2554,7 @@
                 "width": 10,
                 "height": 5,
                 "view": "reversinglabs_a1000v2_views.yara_get_matches",
-                "title": "A1000 Retrieve YARA rule matches"
+                "title": "A1000 Retrieve YARA matches for specified rulesets"
             },
             "versions": "EQ(*)"
         },

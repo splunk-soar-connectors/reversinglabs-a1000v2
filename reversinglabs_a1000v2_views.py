@@ -176,13 +176,13 @@ def submit_url(provides, all_app_runs, context):
     return 'views/reversinglabs_submit_url.html'
 
 
-def retrieve_user_tags(provides, all_app_runs, context):
+def get_user_tags(provides, all_app_runs, context):
     for summary, action_results in all_app_runs:
         for result in action_results:
             context['data'] = result.get_data()[0]
             context['param'] = result.get_param()
 
-    return 'views/reversinglabs_retrieve_user_tags.html'
+    return 'views/reversinglabs_get_user_tags.html'
 
 
 def create_user_tags(provides, all_app_runs, context):
