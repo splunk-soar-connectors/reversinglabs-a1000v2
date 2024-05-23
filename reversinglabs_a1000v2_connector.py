@@ -222,7 +222,10 @@ class ReversinglabsA1000V2Connector(BaseConnector):
         self.debug_print("Action handler", self.get_action_identifier())
 
         response = self.a1000.upload_sample_from_url(
-            file_url=param.get("file_url")
+            file_url=param.get("file_url"),
+            crawler=param.get("crawler"),
+            archive_password=param.get("archive_password"),
+            rl_cloud_sandbox_platform=param.get("rl_cloud_sandbox_platform"),
         )
         self.debug_print("Executed", self.get_action_identifier())
 

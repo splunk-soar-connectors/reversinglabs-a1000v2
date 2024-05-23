@@ -175,7 +175,9 @@
                     "order": 1,
                     "name": "crawler",
                     "id": 2,
-                    "param_name": "crawler"
+                    "param_name": "crawler",
+                    "value_list": ["local", "cloud"],
+                    "default": "local"
                 },
                 "archive_password": {
                     "description": "Password, if file is a password-protected archive",
@@ -195,7 +197,8 @@
                     "order": 3,
                     "name": "rl_cloud_sandbox_platform",
                     "id": 4,
-                    "param_name": "rl_cloud_sandbox_platform"
+                    "param_name": "rl_cloud_sandbox_platform",
+                    "value_list": ["windows7", "windows10", "macos_11", "windows11", "linux"]
                 }
             },
             "output": [
