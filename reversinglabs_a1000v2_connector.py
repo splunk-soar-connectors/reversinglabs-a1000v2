@@ -361,11 +361,16 @@ class ReversinglabsA1000V2Connector(BaseConnector):
             parts = threatname.split('.')
             sentinels = [None] * (3 - len(parts))
             platform, ttype, family = [*parts, *sentinels]
-        result['threat_platform'] = platform
-        result['threat_type'] = ttype
-        result['threat_family'] = family
-        result['sample_type'] = result.get('sampletype')
-        result['riskscore'] = result.get('factor')
+        if platform:
+            result['threat_platform'] = platform
+        if ttype:
+            result['threat_type'] = ttype
+        if family:
+            result['threat_family'] = family
+        if result.get('sampletype'):
+            result['sample_type'] = result.get('sampletype')
+        if result.get('factor'):
+            result['riskscore'] = result.get('factor')
 
     def _handle_advanced_search(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
