@@ -71,26 +71,26 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
                 </th>
             </tr>
             <tr>
-                <th> </th>
-                <th> SHA1</th>
-                <th> Sample type</th>
-                <th> Threat type</th>
-                <th> Threat family</th>
-                <th> Risk score</th>
-                <th> Classification</th>
+                <th>#</th>
+                <th>SHA1</th>
+                <th>Sample type</th>
+                <th>Threat type</th>
+                <th>Threat family</th>
+                <th>Risk score</th>
+                <th>Classification</th>
             </tr>
         </thead>
         <tbody>
             {% for x in data %}
             <tr>
-                <td>{{ forloop.counter}}.</td>
-                <td>{{ x.sha1}}</td>
-                <td>{{ x.sample_type }}</td>
-                <td>{{ x.threat_type }}</td>
-                <td>{{ x.threat_family }}</td>
-                <td>{{ x.riskscore }}</td>
+                <td>{{forloop.counter}}.</td>
+                <td>{{x.sha1}}</td>
+                <td>{{x.sample_type}}</td>
+                <td>{{x.threat_type}}</td>
+                <td>{{x.threat_family}}</td>
+                <td>{{x.riskscore}}</td>
                 <td>
-                    <span style="color:{{x.classification_color}};">{{ x.classification }}</span>
+                    <span style="color:{{x.classification_color}};">{{x.classification}}</span>
                 </td>
             </tr>
             {% endfor %}

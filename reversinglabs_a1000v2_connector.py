@@ -351,6 +351,20 @@ class ReversinglabsA1000V2Connector(BaseConnector):
 
         action_result.add_data(response.json())
 
+    @staticmethod
+    def marshall_ticloud_into_a1000(result):
+        platform, ttype, family = None, None, None
+        threatname = result.get('threatname')
+        if threatname:
+            parts = threatname.split('.')
+            sentinels = [None] * (3 - len(parts))
+            platform, ttype, family = [*parts, *sentinels]
+        result['threat_platform'] = platform
+        result['threat_type'] = ttype
+        result['threat_family'] = family
+        result['sample_type'] = result.get('sampletype')
+        result['riskscore'] = result.get('factor')
+
     def _handle_advanced_search(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
 
@@ -363,6 +377,8 @@ class ReversinglabsA1000V2Connector(BaseConnector):
         self.debug_print("Executed", self.get_action_identifier())
 
         for result in response:
+            if param.get('only_cloud_results'):
+                ReversinglabsA1000V2Connector.marshall_ticloud_into_a1000(result)
             action_result.add_data(result)
 
     def _handle_advanced_search_local(self, action_result, param):

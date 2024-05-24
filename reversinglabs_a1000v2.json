@@ -1152,7 +1152,7 @@
                     "param_name": "limit"
                 },
                 "only_cloud_results": {
-                    "description": "Show only Titanimcloud results",
+                    "description": "Show only TitaniumCloud results, by default only local results are show",
                     "data_type": "boolean",
                     "required": false,
                     "primary": false,
