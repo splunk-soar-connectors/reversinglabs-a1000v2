@@ -418,7 +418,7 @@ class ReversinglabsA1000V2Connector(BaseConnector):
 
     def _handle_advanced_search_ticloud(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
-        page = param.get("limit")
+        page = param.get("page")
         if page:
             result = self.a1000.advanced_search_v3(
                 query_string=param.get("query"),
