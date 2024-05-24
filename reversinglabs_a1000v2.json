@@ -3792,7 +3792,7 @@
             },
             {
                 "module": "reversinglabs_sdk_py3",
-                "input_file": "wheels/py3/reversinglabs_sdk_py3-2.5.5-py3-none-any.whl"
+                "input_file": "wheels/py3/reversinglabs_sdk_py3-2.5.6-py3-none-any.whl"
             },
             {
                 "module": "urllib3",
