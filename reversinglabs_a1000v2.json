@@ -1369,6 +1369,127 @@
             "versions": "EQ(*)"
         },
         {
+            "action": "advanced search local",
+            "identifier": "advanced_search_local",
+            "description": "Search for samples available on the A1000 appliance",
+            "verbose": "All restricted words and characters mut be escaped with double quotation marks.",
+            "type": "generic",
+            "read_only": false,
+            "parameters": {
+                "query": {
+                    "description": "Advanced Search query",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "order": 0,
+                    "name": "query"
+                },
+                "sorting_order": {
+                    "description": "Ascending or descending",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": false,
+                    "order": 1,
+                    "name": "sorting_order",
+                    "value_list": ["desc", "asc"],
+                    "default": "desc"
+                },
+                "sorting_criteria": {
+                    "description": "Sort results on this column",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": false,
+                    "order": 2,
+                    "name": "sorting_criteria",
+                    "value_list": ["sha1", "firstseen", "threatname", "sampletype", "filecount", "size"],
+                    "default": "firstseen"
+                },
+                "limit": {
+                    "description": "Get at most <limit> search results, if page is set max value is 100",
+                    "data_type": "numeric",
+                    "required": false,
+                    "primary": false,
+                    "order": 3,
+                    "name": "limit",
+                    "default": 5000
+                },
+                "page": {
+                    "description": "Use pagination instead of aggregated getter, off by default",
+                    "data_type": "numeric",
+                    "required": false,
+                    "primary": false,
+                    "order": 4,
+                    "name": "page"
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.parameter.query",
+                    "data_type": "string",
+                    "column_name": "query",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.parameter.sorting_order",
+                    "data_type": "string",
+                    "column_name": "sorting_order",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.parameter.sorting_criteria",
+                    "data_type": "string",
+                    "column_name": "sorting_criteria",
+                    "column_order": 2
+                },
+                {
+                    "data_path": "action_result.parameter.limit",
+                    "data_type": "numeric",
+                    "column_name": "limit",
+                    "column_order": 3
+                },
+                {
+                    "data_path": "action_result.parameter.page",
+                    "data_type": "numeric",
+                    "column_name": "limit",
+                    "column_order": 4
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 5
+                },
+                {
+                    "data_path": "action_result.data",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                }
+            ],
+            "render": {
+                "type": "custom",
+                "width": 10,
+                "height": 5,
+                "view": "reversinglabs_a1000v2_views.advanced_search_local",
+                "title": "A1000 Advanced Search Local"
+            },
+            "versions": "EQ(*)"
+        },
+        {
             "action": "create dynamic analysis report",
             "identifier": "create_dynamic_analysis_report",
             "description": "Initiate the creation of dynamic analysis PDF report",

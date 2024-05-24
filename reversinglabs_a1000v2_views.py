@@ -25,6 +25,18 @@ def advanced_search(provides, all_app_runs, context):
     return 'views/reversinglabs_advanced_search.html'
 
 
+def advanced_search_local(provides, all_app_runs, context):
+    # TODO: not done
+    for summary, action_results in all_app_runs:
+        for result in action_results:
+            context['data'] = result.get_data()[0]
+            context['param'] = result.get_param()
+            for r in context['data']['results']:
+                r["classification_color"] = color_code_classification(r.get("classification").upper())
+
+    return 'views/reversinglabs_advanced_search_local.html'
+
+
 def advanced_search_ticloud(provides, all_app_runs, context):
     for summary, action_results in all_app_runs:
         for result in action_results:

@@ -365,6 +365,34 @@ class ReversinglabsA1000V2Connector(BaseConnector):
         for result in response:
             action_result.add_data(result)
 
+    def _handle_advanced_search_local(self, action_result, param):
+        self.debug_print("Action handler", self.get_action_identifier())
+        page = param.get('page')
+        if page:
+            result = self.a1000.advanced_search_v3(
+                query_string=param.get("query"),
+                ticloud=False,
+                page_number=page,
+                records_per_page=param.get("limit"),
+                sorting_criteria=param.get("sorting_criteria"),
+                sorting_order=param.get("sorting_order"),
+            ).json()
+            hits = result["rl"]["web_search_api"]["entries"]
+            pagination = {k: v for k, v in result.items() if k != "entries"}
+        else:
+            hits = self.a1000.advanced_search_v3_aggregated(
+                query_string=param.get("query"),
+                ticloud=False,
+                records_per_page=100,
+                max_results=param.get("limit"),
+                sorting_criteria=param.get("sorting_criteria"),
+                sorting_order=param.get("sorting_order"),
+            )
+            pagination = None
+
+        self.debug_print("Executed", self.get_action_identifier())
+        action_result.add_data({"results": hits, "pagination": pagination})
+
     def _handle_advanced_search_ticloud(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
         response = self.a1000.advanced_search_v3(
