@@ -79,6 +79,7 @@ class ReversinglabsA1000V2Connector(BaseConnector):
     ACTION_ID_NETWORK_URLS_FROM_IP = "network_urls_from_ip"
     ACTION_ID_NETWORK_FILES_FROM_IP = "network_files_from_ip"
     ACTION_ID_ADVANCED_SEARCH = "advanced_search"
+    ACTION_ID_ADVANCED_SEARCH_LOCAL = "advanced_search_local"
     ACTION_ID_ADVANCED_SEARCH_TICLOUD = "advanced_search_ticloud"
     ACTION_ID_CREATE_DYNAMIC_ANALYSIS_REPORT = "create_dynamic_analysis_report"
     ACTION_ID_CHeck_DYNAMIC_ANALYSIS_REPORT_STATUS = "check_dynamic_analysis_report_status"
@@ -129,6 +130,7 @@ class ReversinglabsA1000V2Connector(BaseConnector):
             self.ACTION_ID_NETWORK_URLS_FROM_IP: self._handle_network_urls_from_ip,
             self.ACTION_ID_NETWORK_FILES_FROM_IP: self._handle_network_files_from_ip,
             self.ACTION_ID_ADVANCED_SEARCH: self._handle_advanced_search,
+            self.ACTION_ID_ADVANCED_SEARCH_LOCAL: self._handle_advanced_search_local,
             self.ACTION_ID_ADVANCED_SEARCH_TICLOUD: self._handle_advanced_search_ticloud,
             self.ACTION_ID_CREATE_DYNAMIC_ANALYSIS_REPORT: self._handle_create_dynamic_analysis_report,
             self.ACTION_ID_CHeck_DYNAMIC_ANALYSIS_REPORT_STATUS: self._handle_check_dynamic_analysis_report_status,
