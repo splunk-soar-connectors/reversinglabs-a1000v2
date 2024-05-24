@@ -42,9 +42,8 @@ def advanced_search_ticloud(provides, all_app_runs, context):
         for result in action_results:
             context['data'] = result.get_data()[0]
             context['param'] = result.get_param()
-            entries = context['data']['rl']['web_search_api']['entries']
-            for entry in entries:
-                entry["classification_color"] = color_code_classification(entry["classification"].upper())
+            for r in context['data']['results']:
+                r['classification_color'] = color_code_classification(r['classification'].upper())
 
     return 'views/reversinglabs_advanced_search_ticloud.html'
 

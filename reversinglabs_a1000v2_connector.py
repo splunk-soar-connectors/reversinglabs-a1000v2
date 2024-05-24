@@ -378,7 +378,7 @@ class ReversinglabsA1000V2Connector(BaseConnector):
                 sorting_order=param.get("sorting_order"),
             ).json()
             hits = result["rl"]["web_search_api"]["entries"]
-            pagination = {k: v for k, v in result.items() if k != "entries"}
+            pagination = {k: v for k, v in result["rl"]["web_search_api"].items() if k != "entries"}
         else:
             hits = self.a1000.advanced_search_v3_aggregated(
                 query_string=param.get("query"),
@@ -395,18 +395,35 @@ class ReversinglabsA1000V2Connector(BaseConnector):
 
     def _handle_advanced_search_ticloud(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
-        response = self.a1000.advanced_search_v3(
-            query_string=param.get('query'),
-            ticloud=True,
-            start_search_date=param.get('start_search_date'),
-            end_search_date=param.get('end_search_date'),
-            sorting_order=param.get('sorting_order', "desc"),
-            sorting_criteria=param.get('sorting_criteria'),
-            page_number=param.get('page', 1),
-            records_per_page=param.get('page_size', 20),
-        )
+        page = param.get("limit")
+        if page:
+            result = self.a1000.advanced_search_v3(
+                query_string=param.get("query"),
+                ticloud=True,
+                start_search_date=param.get("start_search_date"),
+                end_search_date=param.get("end_search_date"),
+                sorting_order=param.get("sorting_order", "desc"),
+                sorting_criteria=param.get("sorting_criteria"),
+                page_number=param.get("page"),
+                records_per_page=param.get("limit"),
+            ).json()
+            hits = result["rl"]["web_search_api"]["entries"]
+            pagination = {k: v for k, v in result["rl"]["web_search_api"].items() if k != "entries"}
+        else:
+            pass
+            hits = self.a1000.advanced_search_v3_aggregated(
+                query_string=param.get("query"),
+                ticloud=True,
+                start_search_date=param.get("start_search_date"),
+                end_search_date=param.get("end_search_date"),
+                sorting_order=param.get("sorting_order", "desc"),
+                sorting_criteria=param.get("sorting_criteria"),
+                records_per_page=100,
+                max_results=param.get("limit"),
+            )
+            pagination = None
         self.debug_print("Executed", self.get_action_identifier())
-        action_result.add_data(response.json())
+        action_result.add_data({"results": hits, "pagination": pagination})
 
     def _handle_create_dynamic_analysis_report(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())

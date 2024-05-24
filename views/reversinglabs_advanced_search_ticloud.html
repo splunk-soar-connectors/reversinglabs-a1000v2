@@ -31,6 +31,10 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
         line-break: auto;
     }
 
+    .result-table {
+        margin-top: 50px;
+    }
+
     .rl-table th {
         text-align: center;
         font-size: 1.4rem;
@@ -62,40 +66,38 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
     }
 </style>
 <div class="rl-content">
+    {% if data.pagination != None %}
     <table class="rl-table">
         <thead>
             <tr>
-                <th colspan="100%">Search metadata</th>
+                <th colspan="100%">Search pagination</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td>More pages</td>
-                <td>{{data.rl.web_search_api.more_pages}}</td>
+                <td>{{data.pagination.more_pages}}</td>
             </tr>
             <tr>
                 <td>End of dataset</td>
-                <td>{{data.rl.web_search_api.end_of_dataset}}</td>
+                <td>{{data.pagination.end_of_dataset}}</td>
             </tr>
             <tr>
                 <td>Next page</td>
-                <td>{{data.rl.web_search_api.next_page}}</td>
+                <td>{{data.pagination.next_page}}</td>
             </tr>
             <tr>
                 <td>Sample count</td>
-                <td>{{data.rl.web_search_api.sample_count}}</td>
+                <td>{{data.pagination.sample_count}}</td>
             </tr>
             <tr>
                 <td>Last search date</td>
-                <td>{{data.rl.web_search_api.last_search_date}}</td>
-            </tr>
-            <tr>
-                <td>Total count</td>
-                <td>{{data.rl.web_search_api.total_count}}</td>
+                <td>{{data.pagination.last_search_date}}</td>
             </tr>
         </tbody>
     </table>
-    <table class="rl-table" style="margin-top: 50px;">
+    {% endif %}
+    <table class="rl-table result-table" style="margin-top: 50px;">
         <thead>
             <tr>
                 <th colspan="7">ReversingLabs A1000 Advanced TiCloud Search For<br />
@@ -113,7 +115,7 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
             </tr>
         </thead>
         <tbody>
-            {% for entry in data.rl.web_search_api.entries %}
+            {% for entry in data.results %}
             <tr>
                 <td>{{forloop.counter}}.</td>
                 <td>{{entry.filename}}</td>
