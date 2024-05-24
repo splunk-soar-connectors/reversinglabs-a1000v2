@@ -638,7 +638,7 @@ class ReversinglabsA1000V2Connector(BaseConnector):
     def _handle_get_ruleset_text(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
         response = self.a1000.get_yara_ruleset_contents(
-            ruleset_name=param.get("name")
+            ruleset_name=param.get("ruleset_name")
         )
         self.debug_print("Executed", self.get_action_identifier())
         action_result.add_data(response.json())

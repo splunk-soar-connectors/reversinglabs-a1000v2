@@ -2444,9 +2444,9 @@
             "versions": "EQ(*)"
         },
         {
-            "action": "yara get rules",
-            "identifier": "yara_get_rules",
-            "description": "Get a list of YARA rules that are on the A1000",
+            "action": "yara get rulesets",
+            "identifier": "yara_get_rulesets",
+            "description": "Get a list of YARA rulesets that are on the A1000",
             "verbose": "For every ruleset in the list, the output includes additional info such as: rule name, number of matches, last matched date, and more.",
             "type": "generic",
             "read_only": true,
@@ -2567,13 +2567,13 @@
                 "type": "custom",
                 "width": 10,
                 "height": 5,
-                "view": "reversinglabs_a1000v2_views.yara_get_rules",
+                "view": "reversinglabs_a1000v2_views.yara_get_rulesets",
                 "title": "A1000 Retrieve a list of YARA rulesets on the appliance"
             },
             "versions": "EQ(*)"
         },
         {
-            "action": "yara get ruleset tet ",
+            "action": "yara get ruleset text",
             "identifier": "yara_get_ruleset_text",
             "description": "Get the full contents of the requested ruleset",
             "verbose": "Get the full contents of the requested ruleset in raw text. All rulesets can be retrieved.",
@@ -2595,7 +2595,7 @@
                 {
                     "data_path": "action_result.parameter.ruleset_name",
                     "data_type": "string",
-                    "column_name": "name",
+                    "column_name": "ruleset_name",
                     "column_order": 0
                 },
                 {
