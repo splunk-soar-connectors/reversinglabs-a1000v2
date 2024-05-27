@@ -96,7 +96,8 @@
                     "required": false,
                     "primary": false,
                     "order": 2,
-                    "name": "custom_file_name"
+                    "name": "custom_file_name",
+                    "contains": ["file name"]
                 },
                 "archive_password": {
                     "description": "password for the file if it is password protected",
@@ -121,7 +122,8 @@
                     "required": false,
                     "primary": false,
                     "order": 5,
-                    "name": "tags"
+                    "name": "tags",
+                    "contains": ["tags"]
                 },
                 "comment": {
                     "description": "Comment to add to a sample",
@@ -129,7 +131,8 @@
                     "required": false,
                     "primary": false,
                     "order": 6,
-                    "name": "comment"
+                    "name": "comment",
+                    "contains": ["comment"]
                 },
                 "cloud_analysis": {
                     "description": "Use cloud analysis",
@@ -160,15 +163,14 @@
                 {
                     "data_path": "action_result.parameter.file_name",
                     "data_type": "string",
-                    "contains": [
-                        "file name"
-                    ],
+                    "contains": ["file name"],
                     "column_name": "file_name",
                     "column_order": 1
                 },
                 {
                     "data_path": "action_result.parameter.custom_file_name",
                     "data_type": "string",
+                    "contains": ["file name"],
                     "column_name": "custom_file_name",
                     "column_order": 2
                 },
@@ -187,6 +189,7 @@
                 {
                     "data_path": "action_result.parameter.comment",
                     "data_type": "string",
+                    "contains": ["comment"],
                     "column_name": "comment",
                     "column_order": 5
                 },
@@ -244,7 +247,8 @@
                     "order": 0,
                     "name": "file_url",
                     "id": 1,
-                    "param_name": "file_url"
+                    "param_name": "file_url",
+                    "contains": ["url"]
                 },
                 "crawler": {
                     "description": "Crawler method (local or cloud)",
@@ -302,6 +306,7 @@
                 {
                     "data_path": "action_result.parameter.file_url",
                     "data_type": "string",
+                    "contains": ["url"],
                     "column_name": "file_url",
                     "column_order": 0
                 },
@@ -354,6 +359,7 @@
                     "data_type": "string",
                     "required": true,
                     "primary": true,
+                    "contains": ["task id"],
                     "order": 0,
                     "name": "task_id",
                     "id": 1,
@@ -370,6 +376,7 @@
                 {
                     "data_path": "action_result.parameter.task_id",
                     "data_type": "string",
+                    "contains": ["task id"],
                     "column_name": "task_id",
                     "column_order": 0
                 },
@@ -417,7 +424,8 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "name": "hash"
+                    "name": "hash",
+                    "contains": ["hash", "sha1", "sha256", "md5"]
                 }
             },
             "output": [
@@ -430,6 +438,7 @@
                 {
                     "data_path": "action_result.parameter.hash",
                     "data_type": "string",
+                    "contains": ["hash", "sha1", "sha256", "md5"],
                     "column_name": "hash",
                     "column_order": 0
                 },
@@ -475,7 +484,8 @@
                     "order": 0,
                     "name": "hash",
                     "id": 1,
-                    "param_name": "hash"
+                    "param_name": "hash",
+                    "contains": ["hash", "sha1", "sha256", "md5"]
                 }
             },
             "output": [
@@ -488,6 +498,7 @@
                 {
                     "data_path": "action_result.parameter.hash",
                     "data_type": "string",
+                    "contains": ["hash", "sha1", "sha256", "md5"],
                     "column_name": "hash",
                     "column_order": 0
                 },
@@ -535,7 +546,8 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "name": "hash"
+                    "name": "hash",
+                    "contains": ["hash", "sha1", "sha256", "md5"]
                 }
             },
             "output": [
@@ -548,6 +560,7 @@
                 {
                     "data_path": "action_result.parameter.hash",
                     "data_type": "string",
+                    "contains": ["hash", "sha1", "sha256", "md5"],
                     "column_name": "hash",
                     "column_order": 0
                 },
@@ -591,7 +604,8 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "name": "hash"
+                    "name": "hash",
+                    "contains": ["hash", "sha1", "sha256", "md5"]
                 }
             },
             "output": [
@@ -604,6 +618,7 @@
                 {
                     "data_path": "action_result.parameter.hash",
                     "data_type": "string",
+                    "contains": ["hash", "sha1", "sha256", "md5"],
                     "column_name": "hash",
                     "column_order": 0
                 },
@@ -650,9 +665,7 @@
                     "data_type": "string",
                     "required": true,
                     "primary": true,
-                    "contains": [
-                        "url"
-                    ],
+                    "contains": ["url"],
                     "order": 0,
                     "name": "url"
                 }
@@ -667,9 +680,7 @@
                 {
                     "data_path": "action_result.parameter.url",
                     "data_type": "string",
-                    "contains": [
-                        "url"
-                    ],
+                    "contains": ["url"],
                     "column_name": "url",
                     "column_order": 0
                 },
@@ -716,10 +727,7 @@
                     "data_type": "string",
                     "required": true,
                     "primary": true,
-                    "contains": [
-                        "domain",
-                        "url"
-                    ],
+                    "contains": ["domain", "url"],
                     "order": 0,
                     "name": "domain"
                 }
@@ -734,10 +742,7 @@
                 {
                     "data_path": "action_result.parameter.domain",
                     "data_type": "string",
-                    "contains": [
-                        "domain",
-                        "url"
-                    ],
+                    "contains": ["domain", "url"],
                     "column_name": "domain",
                     "column_order": 0
                 },
@@ -784,9 +789,7 @@
                     "data_type": "string",
                     "required": true,
                     "primary": true,
-                    "contains": [
-                        "ip"
-                    ],
+                    "contains": ["ip"],
                     "order": 0,
                     "name": "ip"
                 }
@@ -801,9 +804,7 @@
                 {
                     "data_path": "action_result.parameter.ip",
                     "data_type": "string",
-                    "contains": [
-                        "ip"
-                    ],
+                    "contains": ["ip"],
                     "column_name": "ip",
                     "column_order": 0
                 },
@@ -853,7 +854,8 @@
                     "order": 0,
                     "name": "ip",
                     "id": 1,
-                    "param_name": "ip"
+                    "param_name": "ip",
+                    "contains": ["ip"]
                 },
                 "page": {
                     "description": "SHA1 hash of page",
@@ -881,6 +883,7 @@
                 {
                     "data_path": "action_result.parameter.ip",
                     "data_type": "string",
+                    "contains": ["ip"],
                     "column_name": "ip",
                     "column_order": 0
                 },
@@ -948,7 +951,8 @@
                     "order": 0,
                     "name": "ip",
                     "id": 1,
-                    "param_name": "ip"
+                    "param_name": "ip",
+                    "contains": ["ip"]
                 },
                 "page": {
                     "description": "SHA1 hash of page",
@@ -976,6 +980,7 @@
                 {
                     "data_path": "action_result.parameter.ip",
                     "data_type": "string",
+                    "contains": ["ip"],
                     "column_name": "ip",
                     "column_order": 0
                 },
@@ -1043,7 +1048,8 @@
                     "order": 0,
                     "name": "ip",
                     "id": 1,
-                    "param_name": "ip"
+                    "param_name": "ip",
+                    "contains": ["ip"]
                 },
                 "page": {
                     "description": "SHA1 hash of page",
@@ -1071,6 +1077,7 @@
                 {
                     "data_path": "action_result.parameter.ip",
                     "data_type": "string",
+                    "contains": ["ip"],
                     "column_name": "ip",
                     "column_order": 0
                 },
@@ -1138,7 +1145,8 @@
                     "order": 0,
                     "name": "query",
                     "id": 1,
-                    "param_name": "query"
+                    "param_name": "query",
+                    "contains": ["search query"]
                 },
                 "limit": {
                     "description": "Maximum number of results",
@@ -1185,6 +1193,7 @@
                 {
                     "data_path": "action_result.parameter.query",
                     "data_type": "string",
+                    "contains": ["search query"],
                     "column_name": "query",
                     "column_order": 0
                 },
@@ -1232,7 +1241,8 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "name": "query"
+                    "name": "query",
+                    "contains": ["search query"]
                 },
                 "start_search_date": {
                     "description": "The starting date for the search (later date)",
@@ -1240,7 +1250,8 @@
                     "required": true,
                     "primary": false,
                     "order": 1,
-                    "name": "start_search_date"
+                    "name": "start_search_date",
+                    "contains": ["date"]
                 },
                 "end_search_date": {
                     "description": "The ending date for the search (earlier date)",
@@ -1248,7 +1259,8 @@
                     "required": true,
                     "primary": false,
                     "order": 2,
-                    "name": "end_search_date"
+                    "name": "end_search_date",
+                    "contains": ["date"]
                 },
                 "sorting_order": {
                     "description": "Ascending or descending",
@@ -1292,18 +1304,21 @@
                 {
                     "data_path": "action_result.parameter.query",
                     "data_type": "string",
+                    "contains": ["search query"],
                     "column_name": "query",
                     "column_order": 0
                 },
                 {
                     "data_path": "action_result.parameter.start_search_date",
                     "data_type": "string",
+                    "contains": ["date"],
                     "column_name": "start_search_date",
                     "column_order": 1
                 },
                 {
                     "data_path": "action_result.parameter.end_search_date",
                     "data_type": "string",
+                    "contains": ["date"],
                     "column_name": "end_search_date",
                     "column_order": 2
                 },
@@ -1381,7 +1396,8 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "name": "query"
+                    "name": "query",
+                    "contains": ["search query"]
                 },
                 "sorting_order": {
                     "description": "Ascending or descending",
@@ -1425,6 +1441,7 @@
                 {
                     "data_path": "action_result.parameter.query",
                     "data_type": "string",
+                    "contains": ["search query"],
                     "column_name": "query",
                     "column_order": 0
                 },
@@ -1504,7 +1521,8 @@
                     "order": 0,
                     "name": "hash",
                     "id": 1,
-                    "param_name": "hash"
+                    "param_name": "hash",
+                    "contains": ["hash", "sha1", "sha256", "md5"]
                 }
             },
             "output": [
@@ -1517,6 +1535,7 @@
                 {
                     "data_path": "action_result.parameter.hash",
                     "data_type": "string",
+                    "contains": ["hash", "sha1", "sha256", "md5"],
                     "column_name": "hash",
                     "column_order": 0
                 },
@@ -1562,7 +1581,8 @@
                     "order": 0,
                     "name": "hash",
                     "id": 1,
-                    "param_name": "hash"
+                    "param_name": "hash",
+                    "contains": ["hash", "sha1", "sha256", "md5"]
                 }
             },
             "output": [
@@ -1575,6 +1595,7 @@
                 {
                     "data_path": "action_result.parameter.hash",
                     "data_type": "string",
+                    "contains": ["hash", "sha1", "sha256", "md5"],
                     "column_name": "hash",
                     "column_order": 0
                 },
@@ -1624,7 +1645,8 @@
                     "order": 0,
                     "name": "hash",
                     "id": 1,
-                    "param_name": "hash"
+                    "param_name": "hash",
+                    "contains": ["hash", "sha1", "sha256", "md5"]
                 }
             },
             "output": [
@@ -1637,6 +1659,7 @@
                 {
                     "data_path": "action_result.parameter.hash",
                     "data_type": "string",
+                    "contains": ["hash", "sha1", "sha256", "md5"],
                     "column_name": "hash",
                     "column_order": 0
                 },
@@ -1680,7 +1703,8 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "name": "hash"
+                    "name": "hash",
+                    "contains": ["hash", "sha1", "sha256", "md5"]
                 },
                 "retry": {
                     "description": "If set to False there will only be one try at obtaining the analysis report",
@@ -1697,7 +1721,8 @@
                     "required": false,
                     "primary": false,
                     "order": 2,
-                    "name": "fields"
+                    "name": "fields",
+                    "contains": ["fields"]
                 },
                 "include_network_threat_intelligence": {
                     "description": "Include network threat intelligence in the summary report",
@@ -1728,12 +1753,14 @@
                 {
                     "data_path": "action_result.parameter.fields",
                     "data_type": "string",
+                    "contains": ["fields"],
                     "column_name": "fields",
                     "column_order": 2
                 },
                 {
                     "data_path": "action_result.parameter.hash",
                     "data_type": "string",
+                    "contains": ["hash", "sha1", "sha256", "md5"],
                     "column_name": "hash",
                     "column_order": 0
                 },
@@ -1801,7 +1828,8 @@
                     "order": 0,
                     "name": "hash",
                     "id": 1,
-                    "param_name": "hash"
+                    "param_name": "hash",
+                    "contains": ["hash", "sha1", "sha256", "md5"]
                 },
                 "retry": {
                     "description": "If set to False there will only be one try at obtaining the analysis report",
@@ -1822,7 +1850,8 @@
                     "order": 2,
                     "name": "fields",
                     "id": 3,
-                    "param_name": "fields"
+                    "param_name": "fields",
+                    "contains": ["fields"]
                 },
                 "skip_reanalysis": {
                     "description": "Skip sample reanalysis when fetching the summary report",
@@ -1846,12 +1875,14 @@
                 {
                     "data_path": "action_result.parameter.fields",
                     "data_type": "string",
+                    "contains": ["fields"],
                     "column_name": "fields",
                     "column_order": 2
                 },
                 {
                     "data_path": "action_result.parameter.hash",
                     "data_type": "string",
+                    "contains": ["hash", "sha1", "sha256", "md5"],
                     "column_name": "hash",
                     "column_order": 0
                 },
@@ -1913,7 +1944,8 @@
                     "order": 0,
                     "name": "hash",
                     "id": 1,
-                    "param_name": "hash"
+                    "param_name": "hash",
+                    "contains": ["hash", "sha1", "sha256", "md5"]
                 },
                 "local_only": {
                     "description": "Return only local samples without querying TitaniumCloud",
@@ -1954,6 +1986,7 @@
                 {
                     "data_path": "action_result.parameter.hash",
                     "data_type": "string",
+                    "contains": ["hash", "sha1", "sha256", "md5"],
                     "column_name": "hash",
                     "column_order": 0
                 },
@@ -2009,13 +2042,15 @@
                     "order": 0,
                     "name": "hash",
                     "id": 1,
-                    "param_name": "hash"
+                    "param_name": "hash",
+                    "contains": ["hash", "sha1", "sha256", "md5"]
                 }
             },
             "output": [
                 {
                     "data_path": "action_result.parameter.hash",
                     "data_type": "string",
+                    "contains": ["hash", "sha1", "sha256", "md5"],
                     "column_name": "hash",
                     "column_order": 0
                 },
@@ -2071,7 +2106,8 @@
                     "order": 0,
                     "name": "hash",
                     "id": 1,
-                    "param_name": "hash"
+                    "param_name": "hash",
+                    "contains": ["hash", "sha1", "sha256", "md5"]
                 },
                 "tags": {
                     "description": "List of comma separated tags",
@@ -2081,19 +2117,22 @@
                     "order": 1,
                     "name": "tags",
                     "id": 2,
-                    "param_name": "tags"
+                    "param_name": "tags",
+                    "contains": ["tags"]
                 }
             },
             "output": [
                 {
                     "data_path": "action_result.parameter.hash",
                     "data_type": "string",
+                    "contains": ["hash", "sha1", "sha256", "md5"],
                     "column_name": "hash",
                     "column_order": 0
                 },
                 {
                     "data_path": "action_result.parameter.tags",
                     "data_type": "string",
+                    "contains": ["tags"],
                     "column_name": "tags",
                     "column_order": 1
                 },
@@ -2149,7 +2188,8 @@
                     "order": 0,
                     "name": "hash",
                     "id": 1,
-                    "param_name": "hash"
+                    "param_name": "hash",
+                    "contains": ["hash", "sha1", "sha256", "md5"]
                 },
                 "tags": {
                     "description": "List of comma separated tags",
@@ -2159,19 +2199,22 @@
                     "order": 1,
                     "name": "tags",
                     "id": 2,
-                    "param_name": "tags"
+                    "param_name": "tags",
+                    "contains": ["tags"]
                 }
             },
             "output": [
                 {
                     "data_path": "action_result.parameter.hash",
                     "data_type": "string",
+                    "contains": ["hash", "sha1", "sha256", "md5"],
                     "column_name": "hash",
                     "column_order": 0
                 },
                 {
                     "data_path": "action_result.parameter.tags",
                     "data_type": "string",
+                    "contains": ["tags"],
                     "column_name": "tags",
                     "column_order": 1
                 },
@@ -2227,7 +2270,8 @@
                     "order": 0,
                     "id": 1,
                     "name": "hash",
-                    "param_name": "hash"
+                    "param_name": "hash",
+                    "contains": ["hash", "sha1", "sha256", "md5"]
                 },
                 "system": {
                     "description": "Where to set the desired classification",
@@ -2251,7 +2295,8 @@
                     "order": 2,
                     "id": 3,
                     "name": "classification",
-                    "param_name": "classification"
+                    "param_name": "classification",
+                    "contains": ["classification"]
                 },
                 "risk_score": {
                     "description": "Risk score to set for classification",
@@ -2261,7 +2306,8 @@
                     "order": 3,
                     "id": 4,
                     "name": "risk_score",
-                    "param_name": "risk_score"
+                    "param_name": "risk_score",
+                    "contains": ["risk score"]
                 },
                 "threat_platform": {
                     "description": "Threat platform to set, must be on the supported list",
@@ -2271,7 +2317,8 @@
                     "order": 4,
                     "id": 5,
                     "name": "threat_platform",
-                    "param_name": "threat_platform"
+                    "param_name": "threat_platform",
+                    "contains": ["threat platform"]
                 },
                 "threat_type": {
                     "description": "Threat type to set, must be on the supported list",
@@ -2281,7 +2328,8 @@
                     "order": 5,
                     "id": 6,
                     "name": "threat_type",
-                    "param_name": "threat_type"
+                    "param_name": "threat_type",
+                    "contains": ["threat type"]
                 },
                 "threat_name": {
                     "description": "Threat name to set, must be on the supported list",
@@ -2291,13 +2339,15 @@
                     "order": 6,
                     "id": 7,
                     "name": "threat_name",
-                    "param_name": "threat_name"
+                    "param_name": "threat_name",
+                    "contains": ["threat name"]
                 }
             },
             "output": [
                 {
                     "data_path": "action_result.parameter.hash",
                     "data_type": "string",
+                    "contains": ["hash", "sha1", "sha256", "md5"],
                     "column_name": "hash",
                     "column_order": 0
                 },
@@ -2310,30 +2360,35 @@
                 {
                     "data_path": "action_result.parameter.classification",
                     "data_type": "string",
+                    "contains": ["classification"],
                     "column_name": "classification",
                     "column_order": 2
                 },
                 {
                     "data_path": "action_result.parameter.risk_score",
                     "data_type": "string",
+                    "contains": ["rist score"],
                     "column_name": "risk_score",
                     "column_order": 3
                 },
                 {
                     "data_path": "action_result.parameter.threat_platform",
                     "data_type": "string",
+                    "contains": ["threat platform"],
                     "column_name": "threat_platform",
                     "column_order": 4
                 },
                 {
                     "data_path": "action_result.threat_type",
                     "data_type": "string",
+                    "contains": ["threat type"],
                     "column_name": "threat_type",
                     "column_order": 5
                 },
                 {
                     "data_path": "action_result.threat_name",
                     "data_type": "string",
+                    "contains": ["threat name"],
                     "column_name": "threat_name",
                     "column_order": 6
                 },
@@ -2386,7 +2441,8 @@
                     "data_type": "string",
                     "required": true,
                     "primary": true,
-                    "order": 0
+                    "order": 0,
+                    "contains": ["hash", "sha1", "sha256", "md5"]
                 },
                 "system": {
                     "description": "Where to delete the desired classification",
@@ -2402,6 +2458,7 @@
                 {
                     "data_path": "action_result.parameter.hash",
                     "data_type": "string",
+                    "contains": ["hash", "sha1", "sha256", "md5"],
                     "column_name": "hash",
                     "column_order": 0
                 },
@@ -2588,13 +2645,15 @@
                     "order": 0,
                     "name": "ruleset_name",
                     "id": 1,
-                    "param_name": "ruleset_name"
+                    "param_name": "ruleset_name",
+                    "contains": ["ruleset name"]
                 }
             },
             "output": [
                 {
                     "data_path": "action_result.parameter.ruleset_name",
                     "data_type": "string",
+                    "contains": ["ruleset name"],
                     "column_name": "ruleset_name",
                     "column_order": 0
                 },
@@ -2650,7 +2709,8 @@
                     "order": 0,
                     "name": "ruleset_name",
                     "id": 1,
-                    "param_name": "ruleset_name"
+                    "param_name": "ruleset_name",
+                    "contains": ["ruleset name"]
                 },
                 "page": {
                     "description": "Page",
@@ -2677,6 +2737,7 @@
                 {
                     "data_path": "action_result.parameter.ruleset_name",
                     "data_type": "string",
+                    "contains": ["ruleset name"],
                     "column_name": "name",
                     "column_order": 0
                 },
@@ -2744,7 +2805,8 @@
                     "order": 0,
                     "name": "ruleset_name",
                     "id": 1,
-                    "param_name": "ruleset_name"
+                    "param_name": "ruleset_name",
+                    "contains": ["ruleset name"]
                 },
                 "ruleset_text": {
                     "description": "Text of the yara ruleset",
@@ -2754,7 +2816,8 @@
                     "order": 1,
                     "name": "ruleset_text",
                     "id": 2,
-                    "param_name": "ruleset_text"
+                    "param_name": "ruleset_text",
+                    "contains": ["ruleset text"]
                 },
                 "publish": {
                     "description": "Publish to C1000 in the same cluster",
@@ -2781,12 +2844,14 @@
                 {
                     "data_path": "action_result.parameter.ruleset_name",
                     "data_type": "string",
+                    "contains": ["ruleset name"],
                     "column_name": "ruleset_name",
                     "column_order": 0
                 },
                 {
                     "data_path": "action_result.parameter.ruleset_text",
                     "data_type": "string",
+                    "contains": ["ruleset text"],
                     "column_name": "ruleset_text",
                     "column_order": 1
                 },
@@ -2854,7 +2919,8 @@
                     "order": 0,
                     "name": "ruleset_name",
                     "id": 1,
-                    "param_name": "ruleset_name"
+                    "param_name": "ruleset_name",
+                    "contains": ["ruleset name"]
                 },
                 "publish": {
                     "description": "Publish to C1000 in the same cluster",
@@ -2871,6 +2937,7 @@
                 {
                     "data_path": "action_result.parameter.ruleset_name",
                     "data_type": "string",
+                    "contains": ["ruleset name"],
                     "column_name": "ruleset_name",
                     "column_order": 0
                 },
@@ -2932,7 +2999,8 @@
                     "order": 0,
                     "name": "ruleset_name",
                     "id": 1,
-                    "param_name": "ruleset_name"
+                    "param_name": "ruleset_name",
+                    "contains": ["ruleset name"]
                 },
                 "enabled": {
                     "description": "Enable or disable the ruleset",
@@ -2959,6 +3027,7 @@
                 {
                     "data_path": "action_result.parameter.ruleset_name",
                     "data_type": "string",
+                    "contains": ["ruleset name"],
                     "column_name": "ruleset_name",
                     "column_order": 0
                 },
@@ -3196,7 +3265,8 @@
                     "order": 0,
                     "name": "ruleset_name",
                     "id": 1,
-                    "param_name": "ruleset_name"
+                    "param_name": "ruleset_name",
+                    "contains": ["ruleset name"]
                 },
                 "operation": {
                     "description": "START, STOP or CLEAR",
@@ -3212,9 +3282,10 @@
             },
             "output": [
                 {
-                    "data_path": "action_result.parameter.name",
+                    "data_path": "action_result.parameter.ruleset_name",
                     "data_type": "string",
-                    "column_name": "name",
+                    "contains": ["ruleset name"],
+                    "column_name": "ruleset_name",
                     "column_order": 0
                 },
                 {
@@ -3320,7 +3391,8 @@
                     "order": 0,
                     "name": "ruleset_name",
                     "id": 1,
-                    "param_name": "ruleset_name"
+                    "param_name": "ruleset_name",
+                    "contains": ["ruleset name"]
                 }
             },
             "output": [
@@ -3328,7 +3400,8 @@
                     "data_path": "action_result.parameter.ruleset_name",
                     "data_type": "string",
                     "column_name": "name",
-                    "column_order": 0
+                    "column_order": 0,
+                    "contains": ["ruleset name"]
                 },
                 {
                     "data_path": "action_result.status",
@@ -3382,13 +3455,15 @@
                     "order": 0,
                     "name": "hashes",
                     "id": 1,
-                    "param_name": "hashes"
+                    "param_name": "hashes",
+                    "contains": ["hash", "sha1", "sha256", "md5"]
                 }
             },
             "output": [
                 {
                     "data_path": "action_result.hashes",
                     "data_type": "string",
+                    "contains": ["hash", "sha1", "sha256", "md5"],
                     "column_name": "hashes",
                     "column_order": 0
                 },
@@ -3444,13 +3519,15 @@
                     "order": 0,
                     "name": "hash",
                     "id": 1,
-                    "param_name": "hash"
+                    "param_name": "hash",
+                    "contains": ["hash", "sha1", "sha256", "md5"]
                 }
             },
             "output": [
                 {
                     "data_path": "action_result.param.hash",
                     "data_type": "string",
+                    "contains": ["hash", "sha1", "sha256", "md5"],
                     "column_name": "hash",
                     "column_order": 0
                 },
@@ -3469,24 +3546,28 @@
                 {
                     "data_path": "action_result.data.*.results.detail.md5",
                     "data_type": "string",
+                    "contains": ["hash", "md5"],
                     "column_name": "md5",
                     "column_order": 3
                 },
                 {
                     "data_path": "action_result.data.*.results.detail.sha1",
                     "data_type": "string",
+                    "contains": ["hash", "sha1"],
                     "column_name": "sha1",
                     "column_order": 4
                 },
                 {
                     "data_path": "action_result.data.*.results.detail.sha256",
                     "data_type": "string",
+                    "contains": ["hash", "sha256"],
                     "column_name": "sha256",
                     "column_order": 5
                 },
                 {
                     "data_path": "action_result.data.*.results.detail.sha512",
                     "data_type": "string",
+                    "contains": ["hash", "sha512"],
                     "column_name": "sha512",
                     "column_order": 6
                 },
@@ -3538,13 +3619,15 @@
                     "order": 0,
                     "name": "hash",
                     "id": 1,
-                    "param_name": "hash"
+                    "param_name": "hash",
+                    "contains": ["hash", "sha1", "sha256", "md5"]
                 }
             },
             "output": [
                 {
                     "data_path": "action_result.parameter.hash",
                     "data_type": "string",
+                    "contains": ["hash", "sha1", "sha256", "md5"],
                     "column_name": "hash",
                     "column_order": 0
                 },
@@ -3596,7 +3679,8 @@
                     "order": 0,
                     "name": "hashes",
                     "id": 1,
-                    "param_name": "hashes"
+                    "param_name": "hashes",
+                    "contains": ["hash", "sha1", "sha256", "md5"]
                 },
                 "titanium_cloud": {
                     "description": "Titanium Cloud analysis",
@@ -3683,6 +3767,7 @@
                 {
                     "data_path": "action_result.hashes",
                     "data_type": "string",
+                    "contains": ["hash", "sha1", "sha256", "md5"],
                     "column_name": "hashes",
                     "column_order": 0
                 },
