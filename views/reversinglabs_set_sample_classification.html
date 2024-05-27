@@ -98,8 +98,8 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
             </tr>
             <tr>
                 <td>Classification</td>
-                <td><a href="javascript:;" onclick="context_menu(this, [{'contains': ['search query'], 'value': 'classification:{{ classification }}' }], 0, {{ container.id }}, null, false);">
-                    <span style="color:{{classification_color}};">{{ classification }}</span>
+                <td><a href="javascript:;" onclick="context_menu(this, [{'contains': ['search query'], 'value': 'classification:{{ classification }}' }], 0, {{ container.id }}, null, false);" style="color: {{classification_color}}">
+                    {{ classification }}&nbsp;
                     <span class="fa fa-caret-down" style="font-size: smaller;"></span>
                 </a></td>
             </tr>

@@ -133,8 +133,8 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
                     {{ x.risk_score }}&nbsp;
                     <span class="fa fa-caret-down" style="font-size: smaller;"></span>
                 </a></td>
-                <td><a href="javascript:;" onclick="context_menu(this, [{'contains': ['search query'], 'value': 'classification:{{ x.classification }}' }], 0, {{ container.id }}, null, false);">
-                    <span style="color:{{x.classification_color}};">{{ x.classification }}</span>
+                <td><a href="javascript:;" onclick="context_menu(this, [{'contains': ['search query'], 'value': 'ipv4:&quot;{{data.requested_ip}}&quot; AND classification:{{ x.classification }}' }], 0, {{ container.id }}, null, false);" style="color: {{x.classification_color}}">
+                    {{ x.classification }}&nbsp;
                     <span class="fa fa-caret-down" style="font-size: smaller;"></span>
                 </a></td>
             </tr>
