@@ -123,24 +123,31 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
             {% for x in data.results %}
             <tr>
                 <td>{{forloop.counter}}.</td>
+
                 <td><a href="javascript:;" onclick="context_menu(this, [{'contains': ['sha1'], 'value': '{{ x.sha1 }}' }], 0, {{ container.id }}, null, false);">
                     {{ x.sha1 }}&nbsp;
                     <span class="fa fa-caret-down" style="font-size: smaller;"></span>
                 </a></td>
+
                 <td><a href="javascript:;" onclick="context_menu(this, [{'contains': ['search query'], 'value': 'sampletype:{{ x.sample_type }}' }], 0, {{ container.id }}, null, false);">
                     {{ x.sample_type }}&nbsp;
                     <span class="fa fa-caret-down" style="font-size: smaller;"></span>
                 </a></td>
+
                 <td>{{x.threat_type}}</td>
+
                 <td>{{x.threat_family}}</td>
+
                 <td><a href="javascript:;" onclick="context_menu(this, [{'contains': ['search query'], 'value': 'riskscore:{{ x.riskscore }}' }], 0, {{ container.id }}, null, false);">
                     {{ x.riskscore }}&nbsp;
                     <span class="fa fa-caret-down" style="font-size: smaller;"></span>
                 </a></td>
+
                 <td><a href="javascript:;" onclick="context_menu(this, [{'contains': ['search query'], 'value': 'classification:{{ x.classification }}' }], 0, {{ container.id }}, null, false);">
                     <span style="color:{{x.classification_color}};">{{ x.classification }}</span>
                     <span class="fa fa-caret-down" style="font-size: smaller;"></span>
                 </a></td>
+
             </tr>
             {% endfor %}
 
