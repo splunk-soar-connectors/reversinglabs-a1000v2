@@ -105,25 +105,38 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
                     <div class="rl-results" style="padding-top:0.5rem;">Results found: {{data.downloaded_files|length}}</div>
             </tr>
             <tr>
-                <th> </th>
-                <th> SHA1</th>
-                <th> Sample type</th>
-                <th> Threat name</th>
-                <th> Risk score</th>
-                <th> Classification</th>
+                <th>#</th>
+                <th>SHA1</th>
+                <th>Sample type</th>
+                <th>Threat name</th>
+                <th>Risk score</th>
+                <th>Classification</th>
             </tr>
         </thead>
         <tbody>
             {% for x in data.downloaded_files %}
             <tr>
-                <td>{{ forloop.counter}}.</td>
-                <td>{{ x.sha1}}</td>
-                <td>{{ x.sample_type }}</td>
-                <td>{{ x.threat_name }}</td>
-                <td>{{ x.risk_score }}</td>
-                <td>
-                    <font color={{x.classification_color}}>{{ x.classification }}</font>
-                </td>
+                <td>{{forloop.counter}}.</td>
+                <td><a href="javascript:;" onclick="context_menu(this, [{'contains': ['sha1'], 'value': '{{ x.sha1 }}' }], 0, {{ container.id }}, null, false);">
+                    {{ x.sha1 }}&nbsp;
+                    <span class="fa fa-caret-down" style="font-size: smaller;"></span>
+                </a></td>
+                <td><a href="javascript:;" onclick="context_menu(this, [{'contains': ['search query'], 'value': 'sampletype:{{ x.sample_type }}' }], 0, {{ container.id }}, null, false);">
+                    {{ x.sample_type }}&nbsp;
+                    <span class="fa fa-caret-down" style="font-size: smaller;"></span>
+                </a></td>
+                <td><a href="javascript:;" onclick="context_menu(this, [{'contains': ['search query'], 'value': 'threatname:{{ x.threat_name }}' }], 0, {{ container.id }}, null, false);">
+                    {{ x.threat_name }}&nbsp;
+                    <span class="fa fa-caret-down" style="font-size: smaller;"></span>
+                </a></td>
+                <td><a href="javascript:;" onclick="context_menu(this, [{'contains': ['search query'], 'value': 'riskscore:{{ x.risk_score }}' }], 0, {{ container.id }}, null, false);">
+                    {{ x.risk_score }}&nbsp;
+                    <span class="fa fa-caret-down" style="font-size: smaller;"></span>
+                </a></td>
+                <td><a href="javascript:;" onclick="context_menu(this, [{'contains': ['search query'], 'value': 'classification:{{ x.classification }}' }], 0, {{ container.id }}, null, false);">
+                    <span style="color:{{x.classification_color}};">{{ x.classification }}</span>
+                    <span class="fa fa-caret-down" style="font-size: smaller;"></span>
+                </a></td>
             </tr>
             {% endfor %}
 

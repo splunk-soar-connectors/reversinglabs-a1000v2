@@ -91,15 +91,24 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
             {% if data.report.sample_summary != None %}
             <tr>
                 <td>SHA1</td>
-                <td>{{data.report.sample_summary.sha1}}</td>
+                <td><a href="javascript:;" onclick="context_menu(this, [{'contains': ['sha1'], 'value': '{{ data.report.sample_summary.sha1 }}' }], 0, {{ container.id }}, null, false);">
+                    {{ data.report.sample_summary.sha1 }}&nbsp;
+                    <span class="fa fa-caret-down" style="font-size: smaller;"></span>
+                </a></td>
             </tr>
             <tr>
                 <td>SHA256</td>
-                <td>{{data.report.sample_summary.sha256}}</td>
+                <td><a href="javascript:;" onclick="context_menu(this, [{'contains': ['sha256'], 'value': '{{ data.report.sample_summary.sha256 }}' }], 0, {{ container.id }}, null, false);">
+                    {{ data.report.sample_summary.sha256 }}&nbsp;
+                    <span class="fa fa-caret-down" style="font-size: smaller;"></span>
+                </a></td>
             </tr>
             <tr>
                 <td>SHA512</td>
-                <td>{{data.report.sample_summary.sha512}}</td>
+                <td><a href="javascript:;" onclick="context_menu(this, [{'contains': ['sha512'], 'value': '{{ data.report.sample_summary.sha512 }}' }], 0, {{ container.id }}, null, false);">
+                    {{ data.report.sample_summary.sha512 }}&nbsp;
+                    <span class="fa fa-caret-down" style="font-size: smaller;"></span>
+                </a></td>
             </tr>
             <tr>
                 <td>File Type</td>
@@ -132,7 +141,7 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
                 <td>{{data.report.sample_summary.classification_result}}</td>
             </tr>
             <tr>
-                <td>Classificaiton Source</td>
+                <td>Classification Source</td>
                 <td>{{data.report.sample_summary.classification_source}}</td>
             </tr>
             {% endif %}

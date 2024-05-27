@@ -107,15 +107,24 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
         <tbody>
             <tr>
                 <td>SHA1</td>
-                <td>{{match.sha1}}</td>
+                <td><a href="javascript:;" onclick="context_menu(this, [{'contains': ['sha1'], 'value': '{{ match.sha1 }}' }], 0, {{ container.id }}, null, false);">
+                    {{ match.sha1 }}&nbsp;
+                    <span class="fa fa-caret-down" style="font-size: smaller;"></span>
+                </a></td>
             </tr>
             <tr>
                 <td>SHA256</td>
-                <td>{{match.sha256}}</td>
+                <td><a href="javascript:;" onclick="context_menu(this, [{'contains': ['sha256'], 'value': '{{ match.sha256 }}' }], 0, {{ container.id }}, null, false);">
+                    {{ match.sha256 }}&nbsp;
+                    <span class="fa fa-caret-down" style="font-size: smaller;"></span>
+                </a></td>
             </tr>
             <tr>
                 <td>MD5</td>
-                <td>{{match.md5}}</td>
+                <td><a href="javascript:;" onclick="context_menu(this, [{'contains': ['md5'], 'value': '{{ match.md5 }}' }], 0, {{ container.id }}, null, false);">
+                    {{ match.md5 }}&nbsp;
+                    <span class="fa fa-caret-down" style="font-size: smaller;"></span>
+                </a></td>
             </tr>
             <tr>
                 <td>Rule</td>
@@ -123,7 +132,10 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
             </tr>
             <tr>
                 <td>Classification</td>
-                <td>{{match.classification}}</td>
+                <td><a href="javascript:;" onclick="context_menu(this, [{'contains': ['search query'], 'value': 'classification:{{ match.classification }}' }], 0, {{ container.id }}, null, false);">
+                    {{ match.classification }}&nbsp;
+                    <span class="fa fa-caret-down" style="font-size: smaller;"></span>
+                </a></td>
             </tr>
             <tr>
                 <td>Classification result</td>
@@ -131,7 +143,10 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
             </tr>
             <tr>
                 <td>Riskscore</td>
-                <td>{{match.riskscore}}</td>
+                <td><a href="javascript:;" onclick="context_menu(this, [{'contains': ['search query'], 'value': 'riskscore:{{ match.riskscore }}' }], 0, {{ container.id }}, null, false);">
+                    {{ match.riskscore }}&nbsp;
+                    <span class="fa fa-caret-down" style="font-size: smaller;"></span>
+                </a></td>
             </tr>
             <tr>
                 <td>File size</td>
@@ -139,7 +154,10 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
             </tr>
             <tr>
                 <td>File type</td>
-                <td>{{match.file_type}}</td>
+                <td><a href="javascript:;" onclick="context_menu(this, [{'contains': ['search query'], 'value': 'filetype:{{ match.file_type }}' }], 0, {{ container.id }}, null, false);">
+                    {{ match.file_type }}&nbsp;
+                    <span class="fa fa-caret-down" style="font-size: smaller;"></span>
+                </a></td>
             </tr>
             <tr>
                 <td>Downloadable</td>

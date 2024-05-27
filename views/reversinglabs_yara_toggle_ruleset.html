@@ -80,6 +80,10 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
         <tbody>
             <tr>
                 <td>Ruleset name</td>
+                <td><a href="javascript:;" onclick="context_menu(this, [{'contains': ['ruleset name'], 'value': '{{ data.detail.name }}' }], 0, {{ container.id }}, null, false);">
+                    {{ data.detail.name }}&nbsp;
+                    <span class="fa fa-caret-down" style="font-size: smaller;"></span>
+                </a></td>
                 <td>{{data.detail.name}}</td>
             </tr>
             <tr>

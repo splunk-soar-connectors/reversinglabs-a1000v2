@@ -92,11 +92,17 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
         <tbody>
             <tr>
                 <td>Task ID</td>
-                <td>{{data.detail.id}}</td>
+                <td><a href="javascript:;" onclick="context_menu(this, [{'contains': ['task id'], 'value': '{{ data.detail.id }}' }], 0, {{ container.id }}, null, false);">
+                    {{ data.detail.id }}&nbsp;
+                    <span class="fa fa-caret-down" style="font-size: smaller;"></span>
+                </a></td>
             </tr>
             <tr>
                 <td>File Name</td>
-                <td>{{data.detail.filename}}</td>
+                <td><a href="javascript:;" onclick="context_menu(this, [{'contains': ['search query'], 'value': 'filename:{{ data.detail.filename }}' }], 0, {{ container.id }}, null, false);">
+                    {{ data.detail.filename }}&nbsp;
+                    <span class="fa fa-caret-down" style="font-size: smaller;"></span>
+                </a></td>
             </tr>
             <tr>
                 <td>Created</td>

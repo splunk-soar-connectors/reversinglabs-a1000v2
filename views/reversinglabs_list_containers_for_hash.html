@@ -107,9 +107,13 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
             </tr>
         </thead>
         <tbody>
-            {% for container in rr.containers %}
+            {% for cc in rr.containers %}
                 <tr>
-                    <td>{{container}}</td>
+                    <td>{{cc}}</td>
+                    <td><a href="javascript:;" onclick="context_menu(this, [{'contains': ['hash'], 'value': '{{ cc }}' }], 0, {{ container.id }}, null, false);">
+                        {{ cc }}&nbsp;
+                        <span class="fa fa-caret-down" style="font-size: smaller;"></span>
+                    </a></td>
                 </tr>
             {% endfor %}
         </tbody>

@@ -90,6 +90,7 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
                 </th>
             </tr>
             <tr>
+                <th>#</th>
                 <th>Name</th>
                 <th>Code</th>
                 <th>Message</th>
@@ -98,6 +99,7 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
         <tbody>
             {% for analysis in rr.analysis %}
             <tr>
+                <td>{{forloop.counter}}.</td>
                 <td>{{analysis.name}}</td>
                 <td>{{analysis.code}}</td>
                 <td>{{analysis.message}}</td>

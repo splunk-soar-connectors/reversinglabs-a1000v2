@@ -106,19 +106,19 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
             </tr>
             {% if data.resolutions|length > 0 %}
             <tr>
-                <th> </th>
-                <th> Provider</th>
-                <th> Host Name</th>
-                <th> Last Resolution Time</th>
+                <th>#</th>
+                <th>Provider</th>
+                <th>Host Name</th>
+                <th>Last Resolution Time</th>
             </tr>
         </thead>
         <tbody>
             {% for x in data.resolutions %}
             <tr>
-                <td>{{ forloop.counter}}.</td>
-                <td>{{ x.provider}}</td>
-                <td>{{ x.host_name }}</td>
-                <td>{{ x.last_resolution_time }}</td>
+                <td>{{forloop.counter}}.</td>
+                <td>{{x.provider}}</td>
+                <td>{{x.host_name}}</td>h
+                <td>{{x.last_resolution_time}}</td>
             </tr>
             {% endfor %}
         </tbody>
