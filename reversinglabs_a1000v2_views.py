@@ -252,9 +252,21 @@ def yara_get_matches(provides, all_app_runs, context):
             context["data"] = result.get_data()[0]
             context["param"] = result.get_param()
             context["summary"] = result.get_summary()
+            classification = {
+                "known": 0,
+                "unknown": 0,
+                "suspicious": 0,
+                "malicious": 0,
+                "total": 0,
+            }
             for x in context["data"]["results"]:
                 x["classification"] = get_status_from_ticore_classification(x.get("classification"))
                 x["classification_color"] = color_code_classification(x["classification"])
+                classification[x["classification"]] += 1
+                classification["total"] += 1
+            context["chart"] = {
+                "classification": classification,
+            }
     return 'views/reversinglabs_yara_get_matches.html'
 
 
