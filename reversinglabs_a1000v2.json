@@ -15,7 +15,7 @@
             "name": "RLakukolja"
         },
         {
-            "name": "DinkoReversingLabs"   
+            "name": "DinkoReversingLabs"
         },
         {
             "name": "MislavReversingLabs"
@@ -34,17 +34,13 @@
             "description": "A1000 url",
             "data_type": "string",
             "required": true,
-            "order": 0,
-            "name": "url",
-            "id": 0
+            "order": 0
         },
         "token": {
             "description": "A1000 token",
             "data_type": "password",
             "required": true,
-            "order": 1,
-            "name": "token",
-            "id": 1
+            "order": 1
         }
     },
     "actions": [
@@ -82,19 +78,15 @@
                         "ppt",
                         "xls"
                     ],
-                    "order": 0,
-                    "name": "vault_id"
+                    "order": 0
                 },
                 "file_name": {
                     "description": "Filename to use",
                     "data_type": "string",
                     "required": false,
                     "primary": false,
-                    "contains": [
-                        "file name"
-                    ],
-                    "order": 1,
-                    "name": "file_name"
+                    "contains": ["file name"],
+                    "order": 1
                 },
                 "custom_file_name": {
                     "description": "Custom file name for upload",
@@ -102,7 +94,6 @@
                     "required": false,
                     "primary": false,
                     "order": 2,
-                    "name": "custom_file_name",
                     "contains": ["file name"]
                 },
                 "archive_password": {
@@ -110,8 +101,7 @@
                     "data_type": "password",
                     "required": false,
                     "primary": false,
-                    "order": 3,
-                    "name": "archive_password"
+                    "order": 3
                 },
                 "rl_cloud_sandbox_platform": {
                     "description": "Cloud Sandbox platform (windows7 or windows10)",
@@ -119,7 +109,6 @@
                     "required": false,
                     "primary": false,
                     "order": 4,
-                    "name": "rl_cloud_sandbox_platform",
                     "value_list": ["windows7", "windows10", "macos_11", "windows11", "linux"]
                 },
                 "tags": {
@@ -127,26 +116,21 @@
                     "data_type": "string",
                     "required": false,
                     "primary": false,
-                    "order": 5,
-                    "name": "tags",
-                    "contains": ["tags"]
+                    "order": 5
                 },
                 "comment": {
                     "description": "Comment to add to a sample",
                     "data_type": "string",
                     "required": false,
                     "primary": false,
-                    "order": 6,
-                    "name": "comment",
-                    "contains": ["comment"]
+                    "order": 6
                 },
                 "cloud_analysis": {
                     "description": "Use cloud analysis",
                     "data_type": "boolean",
                     "required": false,
                     "primary": false,
-                    "order": 7,
-                    "name": "cloud_analysis"
+                    "order": 7
                 }
             },
             "output": [
@@ -250,9 +234,6 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "name": "file_url",
-                    "id": 1,
-                    "param_name": "file_url",
                     "contains": ["url"]
                 },
                 "crawler": {
@@ -261,9 +242,6 @@
                     "required": false,
                     "primary": false,
                     "order": 1,
-                    "name": "crawler",
-                    "id": 2,
-                    "param_name": "crawler",
                     "value_list": ["local", "cloud"],
                     "default": "local"
                 },
@@ -272,10 +250,7 @@
                     "data_type": "password",
                     "required": false,
                     "primary": false,
-                    "order": 2,
-                    "name": "archive_password",
-                    "id": 3,
-                    "param_name": "archive_password"
+                    "order": 2
                 },
                 "rl_cloud_sandbox_platform": {
                     "description": "Cloud Sandbox platform (windows7 or windows10)",
@@ -283,9 +258,6 @@
                     "required": false,
                     "primary": false,
                     "order": 3,
-                    "name": "rl_cloud_sandbox_platform",
-                    "id": 4,
-                    "param_name": "rl_cloud_sandbox_platform",
                     "value_list": ["windows7", "windows10", "macos_11", "windows11", "linux"]
                 }
             },
@@ -365,10 +337,7 @@
                     "required": true,
                     "primary": true,
                     "contains": ["task id"],
-                    "order": 0,
-                    "name": "task_id",
-                    "id": 1,
-                    "param_name": "task_id"
+                    "order": 0
                 }
             },
             "output": [
@@ -429,7 +398,6 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "name": "hash",
                     "contains": ["hash", "sha1", "sha256", "md5"]
                 }
             },
@@ -487,9 +455,6 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "name": "hash",
-                    "id": 1,
-                    "param_name": "hash",
                     "contains": ["hash", "sha1", "sha256", "md5"]
                 }
             },
@@ -551,7 +516,6 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "name": "hash",
                     "contains": ["hash", "sha1", "sha256", "md5"]
                 }
             },
@@ -609,7 +573,6 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "name": "hash",
                     "contains": ["hash", "sha1", "sha256", "md5"]
                 }
             },
@@ -671,8 +634,7 @@
                     "required": true,
                     "primary": true,
                     "contains": ["url"],
-                    "order": 0,
-                    "name": "url"
+                    "order": 0
                 }
             },
             "output": [
@@ -733,8 +695,7 @@
                     "required": true,
                     "primary": true,
                     "contains": ["domain", "url"],
-                    "order": 0,
-                    "name": "domain"
+                    "order": 0
                 }
             },
             "output": [
@@ -795,8 +756,7 @@
                     "required": true,
                     "primary": true,
                     "contains": ["ip"],
-                    "order": 0,
-                    "name": "ip"
+                    "order": 0
                 }
             },
             "output": [
@@ -857,9 +817,6 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "name": "ip",
-                    "id": 1,
-                    "param_name": "ip",
                     "contains": ["ip"]
                 },
                 "page": {
@@ -867,10 +824,7 @@
                     "data_type": "string",
                     "required": false,
                     "primary": false,
-                    "order": 1,
-                    "id": 2,
-                    "name": "page",
-                    "param_name": "page"
+                    "order": 1
                 },
                 "page_size": {
                     "description": "Number of elements in the response",
@@ -878,9 +832,6 @@
                     "required": false,
                     "primary": false,
                     "order": 2,
-                    "id": 3,
-                    "name": "page_size",
-                    "param_name": "page_size",
                     "default": 500
                 }
             },
@@ -954,9 +905,6 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "name": "ip",
-                    "id": 1,
-                    "param_name": "ip",
                     "contains": ["ip"]
                 },
                 "page": {
@@ -964,10 +912,7 @@
                     "data_type": "string",
                     "required": false,
                     "primary": false,
-                    "order": 1,
-                    "id": 2,
-                    "name": "page",
-                    "param_name": "page"
+                    "order": 1
                 },
                 "page_size": {
                     "description": "Number of elements in the response",
@@ -975,9 +920,6 @@
                     "required": false,
                     "primary": false,
                     "order": 2,
-                    "id": 3,
-                    "name": "page_size",
-                    "param_name": "page_size",
                     "default": 500
                 }
             },
@@ -1051,9 +993,6 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "name": "ip",
-                    "id": 1,
-                    "param_name": "ip",
                     "contains": ["ip"]
                 },
                 "page": {
@@ -1061,10 +1000,7 @@
                     "data_type": "string",
                     "required": false,
                     "primary": false,
-                    "order": 1,
-                    "id": 2,
-                    "name": "page",
-                    "param_name": "page"
+                    "order": 1
                 },
                 "page_size": {
                     "description": "Number of elements in the response",
@@ -1072,9 +1008,6 @@
                     "required": false,
                     "primary": false,
                     "order": 2,
-                    "id": 3,
-                    "name": "page_size",
-                    "param_name": "page_size",
                     "default": 500
                 }
             },
@@ -1148,9 +1081,6 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "name": "query",
-                    "id": 1,
-                    "param_name": "query",
                     "contains": ["search query"]
                 },
                 "limit": {
@@ -1159,10 +1089,7 @@
                     "required": false,
                     "primary": false,
                     "default": 5000,
-                    "order": 1,
-                    "name": "limit",
-                    "id": 2,
-                    "param_name": "limit"
+                    "order": 1
                 },
                 "only_cloud_results": {
                     "description": "Show only TitaniumCloud results, by default only local results are show",
@@ -1170,10 +1097,7 @@
                     "required": false,
                     "primary": false,
                     "default": false,
-                    "order": 2,
-                    "name": "only_cloud_results",
-                    "id": 3,
-                    "param_name": "only_cloud_results"
+                    "order": 2
                 }
             },
             "output": [
@@ -1246,7 +1170,6 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "name": "query",
                     "contains": ["search query"]
                 },
                 "start_search_date": {
@@ -1254,9 +1177,7 @@
                     "data_type": "string",
                     "required": true,
                     "primary": false,
-                    "order": 1,
-                    "name": "start_search_date",
-                    "contains": ["date"]
+                    "order": 1
                 },
                 "end_search_date": {
                     "description": "The ending date for the search (earlier date)",
@@ -1264,7 +1185,6 @@
                     "required": true,
                     "primary": false,
                     "order": 2,
-                    "name": "end_search_date",
                     "contains": ["date"]
                 },
                 "sorting_order": {
@@ -1273,7 +1193,6 @@
                     "required": false,
                     "primary": false,
                     "order": 3,
-                    "name": "sorting_order",
                     "value_list": ["desc", "asc"],
                     "default": "desc"
                 },
@@ -1283,7 +1202,6 @@
                     "required": false,
                     "primary": false,
                     "order": 4,
-                    "name": "sorting_criteria",
                     "value_list": ["sha1", "firstseen", "threatname", "sampletype", "filecount", "size"],
                     "default": "firstseen"
                 },
@@ -1293,7 +1211,6 @@
                     "required": false,
                     "primary": false,
                     "order": 5,
-                    "name": "limit",
                     "default": 5000
                 },
                 "page": {
@@ -1301,8 +1218,7 @@
                     "data_type": "numeric",
                     "required": false,
                     "primary": false,
-                    "order": 6,
-                    "name": "page"
+                    "order": 6
                 }
             },
             "output": [
@@ -1316,7 +1232,6 @@
                 {
                     "data_path": "action_result.parameter.start_search_date",
                     "data_type": "string",
-                    "contains": ["date"],
                     "column_name": "start_search_date",
                     "column_order": 1
                 },
@@ -1401,7 +1316,6 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "name": "query",
                     "contains": ["search query"]
                 },
                 "sorting_order": {
@@ -1410,7 +1324,6 @@
                     "required": false,
                     "primary": false,
                     "order": 1,
-                    "name": "sorting_order",
                     "value_list": ["desc", "asc"],
                     "default": "desc"
                 },
@@ -1420,7 +1333,6 @@
                     "required": false,
                     "primary": false,
                     "order": 2,
-                    "name": "sorting_criteria",
                     "value_list": ["sha1", "firstseen", "threatname", "sampletype", "filecount", "size"],
                     "default": "firstseen"
                 },
@@ -1430,7 +1342,6 @@
                     "required": false,
                     "primary": false,
                     "order": 3,
-                    "name": "limit",
                     "default": 5000
                 },
                 "page": {
@@ -1438,8 +1349,7 @@
                     "data_type": "numeric",
                     "required": false,
                     "primary": false,
-                    "order": 4,
-                    "name": "page"
+                    "order": 4
                 }
             },
             "output": [
@@ -1524,9 +1434,6 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "name": "hash",
-                    "id": 1,
-                    "param_name": "hash",
                     "contains": ["hash", "sha1", "sha256", "md5"]
                 }
             },
@@ -1584,9 +1491,6 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "name": "hash",
-                    "id": 1,
-                    "param_name": "hash",
                     "contains": ["hash", "sha1", "sha256", "md5"]
                 }
             },
@@ -1648,9 +1552,6 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "name": "hash",
-                    "id": 1,
-                    "param_name": "hash",
                     "contains": ["hash", "sha1", "sha256", "md5"]
                 }
             },
@@ -1708,7 +1609,6 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "name": "hash",
                     "contains": ["hash", "sha1", "sha256", "md5"]
                 },
                 "retry": {
@@ -1717,17 +1617,14 @@
                     "required": false,
                     "primary": false,
                     "default": true,
-                    "order": 1,
-                    "name": "retry"
+                    "order": 1
                 },
                 "fields": {
                     "description": "List of A1000 report 'fields' to query",
                     "data_type": "string",
                     "required": false,
                     "primary": false,
-                    "order": 2,
-                    "name": "fields",
-                    "contains": ["fields"]
+                    "order": 2
                 },
                 "include_network_threat_intelligence": {
                     "description": "Include network threat intelligence in the summary report",
@@ -1735,8 +1632,7 @@
                     "required": false,
                     "primary": false,
                     "default": true,
-                    "order": 3,
-                    "name": "include_network_threat_intelligence"
+                    "order": 3
                 },
                 "skip_reanalysis": {
                     "description": "Skip sample reanalysis when fetching the summary report",
@@ -1744,8 +1640,7 @@
                     "required": false,
                     "primary": false,
                     "default": false,
-                    "order": 4,
-                    "name": "skip_reanalysis"
+                    "order": 4
                 }
             },
             "output": [
@@ -1765,7 +1660,6 @@
                 {
                     "data_path": "action_result.parameter.fields",
                     "data_type": "string",
-                    "contains": ["fields"],
                     "column_name": "fields",
                     "column_order": 2
                 },
@@ -1831,9 +1725,6 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "name": "hash",
-                    "id": 1,
-                    "param_name": "hash",
                     "contains": ["hash", "sha1", "sha256", "md5"]
                 },
                 "retry": {
@@ -1842,21 +1733,14 @@
                     "required": false,
                     "primary": false,
                     "default": true,
-                    "order": 1,
-                    "name": "retry",
-                    "id": 2,
-                    "param_name": "retry"
+                    "order": 1
                 },
                 "fields": {
                     "description": "List of A1000 report 'fields' to query",
                     "data_type": "string",
                     "required": false,
                     "primary": false,
-                    "order": 2,
-                    "name": "fields",
-                    "id": 3,
-                    "param_name": "fields",
-                    "contains": ["fields"]
+                    "order": 2
                 },
                 "skip_reanalysis": {
                     "description": "Skip sample reanalysis when fetching the summary report",
@@ -1864,10 +1748,7 @@
                     "required": false,
                     "primary": false,
                     "default": false,
-                    "order": 3,
-                    "name": "skip_reanalysis",
-                    "id": 4,
-                    "param_name": "skip_reanalysis"
+                    "order": 3
                 }
             },
             "output": [
@@ -1887,7 +1768,6 @@
                 {
                     "data_path": "action_result.parameter.fields",
                     "data_type": "string",
-                    "contains": ["fields"],
                     "column_name": "fields",
                     "column_order": 2
                 },
@@ -1947,9 +1827,6 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "name": "hash",
-                    "id": 1,
-                    "param_name": "hash",
                     "contains": ["hash", "sha1", "sha256", "md5"]
                 },
                 "local_only": {
@@ -1958,10 +1835,7 @@
                     "required": false,
                     "primary": false,
                     "default": false,
-                    "order": 1,
-                    "name": "local_only",
-                    "id": 2,
-                    "param_name": "local_only"
+                    "order": 1
                 },
                 "av_scanners": {
                     "description": "Return AV scanner results",
@@ -1969,10 +1843,7 @@
                     "required": false,
                     "primary": false,
                     "default": false,
-                    "order": 2,
-                    "name": "av_scanners",
-                    "id": 3,
-                    "param_name": "av_scanners"
+                    "order": 2
                 }
             },
             "output": [
@@ -2045,9 +1916,6 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "name": "hash",
-                    "id": 1,
-                    "param_name": "hash",
                     "contains": ["hash", "sha1", "sha256", "md5"]
                 }
             },
@@ -2109,9 +1977,6 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "name": "hash",
-                    "id": 1,
-                    "param_name": "hash",
                     "contains": ["hash", "sha1", "sha256", "md5"]
                 },
                 "tags": {
@@ -2119,11 +1984,7 @@
                     "data_type": "string",
                     "required": true,
                     "primary": false,
-                    "order": 1,
-                    "name": "tags",
-                    "id": 2,
-                    "param_name": "tags",
-                    "contains": ["tags"]
+                    "order": 1
                 }
             },
             "output": [
@@ -2137,7 +1998,6 @@
                 {
                     "data_path": "action_result.parameter.tags",
                     "data_type": "string",
-                    "contains": ["tags"],
                     "column_name": "tags",
                     "column_order": 1
                 },
@@ -2191,9 +2051,6 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "name": "hash",
-                    "id": 1,
-                    "param_name": "hash",
                     "contains": ["hash", "sha1", "sha256", "md5"]
                 },
                 "tags": {
@@ -2201,11 +2058,7 @@
                     "data_type": "string",
                     "required": true,
                     "primary": false,
-                    "order": 1,
-                    "name": "tags",
-                    "id": 2,
-                    "param_name": "tags",
-                    "contains": ["tags"]
+                    "order": 1
                 }
             },
             "output": [
@@ -2219,7 +2072,6 @@
                 {
                     "data_path": "action_result.parameter.tags",
                     "data_type": "string",
-                    "contains": ["tags"],
                     "column_name": "tags",
                     "column_order": 1
                 },
@@ -2273,9 +2125,6 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "id": 1,
-                    "name": "hash",
-                    "param_name": "hash",
                     "contains": ["hash", "sha1", "sha256", "md5"]
                 },
                 "system": {
@@ -2285,10 +2134,7 @@
                     "default": "local",
                     "required": true,
                     "primary": false,
-                    "order": 1,
-                    "id": 2,
-                    "name": "system",
-                    "param_name": "system"
+                    "order": 1
                 },
                 "classification": {
                     "description": "Classification to set",
@@ -2297,22 +2143,14 @@
                     "default": "malicious",
                     "required": true,
                     "primary": false,
-                    "order": 2,
-                    "id": 3,
-                    "name": "classification",
-                    "param_name": "classification",
-                    "contains": ["classification"]
+                    "order": 2
                 },
                 "risk_score": {
                     "description": "Risk score to set for classification",
                     "data_type": "numeric",
                     "required": false,
                     "primary": false,
-                    "order": 3,
-                    "id": 4,
-                    "name": "risk_score",
-                    "param_name": "risk_score",
-                    "contains": ["risk score"]
+                    "order": 3
                 },
                 "threat_platform": {
                     "description": "Threat platform to set, must be on the supported list",
@@ -2320,9 +2158,6 @@
                     "required": false,
                     "primary": false,
                     "order": 4,
-                    "id": 5,
-                    "name": "threat_platform",
-                    "param_name": "threat_platform",
                     "contains": ["threat platform"]
                 },
                 "threat_type": {
@@ -2330,11 +2165,7 @@
                     "data_type": "string",
                     "required": false,
                     "primary": false,
-                    "order": 5,
-                    "id": 6,
-                    "name": "threat_type",
-                    "param_name": "threat_type",
-                    "contains": ["threat type"]
+                    "order": 5
                 },
                 "threat_name": {
                     "description": "Threat name to set, must be on the supported list",
@@ -2342,9 +2173,6 @@
                     "required": false,
                     "primary": false,
                     "order": 6,
-                    "id": 7,
-                    "name": "threat_name",
-                    "param_name": "threat_name",
                     "contains": ["threat name"]
                 }
             },
@@ -2365,14 +2193,12 @@
                 {
                     "data_path": "action_result.parameter.classification",
                     "data_type": "string",
-                    "contains": ["classification"],
                     "column_name": "classification",
                     "column_order": 2
                 },
                 {
                     "data_path": "action_result.parameter.risk_score",
                     "data_type": "string",
-                    "contains": ["rist score"],
                     "column_name": "risk_score",
                     "column_order": 3
                 },
@@ -2386,7 +2212,6 @@
                 {
                     "data_path": "action_result.threat_type",
                     "data_type": "string",
-                    "contains": ["threat type"],
                     "column_name": "threat_type",
                     "column_order": 5
                 },
@@ -2519,10 +2344,7 @@
                     "required": false,
                     "primary": false,
                     "value_list": ["my", "user", "system", "all"],
-                    "order": 0,
-                    "name": "type",
-                    "id": 1,
-                    "param_name": "type"
+                    "order": 0
                 },
                 "status": {
                     "description": "Status",
@@ -2530,10 +2352,7 @@
                     "required": false,
                     "primary": false,
                     "value_list": ["all", "error", "active", "disabled", "pending", "invalid", "capped"],
-                    "order": 1,
-                    "name": "status",
-                    "id": 2,
-                    "param_name": "status"
+                    "order": 1
                 },
                 "source": {
                     "description": "Source",
@@ -2541,30 +2360,21 @@
                     "required": false,
                     "primary": false,
                     "value_list": ["all", "local", "cloud"],
-                    "order": 2,
-                    "name": "source",
-                    "id": 3,
-                    "param_name": "source"
+                    "order": 2
                 },
                 "page": {
                     "description": "Page",
                     "data_type": "numeric",
                     "required": false,
                     "primary": false,
-                    "order": 3,
-                    "name": "page",
-                    "id": 4,
-                    "param_name": "page"
+                    "order": 3
                 },
                 "page_size": {
                     "description": "Page size",
                     "data_type": "numeric",
                     "required": false,
                     "primary": false,
-                    "order": 4,
-                    "name": "page_size",
-                    "id": 5,
-                    "param_name": "page_size"
+                    "order": 4
                 }
             },
             "output": [
@@ -2648,9 +2458,6 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "name": "ruleset_name",
-                    "id": 1,
-                    "param_name": "ruleset_name",
                     "contains": ["ruleset name"]
                 }
             },
@@ -2712,9 +2519,6 @@
                     "required": false,
                     "primary": false,
                     "order": 0,
-                    "name": "ruleset_name",
-                    "id": 1,
-                    "param_name": "ruleset_name",
                     "contains": ["ruleset name"]
                 },
                 "page": {
@@ -2722,20 +2526,14 @@
                     "data_type": "numeric",
                     "required": false,
                     "primary": false,
-                    "order": 1,
-                    "name": "page",
-                    "id": 2,
-                    "param_name": "page"
+                    "order": 1
                 },
                 "page_size": {
                     "description": "Page size",
                     "data_type": "numeric",
                     "required": false,
                     "primary": false,
-                    "order": 2,
-                    "name": "page_size",
-                    "id": 3,
-                    "param_name": "page_size"
+                    "order": 2
                 }
             },
             "output": [
@@ -2808,9 +2606,6 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "name": "ruleset_name",
-                    "id": 1,
-                    "param_name": "ruleset_name",
                     "contains": ["ruleset name"]
                 },
                 "ruleset_text": {
@@ -2818,31 +2613,21 @@
                     "data_type": "string",
                     "required": true,
                     "primary": false,
-                    "order": 1,
-                    "name": "ruleset_text",
-                    "id": 2,
-                    "param_name": "ruleset_text",
-                    "contains": ["ruleset text"]
+                    "order": 1
                 },
                 "publish": {
                     "description": "Publish to C1000 in the same cluster",
                     "data_type": "boolean",
                     "required": false,
                     "primary": false,
-                    "order": 2,
-                    "name": "publish",
-                    "id": 3,
-                    "param_name": "publish"
+                    "order": 2
                 },
                 "ticloud": {
                     "description": "Sync with TiCloud",
                     "data_type": "boolean",
                     "required": false,
                     "primary": false,
-                    "order": 3,
-                    "name": "ticloud",
-                    "id": 4,
-                    "param_name": "ticloud"
+                    "order": 3
                 }
             },
             "output": [
@@ -2856,7 +2641,6 @@
                 {
                     "data_path": "action_result.parameter.ruleset_text",
                     "data_type": "string",
-                    "contains": ["ruleset text"],
                     "column_name": "ruleset_text",
                     "column_order": 1
                 },
@@ -2922,9 +2706,6 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "name": "ruleset_name",
-                    "id": 1,
-                    "param_name": "ruleset_name",
                     "contains": ["ruleset name"]
                 },
                 "publish": {
@@ -2932,10 +2713,7 @@
                     "data_type": "boolean",
                     "required": false,
                     "primary": false,
-                    "order": 1,
-                    "name": "publish",
-                    "id": 2,
-                    "param_name": "publish"
+                    "order": 1
                 }
             },
             "output": [
@@ -3002,9 +2780,6 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "name": "ruleset_name",
-                    "id": 1,
-                    "param_name": "ruleset_name",
                     "contains": ["ruleset name"]
                 },
                 "enabled": {
@@ -3012,20 +2787,14 @@
                     "data_type": "boolean",
                     "required": true,
                     "primary": false,
-                    "order": 1,
-                    "name": "enabled",
-                    "id": 2,
-                    "param_name": "enabled"
+                    "order": 1
                 },
                 "publish": {
                     "description": "Publish to C1000 in the same cluster",
                     "data_type": "boolean",
                     "required": false,
                     "primary": false,
-                    "order": 2,
-                    "name": "publish",
-                    "id": 3,
-                    "param_name": "publish"
+                    "order": 2
                 }
             },
             "output": [
@@ -3142,10 +2911,7 @@
                     "data_type": "string",
                     "required": true,
                     "primary": true,
-                    "order": 0,
-                    "name": "time",
-                    "id": 1,
-                    "param_name": "time"
+                    "order": 0
                 }
             },
             "output": [
@@ -3205,10 +2971,7 @@
                     "required": true,
                     "primary": true,
                     "value_list": ["START", "STOP"],
-                    "order": 0,
-                    "name": "operation",
-                    "id": 1,
-                    "param_name": "operation"
+                    "order": 0
                 }
             },
             "output": [
@@ -3268,9 +3031,6 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "name": "ruleset_name",
-                    "id": 1,
-                    "param_name": "ruleset_name",
                     "contains": ["ruleset name"]
                 },
                 "operation": {
@@ -3279,10 +3039,7 @@
                     "required": true,
                     "primary": false,
                     "value_list": ["START", "STOP", "CLEAR"],
-                    "order": 1,
-                    "name": "operation",
-                    "id": 2,
-                    "param_name": "operation"
+                    "order": 1
                 }
             },
             "output": [
@@ -3394,9 +3151,6 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "name": "ruleset_name",
-                    "id": 1,
-                    "param_name": "ruleset_name",
                     "contains": ["ruleset name"]
                 }
             },
@@ -3458,9 +3212,6 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "name": "hashes",
-                    "id": 1,
-                    "param_name": "hashes",
                     "contains": ["hash", "sha1", "sha256", "md5"]
                 }
             },
@@ -3522,9 +3273,6 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "name": "hash",
-                    "id": 1,
-                    "param_name": "hash",
                     "contains": ["hash", "sha1", "sha256", "md5"]
                 }
             },
@@ -3622,9 +3370,6 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "name": "hash",
-                    "id": 1,
-                    "param_name": "hash",
                     "contains": ["hash", "sha1", "sha256", "md5"]
                 }
             },
@@ -3682,9 +3427,6 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "name": "hashes",
-                    "id": 1,
-                    "param_name": "hashes",
                     "contains": ["hash", "sha1", "sha256", "md5"]
                 },
                 "titanium_cloud": {
@@ -3692,80 +3434,56 @@
                     "data_type": "boolean",
                     "required": false,
                     "primary": false,
-                    "order": 1,
-                    "name": "titanium_cloud",
-                    "id": 2,
-                    "param_name": "titanium_cloud"
+                    "order": 1
                 },
                 "titanium_core": {
                     "description": "Titanium Core analysis",
                     "data_type": "boolean",
                     "required": false,
                     "primary": false,
-                    "order": 2,
-                    "name": "titanium_core",
-                    "id": 3,
-                    "param_name": "titanium_core"
+                    "order": 2
                 },
                 "rl_cloud_sandbox": {
                     "description": "RL cloud sandbox analysis",
                     "data_type": "boolean",
                     "required": false,
                     "primary": false,
-                    "order": 3,
-                    "name": "rl_cloud_sandbox",
-                    "id": 4,
-                    "param_name": "rl_cloud_sandbox"
+                    "order": 3
                 },
                 "cuckoo_sandbox": {
                     "description": "Cuckoo sandbox analysis",
                     "data_type": "boolean",
                     "required": false,
                     "primary": false,
-                    "order": 4,
-                    "name": "cuckoo_sandbox",
-                    "id": 5,
-                    "param_name": "cuckoo_sandbox"
+                    "order": 4
                 },
                 "fireeye": {
                     "description": "FireEye analysis",
                     "data_type": "boolean",
                     "required": false,
                     "primary": false,
-                    "order": 5,
-                    "name": "fireeye",
-                    "id": 6,
-                    "param_name": "fireeye"
+                    "order": 5
                 },
                 "joe_sandbox": {
                     "description": "Joe sandbox analysis",
                     "data_type": "boolean",
                     "required": false,
                     "primary": false,
-                    "order": 6,
-                    "name": "joe_sandbox",
-                    "id": 7,
-                    "param_name": "joe_sandbox"
+                    "order": 6
                 },
                 "cape": {
                     "description": "Cape analysis",
                     "data_type": "boolean",
                     "required": false,
                     "primary": false,
-                    "order": 7,
-                    "name": "cape",
-                    "id": 8,
-                    "param_name": "cape"
+                    "order": 7
                 },
                 "rl_cloud_sandbox_platform": {
                     "description": "Platform on which the samples should be detonated",
                     "data_type": "string",
                     "required": false,
                     "primary": false,
-                    "order": 8,
-                    "name": "rl_cloud_sandbox_platform",
-                    "id": 9,
-                    "param_name": "rl_cloud_sandbox_platform"
+                    "order": 8
                 }
             },
             "output": [
