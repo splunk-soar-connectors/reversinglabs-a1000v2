@@ -115,6 +115,7 @@ def ip_reputation(provides, all_app_runs, context):
     for summary, action_results in all_app_runs:
         for result in action_results:
             context['data'] = result.get_data()[0]
+            context["summary"] = result.get_summary()
 
     return 'views/reversinglabs_ip_reputation.html'
 

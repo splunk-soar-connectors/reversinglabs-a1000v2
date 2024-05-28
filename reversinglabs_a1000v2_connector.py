@@ -314,6 +314,8 @@ class ReversinglabsA1000V2Connector(BaseConnector):
 
         self.debug_print("Executed", self.get_action_identifier())
 
+        action_result.set_summary({'directory': self.get_config()["directory"]})
+
         action_result.add_data(response.json())
 
     def _handle_network_ip_to_domain(self, action_result, param):
