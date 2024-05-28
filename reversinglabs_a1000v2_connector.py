@@ -659,6 +659,7 @@ class ReversinglabsA1000V2Connector(BaseConnector):
             page_size=page_size,
         )
         self.debug_print("Executed", self.get_action_identifier())
+        action_result.set_summary({'directory': self.get_config()["directory"]})
         action_result.add_data(response.json())
 
     def _handle_yara_create_ruleset(self, action_result, param):
