@@ -85,7 +85,6 @@
                     "data_type": "string",
                     "required": false,
                     "primary": false,
-                    "contains": ["file name"],
                     "order": 1
                 },
                 "custom_file_name": {
@@ -153,7 +152,6 @@
                 {
                     "data_path": "action_result.parameter.file_name",
                     "data_type": "string",
-                    "contains": ["file name"],
                     "column_name": "file_name",
                     "column_order": 1
                 },
