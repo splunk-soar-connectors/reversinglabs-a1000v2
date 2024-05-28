@@ -98,6 +98,7 @@ def url_reputation(provides, all_app_runs, context):
             context['data'] = result.get_data()[0]
             context["classification"] = context['data'].get("classification", "UNAVAILABLE").upper()
             context["classification_color"] = color_code_classification(context["classification"])
+            context["summary"] = result.get_summary()
 
     return 'views/reversinglabs_url_reputation.html'
 
