@@ -138,7 +138,6 @@ class ReversinglabsA1000V2Connector(BaseConnector):
             self.ACTION_ID_GET_SUMMARY_REPORT: self._handle_get_summary_report,
             self.ACTION_ID_GET_DETAILED_REPORT: self._handle_get_detailed_report,
             self.ACTION_ID_GET_CLASSIFICATION: self._handle_get_classification,
-
             self.ACTION_ID_GET_USER_TAGS: self._handle_get_user_tags,
             self.ACTION_ID_CREATE_USER_TAGS: self._handle_create_user_tags,
             self.ACTION_ID_DELETE_USER_TAGS: self._handle_delete_user_tags,
