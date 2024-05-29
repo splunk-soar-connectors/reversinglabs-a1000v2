@@ -101,22 +101,33 @@ Read only: **True**
 Upload file to A1000.
 
 #### Action Parameters
-PARAMETER | REQUIRED | DESCRIPTION | TYPE | CONTAINS
---------- | -------- | ----------- | ---- | --------
-**vault_id** |  required  | Vault ID of file to detonate | string |  `apk`  `doc`  `flash`  `jar`  `pdf`  `pe file`  `ppt`  `xls` 
-**file_name** |  optional  | Filename to use | string |  `file name` 
+| PARAMETER                     | REQUIRED | DESCRIPTION                                       | TYPE     | CONTAINS                                                     |
+|-------------------------------|----------|---------------------------------------------------|----------|--------------------------------------------------------------|
+| **vault_id**                  | required | Vault ID of file to detonate                      | string   | `apk`  `doc`  `flash`  `jar`  `pdf`  `pe file`  `ppt`  `xls` |
+| **file_name**                 | optional | Filename to use                                   | string   | `file name`                                                  |
+| **custom_file_name**          | optional | Custom file name for upload                       | string   | `file name`                                                  |
+| **archive_password**          | optional | password for the file if it is password protected | password |                                                              |
+| **rl_cloud_sandbox_platform** | optional | Cloud Sandbox platform                            | string   |                                                              |
+| **tags**                      | optional | Comma separated list of tags to assign to sample  | string   |                                                              |
+| **comment**                   | optional | Comment to add to sample                          | string   |                                                              |
+| **cloud_analysis**            | optional | Use cloud analysis                                | boolean  |                                                              |
 
 #### Action Output
-DATA PATH | TYPE | CONTAINS | EXAMPLE VALUES
---------- | ---- | -------- | --------------
-action_result.status | string |  |  
-action_result.parameter.file_name | string |  `file name`  |  
-action_result.parameter.vault_id | string |  `pe file`  `pdf`  `flash`  `apk`  `jar`  `doc`  `xls`  `ppt`  |  
-action_result.data | string |  |  
-action_result.summary | string |  |  
-action_result.message | string |  |  
-summary.total_objects | numeric |  |  
-summary.total_objects_successful | numeric |  |    
+| DATA PATH                                         | TYPE     | CONTAINS                                                     | EXAMPLE VALUES                                        |
+|---------------------------------------------------|----------|--------------------------------------------------------------|-------------------------------------------------------|
+| action_result.parameter.vault_id                  | string   | `pe file`  `pdf`  `flash`  `apk`  `jar`  `doc`  `xls`  `ppt` |                                                       |
+| action_result.parameter.file_name                 | string   | `file name`                                                  |                                                       |
+| action_result.parameter.custom_file_name          | string   | `file name`                                                  |                                                       |
+| action_result.parameter.rl_cloud_sandbox_platform | string   |                                                              | "windows7" "windows10" "macos_11" "windows11" "linux" |
+| action_result.parameter.tags                      | string   |                                                              |                                                       |
+| action_result.parameter.comment                   | string   |                                                              |                                                       |
+| action_result.parameter.cloud_analysis            | boolean  |                                                              |                                                       |
+| action_result.status                              | string   |                                                              |                                                       |
+| action_result.data                                | string   |                                                              |                                                       |
+| action_result.summary                             | string   |                                                              |                                                       |
+| action_result.message                             | string   |                                                              |                                                       |
+| summary.total_objects                             | numeric  |                                                              |                                                       |
+| summary.total_objects_successful                  | numeric  |                                                              |                                                       |
 
 ## action: 'submit url'
 Detonate file from url
@@ -127,26 +138,25 @@ Read only: **False**
 Detonate file from url.
 
 #### Action Parameters
-PARAMETER | REQUIRED | DESCRIPTION | TYPE | CONTAINS
---------- | -------- | ----------- | ---- | --------
-**file_url** |  required  | URL from which the appliance should download the data | string | 
-**crawler** |  optional  | Crawler method (local or cloud) | string | 
-**archive_password** |  optional  | Password, if file is a password-protected archive | string | 
-**rl_cloud_sandbox_platform** |  optional  | Cloud Sandbox platform (windows7 or windows10) | string | 
+| PARAMETER                     | REQUIRED | DESCRIPTION                                           | TYPE     | CONTAINS |
+|-------------------------------|----------|-------------------------------------------------------|----------|----------|
+| **file_url**                  | required | URL from which the appliance should download the data | string   | `url`    |
+| **crawler**                   | optional | Crawler method (local or cloud)                       | password |          |
+| **archive_password**          | optional | Password, if file is a password-protected archive     | string   |          |
+| **rl_cloud_sandbox_platform** | optional | Cloud Sandbox platform                                | string   |          |
 
 #### Action Output
-DATA PATH | TYPE | CONTAINS | EXAMPLE VALUES
---------- | ---- | -------- | --------------
-action_result.status | string |  |  
-action_result.parameter.archive_password | string |  |  
-action_result.parameter.crawler | string |  |  
-action_result.parameter.file_url | string |  |  
-action_result.parameter.rl_cloud_sandbox_platform | string |  |  
-action_result.data | string |  |  
-action_result.summary | string |  |  
-action_result.message | string |  |  
-summary.total_objects | numeric |  |  
-summary.total_objects_successful | numeric |  |    
+| DATA PATH                                         | TYPE    | CONTAINS | EXAMPLE VALUES                                        |
+|---------------------------------------------------|---------|----------|-------------------------------------------------------|
+| action_result.parameter.file_url                  | string  | `url`    |                                                       |
+| action_result.parameter.crawler                   | string  |          | "local" "cloud"                                       |
+| action_result.parameter.rl_cloud_sandbox_platform | string  |          | "windows7" "windows10" "macos_11" "windows11" "linux" |
+| action_result.status                              | string  |          |                                                       |
+| action_result.data                                | string  |          |                                                       |
+| action_result.summary                             | string  |          |                                                       |
+| action_result.message                             | string  |          |                                                       |
+| summary.total_objects                             | numeric |          |                                                       |
+| summary.total_objects_successful                  | numeric |          |                                                       |
 
 ## action: 'check submitted url status'
 Check submitted url status
@@ -349,20 +359,24 @@ Read only: **False**
 Accepts an IP address string and returns a list of IP-to-domain mappings.
 
 #### Action Parameters
-PARAMETER | REQUIRED | DESCRIPTION | TYPE | CONTAINS
---------- | -------- | ----------- | ---- | --------
-**ip** |  required  | IP address | string | 
+| PARAMETER     | REQUIRED | DESCRIPTION       | TYPE    | CONTAINS |
+|---------------|----------|-------------------|---------|----------|
+| **ip**        | required | IP address        | string  | `ip`     |
+| **page**      | optional | SHA1 hash of page | string  |          |
+| **page_size** | optional | Page size         | numeric |          |
 
 #### Action Output
-DATA PATH | TYPE | CONTAINS | EXAMPLE VALUES
---------- | ---- | -------- | --------------
-action_result.status | string |  |  
-action_result.parameter.ip | string |  |  
-action_result.data | string |  |  
-action_result.summary | string |  |  
-action_result.message | string |  |  
-summary.total_objects | numeric |  |  
-summary.total_objects_successful | numeric |  |    
+| DATA PATH                         | TYPE    | CONTAINS | EXAMPLE VALUES |
+|-----------------------------------|---------|----------|----------------|
+| action_result.parameter.ip        | string  | `ip`     |                |
+| action_result.parameter.page      | string  |          |                |
+| action_result.parameter.page_size | numeric |          |                |
+| action_result.status              | string  |          |                |
+| action_result.data                | string  |          |                |
+| action_result.summary             | string  |          |                |
+| action_result.message             | string  |          |                |
+| summary.total_objects             | numeric |          |                |
+| summary.total_objects_successful  | numeric |          |                |
 
 ## action: 'network urls from ip'
 Get a list of URLs hosted on the requested IP address
@@ -373,20 +387,24 @@ Read only: **False**
 Accepts an IP address string and returns a list of URLs hosted on the requested IP address.
 
 #### Action Parameters
-PARAMETER | REQUIRED | DESCRIPTION | TYPE | CONTAINS
---------- | -------- | ----------- | ---- | --------
-**ip** |  required  | IP address | string | 
+| PARAMETER     | REQUIRED | DESCRIPTION       | TYPE    | CONTAINS |
+|---------------|----------|-------------------|---------|----------|
+| **ip**        | required | IP address        | string  | `ip`     |
+| **page**      | optional | SHA1 hash of page | string  |          |
+| **page_size** | optional | Page size         | numeric |          |
 
 #### Action Output
-DATA PATH | TYPE | CONTAINS | EXAMPLE VALUES
---------- | ---- | -------- | --------------
-action_result.status | string |  |  
-action_result.parameter.ip | string |  |  
-action_result.data | string |  |  
-action_result.summary | string |  |  
-action_result.message | string |  |  
-summary.total_objects | numeric |  |  
-summary.total_objects_successful | numeric |  |    
+| DATA PATH                         | TYPE    | CONTAINS | EXAMPLE VALUES |
+|-----------------------------------|---------|----------|----------------|
+| action_result.parameter.ip        | string  | `ip`     |                |
+| action_result.parameter.page      | string  |          |                |
+| action_result.parameter.page_size | numeric |          |                |
+| action_result.status              | string  |          |                |
+| action_result.data                | string  |          |                |
+| action_result.summary             | string  |          |                |
+| action_result.message             | string  |          |                |
+| summary.total_objects             | numeric |          |                |
+| summary.total_objects_successful  | numeric |          |                |
 
 ## action: 'network files from ip'
 Get a a list of hashes and classifications for files found on the requested IP address
@@ -397,20 +415,24 @@ Read only: **False**
 Accepts an IP address string and returns a list of hashes and classifications for files found on the requested IP address.
 
 #### Action Parameters
-PARAMETER | REQUIRED | DESCRIPTION | TYPE | CONTAINS
---------- | -------- | ----------- | ---- | --------
-**ip** |  required  | IP address | string | 
+| PARAMETER     | REQUIRED | DESCRIPTION       | TYPE    | CONTAINS |
+|---------------|----------|-------------------|---------|----------|
+| **ip**        | required | IP address        | string  | `ip`     |
+| **page**      | optional | SHA1 hash of page | string  |          |
+| **page_size** | optional | Page size         | numeric |          |
 
 #### Action Output
-DATA PATH | TYPE | CONTAINS | EXAMPLE VALUES
---------- | ---- | -------- | --------------
-action_result.status | string |  |  
-action_result.parameter.ip | string |  |  
-action_result.data | string |  |  
-action_result.summary | string |  |  
-action_result.message | string |  |  
-summary.total_objects | numeric |  |  
-summary.total_objects_successful | numeric |  |    
+| DATA PATH                         | TYPE    | CONTAINS | EXAMPLE VALUES |
+|-----------------------------------|---------|----------|----------------|
+| action_result.parameter.ip        | string  | `ip`     |                |
+| action_result.parameter.page      | string  |          |                |
+| action_result.parameter.page_size | numeric |          |                |
+| action_result.status              | string  |          |                |
+| action_result.data                | string  |          |                |
+| action_result.summary             | string  |          |                |
+| action_result.message             | string  |          |                |
+| summary.total_objects             | numeric |          |                |
+| summary.total_objects_successful  | numeric |          |                |
 
 ## action: 'advanced search'
 Search for samples using multi-part search criteria

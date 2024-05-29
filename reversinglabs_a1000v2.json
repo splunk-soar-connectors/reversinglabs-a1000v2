@@ -103,7 +103,7 @@
                     "order": 3
                 },
                 "rl_cloud_sandbox_platform": {
-                    "description": "Cloud Sandbox platform (windows7 or windows10)",
+                    "description": "Cloud Sandbox platform",
                     "data_type": "string",
                     "required": false,
                     "primary": false,
@@ -251,7 +251,7 @@
                     "order": 2
                 },
                 "rl_cloud_sandbox_platform": {
-                    "description": "Cloud Sandbox platform (windows7 or windows10)",
+                    "description": "Cloud Sandbox platform",
                     "data_type": "string",
                     "required": false,
                     "primary": false,
@@ -272,12 +272,6 @@
                     "data_type": "string",
                     "column_name": "crawler",
                     "column_order": 1
-                },
-                {
-                    "data_path": "action_result.parameter.archive_password",
-                    "data_type": "password",
-                    "column_name": "archive_password",
-                    "column_order": 2
                 },
                 {
                     "data_path": "action_result.parameter.rl_cloud_sandbox_platform",
