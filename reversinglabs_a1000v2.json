@@ -1071,7 +1071,7 @@
             "description": "Search for samples using multi-part search criteria",
             "verbose": "Search for samples available on the local A1000 instance and TitaniumCloud using the Advanced Search capabilities.",
             "type": "generic",
-            "read_only": false,
+            "read_only": true,
             "parameters": {
                 "query": {
                     "description": "Advanced Search query",
@@ -1158,7 +1158,7 @@
             "action": "advanced search ticloud",
             "identifier": "advanced_search_ticloud",
             "description": "Search for samples available on the TitaniumCloud",
-            "verbose": "All restricted words and characters mut be escaped with double quotation marks. This action will work only if A1000 is set up with access to TiCloud.",
+            "verbose": "All restricted words and characters must be escaped with double quotation marks. This action will work only if A1000 is set up with access to TiCloud.",
             "type": "generic",
             "read_only": false,
             "parameters": {
@@ -1304,9 +1304,9 @@
             "action": "advanced search local",
             "identifier": "advanced_search_local",
             "description": "Search for samples available on the A1000 appliance",
-            "verbose": "All restricted words and characters mut be escaped with double quotation marks.",
+            "verbose": "All restricted words and characters must be escaped with double quotation marks.",
             "type": "generic",
-            "read_only": false,
+            "read_only": true,
             "parameters": {
                 "query": {
                     "description": "Advanced Search query",
@@ -1965,7 +1965,7 @@
             "action": "create user tags",
             "identifier": "create_user_tags",
             "description": "Add one or more user tags",
-            "verbose": "Add one or more User Tags to the requested sample, regardless of whether the sample already has any tags.",
+            "verbose": "Add one or more User Tags to the sample, regardless of whether the sample already has any tags.",
             "type": "generic",
             "read_only": false,
             "parameters": {
@@ -2113,12 +2113,12 @@
             "action": "set sample classification",
             "identifier": "set_sample_classification",
             "description": "Set the classification of a sample",
-            "verbose": "This API allows the user to set the classification of a sample, either in TitaniumCloud or locally on the A1000",
+            "verbose": "This API allows the user to set the classification of a sample, either in TitaniumCloud or locally on the A1000.",
             "type": "generic",
             "read_only": false,
             "parameters": {
                 "hash": {
-                    "description": "Hash string of a sample",
+                    "description": "Hash",
                     "data_type": "string",
                     "required": true,
                     "primary": true,
@@ -2126,7 +2126,7 @@
                     "contains": ["hash", "sha1", "sha256", "md5"]
                 },
                 "system": {
-                    "description": "Where to set the desired classification",
+                    "description": "Where to set the classification",
                     "data_type": "string",
                     "value_list": ["local", "ticloud"],
                     "default": "local",
@@ -2155,8 +2155,7 @@
                     "data_type": "string",
                     "required": false,
                     "primary": false,
-                    "order": 4,
-                    "contains": ["threat platform"]
+                    "order": 4
                 },
                 "threat_type": {
                     "description": "Threat type to set, must be on the supported list",
@@ -2170,8 +2169,7 @@
                     "data_type": "string",
                     "required": false,
                     "primary": false,
-                    "order": 6,
-                    "contains": ["threat name"]
+                    "order": 6
                 }
             },
             "output": [
@@ -2203,7 +2201,6 @@
                 {
                     "data_path": "action_result.parameter.threat_platform",
                     "data_type": "string",
-                    "contains": ["threat platform"],
                     "column_name": "threat_platform",
                     "column_order": 4
                 },
@@ -2216,7 +2213,6 @@
                 {
                     "data_path": "action_result.threat_name",
                     "data_type": "string",
-                    "contains": ["threat name"],
                     "column_name": "threat_name",
                     "column_order": 6
                 },
@@ -2259,8 +2255,8 @@
         {
             "action": "delete sample classification",
             "identifier": "delete_sample_classification",
-            "description": "Delete the classification of a sample",
-            "verbose": "This API allows the user to delete the classification of a sample, either in TitaniumCloud or locally on the A1000",
+            "description": "Delete the (user set) classification of a sample",
+            "verbose": "This API allows the user to delete the classification of a sample, either in TitaniumCloud or locally on the A1000.",
             "type": "generic",
             "read_only": false,
             "parameters": {
@@ -2507,7 +2503,7 @@
             "action": "yara get matches",
             "identifier": "yara_get_matches",
             "description": "Retrieve the list of YARA matches",
-            "verbose": "Retrieve the list of YARA matches (local & cloud) for requested rulesets. Names are case sensitive.",
+            "verbose": "Retrieve the list of YARA matches (local & cloud) for requested ruleset. Names are case-sensitive.",
             "type": "investigate",
             "read_only": true,
             "parameters": {
@@ -2594,7 +2590,7 @@
             "action": "yara create or update ruleset",
             "identifier": "yara_create_ruleset",
             "description": "Creates a new YARA ruleset if it doesn't exist",
-            "verbose": "Creates a new YARA ruleset if it doesn't exist. If it exists a new revision is created. TiCLoud rules cannot be updated using this API.",
+            "verbose": "Creates a new YARA ruleset if it doesn't exist. If it exists a new revision is created. TiCloud rules cannot be updated using this API.",
             "type": "generic",
             "read_only": false,
             "parameters": {
@@ -2854,8 +2850,8 @@
         {
             "action": "yara get synchronization time",
             "identifier": "yara_get_sync_time",
-            "description": "Enable or disable a ruleset on the appliance",
-            "verbose": "Administrators can manage any ruleset while regular A1000 users can only manage their own.",
+            "description": "Get the current synchronization time",
+            "verbose": "Provides information about the current synchronization status for TiCloud enabled rulesets.",
             "type": "generic",
             "read_only": true,
             "parameters": {},
@@ -2900,7 +2896,7 @@
             "action": "yara set ruleset synchronization time",
             "identifier": "yara_set_sync_time",
             "description": "Modify the TiCloud sync time for TiCloud enabled rulesets",
-            "verbose": "Modify the TiCloud sync time for TiCLoud enabled rulesets. Time parameter must be a UTC timestamp <YYYY-MM-DD hh:mm:ss>",
+            "verbose": "Modify the TiCloud sync time for TiCloud enabled rulesets. Time parameter must be a UTC timestamp <YYYY-MM-DD hh:mm:ss>.",
             "type": "generic",
             "read_only": false,
             "parameters": {
@@ -3018,8 +3014,8 @@
         {
             "action": "yara manage cloud retro scan",
             "identifier": "yara_manage_retro_scan_cloud",
-            "description": "Allow users to start/stop a Cloud Retro scan.",
-            "verbose": "Start/Stop a Cloud Retro scan for a specified ruleset on the A1000.",
+            "description": "Allow users to start, stop or clear a Cloud Retro scan",
+            "verbose": "Start/Stop or Clear a Cloud Retro scan for a specified ruleset on the A1000.",
             "type": "generic",
             "read_only": false,
             "parameters": {
@@ -3094,7 +3090,7 @@
             "action": "yara status retro scan local",
             "identifier": "yara_status_retro_scan_local",
             "description": "Allow users to check the status of a Local Retro scan",
-            "verbose": "The response indicates the current state of Local Retro, time and date when the latest Local Retro scan was started and/or stopped, and a list of previous Local Retro scans with same details.",
+            "verbose": "The response indicates the current state of Local Retro scan, time and date when the latest Local Retro scan was started and/or stopped, and a list of previous Local Retro scans with same details.",
             "type": "generic",
             "read_only": true,
             "parameters": {},
@@ -3138,7 +3134,7 @@
         {
             "action": "yara status retro scan cloud",
             "identifier": "yara_status_retro_scan_cloud",
-            "description": "Allow users to check the status of Cloud Retro scan for specified rule",
+            "description": "Allow users to check the status of Cloud Retro scan for specified ruleset",
             "verbose": "The response indicates the current state of Cloud Retro, time and date when the latest Cloud Retro scan was started and/or stopped, and a list of previous Cloud Retro scans with the same details.",
             "type": "generic",
             "read_only": true,
@@ -3199,13 +3195,13 @@
         {
             "action": "list containers for hash",
             "identifier": "list_containers_for_hash",
-            "description": "Get a list of containers from which the requested sample has been extracted",
-            "verbose": "Geta list of all top-level containers from which the requested sample has been extracted during analysis. If a requested hash doesn't have a container, it will not be included in the response.",
+            "description": "Get a list of containers from which the requested samples has been extracted",
+            "verbose": "Get a list of all top-level containers from which the requested samples have been extracted during analysis. If a requested hash doesn't have a container, it will not be included in the response.",
             "type": "investigate",
             "read_only": true,
             "parameters": {
                 "hashes": {
-                    "description": "Comma separated list of hashed",
+                    "description": "Comma separated list of hashes",
                     "data_type": "string",
                     "required": true,
                     "primary": true,
@@ -3260,7 +3256,7 @@
         {
             "action": "delete sample",
             "identifier": "delete_sample",
-            "description": "Delete the sample with the requested hash value.",
+            "description": "Delete the sample with the requested hash value",
             "verbose": "All related data, including extracted samples and metadata, will be deleted from the current A1000 instance.",
             "type": "generic",
             "read_only": false,
@@ -3416,11 +3412,11 @@
             "identifier": "reanalyze_samples",
             "description": "Submit a set of samples that already exist on the A1000",
             "verbose": "Submit a set of samples that were previously uploaded to be analyzed with one or more supported services.",
-            "type": "generic",
+            "type": "investigate",
             "read_only": false,
             "parameters": {
                 "hashes": {
-                    "description": "Comma separated list of hash values to reanalyze",
+                    "description": "Comma separated list of hashes",
                     "data_type": "string",
                     "required": true,
                     "primary": true,
@@ -3481,7 +3477,8 @@
                     "data_type": "string",
                     "required": false,
                     "primary": false,
-                    "order": 8
+                    "order": 8,
+                    "value_list": ["windows7", "windows10", "macos_11", "windows11", "linux"]
                 }
             },
             "output": [
