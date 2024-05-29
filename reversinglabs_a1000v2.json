@@ -2508,7 +2508,7 @@
             "identifier": "yara_get_matches",
             "description": "Retrieve the list of YARA matches",
             "verbose": "Retrieve the list of YARA matches (local & cloud) for requested rulesets. Names are case sensitive.",
-            "type": "generic",
+            "type": "investigate",
             "read_only": true,
             "parameters": {
                 "ruleset_name": {
@@ -3201,7 +3201,7 @@
             "identifier": "list_containers_for_hash",
             "description": "Get a list of containers from which the requested sample has been extracted",
             "verbose": "Geta list of all top-level containers from which the requested sample has been extracted during analysis. If a requested hash doesn't have a container, it will not be included in the response.",
-            "type": "generic",
+            "type": "investigate",
             "read_only": true,
             "parameters": {
                 "hashes": {
