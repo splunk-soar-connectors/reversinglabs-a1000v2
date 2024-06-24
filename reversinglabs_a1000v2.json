@@ -26,7 +26,7 @@
     "utctime_updated": "2023-04-05T05:26:10.159217Z",
     "package_name": "phantom_reversinglabs_a1000v2",
     "main_module": "reversinglabs_a1000v2_connector.py",
-    "min_phantom_version": "5.5.0",
+    "min_phantom_version": "6.2.1",
     "fips_compliant": false,
     "app_wizard_version": "1.0.0",
     "configuration": {
