@@ -1355,7 +1355,7 @@ PARAMETER | REQUIRED | DESCRIPTION | TYPE | CONTAINS
 **vault_id** |  required  | Vault ID of file to detonate | string |  `apk`  `doc`  `flash`  `jar`  `pdf`  `pe file`  `ppt`  `xls` 
 **file_name** |  optional  | Filename to use | string | 
 **custom_file_name** |  optional  | Custom file name for upload | string |  `file name` 
-**archive_password** |  optional  | password for the file if it is password protected | password | 
+**archive_password** |  optional  | Password for the file if it is password protected | password | 
 **rl_cloud_sandbox_platform** |  optional  | Cloud Sandbox platform | string | 
 **tags** |  optional  | Comma separated list of tags to assign to sample | string | 
 **comment** |  optional  | Comment to add to a sample | string | 
@@ -2099,7 +2099,7 @@ PARAMETER | REQUIRED | DESCRIPTION | TYPE | CONTAINS
 #### Action Output
 DATA PATH | TYPE | CONTAINS | EXAMPLE VALUES
 --------- | ---- | -------- | --------------
-action_result.parameter_type | string |  |  
+action_result.type | string |  |  
 action_result.parameter.status | string |  |  
 action_result.parameter.source | string |  |  
 action_result.parameter.page | numeric |  |  
