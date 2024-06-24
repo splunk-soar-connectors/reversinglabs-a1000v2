@@ -96,7 +96,7 @@
                     "contains": ["file name"]
                 },
                 "archive_password": {
-                    "description": "password for the file if it is password protected",
+                    "description": "Password for the file if it is password protected",
                     "data_type": "password",
                     "required": false,
                     "primary": false,
@@ -277,13 +277,13 @@
                     "data_path": "action_result.parameter.rl_cloud_sandbox_platform",
                     "data_type": "string",
                     "column_name": "rl_cloud_sandbox_platform",
-                    "column_order": 3
+                    "column_order": 2
                 },
                 {
                     "data_path": "action_result.status",
                     "data_type": "string",
                     "column_name": "status",
-                    "column_order": 4
+                    "column_order": 3
                 },
                 {
                     "data_path": "action_result.data",
@@ -2367,7 +2367,7 @@
             },
             "output": [
                 {
-                    "data_path": "action_result.parameter_type",
+                    "data_path": "action_result.type",
                     "data_type": "string",
                     "column_name": "type",
                     "column_order": 0
@@ -3093,7 +3093,7 @@
                     "data_path": "action_result.status",
                     "data_type": "string",
                     "column_name": "status",
-                    "column_order": 1
+                    "column_order": 0
                 },
                 {
                     "data_path": "action_result.data",

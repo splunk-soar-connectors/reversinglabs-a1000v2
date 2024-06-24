@@ -560,6 +560,7 @@ class ReversinglabsA1000V2Connector(BaseConnector):
     def _handle_test_connectivity(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
         self.a1000.test_connection()
+        self.debug_print("Executed", self.get_action_identifier())
 
         self.save_progress("Test Connectivity Passed")
 
