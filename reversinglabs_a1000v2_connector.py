@@ -58,7 +58,7 @@ phantom.requests.delete = new_delete
 
 class ReversinglabsA1000V2Connector(BaseConnector):
     post_url = "post_url"
-    USER_AGENT = "ReversingLabs Splunk SOAR A1000 v1.0.0"
+    USER_AGENT = "ReversingLabs Splunk SOAR A1000 v1.1.0"
     TITANIUM_CORE_FIELDS = "sha1, sha256, sha512, md5, imphash, info, application, protection, security, behaviour," \
         " certificate, document, mobile, media, web, email, strings, interesting_strings," \
         " classification, indicators, tags, attack, story"
@@ -79,12 +79,36 @@ class ReversinglabsA1000V2Connector(BaseConnector):
     ACTION_ID_NETWORK_URLS_FROM_IP = "network_urls_from_ip"
     ACTION_ID_NETWORK_FILES_FROM_IP = "network_files_from_ip"
     ACTION_ID_ADVANCED_SEARCH = "advanced_search"
+    ACTION_ID_ADVANCED_SEARCH_LOCAL = "advanced_search_local"
+    ACTION_ID_ADVANCED_SEARCH_TICLOUD = "advanced_search_ticloud"
     ACTION_ID_CREATE_DYNAMIC_ANALYSIS_REPORT = "create_dynamic_analysis_report"
     ACTION_ID_CHeck_DYNAMIC_ANALYSIS_REPORT_STATUS = "check_dynamic_analysis_report_status"
     ACTION_ID_DOWNLOAD_DYNAMIC_ANALYSIS_REPORT = "download_dynamic_analysis_report"
     ACTION_ID_GET_SUMMARY_REPORT = "get_summary_report"
     ACTION_ID_GET_DETAILED_REPORT = "get_detailed_report"
     ACTION_ID_GET_CLASSIFICATION = "get_classification"
+    ACTION_ID_GET_USER_TAGS = "get_user_tags"
+    ACTION_ID_CREATE_USER_TAGS = "create_user_tags"
+    ACTION_ID_DELETE_USER_TAGS = "delete_user_tags"
+    ACTION_ID_SET_SAMPLE_CLASSIFICATION = "set_sample_classification"
+    ACTION_ID_DELETE_SAMPLE_CLASSIFICATION = "delete_sample_classification"
+    ACTION_ID_YARA_GET_RULESETS = "yara_get_rulesets"
+    ACTION_ID_YARA_GET_RULESET_TEXT = "yara_get_ruleset_text"
+    ACTION_ID_YARA_GET_MATCHES = "yara_get_matches"
+    ACTION_ID_YARA_CREATE_RULESET = "yara_create_ruleset"
+    ACTION_ID_YARA_DELETE_RULESET = "yara_delete_ruleset"
+    ACTION_ID_YARA_TOGGLE_RULESET = "yara_toggle_ruleset"
+    ACTION_ID_YARA_GET_SYNC_TIME = "yara_get_sync_time"
+    ACTION_ID_YARA_SET_SYNC_TIME = "yara_set_sync_time"
+    ACTION_ID_YARA_TOGGLE_RETRO_SCAN_LOCAL = "yara_toggle_retro_scan_local"
+    ACTION_ID_YARA_MANAGE_RETRO_SCAN_CLOUD = "yara_manage_retro_scan_cloud"
+    ACTION_ID_YARA_CHECK_RETRO_SCAN_LOCAL = "yara_check_retro_scan_local"
+    ACTION_ID_YARA_STATUS_RETRO_SCAN_LOCAL = "yara_status_retro_scan_local"
+    ACTION_ID_YARA_STATUS_RETRO_SCAN_CLOUD = "yara_status_retro_scan_cloud"
+    ACTION_ID_LIST_CONTAINERS_FOR_HASH = "list_containers_for_hash"
+    ACTION_ID_DELETE_SAMPLE = "delete_sample"
+    ACTION_ID_DOWNLOAD_EXTRACTED_FILES = "download_extracted_files"
+    ACTION_ID_REANALYZE_SAMPLES = "reanalyze_samples"
 
     def __init__(self):
         # Call the BaseConnectors init first
@@ -106,12 +130,35 @@ class ReversinglabsA1000V2Connector(BaseConnector):
             self.ACTION_ID_NETWORK_URLS_FROM_IP: self._handle_network_urls_from_ip,
             self.ACTION_ID_NETWORK_FILES_FROM_IP: self._handle_network_files_from_ip,
             self.ACTION_ID_ADVANCED_SEARCH: self._handle_advanced_search,
+            self.ACTION_ID_ADVANCED_SEARCH_LOCAL: self._handle_advanced_search_local,
+            self.ACTION_ID_ADVANCED_SEARCH_TICLOUD: self._handle_advanced_search_ticloud,
             self.ACTION_ID_CREATE_DYNAMIC_ANALYSIS_REPORT: self._handle_create_dynamic_analysis_report,
             self.ACTION_ID_CHeck_DYNAMIC_ANALYSIS_REPORT_STATUS: self._handle_check_dynamic_analysis_report_status,
             self.ACTION_ID_DOWNLOAD_DYNAMIC_ANALYSIS_REPORT: self._handle_download_dynamic_analysis_report,
             self.ACTION_ID_GET_SUMMARY_REPORT: self._handle_get_summary_report,
             self.ACTION_ID_GET_DETAILED_REPORT: self._handle_get_detailed_report,
-            self.ACTION_ID_GET_CLASSIFICATION: self._handle_get_classification
+            self.ACTION_ID_GET_CLASSIFICATION: self._handle_get_classification,
+            self.ACTION_ID_GET_USER_TAGS: self._handle_get_user_tags,
+            self.ACTION_ID_CREATE_USER_TAGS: self._handle_create_user_tags,
+            self.ACTION_ID_DELETE_USER_TAGS: self._handle_delete_user_tags,
+            self.ACTION_ID_SET_SAMPLE_CLASSIFICATION: self._handle_set_sample_classification,
+            self.ACTION_ID_DELETE_SAMPLE_CLASSIFICATION: self._handle_delete_sample_classification,
+            self.ACTION_ID_YARA_GET_RULESETS: self._handle_yara_get_rulesets,
+            self.ACTION_ID_YARA_GET_RULESET_TEXT: self._handle_yara_get_ruleset_text,
+            self.ACTION_ID_YARA_GET_MATCHES: self._handle_yara_get_matches,
+            self.ACTION_ID_YARA_CREATE_RULESET: self._handle_yara_create_ruleset,
+            self.ACTION_ID_YARA_DELETE_RULESET: self._handle_yara_delete_ruleset,
+            self.ACTION_ID_YARA_TOGGLE_RULESET: self._handle_yara_toggle_ruleset,
+            self.ACTION_ID_YARA_GET_SYNC_TIME: self._handle_yara_get_sync_time,
+            self.ACTION_ID_YARA_SET_SYNC_TIME: self._handle_yara_set_sync_time,
+            self.ACTION_ID_YARA_TOGGLE_RETRO_SCAN_LOCAL: self._handle_yara_toggle_retro_scan_local,
+            self.ACTION_ID_YARA_MANAGE_RETRO_SCAN_CLOUD: self._handle_yara_manage_retro_scan_cloud,
+            self.ACTION_ID_YARA_STATUS_RETRO_SCAN_LOCAL: self._handle_yara_status_retro_scan_local,
+            self.ACTION_ID_YARA_STATUS_RETRO_SCAN_CLOUD: self._handle_yara_status_retro_scan_cloud,
+            self.ACTION_ID_LIST_CONTAINERS_FOR_HASH: self._handle_list_containers_for_hash,
+            self.ACTION_ID_DELETE_SAMPLE: self._handle_delete_sample,
+            self.ACTION_ID_DOWNLOAD_EXTRACTED_FILES: self._handle_download_extracted_files,
+            self.ACTION_ID_REANALYZE_SAMPLES: self._handle_reanalyze_samples
         }
 
         self._state = None
@@ -168,7 +215,15 @@ class ReversinglabsA1000V2Connector(BaseConnector):
         if not file:
             raise Exception('Unable to get Vault item details. Error details: {0}'.format(msg))
 
-        self.a1000.upload_sample_from_path(file["path"])
+        self.a1000.upload_sample_from_path(
+            file["path"],
+            custom_filename=param.get("custom_file_name"),
+            archive_password=param.get("archive_password"),
+            rl_cloud_sandbox_platform=param.get("rl_cloud_sandbox_platform"),
+            tags=param.get("tags").strip().split(",") if param.get("tags") else None,
+            comment=param.get("comment"),
+            cloud_analysis=param.get("cloud_analysis", False),
+        )
 
         self.debug_print("Executed", self.get_action_identifier())
 
@@ -176,7 +231,10 @@ class ReversinglabsA1000V2Connector(BaseConnector):
         self.debug_print("Action handler", self.get_action_identifier())
 
         response = self.a1000.upload_sample_from_url(
-            file_url=param.get("file_url")
+            file_url=param.get("file_url"),
+            crawler=param.get("crawler"),
+            archive_password=param.get("archive_password"),
+            rl_cloud_sandbox_platform=param.get("rl_cloud_sandbox_platform"),
         )
         self.debug_print("Executed", self.get_action_identifier())
 
@@ -235,6 +293,8 @@ class ReversinglabsA1000V2Connector(BaseConnector):
 
         self.debug_print("Executed", self.get_action_identifier())
 
+        action_result.set_summary({'directory': self.get_config()["directory"]})
+
         action_result.add_data(response.json())
 
     def _handle_domain_reputation(self, action_result, param):
@@ -243,6 +303,8 @@ class ReversinglabsA1000V2Connector(BaseConnector):
         response = self.a1000.network_domain_report(domain=param.get('domain'))
 
         self.debug_print("Executed", self.get_action_identifier())
+
+        action_result.set_summary({'directory': self.get_config()["directory"]})
 
         action_result.add_data(response.json())
 
@@ -253,12 +315,18 @@ class ReversinglabsA1000V2Connector(BaseConnector):
 
         self.debug_print("Executed", self.get_action_identifier())
 
+        action_result.set_summary({'directory': self.get_config()["directory"]})
+
         action_result.add_data(response.json())
 
     def _handle_network_ip_to_domain(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
 
-        response = self.a1000.network_ip_to_domain(ip_addr=param.get('ip'))
+        response = self.a1000.network_ip_to_domain(
+            ip_addr=param.get('ip'),
+            page=param.get('page'),
+            page_size=param.get('page_size', 500),
+        )
 
         self.debug_print("Executed", self.get_action_identifier())
 
@@ -267,7 +335,11 @@ class ReversinglabsA1000V2Connector(BaseConnector):
     def _handle_network_urls_from_ip(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
 
-        response = self.a1000.network_urls_from_ip(ip_addr=param.get('ip'))
+        response = self.a1000.network_urls_from_ip(
+            ip_addr=param.get('ip'),
+            page=param.get('page'),
+            page_size=param.get('page_size', 500),
+        )
 
         self.debug_print("Executed", self.get_action_identifier())
 
@@ -276,23 +348,110 @@ class ReversinglabsA1000V2Connector(BaseConnector):
     def _handle_network_files_from_ip(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
 
-        response = self.a1000.network_files_from_ip(ip_addr=param.get('ip'))
+        response = self.a1000.network_files_from_ip(
+            ip_addr=param.get('ip'),
+            page=param.get('page'),
+            page_size=param.get('page_size', 500),
+        )
 
         self.debug_print("Executed", self.get_action_identifier())
 
         action_result.add_data(response.json())
 
+    @staticmethod
+    def marshall_ticloud_into_a1000(result):
+        platform, ttype, family = None, None, None
+        threatname = result.get('threatname')
+        if threatname:
+            parts = threatname.split('.')
+            sentinels = [None] * (3 - len(parts))
+            platform, ttype, family = [*parts, *sentinels]
+        if platform:
+            result['threat_platform'] = platform
+        if ttype:
+            result['threat_type'] = ttype
+        if family:
+            result['threat_family'] = family
+        if result.get('sampletype'):
+            result['sample_type'] = result.get('sampletype')
+        if result.get('factor'):
+            result['riskscore'] = result.get('factor')
+
     def _handle_advanced_search(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
 
-        response = self.a1000.advanced_search_v2_aggregated(query_string=param.get('query'),
-                                                            max_results=param.get('limit'),
-                                                            ticloud=param.get('only_cloud_results'))
+        response = self.a1000.advanced_search_v2_aggregated(
+            query_string=param.get('query'),
+            max_results=param.get('limit'),
+            ticloud=param.get('only_cloud_results'),
+        )
 
         self.debug_print("Executed", self.get_action_identifier())
 
         for result in response:
+            if param.get('only_cloud_results'):
+                ReversinglabsA1000V2Connector.marshall_ticloud_into_a1000(result)
             action_result.add_data(result)
+
+    def _handle_advanced_search_local(self, action_result, param):
+        self.debug_print("Action handler", self.get_action_identifier())
+        page = param.get('page')
+        if page:
+            result = self.a1000.advanced_search_v3(
+                query_string=param.get("query"),
+                ticloud=False,
+                page_number=page,
+                records_per_page=param.get("limit"),
+                sorting_criteria=param.get("sorting_criteria"),
+                sorting_order=param.get("sorting_order"),
+            ).json()
+            hits = result["rl"]["web_search_api"]["entries"]
+            pagination = {k: v for k, v in result["rl"]["web_search_api"].items() if k != "entries"}
+        else:
+            hits = self.a1000.advanced_search_v3_aggregated(
+                query_string=param.get("query"),
+                ticloud=False,
+                records_per_page=100,
+                max_results=param.get("limit"),
+                sorting_criteria=param.get("sorting_criteria"),
+                sorting_order=param.get("sorting_order"),
+            )
+            pagination = None
+
+        self.debug_print("Executed", self.get_action_identifier())
+        action_result.add_data({"results": hits, "pagination": pagination})
+
+    def _handle_advanced_search_ticloud(self, action_result, param):
+        self.debug_print("Action handler", self.get_action_identifier())
+        page = param.get("page")
+        if page:
+            result = self.a1000.advanced_search_v3(
+                query_string=param.get("query"),
+                ticloud=True,
+                start_search_date=param.get("start_search_date"),
+                end_search_date=param.get("end_search_date"),
+                sorting_order=param.get("sorting_order", "desc"),
+                sorting_criteria=param.get("sorting_criteria"),
+                page_number=param.get("page"),
+                records_per_page=param.get("limit"),
+            ).json()
+            hits = result["rl"]["web_search_api"]["entries"]
+            pagination = {k: v for k, v in result["rl"]["web_search_api"].items() if k != "entries"}
+        else:
+            pass
+            hits = self.a1000.advanced_search_v3_aggregated(
+                query_string=param.get("query"),
+                ticloud=True,
+                start_search_date=param.get("start_search_date"),
+                end_search_date=param.get("end_search_date"),
+                sorting_order=param.get("sorting_order", "desc"),
+                sorting_criteria=param.get("sorting_criteria"),
+                records_per_page=100,
+                max_results=param.get("limit"),
+            )
+            pagination = None
+        self.debug_print("Executed", self.get_action_identifier())
+        action_result.add_data({"results": hits, "pagination": pagination})
 
     def _handle_create_dynamic_analysis_report(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
@@ -401,8 +560,231 @@ class ReversinglabsA1000V2Connector(BaseConnector):
     def _handle_test_connectivity(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
         self.a1000.test_connection()
+        self.debug_print("Executed", self.get_action_identifier())
 
         self.save_progress("Test Connectivity Passed")
+
+    def _handle_get_user_tags(self, action_result, param):
+        self.debug_print("Action handler", self.get_action_identifier())
+
+        sample_hash = param.get("hash")
+        response = self.a1000.get_user_tags(sample_hash=sample_hash)
+
+        self.debug_print("Executed", self.get_action_identifier())
+
+        action_result.add_data({"tags": response.json()})
+
+    def _handle_create_user_tags(self, action_result, param):
+        self.debug_print("Action handler", self.get_action_identifier())
+
+        sample_hash = param.get("hash")
+        tags = param.get("tags").split(",")
+        response = self.a1000.post_user_tags(
+            sample_hash=sample_hash,
+            tags=tags
+        )
+
+        self.debug_print("Executed", self.get_action_identifier())
+
+        action_result.add_data({"tags": response.json()})
+
+    def _handle_delete_user_tags(self, action_result, param):
+        self.debug_print("Action handler", self.get_action_identifier())
+
+        sample_hash = param.get("hash")
+        tags = param.get("tags").split(",")
+        response = self.a1000.delete_user_tags(
+            sample_hash=sample_hash,
+            tags=tags
+        )
+
+        self.debug_print("Executed", self.get_action_identifier())
+
+        action_result.add_data({"tags": response.json()})
+
+    def _handle_set_sample_classification(self, action_result, param):
+        self.debug_print("Action handler", self.get_action_identifier())
+        system = param.get("system")
+        response = self.a1000.set_classification(
+            sample_hash=param.get("hash"),
+            classification=param.get("classification"),
+            system=system,
+            risk_score=param.get("risk_score"),
+            threat_platform=param.get("threat_platform"),
+            threat_type=param.get("threat_type"),
+            threat_name=param.get("threat_name"),
+        )
+        self.debug_print("Executed", self.get_action_identifier())
+
+        content = response.json() if system == "local" else None
+
+        action_result.add_data({"source": system, "content": content})
+
+    def _handle_delete_sample_classification(self, action_result, param):
+        self.debug_print("Action handler", self.get_action_identifier())
+        system = param.get("system")
+        self.a1000.delete_classification(
+            sample_hash=param.get("hash"),
+            system=system,
+        )
+        self.debug_print("Executed", self.get_action_identifier())
+
+    def _handle_yara_get_rulesets(self, action_result, param):
+        self.debug_print("Action handler", self.get_action_identifier())
+        response = self.a1000.get_yara_rulesets_on_the_appliance_v2(
+            owner_type=param.get("owner"),
+            status=param.get("status"),
+            source=param.get("source"),
+            page=str(param.get("page")) if param.get("page") else None,
+            page_size=str(param.get("page_size")) if param.get("page_size") else None
+        )
+        self.debug_print("Executed", self.get_action_identifier())
+        action_result.add_data(response.json())
+
+    def _handle_yara_get_ruleset_text(self, action_result, param):
+        self.debug_print("Action handler", self.get_action_identifier())
+        response = self.a1000.get_yara_ruleset_contents(
+            ruleset_name=param.get("ruleset_name")
+        )
+        self.debug_print("Executed", self.get_action_identifier())
+        action_result.add_data(response.json())
+
+    def _handle_yara_get_matches(self, action_result, param):
+        self.debug_print("Action handler", self.get_action_identifier())
+        page = str(param.get("page")) if param.get("page") else None
+        page_size = str(param.get("page_size")) if param.get("page_size") else None
+        response = self.a1000.get_yara_ruleset_matches_v2(
+            ruleset_name=param.get("ruleset_name"),
+            page=page,
+            page_size=page_size,
+        )
+        self.debug_print("Executed", self.get_action_identifier())
+        action_result.set_summary({'directory': self.get_config()["directory"]})
+        action_result.add_data(response.json())
+
+    def _handle_yara_create_ruleset(self, action_result, param):
+        self.debug_print("Action handler", self.get_action_identifier())
+        response = self.a1000.create_or_update_yara_ruleset(
+            name=param.get("ruleset_name"),
+            content=param.get("ruleset_text"),
+            publish=param.get("publish"),
+            ticloud=param.get("ticloud")
+        )
+        self.debug_print("Executed", self.get_action_identifier())
+        action_result.add_data(response.json())
+
+    def _handle_yara_delete_ruleset(self, action_result, param):
+        self.debug_print("Action handler", self.get_action_identifier())
+        response = self.a1000.delete_yara_ruleset(
+            name=param.get("ruleset_name"),
+            publish=param.get("publish"),
+        )
+        self.debug_print("Executed", self.get_action_identifier())
+        action_result.add_data(response.json())
+
+    def _handle_yara_toggle_ruleset(self, action_result, param):
+        self.debug_print("Action handler", self.get_action_identifier())
+        response = self.a1000.enable_or_disable_yara_ruleset(
+            name=param.get("ruleset_name"),
+            enabled=param.get("enabled"),
+            publish=param.get("publish"),
+        )
+        self.debug_print("Executed", self.get_action_identifier())
+        action_result.add_data(response.json())
+
+    def _handle_yara_get_sync_time(self, action_result, param):
+        self.debug_print("Action handler", self.get_action_identifier())
+        response = self.a1000.get_yara_ruleset_synchronization_time()
+        self.debug_print("Executed", self.get_action_identifier())
+        action_result.add_data(response.json())
+
+    def _handle_yara_set_sync_time(self, action_result, param):
+        self.debug_print("Action handler", self.get_action_identifier())
+        response = self.a1000.update_yara_ruleset_synchronization_time(
+            sync_time=param.get("time"),
+        )
+        self.debug_print("Executed", self.get_action_identifier())
+        action_result.add_data(response.json())
+
+    def _handle_yara_toggle_retro_scan_local(self, action_result, param):
+        self.debug_print("Action handler", self.get_action_identifier())
+        response = self.a1000.start_or_stop_yara_local_retro_scan(
+            operation=param.get("operation"),
+        )
+        self.debug_print("Executed", self.get_action_identifier())
+        action_result.add_data(response.json())
+
+    def _handle_yara_manage_retro_scan_cloud(self, action_result, param):
+        self.debug_print("Action handler", self.get_action_identifier())
+        response = self.a1000.start_or_stop_yara_cloud_retro_scan(
+            ruleset_name=param.get("ruleset_name"),
+            operation=param.get("operation"),
+        )
+        self.debug_print("Executed", self.get_action_identifier())
+        action_result.add_data(response.json())
+
+    def _handle_yara_status_retro_scan_local(self, action_result, param):
+        self.debug_print("Action handler", self.get_action_identifier())
+        response = self.a1000.get_yara_local_retro_scan_status()
+        self.debug_print("Executed", self.get_action_identifier())
+        action_result.add_data(response.json())
+
+    def _handle_yara_status_retro_scan_cloud(self, action_result, param):
+        self.debug_print("Action handler", self.get_action_identifier())
+        response = self.a1000.get_yara_cloud_retro_scan_status(
+            ruleset_name=param.get("ruleset_name"),
+        )
+        self.debug_print("Executed", self.get_action_identifier())
+        action_result.add_data(response.json())
+
+    def _handle_list_containers_for_hash(self, action_result, param):
+        self.debug_print("Action handler", self.get_action_identifier())
+        response = self.a1000.list_containers_for_hashes(
+            sample_hashes=param.get("hashes").strip().split(","),
+        )
+        self.debug_print("Executed", self.get_action_identifier())
+        action_result.add_data(response.json())
+
+    def _handle_delete_sample(self, action_result, param):
+        self.debug_print("Action handler", self.get_action_identifier())
+        response = self.a1000.delete_samples(
+            hash_input=param.get("hash"),
+        )
+        self.debug_print("Executed", self.get_action_identifier())
+        action_result.add_data(response.json())
+
+    def _handle_download_extracted_files(self, action_result, param):
+        self.debug_print("Action handler", self.get_action_identifier())
+        response = self.a1000.download_extracted_files(
+            sample_hash=param.get("hash"),
+        )
+        self.debug_print("Executed", self.get_action_identifier())
+
+        file_path = os.path.join(Vault.get_vault_tmp_dir(), param.get("hash"))
+        with open(file_path, "wb") as file_obj:
+            file_obj.write(response.content)
+
+        success, msg, vault_id = vault.vault_add(file_location=file_path,
+                                                 container=self.get_container_id(),
+                                                 file_name="extracted_from-{0}.zip".format(param.get("hash")))
+        if not success:
+            raise Exception('Unable to store file in Vault. Error details: {0}'.format(msg))
+
+    def _handle_reanalyze_samples(self, action_result, param):
+        self.debug_print("Action handler", self.get_action_identifier())
+        response = self.a1000.reanalyze_samples_v2(
+            hash_input=param.get("hashes").strip().split(","),
+            titanium_cloud=param.get("titanium_cloud", False),
+            titanium_core=param.get("titanium_core", False),
+            rl_cloud_sandbox=param.get("rl_cloud_sandbox", False),
+            cuckoo_sandbox=param.get("cuckoo_sandbox", False),
+            fireeye=param.get("fireeye", False),
+            joe_sandbox=param.get("joe_sandbox", False),
+            cape=param.get("cape", False),
+            rl_cloud_sandbox_platform=param.get("rl_cloud_sandbox_platform"),
+        )
+        self.debug_print("Executed", self.get_action_identifier())
+        action_result.add_data(response.json())
 
 
 def main():

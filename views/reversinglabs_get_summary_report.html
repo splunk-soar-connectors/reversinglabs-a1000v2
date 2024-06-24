@@ -82,9 +82,10 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
         <tbody>
             <tr>
                 <td>Classification</td>
-                <td>
-                    <font color={{classification_color}}>{{classification}}</font>
-                </td>
+                <td><a href="javascript:;" onclick="context_menu(this, [{'contains': ['search query'], 'value': 'classification:{{ classification }}' }], 0, {{ container.id }}, null, false);" style="color: {{classification_color}}">
+                    {{classification}}&nbsp;
+                    <span class="fa fa-caret-down" style="font-size: smaller;"></span>
+                </a></td>
             </tr>
             <tr>
                 <td>Classification reason</td>
@@ -95,8 +96,11 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
                 <td>{{data.results.0.classification_result}} </td>
             </tr>
             <tr>
-                <td>Risck score</td>
-                <td>{{data.results.0.riskscore}}</td>
+                <td>Risk score</td>
+                <td><a href="javascript:;" onclick="context_menu(this, [{'contains': ['search query'], 'value': 'riskscore:{{ data.results.0.riskscore }}' }], 0, {{ container.id }}, null, false);">
+                    {{ data.results.0.riskscore }}&nbsp;
+                    <span class="fa fa-caret-down" style="font-size: smaller;"></span>
+                </a></td>
             </tr>
             <tr>
                 <td>Category</td>
@@ -112,15 +116,24 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
             </tr>
             <tr>
                 <td>MD5 hash</td>
-                <td> {{data.results.0.md5}}</td>
+                <td><a href="javascript:;" onclick="context_menu(this, [{'contains': ['md5'], 'value': '{{ data.results.0.md5 }}' }], 0, {{ container.id }}, null, false);">
+                    {{ data.results.0.md5 }}&nbsp;
+                    <span class="fa fa-caret-down" style="font-size: smaller;"></span>
+                </a></td>
             </tr>
             <tr>
-                <td>SHA-1 hash</td>
-                <td> {{data.results.0.sha1}}</td>
+                <td>SHA1 hash</td>
+                <td><a href="javascript:;" onclick="context_menu(this, [{'contains': ['sha1'], 'value': '{{ data.results.0.sha1 }}' }], 0, {{ container.id }}, null, false);">
+                    {{ data.results.0.sha1 }}&nbsp;
+                    <span class="fa fa-caret-down" style="font-size: smaller;"></span>
+                </a></td>
             </tr>
             <tr>
-                <td>SHA-256 hash</td>
-                <td> {{data.results.0.sha256}}</td>
+                <td>SHA256 hash</td>
+                <td><a href="javascript:;" onclick="context_menu(this, [{'contains': ['sha256'], 'value': '{{ data.results.0.sha256 }}' }], 0, {{ container.id }}, null, false);">
+                    {{ data.results.0.sha256 }}&nbsp;
+                    <span class="fa fa-caret-down" style="font-size: smaller;"></span>
+                </a></td>
             </tr>
         </tbody>
         {% if data.results.0.summary.indicators != None %}
