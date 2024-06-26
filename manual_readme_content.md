@@ -48,35 +48,35 @@ VARIABLE | REQUIRED | TYPE | DESCRIPTION
 [network urls from ip](#action-network-urls-from-ip) - Get a list of URLs hosted on the requested IP address  
 [network files from ip](#action-network-files-from-ip) - Get a a list of hashes and classifications for files found on the requested IP address  
 [advanced search](#action-advanced-search) - Search for samples using multi-part search criteria  
-[advanced search ticloud](#action-advanced-search-ticloud) - Search for samples available on the TitaniumCloud
-[advanced search local](#action-advanced-search-local) - Search for samples available on the A1000 appliance
+[advanced search ticloud](#action-advanced-search-ticloud) - Search for samples available on the TitaniumCloud  
+[advanced search local](#action-advanced-search-local) - Search for samples available on the A1000 appliance  
 [create dynamic analysis report](#action-create-dynamic-analysis-report) - Initiate the creation of dynamic analysis PDF report  
 [check dynamic analysis report status](#action-check-dynamic-analysis-report-status) - Get status of the report previously requested  
 [download dynamic analysis report](#action-download-dynamic-analysis-report) - Download previously requested dynamic analysis report in pdf  
 [get summary report](#action-get-summary-report) - Get a summary report for hash  
 [get detailed report](#action-get-detailed-report) - Get detailed analysis report  
 [get classification](#action-get-classification) - Get classification for a sample  
-[get user tags](#action-get-user-tags) - List existing tags for the requested sample
-[create user tags](#action-create-user-tags) - Add one or more user tags
-[delete user tags](#action-delete-user-tags) - Remove one or more user tags
-[set sample classification](#action-set-sample-classification) - Set the classification of a sample
-[delete sample classification](#action-delete-sample-classification) - Delete the (user set) classification of a sample
-[yara get rulesets](#action-yara-get-rulesets) - Get a list of YARA rulesets that are on the A1000
-[yara get ruleset text](#action-yara-get-ruleset-text) - Get the full contents of the requested ruleset
-[yara get matches](#action-yara-get-matches) - Retrieve the list of YARA matches
-[yara create or update ruleset](#action-yara-create-or-update-ruleset) - Creates a new YARA ruleset if it doesn't exist
-[yara delete ruleset](#action-yara-delete-ruleset) - Delete a specific YARA ruleset and its matches
-[yara enable or disable ruleset](#action-yara-enable-or-disable-ruleset) - Enable or disable a ruleset on the appliance
-[yara get synchronization time](#action-yara-get-synchronization-time) - Get the current synchronization time
-[yara set ruleset synchronization time](#action-yara-set-ruleset-synchronization-time) - Modify the TiCloud sync time for TiCloud enabled rulesets
-[yara start or stop local retro scan](#action-yara-start-or-stop-local-retro-scan) - Allow users to start or stop the Local Retro scan on the appliance
-[yara manage cloud retro scan](#action-yara-manage-cloud-retro-scan) - Allow users to start, stop or clear a Cloud Retro scan
-[yara status retro scan local](#action-yara-status-retro-scan-local) - Allow users to check the status of a Local Retro scan
-[yara status retro scan cloud](#action-yara-status-retro-scan-cloud) - Allow users to check the status of Cloud Retro scan
-[list containers for hash](#action-list-containers-for-hash) - Get a list of containers from which the requested samples
-[delete sample](#action-delete-sample) - Delete the sample with the requested hash value
-[download extracted files](#action-download-extracted-files) - Download files extracted from local sample
-[reanalyze local samples](#action-reanalyze-local-samples) - Submit a set of samples that already exist on the A1000
+[get user tags](#action-get-user-tags) - List existing tags for the requested sample  
+[create user tags](#action-create-user-tags) - Add one or more user tags  
+[delete user tags](#action-delete-user-tags) - Remove one or more user tags  
+[set sample classification](#action-set-sample-classification) - Set the classification of a sample  
+[delete sample classification](#action-delete-sample-classification) - Delete the (user set) classification of a sample  
+[yara get rulesets](#action-yara-get-rulesets) - Get a list of YARA rulesets that are on the A1000  
+[yara get ruleset text](#action-yara-get-ruleset-text) - Get the full contents of the requested ruleset  
+[yara get matches](#action-yara-get-matches) - Retrieve the list of YARA matches  
+[yara create or update ruleset](#action-yara-create-or-update-ruleset) - Creates a new YARA ruleset if it doesn't exist  
+[yara delete ruleset](#action-yara-delete-ruleset) - Delete a specific YARA ruleset and its matches  
+[yara enable or disable ruleset](#action-yara-enable-or-disable-ruleset) - Enable or disable a ruleset on the appliance  
+[yara get synchronization time](#action-yara-get-synchronization-time) - Get the current synchronization time  
+[yara set ruleset synchronization time](#action-yara-set-ruleset-synchronization-time) - Modify the TiCloud sync time for TiCloud enabled rulesets  
+[yara start or stop local retro scan](#action-yara-start-or-stop-local-retro-scan) - Allow users to start or stop the Local Retro scan on the appliance  
+[yara manage cloud retro scan](#action-yara-manage-cloud-retro-scan) - Allow users to start, stop or clear a Cloud Retro scan  
+[yara status retro scan local](#action-yara-status-retro-scan-local) - Allow users to check the status of a Local Retro scan  
+[yara status retro scan cloud](#action-yara-status-retro-scan-cloud) - Allow users to check the status of Cloud Retro scan  
+[list containers for hash](#action-list-containers-for-hash) - Get a list of containers from which the requested samples  
+[delete sample](#action-delete-sample) - Delete the sample with the requested hash value  
+[download extracted files](#action-download-extracted-files) - Download files extracted from local sample  
+[reanalyze local samples](#action-reanalyze-local-samples) - Submit a set of samples that already exist on the A1000  
 
 ## action: 'test connectivity'
 Validate the asset configuration for connectivity using supplied configuration
