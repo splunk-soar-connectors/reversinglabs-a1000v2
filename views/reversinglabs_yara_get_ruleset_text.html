@@ -1,4 +1,4 @@
-<!-- File: reversinglabs_network_ip_to_domain.html
+<!-- File: reversinglabs_get_classification.html
   Copyright (c) ReversingLabs, 2023
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -31,7 +31,7 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
         line-break: auto;
     }
 
-    .rl-table th {
+    .rl-table thead th {
         text-align: center;
         font-size: 1.4rem;
     }
@@ -45,22 +45,6 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
         flex-direction: column;
     }
 
-    .rl-results {
-        font-weight: normal;
-        font-size: small;
-        text-transform: lowercase;
-    }
-
-    .rl-table td:first-child {
-        color: #6c818b;
-        text-transform: uppercase;
-        font-weight: 500;
-        white-space: nowrap;
-        padding-left: 0.8rem;
-        padding-right: 2rem;
-        width: 0;
-    }
-
     #rl-target {
         padding-top: 0.5rem;
         text-transform: initial;
@@ -72,57 +56,33 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
         -ms-user-select: text;
         user-select: text;
     }
+
+    .rl-table td:first-child {
+        color: #6c818b;
+        text-transform: none;
+        font-weight: 500;
+        white-space: pre-wrap;
+        padding-left: 0.8rem;
+        padding-right: 2rem;
+        width: 11%;
+    }
 </style>
 <div class="rl-content">
     <table class="rl-table">
         <thead>
             <tr>
-                <th colspan="100%">Pagination</th>
+                <th colspan="1">ReversingLabs A1000 Retrieve the contents of a YARA ruleset
+                    <div id="rl-target" class="main-grid">{{param.ruleset_name}}</div>
+                </th>
             </tr>
         </thead>
+
         <tbody>
             <tr>
-                <td>Current page</td>
-                <td>{{param.page}}</td>
+                <td>{{data.detail.content}}</td>
             </tr>
-            <tr>
-                <td>Page size</td>
-                <td>{{param.page_size}}</td>
-            </tr>
-            {% if data.next_page != None %}
-            <tr>
-                <td>Next page</td>
-                <td>{{data.next_page}}</td>
-            </tr>
-            {% endif %}
         </tbody>
     </table>
-    <table class="rl-table">
-        <thead>
-            <tr>
-                <th colspan="7">ReversingLabs A1000 IP to Domain for<br/>
-                    <div id="rl-target" class="main-grid">{{data.requested_ip}}</div>
-                    <div class="rl-results" style="padding-top:0.5rem;">Results found: {{data.resolutions|length}}</div>
-            </tr>
-            {% if data.resolutions|length > 0 %}
-            <tr>
-                <th>#</th>
-                <th>Provider</th>
-                <th>Host Name</th>
-                <th>Last Resolution Time</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for x in data.resolutions %}
-            <tr>
-                <td>{{forloop.counter}}.</td>
-                <td>{{x.provider}}</td>
-                <td>{{x.host_name}}</td>
-                <td>{{x.last_resolution_time}}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-            {% endif %}
-    </table>
+
 </div>
 {% endblock %}

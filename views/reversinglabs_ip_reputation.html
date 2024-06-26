@@ -68,11 +68,33 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
         padding-right: 2rem;
     }
 
+    .charts {
+        display: flex;
+    }
+
+    .chartjs {
+        width: 49%;
+        height: 250px;
+        padding: 25px;
+    }
+
 </style>
+
+<script src="/app_resource/{{ summary.directory }}/chart-4-2-1.js"></script>
+
 <div class="rl-content">
     {% if data == None %}
     There is no data in response JSON.
     {% else %}
+    <div class="charts">
+        <div class="pad30 chartjs">
+            <canvas id="myChartBar-reputation"></canvas>
+        </div>
+        <div class="pad30 chartjs">
+            <canvas id="myChartBar-file-statistics"></canvas>
+        </div>
+    </div>
+
     <table class="rl-table">
         <thead>
             <tr>
@@ -129,8 +151,14 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
     <tbody>
         {% for x in data.top_threats %}
         <tr>
-            <td>{{ x.threat_name }}</td>
-            <td>{{ x.risk_score}}</td>
+            <td><a href="javascript:;" onclick="context_menu(this, [{'contains': ['search query'], 'value': 'threatname:{{ x.threat_name}}' }], 0, {{ container.id }}, null, false);">
+                {{ x.threat_name }}&nbsp;
+                <span class="fa fa-caret-down" style="font-size: smaller;"></span>
+            </a></td>
+            <td><a href="javascript:;" onclick="context_menu(this, [{'contains': ['search query'], 'value': 'riskscore:{{ x.risk_score }}' }], 0, {{ container.id }}, null, false);">
+                {{ x.risk_score }}&nbsp;
+                <span class="fa fa-caret-down" style="font-size: smaller;"></span>
+            </a></td>
             <td>{{ x.files_count }}</td>
         </tr>
         {% endfor %}
@@ -163,4 +191,86 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
     {% endif %}
 
 </div>
+
+<script>
+
+var endpoint = window.location.href;
+
+// Third Party Reputations
+var ReputationTotal = {{data.third_party_reputations.statistics.total}};
+var ReputationClean = {{data.third_party_reputations.statistics.clean}};
+var ReputationMalicious = {{data.third_party_reputations.statistics.malicious}};
+var ReputationUndetected = {{data.third_party_reputations.statistics.undetected}};
+var RepData = [ReputationTotal, ReputationClean, ReputationMalicious, ReputationUndetected];
+var titleRep = "Third Party Reputations"
+var chartLabelsRep = ['Total', 'Clean', 'Malicious', 'Undetected']
+
+$.ajax({
+  method: "GET",
+  url: endpoint,
+  success: function(data) {
+    drawBarGraph(data, 'myChartBar-reputation', titleRep, RepData, chartLabelsRep);
+  },
+  error: function(error_data) {
+    console.log(error_data);
+  }
+})
+
+// Download File Statistics
+var FileStatsTotal = {{data.downloaded_files_statistics.total}};
+var FileStatsGoodware = {{data.downloaded_files_statistics.goodware}};
+var FileStatsUnknown = {{data.downloaded_files_statistics.unknown}};
+var FileStatsMalicious = {{data.downloaded_files_statistics.malicious}};
+var FileStatsSuspicious = {{data.downloaded_files_statistics.suspicious}};
+var StatData = [FileStatsTotal, FileStatsGoodware, FileStatsMalicious, FileStatsUnknown, FileStatsSuspicious];
+var titleStat = "Download Files Statistics"
+var chartLabelsStat = ['Total', 'Goodware', 'Malicious', 'Unknown', 'Suspicious']
+
+$.ajax({
+  method: "GET",
+  url: endpoint,
+  success: function(data) {
+    drawBarGraph(data, 'myChartBar-file-statistics', titleStat, StatData, chartLabelsStat);
+  },
+  error: function(error_data) {
+    console.log(error_data);
+  }
+})
+
+
+function drawBarGraph(data, id, title, stats, chartLabels) {
+  var ctx = document.getElementById(id).getContext('2d');
+  var myChart{{ forloop.counter }} = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: chartLabels,
+      datasets: [{
+        label: title,
+        data: stats,
+        borderColor: [
+          '#afc7d7',
+          '#83ffa0',
+          '#f6143f',
+          '#afc7d7',
+          '#ffde83'
+        ],
+        backgroundColor: [
+          '#afc7d7',
+          '#83ffa0',
+          '#f6143f',
+          '#afc7d7',
+          '#ffde83'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      maintainAspectRatio: false,
+      responsive: true,
+      offset: false
+    }
+  });
+}
+</script>
+
 {% endblock %}

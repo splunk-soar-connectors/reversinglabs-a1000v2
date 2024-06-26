@@ -1,4 +1,4 @@
-<!-- File: reversinglabs_network_ip_to_domain.html
+<!-- File: reversinglabs_get_detailed_report.html
   Copyright (c) ReversingLabs, 2023
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -31,34 +31,22 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
         line-break: auto;
     }
 
-    .rl-table th {
+    .rl-table thead th {
         text-align: center;
         font-size: 1.4rem;
+    }
+
+    .result-table {
+        margin-top: 50px;
     }
 
     .rl-table td {
         padding: 7px;
     }
 
-    .rl-content {
+    .rl-table td:first .rl-content {
         display: flex;
         flex-direction: column;
-    }
-
-    .rl-results {
-        font-weight: normal;
-        font-size: small;
-        text-transform: lowercase;
-    }
-
-    .rl-table td:first-child {
-        color: #6c818b;
-        text-transform: uppercase;
-        font-weight: 500;
-        white-space: nowrap;
-        padding-left: 0.8rem;
-        padding-right: 2rem;
-        width: 0;
     }
 
     #rl-target {
@@ -72,57 +60,65 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
         -ms-user-select: text;
         user-select: text;
     }
+
+    .rl-table td:first-child {
+        color: #6c818b;
+        text-transform: none;
+        font-weight: 500;
+        white-space: nowrap;
+        padding-left: 0.8rem;
+        padding-right: 2rem;
+        width: 11%;
+    }
 </style>
 <div class="rl-content">
+    {% if data == None %}
+    There are no tags in the response JSON.
+    {% else%}
     <table class="rl-table">
         <thead>
             <tr>
-                <th colspan="100%">Pagination</th>
+                <th colspan="2">ReversingLabs A1000 list containers for hashes</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>Current page</td>
-                <td>{{param.page}}</td>
+                <td>Count</td>
+                <td>{{data.count}}</td>
             </tr>
             <tr>
-                <td>Page size</td>
-                <td>{{param.page_size}}</td>
+                <td>Previous</td>
+                <td>{{data.previous}}</td>
             </tr>
-            {% if data.next_page != None %}
             <tr>
-                <td>Next page</td>
-                <td>{{data.next_page}}</td>
+                <td>Next</td>
+                <td>{{data.next}}</td>
             </tr>
-            {% endif %}
         </tbody>
     </table>
-    <table class="rl-table">
+
+    {% for rr in data.results %}
+    <table class="rl-table result-table">
         <thead>
             <tr>
-                <th colspan="7">ReversingLabs A1000 IP to Domain for<br/>
-                    <div id="rl-target" class="main-grid">{{data.requested_ip}}</div>
-                    <div class="rl-results" style="padding-top:0.5rem;">Results found: {{data.resolutions|length}}</div>
-            </tr>
-            {% if data.resolutions|length > 0 %}
-            <tr>
-                <th>#</th>
-                <th>Provider</th>
-                <th>Host Name</th>
-                <th>Last Resolution Time</th>
+                <th>Containers for
+                    <div id="rl-target" class="main-grid">{{rr.sha256}}</div>
+                </th>
             </tr>
         </thead>
         <tbody>
-            {% for x in data.resolutions %}
-            <tr>
-                <td>{{forloop.counter}}.</td>
-                <td>{{x.provider}}</td>
-                <td>{{x.host_name}}</td>
-                <td>{{x.last_resolution_time}}</td>
-            </tr>
+            {% for cc in rr.containers %}
+                <tr>
+                    <td><a href="javascript:;" onclick="context_menu(this, [{'contains': ['hash'], 'value': '{{ cc }}' }], 0, {{ container.id }}, null, false);">
+                        {{ cc }}&nbsp;
+                        <span class="fa fa-caret-down" style="font-size: smaller;"></span>
+                    </a></td>
+                </tr>
             {% endfor %}
         </tbody>
-            {% endif %}
     </table>
+    {% endfor %}
+
+    {% endif %}
 </div>
 {% endblock %}

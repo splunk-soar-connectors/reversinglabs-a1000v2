@@ -79,7 +79,10 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
         <tbody>
             <tr>
                 <td>Classification</td>
-                <td><font color={{classification_color}}>{{classification}}</font></td>
+                <td><a href="javascript:;" onclick="context_menu(this, [{'contains': ['search query'], 'value': 'classification:{{ data.classification }}' }], 0, {{ container.id }}, null, false);" style="color: {{data.classification_color}}">
+                    {{data.classification}}&nbsp;
+                    <span class="fa fa-caret-down" style="font-size: smaller;"></span>
+                </a></td>
             </tr>
             <tr>
                 <td>Classification reason</td>
@@ -91,7 +94,10 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
             </tr>
             <tr>
                 <td>Risk score</td>
-                <td> {{data.riskscore}}</td>
+                <td><a href="javascript:;" onclick="context_menu(this, [{'contains': ['search query'], 'value': 'riskscore:{{ data.risk_score }}' }], 0, {{ container.id }}, null, false);">
+                    {{ data.risk_score }}&nbsp;
+                    <span class="fa fa-caret-down" style="font-size: smaller;"></span>
+                </a></td>
             </tr>
             <tr>
                 <td>Data source</td>
@@ -110,16 +116,25 @@ background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo
                 <td>{{data.last_seen}} </td>
             </tr>
             <tr>
-                <td>SHA-1 hash</td>
-                <td> {{data.sha1}}</td>
+                <td>SHA1 hash</td>
+                <td><a href="javascript:;" onclick="context_menu(this, [{'contains': ['sha1'], 'value': '{{ data.sha1 }}' }], 0, {{ container.id }}, null, false);">
+                    {{ data.sha1 }}&nbsp;
+                    <span class="fa fa-caret-down" style="font-size: smaller;"></span>
+                </a></td>
             </tr>
             <tr>
                 <td>MD5 hash</td>
-                <td>{{data.md5}}</td>
+                <td><a href="javascript:;" onclick="context_menu(this, [{'contains': ['md5'], 'value': '{{ data.md5 }}' }], 0, {{ container.id }}, null, false);">
+                    {{ data.md5 }}&nbsp;
+                    <span class="fa fa-caret-down" style="font-size: smaller;"></span>
+                </a></td>
             </tr>
             <tr>
-                <td>SHA-256 hash</td>
-                <td> {{data.sha256}}</td>
+                <td>SHA256 hash</td>
+                <td><a href="javascript:;" onclick="context_menu(this, [{'contains': ['sha256'], 'value': '{{ data.sha256 }}' }], 0, {{ container.id }}, null, false);">
+                    {{ data.sha256 }}&nbsp;
+                    <span class="fa fa-caret-down" style="font-size: smaller;"></span>
+                </a></td>
             </tr>
             {% if data.av_scanners != None %}
             <thead>

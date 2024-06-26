@@ -25,6 +25,28 @@ def advanced_search(provides, all_app_runs, context):
     return 'views/reversinglabs_advanced_search.html'
 
 
+def advanced_search_local(provides, all_app_runs, context):
+    for summary, action_results in all_app_runs:
+        for result in action_results:
+            context['data'] = result.get_data()[0]
+            context['param'] = result.get_param()
+            for r in context['data']['results']:
+                r["classification_color"] = color_code_classification(r.get("classification").upper())
+
+    return 'views/reversinglabs_advanced_search_local.html'
+
+
+def advanced_search_ticloud(provides, all_app_runs, context):
+    for summary, action_results in all_app_runs:
+        for result in action_results:
+            context['data'] = result.get_data()[0]
+            context['param'] = result.get_param()
+            for r in context['data']['results']:
+                r['classification_color'] = color_code_classification(r['classification'].upper())
+
+    return 'views/reversinglabs_advanced_search_ticloud.html'
+
+
 def get_classification(provides, all_app_runs, context):
     for summary, action_results in all_app_runs:
         for result in action_results:
@@ -75,6 +97,7 @@ def url_reputation(provides, all_app_runs, context):
             context['data'] = result.get_data()[0]
             context["classification"] = context['data'].get("classification", "UNAVAILABLE").upper()
             context["classification_color"] = color_code_classification(context["classification"])
+            context["summary"] = result.get_summary()
 
     return 'views/reversinglabs_url_reputation.html'
 
@@ -83,6 +106,7 @@ def domain_reputation(provides, all_app_runs, context):
     for summary, action_results in all_app_runs:
         for result in action_results:
             context['data'] = result.get_data()[0]
+            context["summary"] = result.get_summary()
 
     return 'views/reversinglabs_domain_reputation.html'
 
@@ -91,6 +115,7 @@ def ip_reputation(provides, all_app_runs, context):
     for summary, action_results in all_app_runs:
         for result in action_results:
             context['data'] = result.get_data()[0]
+            context["summary"] = result.get_summary()
 
     return 'views/reversinglabs_ip_reputation.html'
 
@@ -99,6 +124,7 @@ def network_ip_to_domain(provides, all_app_runs, context):
     for summary, action_results in all_app_runs:
         for result in action_results:
             context['data'] = result.get_data()[0]
+            context['param'] = result.get_param()
 
     return 'views/reversinglabs_network_ip_to_domain.html'
 
@@ -107,6 +133,7 @@ def network_urls_from_ip(provides, all_app_runs, context):
     for summary, action_results in all_app_runs:
         for result in action_results:
             context['data'] = result.get_data()[0]
+            context['param'] = result.get_param()
 
     return 'views/reversinglabs_network_urls_from_ip.html'
 
@@ -115,6 +142,7 @@ def network_files_from_ip(provides, all_app_runs, context):
     for summary, action_results in all_app_runs:
         for result in action_results:
             context['data'] = result.get_data()[0]
+            context['param'] = result.get_param()
             for x in context['data'].get("downloaded_files"):
                 x["classification_color"] = color_code_classification(x.get("classification").upper())
 
@@ -159,6 +187,172 @@ def submit_url(provides, all_app_runs, context):
             context['param'] = result.get_param()
 
     return 'views/reversinglabs_submit_url.html'
+
+
+def get_user_tags(provides, all_app_runs, context):
+    for summary, action_results in all_app_runs:
+        for result in action_results:
+            context['data'] = result.get_data()[0]
+            context['param'] = result.get_param()
+
+    return 'views/reversinglabs_get_user_tags.html'
+
+
+def create_user_tags(provides, all_app_runs, context):
+    for summary, action_results in all_app_runs:
+        for result in action_results:
+            context['data'] = result.get_data()[0]
+            context['param'] = result.get_param()
+
+    return 'views/reversinglabs_create_user_tags.html'
+
+
+def delete_user_tags(provides, all_app_runs, context):
+    for summary, action_results in all_app_runs:
+        for result in action_results:
+            context['data'] = result.get_data()[0]
+            context['param'] = result.get_param()
+
+    return 'views/reversinglabs_delete_user_tags.html'
+
+
+def set_sample_classification(provides, all_app_runs, context):
+    for summary, action_results in all_app_runs:
+        for result in action_results:
+            data = result.get_data()[0]
+            context["param"] = result.get_param()
+            context['data'] = data
+            if data["source"] == "local":
+                context["classification"] = data["content"].get("classification", "UNAVAILABLE").upper()
+                context["classification_color"] = color_code_classification(context["classification"])
+
+    return 'views/reversinglabs_set_sample_classification.html'
+
+
+def yara_get_rulesets(provides, all_app_runs, context):
+    for summary, action_results in all_app_runs:
+        for result in action_results:
+            context["data"] = result.get_data()[0]
+            context["param"] = result.get_param()
+    return 'views/reversinglabs_yara_get_rulesets.html'
+
+
+def yara_get_ruleset_text(provides, all_app_runs, context):
+    for summary, action_results in all_app_runs:
+        for result in action_results:
+            context["data"] = result.get_data()[0]
+            context["param"] = result.get_param()
+    return 'views/reversinglabs_yara_get_ruleset_text.html'
+
+
+def yara_get_matches(provides, all_app_runs, context):
+    for summary, action_results in all_app_runs:
+        for result in action_results:
+            context["data"] = result.get_data()[0]
+            context["param"] = result.get_param()
+            context["summary"] = result.get_summary()
+            classification = {
+                "known": 0,
+                "unknown": 0,
+                "suspicious": 0,
+                "malicious": 0,
+                "total": 0,
+            }
+            for x in context["data"]["results"]:
+                x["classification"] = get_status_from_ticore_classification(x.get("classification"))
+                x["classification_color"] = color_code_classification(x["classification"])
+                classification[x["classification"]] += 1
+                classification["total"] += 1
+            context["chart"] = {
+                "classification": classification,
+            }
+    return 'views/reversinglabs_yara_get_matches.html'
+
+
+def yara_create_ruleset(provides, all_app_runs, context):
+    for summary, action_results in all_app_runs:
+        for result in action_results:
+            context["data"] = result.get_data()[0]
+            context["param"] = result.get_param()
+    return 'views/reversinglabs_yara_create_ruleset.html'
+
+
+def yara_delete_ruleset(provides, all_app_runs, context):
+    for summary, action_results in all_app_runs:
+        for result in action_results:
+            context["data"] = result.get_data()[0]
+            context["param"] = result.get_param()
+    return 'views/reversinglabs_yara_delete_ruleset.html'
+
+
+def yara_toggle_ruleset(provides, all_app_runs, context):
+    for summary, action_results in all_app_runs:
+        for result in action_results:
+            context["data"] = result.get_data()[0]
+            context["param"] = result.get_param()
+    return 'views/reversinglabs_yara_toggle_ruleset.html'
+
+
+def yara_get_sync_time(provides, all_app_runs, context):
+    for summary, action_results in all_app_runs:
+        for result in action_results:
+            context["data"] = result.get_data()[0]
+    return 'views/reversinglabs_yara_get_sync_time.html'
+
+
+def yara_set_sync_time(provides, all_app_runs, context):
+    for summary, action_results in all_app_runs:
+        for result in action_results:
+            context["data"] = result.get_data()[0]
+            context["param"] = result.get_param()
+    return 'views/reversinglabs_yara_set_sync_time.html'
+
+
+def yara_toggle_retro_scan_local(provides, all_app_runs, context):
+    for summary, action_results in all_app_runs:
+        for result in action_results:
+            context["data"] = result.get_data()[0]
+            context["param"] = result.get_param()
+    return 'views/reversinglabs_yara_toggle_retro_scan_local.html'
+
+
+def yara_manage_retro_scan_cloud(provides, all_app_runs, context):
+    for summary, action_results in all_app_runs:
+        for result in action_results:
+            context["data"] = result.get_data()[0]
+            context["param"] = result.get_param()
+    return 'views/reversinglabs_yara_manage_retro_scan_cloud.html'
+
+
+def yara_status_retro_scan_local(provides, all_app_runs, context):
+    for summary, action_result in all_app_runs:
+        for result in action_result:
+            context["data"] = result.get_data()[0]
+    return 'views/reversinglabs_yara_status_retro_scan_local.html'
+
+
+def yara_status_retro_scan_cloud(provides, all_app_runs, context):
+    for summary, action_results in all_app_runs:
+        for result in action_results:
+            context["data"] = result.get_data()[0]
+            context["param"] = result.get_param()
+    return 'views/reversinglabs_yara_status_retro_scan_cloud.html'
+
+
+def list_containers_for_hash(provides, all_app_runs, context):
+    for summary, action_results in all_app_runs:
+        for result in action_results:
+            context["data"] = result.get_data()[0]
+            context["param"] = result.get_param()
+    return 'views/reversinglabs_list_containers_for_hash.html'
+
+
+def reanalyze_samples(provides, all_app_runs, context):
+    for summary, action_results in all_app_runs:
+        for result in action_results:
+            context["data"] = result.get_data()[0]
+            context["param"] = result.get_param()
+    return 'views/reversinglabs_reanalyze_samples.html'
 
 
 def color_code_classification(classification):
