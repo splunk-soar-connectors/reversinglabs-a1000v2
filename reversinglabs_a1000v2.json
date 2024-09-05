@@ -69,7 +69,7 @@
                     "required": true,
                     "primary": true,
                     "contains": [
-                        "vault id"
+                        "vault_id"
                     ],
                     "order": 0,
                     "name": "vault_id"
@@ -131,7 +131,7 @@
                     "data_path": "action_result.parameter.vault_id",
                     "data_type": "string",
                     "contains": [
-                        "vault id"
+                        "vault_id"
                     ],
                     "column_name": "vault_id",
                     "column_order": 0
