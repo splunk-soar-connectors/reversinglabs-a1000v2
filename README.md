@@ -1352,7 +1352,7 @@ Upload file to A1000.
 #### Action Parameters
 PARAMETER | REQUIRED | DESCRIPTION | TYPE | CONTAINS
 --------- | -------- | ----------- | ---- | --------
-**vault_id** |  required  | Vault ID of file to detonate | string |  `vault_id` 
+**vault_id** |  required  | Vault ID of file to detonate | string |  `vault id` 
 **file_name** |  optional  | Filename to use | string | 
 **custom_file_name** |  optional  | Custom file name for upload | string |  `file name` 
 **archive_password** |  optional  | Password for the file if it is password protected | password | 
@@ -1364,7 +1364,7 @@ PARAMETER | REQUIRED | DESCRIPTION | TYPE | CONTAINS
 #### Action Output
 DATA PATH | TYPE | CONTAINS | EXAMPLE VALUES
 --------- | ---- | -------- | --------------
-action_result.parameter.vault_id | string |  `vault_id`  |  
+action_result.parameter.vault_id | string |  `vault id`  |  
 action_result.parameter.file_name | string |  |  
 action_result.parameter.custom_file_name | string |  `file name`  |  
 action_result.parameter.rl_cloud_sandbox_platform | string |  |  
