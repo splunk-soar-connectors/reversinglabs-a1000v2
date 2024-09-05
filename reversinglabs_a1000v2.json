@@ -22,7 +22,7 @@
         }
     ],
     "license": "Copyright (c) ReversingLabs, 2023",
-    "app_version": "1.1.0",
+    "app_version": "1.1.1",
     "utctime_updated": "2023-04-05T05:26:10.159217Z",
     "package_name": "phantom_reversinglabs_a1000v2",
     "main_module": "reversinglabs_a1000v2_connector.py",
@@ -69,16 +69,10 @@
                     "required": true,
                     "primary": true,
                     "contains": [
-                        "apk",
-                        "doc",
-                        "flash",
-                        "jar",
-                        "pdf",
-                        "pe file",
-                        "ppt",
-                        "xls"
+                        "vault id"
                     ],
-                    "order": 0
+                    "order": 0,
+                    "name": "vault_id"
                 },
                 "file_name": {
                     "description": "Filename to use",
@@ -137,14 +131,7 @@
                     "data_path": "action_result.parameter.vault_id",
                     "data_type": "string",
                     "contains": [
-                        "pe file",
-                        "pdf",
-                        "flash",
-                        "apk",
-                        "jar",
-                        "doc",
-                        "xls",
-                        "ppt"
+                        "vault id"
                     ],
                     "column_name": "vault_id",
                     "column_order": 0
