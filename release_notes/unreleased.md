@@ -1,1 +1,7 @@
 **Unreleased**
+* Bug fixes:
+  * Relocated comment on views about copyright after django jinja templating to fix widget rendering.
+  * Fixed typos on custom views
+* Enhancement:
+  * Exchanged contains parameter for detonate_sample action from specific file types to vault_id
+  * Added new logo branding
