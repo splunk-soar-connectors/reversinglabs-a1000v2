@@ -2,7 +2,7 @@
 # Reversinglabs A1000 v2
 
 Publisher: ReversingLabs  
-Connector Version: 1.1.0  
+Connector Version: 1.1.1  
 Product Vendor: ReversingLabs  
 Product Name: A1000  
 Product Version Supported (regex): ".\*"  
@@ -14,7 +14,7 @@ App integrates with ReversingLabs A1000 Malware Analysis Appliance APIs
 # Reversinglabs A1000 v2
 
 Publisher: ReversingLabs  
-Connector Version: 1.1.0  
+Connector Version: 1.1.1  
 Product Vendor: ReversingLabs  
 Product Name: A1000  
 Product Version Supported (regex): ".\*"  
@@ -115,7 +115,7 @@ Upload file to A1000.
 #### Action Parameters
 | PARAMETER                     | REQUIRED | DESCRIPTION                                       | TYPE     | CONTAINS                                                     |
 |-------------------------------|----------|---------------------------------------------------|----------|--------------------------------------------------------------|
-| **vault_id**                  | required | Vault ID of file to detonate                      | string   | `apk`  `doc`  `flash`  `jar`  `pdf`  `pe file`  `ppt`  `xls` |
+| **vault_id**                  | required | Vault ID of file to detonate                      | string   | `vault_id`                                                   |
 | **file_name**                 | optional | Filename to use                                   | string   | `file name`                                                  |
 | **custom_file_name**          | optional | Custom file name for upload                       | string   | `file name`                                                  |
 | **archive_password**          | optional | password for the file if it is password protected | password |                                                              |
@@ -127,7 +127,7 @@ Upload file to A1000.
 #### Action Output
 | DATA PATH                                         | TYPE     | CONTAINS                                                     | EXAMPLE VALUES                                        |
 |---------------------------------------------------|----------|--------------------------------------------------------------|-------------------------------------------------------|
-| action_result.parameter.vault_id                  | string   | `pe file`  `pdf`  `flash`  `apk`  `jar`  `doc`  `xls`  `ppt` |                                                       |
+| action_result.parameter.vault_id                  | string   | `vault_id`                                                   |                                                       |
 | action_result.parameter.file_name                 | string   | `file name`                                                  |                                                       |
 | action_result.parameter.custom_file_name          | string   | `file name`                                                  |                                                       |
 | action_result.parameter.rl_cloud_sandbox_platform | string   |                                                              | "windows7" "windows10" "macos_11" "windows11" "linux" |
@@ -1352,7 +1352,7 @@ Upload file to A1000.
 #### Action Parameters
 PARAMETER | REQUIRED | DESCRIPTION | TYPE | CONTAINS
 --------- | -------- | ----------- | ---- | --------
-**vault_id** |  required  | Vault ID of file to detonate | string |  `apk`  `doc`  `flash`  `jar`  `pdf`  `pe file`  `ppt`  `xls` 
+**vault_id** |  required  | Vault ID of file to detonate | string |  `vault id` 
 **file_name** |  optional  | Filename to use | string | 
 **custom_file_name** |  optional  | Custom file name for upload | string |  `file name` 
 **archive_password** |  optional  | Password for the file if it is password protected | password | 
@@ -1364,7 +1364,7 @@ PARAMETER | REQUIRED | DESCRIPTION | TYPE | CONTAINS
 #### Action Output
 DATA PATH | TYPE | CONTAINS | EXAMPLE VALUES
 --------- | ---- | -------- | --------------
-action_result.parameter.vault_id | string |  `pe file`  `pdf`  `flash`  `apk`  `jar`  `doc`  `xls`  `ppt`  |  
+action_result.parameter.vault_id | string |  `vault id`  |  
 action_result.parameter.file_name | string |  |  
 action_result.parameter.custom_file_name | string |  `file name`  |  
 action_result.parameter.rl_cloud_sandbox_platform | string |  |  
