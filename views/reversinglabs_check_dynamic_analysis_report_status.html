@@ -1,3 +1,9 @@
+{% extends 'widgets/widget_template.html' %}
+{% load custom_template %}
+{% block custom_title_prop %}{% if title_logo %}style="background-size: auto 60%; background-position: 50%;
+background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo }}');"{% endif %}{% endblock %}
+{% block widget_content %}
+
 <!-- File: reversinglabs_check_dynamic_analysis_report_status.html
   Copyright (c) ReversingLabs, 2023
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -10,11 +16,6 @@ either express or implied. See the License for the specific language governing p
 and limitations under the License.
 -->
 
-{% extends 'widgets/widget_template.html' %}
-{% load custom_template %}
-{% block custom_title_prop %}{% if title_logo %}style="background-size: auto 60%; background-position: 50%;
-background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo }}');"{% endif %}{% endblock %}
-{% block widget_content %}
 <style>
     .widget-container {
         width: 1170px !important;
