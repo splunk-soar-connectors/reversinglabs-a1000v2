@@ -1,11 +1,14 @@
 {% extends 'widgets/widget_template.html' %}
 {% load custom_template %}
-{% block custom_title_prop %}{% if title_logo %}style="background-size: auto 60%; background-position: 50%;
-background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo }}');"{% endif %}{% endblock %}
+{% block custom_title_prop %}
+  {% if title_logo %}
+    style="background-size: auto 60%; background-position: 50%;
+    background-repeat: no-repeat; background-image: url('/app_resource/{{ title_logo }}');"
+  {% endif %}
+{% endblock %}
 {% block widget_content %}
-
-<!-- File: reversinglabs_domain_reputation.html
-  Copyright (c) ReversingLabs, 2023
+  <!-- File: reversinglabs_domain_reputation.html
+  Copyright (c) ReversingLabs, 2023-2025
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
@@ -15,8 +18,7 @@ the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS
 either express or implied. See the License for the specific language governing permissions
 and limitations under the License.
 -->
-
-<style>
+  <style>
     .widget-container {
         width: 1170px !important;
         height: 600px;
@@ -79,131 +81,147 @@ and limitations under the License.
         padding: 25px;
     }
 
-</style>
-<div class="rl-content">
+  </style>
+  <div class="rl-content">
     {% if data == None %}
-    There is no data in response JSON.
+      There is no data in response JSON.
     {% else %}
-    <div class="charts">
+      <div class="charts">
         <div class="pad30 chartjs">
-            <canvas id="myChartBar-reputation"></canvas>
+          <canvas id="myChartBar-reputation"></canvas>
         </div>
         <div class="pad30 chartjs">
-            <canvas id="myChartBar-file-statistics"></canvas>
+          <canvas id="myChartBar-file-statistics"></canvas>
         </div>
-    </div>
-
-    <table class="rl-table">
+      </div>
+      <table class="rl-table">
         <thead>
-            <tr>
-                <th colspan="3">ReversingLabs A1000 Domain reputation for
-                    <div id="rl-target" class="main-grid">{{data.requested_domain}}</div>
-                </th>
-            </tr>
+          <tr>
+            <th colspan="3">
+              ReversingLabs A1000 Domain reputation for
+              <div id="rl-target" class="main-grid">{{ data.requested_domain }}</div>
+            </th>
+          </tr>
         </thead>
         {% if data.downloaded_files_statistics != None %}
-        <thead>
+          <thead>
             <tr>
-                <th colspan="3">Downloaded Files Statistics</th>
+              <th colspan="3">Downloaded Files Statistics</th>
             </tr>
-        </thead>
-        <tbody>
+          </thead>
+          <tbody>
             <tr>
-                <td class="td-header">
-                    <span style="color:green;">GOODWARE</span>
-                </td>
-                <td colspan="2"><a href="javascript:;" onclick="context_menu(this, [{'contains': ['search query'], 'value': 'uri-source:&quot;*://{{ data.requested_domain }}/*&quot; AND classification:goodware' }], 0, {{ container.id }}, null, false);">
-                    {{ data.downloaded_files_statistics.goodware }}&nbsp;
-                    <span class="fa fa-caret-down" style="font-size: smaller;"></span>
-                </a></td>
-            </tr>
-            <tr>
-                <td class="td-header">
-                    <span style="color:orange;">SUSPICIOUS</span>
-                </td>
-                <td colspan="2"><a href="javascript:;" onclick="context_menu(this, [{'contains': ['search query'], 'value': 'uri-source:&quot;*://{{ data.requested_domain }}/*&quot; AND classification:suspicious' }], 0, {{ container.id }}, null, false);">
-                    {{ data.downloaded_files_statistics.suspicious }}&nbsp;
-                    <span class="fa fa-caret-down" style="font-size: smaller;"></span>
-                </a></td>
+              <td class="td-header">
+                <span style="color:green;">GOODWARE</span>
+              </td>
+              <td colspan="2">
+                <a href="javascript:;"
+                   onclick="context_menu(this, [{'contains': ['search query'], 'value': 'uri-source:&quot;*://{{ data.requested_domain }}/*&quot; AND classification:goodware' }], 0, {{ container.id }}, null, false);">
+                  {{ data.downloaded_files_statistics.goodware }}&nbsp;
+                  <span class="fa fa-caret-down" style="font-size: smaller;"></span>
+                </a>
+              </td>
             </tr>
             <tr>
-                <td class="td-header">
-                    <span style="color:red;">MALICIOUS</span>
-                </td>
-                <td colspan="2"><a href="javascript:;" onclick="context_menu(this, [{'contains': ['search query'], 'value': 'uri-source:&quot;*://{{ data.requested_domain }}/*&quot; AND classification:malicious' }], 0, {{ container.id }}, null, false);">
-                    {{ data.downloaded_files_statistics.malicious }}&nbsp;
-                    <span class="fa fa-caret-down" style="font-size: smaller;"></span>
-                </a></td>
+              <td class="td-header">
+                <span style="color:orange;">SUSPICIOUS</span>
+              </td>
+              <td colspan="2">
+                <a href="javascript:;"
+                   onclick="context_menu(this, [{'contains': ['search query'], 'value': 'uri-source:&quot;*://{{ data.requested_domain }}/*&quot; AND classification:suspicious' }], 0, {{ container.id }}, null, false);">
+                  {{ data.downloaded_files_statistics.suspicious }}&nbsp;
+                  <span class="fa fa-caret-down" style="font-size: smaller;"></span>
+                </a>
+              </td>
             </tr>
             <tr>
-                <td class="td-header">
-                    <span>UNKNOWN</span>
-                </td>
-                <td colspan="2"><a href="javascript:;" onclick="context_menu(this, [{'contains': ['search query'], 'value': 'uri-source:&quot;*://{{ data.requested_domain }}/*&quot; AND classification:unknown' }], 0, {{ container.id }}, null, false);">
-                    {{ data.downloaded_files_statistics.unknown }}&nbsp;
-                    <span class="fa fa-caret-down" style="font-size: smaller;"></span>
-                </a></td>
+              <td class="td-header">
+                <span style="color:red;">MALICIOUS</span>
+              </td>
+              <td colspan="2">
+                <a href="javascript:;"
+                   onclick="context_menu(this, [{'contains': ['search query'], 'value': 'uri-source:&quot;*://{{ data.requested_domain }}/*&quot; AND classification:malicious' }], 0, {{ container.id }}, null, false);">
+                  {{ data.downloaded_files_statistics.malicious }}&nbsp;
+                  <span class="fa fa-caret-down" style="font-size: smaller;"></span>
+                </a>
+              </td>
             </tr>
             <tr>
-                <td class="td-header">TOTAL</td>
-                <td colspan="2">{{data.downloaded_files_statistics.total}}</td>
+              <td class="td-header">
+                <span>UNKNOWN</span>
+              </td>
+              <td colspan="2">
+                <a href="javascript:;"
+                   onclick="context_menu(this, [{'contains': ['search query'], 'value': 'uri-source:&quot;*://{{ data.requested_domain }}/*&quot; AND classification:unknown' }], 0, {{ container.id }}, null, false);">
+                  {{ data.downloaded_files_statistics.unknown }}&nbsp;
+                  <span class="fa fa-caret-down" style="font-size: smaller;"></span>
+                </a>
+              </td>
             </tr>
-        </tbody>
+            <tr>
+              <td class="td-header">TOTAL</td>
+              <td colspan="2">{{ data.downloaded_files_statistics.total }}</td>
+            </tr>
+          </tbody>
         {% endif %}
-    {% if data.top_threats|length > 0 %}
-    <thead>
-        <tr>
-            <th colspan="3"> Top Threats</th>
-        </tr>
-        <tr>
-            <th> Threat name</th>
-            <th> Risk Score</th>
-            <th> File Count</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for x in data.top_threats %}
-        <tr>
-            <td><a href="javascript:;" onclick="context_menu(this, [{'contains': ['search query'], 'value': 'uri-source:&quot;*://{{ data.requested_domain }}/*&quot; AND threatname:{{ x.threat_name }}' }], 0, {{ container.id }}, null, false);">
-                {{ x.threat_name }}&nbsp;
-                <span class="fa fa-caret-down" style="font-size: smaller;"></span>
-            </a></td>
-            <td><a href="javascript:;" onclick="context_menu(this, [{'contains': ['search query'], 'value': 'uri-source:&quot;*://{{ data.requested_domain }}/*&quot; AND riskscore:{{ x.risk_score }}' }], 0, {{ container.id }}, null, false);">
-                {{ x.risk_score }}&nbsp;
-                <span class="fa fa-caret-down" style="font-size: smaller;"></span>
-            </a></td>
-            <td>{{ x.files_count }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
+        {% if data.top_threats|length > 0 %}
+          <thead>
+            <tr>
+              <th colspan="3">Top Threats</th>
+            </tr>
+            <tr>
+              <th>Threat name</th>
+              <th>Risk Score</th>
+              <th>File Count</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for x in data.top_threats %}
+              <tr>
+                <td>
+                  <a href="javascript:;"
+                     onclick="context_menu(this, [{'contains': ['search query'], 'value': 'uri-source:&quot;*://{{ data.requested_domain }}/*&quot; AND threatname:{{ x.threat_name }}' }], 0, {{ container.id }}, null, false);">
+                    {{ x.threat_name }}&nbsp;
+                    <span class="fa fa-caret-down" style="font-size: smaller;"></span>
+                  </a>
+                </td>
+                <td>
+                  <a href="javascript:;"
+                     onclick="context_menu(this, [{'contains': ['search query'], 'value': 'uri-source:&quot;*://{{ data.requested_domain }}/*&quot; AND riskscore:{{ x.risk_score }}' }], 0, {{ container.id }}, null, false);">
+                    {{ x.risk_score }}&nbsp;
+                    <span class="fa fa-caret-down" style="font-size: smaller;"></span>
+                  </a>
+                </td>
+                <td>{{ x.files_count }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        {% endif %}
+        {% if data.third_party_reputations.sources|length > 0 %}
+          <thead>
+            <tr>
+              <th colspan="3">Third party reputations</th>
+            </tr>
+            <tr>
+              <th>Source</th>
+              <th>Detection</th>
+              <th>Update time</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for x in data.third_party_reputations.sources %}
+              <tr>
+                <td>{{ x.source }}</td>
+                <td>{{ x.detection }}</td>
+                <td>{{ x.update_time }}</td>
+              </tr>
+            {% endfor %}
+          {% endif %}
+        </tbody>
+      </table>
     {% endif %}
-    {% if data.third_party_reputations.sources|length > 0 %}
-    <thead>
-        <tr>
-            <th colspan="3"> Third party reputations</th>
-        </tr>
-        <tr>
-            <th> Source</th>
-            <th> Detection</th>
-            <th> Update time</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for x in data.third_party_reputations.sources %}
-        <tr>
-            <td>{{ x.source }}</td>
-            <td>{{ x.detection }}</td>
-            <td>{{ x.update_time }}</td>
-        </tr>
-        {% endfor %}
-    {% endif %}
-    </tbody>
-    </table>
-    {% endif %}
-</div>
-
-<script>
-
+  </div>
+  <script>
 var endpoint = window.location.href;
 
 // Third Party Reputations
@@ -283,6 +301,5 @@ function drawBarGraph(data, id, title, stats, chartLabels) {
     }
   });
 }
-</script>
-
+  </script>
 {% endblock %}

@@ -1,6 +1,6 @@
 # File: reversinglabs_a1000v2_connector.py
 #
-# Copyright (c) ReversingLabs, 2023
+# Copyright (c) ReversingLabs, 2023-2025
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,7 +13,6 @@
 # either express or implied. See the License for the specific language governing permissions
 # and limitations under the License.
 #
-from __future__ import print_function, unicode_literals
 
 import json
 import os
@@ -25,6 +24,7 @@ from phantom.action_result import ActionResult
 from phantom.base_connector import BaseConnector
 from phantom.vault import Vault
 from ReversingLabs.SDK.a1000 import A1000
+
 
 # Our helper lib reversinglabs-sdk-py3 internally utilizes pypi requests (with named parameters) which is shadowed by Phantom
 # requests (which has renamed parameters (url>>uri), hence this workarounds
@@ -59,9 +59,11 @@ phantom.requests.delete = new_delete
 class ReversinglabsA1000V2Connector(BaseConnector):
     post_url = "post_url"
     USER_AGENT = "ReversingLabs Splunk SOAR A1000 v1.1.1"
-    TITANIUM_CORE_FIELDS = "sha1, sha256, sha512, md5, imphash, info, application, protection, security, behaviour," \
-        " certificate, document, mobile, media, web, email, strings, interesting_strings," \
+    TITANIUM_CORE_FIELDS = (
+        "sha1, sha256, sha512, md5, imphash, info, application, protection, security, behaviour,"
+        " certificate, document, mobile, media, web, email, strings, interesting_strings,"
         " classification, indicators, tags, attack, story"
+    )
 
     # The actions supported by this connector
     ACTION_ID_TEST_CONNECTIVITY = "test_connectivity"
@@ -112,7 +114,7 @@ class ReversinglabsA1000V2Connector(BaseConnector):
 
     def __init__(self):
         # Call the BaseConnectors init first
-        super(ReversinglabsA1000V2Connector, self).__init__()
+        super().__init__()
 
         self.ACTIONS = {
             self.ACTION_ID_TEST_CONNECTIVITY: self._handle_test_connectivity,
@@ -158,7 +160,7 @@ class ReversinglabsA1000V2Connector(BaseConnector):
             self.ACTION_ID_LIST_CONTAINERS_FOR_HASH: self._handle_list_containers_for_hash,
             self.ACTION_ID_DELETE_SAMPLE: self._handle_delete_sample,
             self.ACTION_ID_DOWNLOAD_EXTRACTED_FILES: self._handle_download_extracted_files,
-            self.ACTION_ID_REANALYZE_SAMPLES: self._handle_reanalyze_samples
+            self.ACTION_ID_REANALYZE_SAMPLES: self._handle_reanalyze_samples,
         }
 
         self._state = None
@@ -209,11 +211,11 @@ class ReversinglabsA1000V2Connector(BaseConnector):
         file_vault_id = param["vault_id"]
         success, msg, files_array = vault.vault_info(container_id=self.get_container_id())
         if not success:
-            raise Exception('Unable to get Vault item details. Error details: {0}'.format(msg))
+            raise Exception(f"Unable to get Vault item details. Error details: {msg}")
 
         file = next(filter(lambda x: x["vault_id"] == file_vault_id, files_array), None)
         if not file:
-            raise Exception('Unable to get Vault item details. Error details: {0}'.format(msg))
+            raise Exception(f"Unable to get Vault item details. Error details: {msg}")
 
         self.a1000.upload_sample_from_path(
             file["path"],
@@ -243,9 +245,7 @@ class ReversinglabsA1000V2Connector(BaseConnector):
     def _handle_check_submitted_url_status(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
 
-        response = self.a1000.check_submitted_url_status(
-            task_id=param.get("task_id")
-        )
+        response = self.a1000.check_submitted_url_status(task_id=param.get("task_id"))
 
         self.debug_print("Executed", self.get_action_identifier())
 
@@ -254,7 +254,7 @@ class ReversinglabsA1000V2Connector(BaseConnector):
     def _handle_create_pdf_report(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
 
-        response = self.a1000.create_pdf_report(sample_hash=param.get('hash'))
+        response = self.a1000.create_pdf_report(sample_hash=param.get("hash"))
 
         self.debug_print("Executed", self.get_action_identifier())
 
@@ -263,7 +263,7 @@ class ReversinglabsA1000V2Connector(BaseConnector):
     def _handle_check_pdf_report_creation(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
 
-        response = self.a1000.check_pdf_report_creation(sample_hash=param.get('hash'))
+        response = self.a1000.check_pdf_report_creation(sample_hash=param.get("hash"))
 
         self.debug_print("Executed", self.get_action_identifier())
 
@@ -272,7 +272,7 @@ class ReversinglabsA1000V2Connector(BaseConnector):
     def _handle_download_pdf_report(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
 
-        response = self.a1000.download_pdf_report(sample_hash=param.get('hash'))
+        response = self.a1000.download_pdf_report(sample_hash=param.get("hash"))
 
         self.debug_print("Executed", self.get_action_identifier())
 
@@ -280,42 +280,42 @@ class ReversinglabsA1000V2Connector(BaseConnector):
         with open(file_path, "wb") as file_obj:
             file_obj.write(response.content)
 
-        success, msg, vault_id = vault.vault_add(file_location=file_path,
-                                                 container=self.get_container_id(),
-                                                 file_name="{0}.pdf".format(param.get("hash")))
+        success, msg, vault_id = vault.vault_add(
+            file_location=file_path, container=self.get_container_id(), file_name="{}.pdf".format(param.get("hash"))
+        )
         if not success:
-            raise Exception('Unable to store file in Vault. Error details: {0}'.format(msg))
+            raise Exception(f"Unable to store file in Vault. Error details: {msg}")
 
     def _handle_url_reputation(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
 
-        response = self.a1000.network_url_report(requested_url=param.get('url'))
+        response = self.a1000.network_url_report(requested_url=param.get("url"))
 
         self.debug_print("Executed", self.get_action_identifier())
 
-        action_result.set_summary({'directory': self.get_config()["directory"]})
+        action_result.set_summary({"directory": self.get_config()["directory"]})
 
         action_result.add_data(response.json())
 
     def _handle_domain_reputation(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
 
-        response = self.a1000.network_domain_report(domain=param.get('domain'))
+        response = self.a1000.network_domain_report(domain=param.get("domain"))
 
         self.debug_print("Executed", self.get_action_identifier())
 
-        action_result.set_summary({'directory': self.get_config()["directory"]})
+        action_result.set_summary({"directory": self.get_config()["directory"]})
 
         action_result.add_data(response.json())
 
     def _handle_ip_reputation(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
 
-        response = self.a1000.network_ip_addr_report(ip_addr=param.get('ip'))
+        response = self.a1000.network_ip_addr_report(ip_addr=param.get("ip"))
 
         self.debug_print("Executed", self.get_action_identifier())
 
-        action_result.set_summary({'directory': self.get_config()["directory"]})
+        action_result.set_summary({"directory": self.get_config()["directory"]})
 
         action_result.add_data(response.json())
 
@@ -323,9 +323,9 @@ class ReversinglabsA1000V2Connector(BaseConnector):
         self.debug_print("Action handler", self.get_action_identifier())
 
         response = self.a1000.network_ip_to_domain(
-            ip_addr=param.get('ip'),
-            page=param.get('page'),
-            page_size=param.get('page_size', 500),
+            ip_addr=param.get("ip"),
+            page=param.get("page"),
+            page_size=param.get("page_size", 500),
         )
 
         self.debug_print("Executed", self.get_action_identifier())
@@ -336,9 +336,9 @@ class ReversinglabsA1000V2Connector(BaseConnector):
         self.debug_print("Action handler", self.get_action_identifier())
 
         response = self.a1000.network_urls_from_ip(
-            ip_addr=param.get('ip'),
-            page=param.get('page'),
-            page_size=param.get('page_size', 500),
+            ip_addr=param.get("ip"),
+            page=param.get("page"),
+            page_size=param.get("page_size", 500),
         )
 
         self.debug_print("Executed", self.get_action_identifier())
@@ -349,9 +349,9 @@ class ReversinglabsA1000V2Connector(BaseConnector):
         self.debug_print("Action handler", self.get_action_identifier())
 
         response = self.a1000.network_files_from_ip(
-            ip_addr=param.get('ip'),
-            page=param.get('page'),
-            page_size=param.get('page_size', 500),
+            ip_addr=param.get("ip"),
+            page=param.get("page"),
+            page_size=param.get("page_size", 500),
         )
 
         self.debug_print("Executed", self.get_action_identifier())
@@ -361,41 +361,41 @@ class ReversinglabsA1000V2Connector(BaseConnector):
     @staticmethod
     def marshall_ticloud_into_a1000(result):
         platform, ttype, family = None, None, None
-        threatname = result.get('threatname')
+        threatname = result.get("threatname")
         if threatname:
-            parts = threatname.split('.')
+            parts = threatname.split(".")
             sentinels = [None] * (3 - len(parts))
             platform, ttype, family = [*parts, *sentinels]
         if platform:
-            result['threat_platform'] = platform
+            result["threat_platform"] = platform
         if ttype:
-            result['threat_type'] = ttype
+            result["threat_type"] = ttype
         if family:
-            result['threat_family'] = family
-        if result.get('sampletype'):
-            result['sample_type'] = result.get('sampletype')
-        if result.get('factor'):
-            result['riskscore'] = result.get('factor')
+            result["threat_family"] = family
+        if result.get("sampletype"):
+            result["sample_type"] = result.get("sampletype")
+        if result.get("factor"):
+            result["riskscore"] = result.get("factor")
 
     def _handle_advanced_search(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
 
         response = self.a1000.advanced_search_v2_aggregated(
-            query_string=param.get('query'),
-            max_results=param.get('limit'),
-            ticloud=param.get('only_cloud_results'),
+            query_string=param.get("query"),
+            max_results=param.get("limit"),
+            ticloud=param.get("only_cloud_results"),
         )
 
         self.debug_print("Executed", self.get_action_identifier())
 
         for result in response:
-            if param.get('only_cloud_results'):
+            if param.get("only_cloud_results"):
                 ReversinglabsA1000V2Connector.marshall_ticloud_into_a1000(result)
             action_result.add_data(result)
 
     def _handle_advanced_search_local(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
-        page = param.get('page')
+        page = param.get("page")
         if page:
             result = self.a1000.advanced_search_v3(
                 query_string=param.get("query"),
@@ -456,10 +456,7 @@ class ReversinglabsA1000V2Connector(BaseConnector):
     def _handle_create_dynamic_analysis_report(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
 
-        response = self.a1000.create_dynamic_analysis_report(
-            sample_hash=param.get('hash'),
-            report_format='pdf'
-        )
+        response = self.a1000.create_dynamic_analysis_report(sample_hash=param.get("hash"), report_format="pdf")
 
         self.debug_print("Executed", self.get_action_identifier())
 
@@ -468,10 +465,7 @@ class ReversinglabsA1000V2Connector(BaseConnector):
     def _handle_check_dynamic_analysis_report_status(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
 
-        response = self.a1000.check_dynamic_analysis_report_status(
-            sample_hash=param.get('hash'),
-            report_format='pdf'
-        )
+        response = self.a1000.check_dynamic_analysis_report_status(sample_hash=param.get("hash"), report_format="pdf")
 
         self.debug_print("Executed", self.get_action_identifier())
 
@@ -480,10 +474,7 @@ class ReversinglabsA1000V2Connector(BaseConnector):
     def _handle_download_dynamic_analysis_report(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
 
-        response = self.a1000.download_dynamic_analysis_report(
-            sample_hash=param.get('hash'),
-            report_format='pdf'
-        )
+        response = self.a1000.download_dynamic_analysis_report(sample_hash=param.get("hash"), report_format="pdf")
 
         self.debug_print("Executed", self.get_action_identifier())
 
@@ -491,24 +482,24 @@ class ReversinglabsA1000V2Connector(BaseConnector):
         with open(file_path, "wb") as file_obj:
             file_obj.write(response.content)
 
-        success, msg, vault_id = vault.vault_add(file_location=file_path,
-                                                 container=self.get_container_id(),
-                                                 file_name="dynamic-{0}.pdf".format(param.get('hash')))
+        success, msg, vault_id = vault.vault_add(
+            file_location=file_path, container=self.get_container_id(), file_name="dynamic-{}.pdf".format(param.get("hash"))
+        )
         if not success:
-            raise Exception('Unable to store file in Vault. Error details: {0}'.format(msg))
+            raise Exception(f"Unable to store file in Vault. Error details: {msg}")
 
     def _handle_get_summary_report(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
 
         fields = None
-        if param.get('fields'):
-            fields = param.get('fields').split(",")
+        if param.get("fields"):
+            fields = param.get("fields").split(",")
         response = self.a1000.get_summary_report_v2(
-            sample_hashes=param.get('hash'),
-            retry=param.get('retry'),
+            sample_hashes=param.get("hash"),
+            retry=param.get("retry"),
             fields=fields,
-            include_networkthreatintelligence=param.get('include_network_threat_intelligence'),
-            skip_reanalysis=param.get('skip_reanalysis')
+            include_networkthreatintelligence=param.get("include_network_threat_intelligence"),
+            skip_reanalysis=param.get("skip_reanalysis"),
         )
 
         self.debug_print("Executed", self.get_action_identifier())
@@ -519,13 +510,10 @@ class ReversinglabsA1000V2Connector(BaseConnector):
         self.debug_print("Action handler", self.get_action_identifier())
 
         fields = None
-        if param.get('fields'):
-            fields = param.get('fields').split(",")
+        if param.get("fields"):
+            fields = param.get("fields").split(",")
         response = self.a1000.get_detailed_report_v2(
-            sample_hashes=param.get('hash'),
-            retry=param.get('retry'),
-            fields=fields,
-            skip_reanalysis=param.get('skip_reanalysis')
+            sample_hashes=param.get("hash"), retry=param.get("retry"), fields=fields, skip_reanalysis=param.get("skip_reanalysis")
         )
 
         self.debug_print("Executed", self.get_action_identifier())
@@ -536,9 +524,7 @@ class ReversinglabsA1000V2Connector(BaseConnector):
         self.debug_print("Action handler", self.get_action_identifier())
 
         response = self.a1000.get_classification_v3(
-            sample_hash=param.get('hash'),
-            local_only=param.get('local_only'),
-            av_scanners=param.get('av_scanners')
+            sample_hash=param.get("hash"), local_only=param.get("local_only"), av_scanners=param.get("av_scanners")
         )
 
         self.debug_print("Executed", self.get_action_identifier())
@@ -548,10 +534,7 @@ class ReversinglabsA1000V2Connector(BaseConnector):
     def _handle_get_titaniumcore_report(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
 
-        response = self.a1000.get_titanium_core_report_v2(
-            sample_hash=param.get("hash"),
-            fields=self.TITANIUM_CORE_FIELDS
-        )
+        response = self.a1000.get_titanium_core_report_v2(sample_hash=param.get("hash"), fields=self.TITANIUM_CORE_FIELDS)
 
         self.debug_print("Executed", self.get_action_identifier())
 
@@ -579,10 +562,7 @@ class ReversinglabsA1000V2Connector(BaseConnector):
 
         sample_hash = param.get("hash")
         tags = param.get("tags").split(",")
-        response = self.a1000.post_user_tags(
-            sample_hash=sample_hash,
-            tags=tags
-        )
+        response = self.a1000.post_user_tags(sample_hash=sample_hash, tags=tags)
 
         self.debug_print("Executed", self.get_action_identifier())
 
@@ -593,10 +573,7 @@ class ReversinglabsA1000V2Connector(BaseConnector):
 
         sample_hash = param.get("hash")
         tags = param.get("tags").split(",")
-        response = self.a1000.delete_user_tags(
-            sample_hash=sample_hash,
-            tags=tags
-        )
+        response = self.a1000.delete_user_tags(sample_hash=sample_hash, tags=tags)
 
         self.debug_print("Executed", self.get_action_identifier())
 
@@ -636,16 +613,14 @@ class ReversinglabsA1000V2Connector(BaseConnector):
             status=param.get("status"),
             source=param.get("source"),
             page=str(param.get("page")) if param.get("page") else None,
-            page_size=str(param.get("page_size")) if param.get("page_size") else None
+            page_size=str(param.get("page_size")) if param.get("page_size") else None,
         )
         self.debug_print("Executed", self.get_action_identifier())
         action_result.add_data(response.json())
 
     def _handle_yara_get_ruleset_text(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
-        response = self.a1000.get_yara_ruleset_contents(
-            ruleset_name=param.get("ruleset_name")
-        )
+        response = self.a1000.get_yara_ruleset_contents(ruleset_name=param.get("ruleset_name"))
         self.debug_print("Executed", self.get_action_identifier())
         action_result.add_data(response.json())
 
@@ -659,16 +634,13 @@ class ReversinglabsA1000V2Connector(BaseConnector):
             page_size=page_size,
         )
         self.debug_print("Executed", self.get_action_identifier())
-        action_result.set_summary({'directory': self.get_config()["directory"]})
+        action_result.set_summary({"directory": self.get_config()["directory"]})
         action_result.add_data(response.json())
 
     def _handle_yara_create_ruleset(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
         response = self.a1000.create_or_update_yara_ruleset(
-            name=param.get("ruleset_name"),
-            content=param.get("ruleset_text"),
-            publish=param.get("publish"),
-            ticloud=param.get("ticloud")
+            name=param.get("ruleset_name"), content=param.get("ruleset_text"), publish=param.get("publish"), ticloud=param.get("ticloud")
         )
         self.debug_print("Executed", self.get_action_identifier())
         action_result.add_data(response.json())
@@ -764,11 +736,11 @@ class ReversinglabsA1000V2Connector(BaseConnector):
         with open(file_path, "wb") as file_obj:
             file_obj.write(response.content)
 
-        success, msg, vault_id = vault.vault_add(file_location=file_path,
-                                                 container=self.get_container_id(),
-                                                 file_name="extracted_from-{0}.zip".format(param.get("hash")))
+        success, msg, vault_id = vault.vault_add(
+            file_location=file_path, container=self.get_container_id(), file_name="extracted_from-{}.zip".format(param.get("hash"))
+        )
         if not success:
-            raise Exception('Unable to store file in Vault. Error details: {0}'.format(msg))
+            raise Exception(f"Unable to store file in Vault. Error details: {msg}")
 
     def _handle_reanalyze_samples(self, action_result, param):
         self.debug_print("Action handler", self.get_action_identifier())
@@ -803,5 +775,5 @@ def main():
     exit(0)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

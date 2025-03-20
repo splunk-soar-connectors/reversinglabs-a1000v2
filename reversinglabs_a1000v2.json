@@ -21,7 +21,7 @@
             "name": "MislavReversingLabs"
         }
     ],
-    "license": "Copyright (c) ReversingLabs, 2023",
+    "license": "Copyright (c) ReversingLabs, 2023-2025",
     "app_version": "1.1.1",
     "utctime_updated": "2023-04-05T05:26:10.159217Z",
     "package_name": "phantom_reversinglabs_a1000v2",
@@ -87,7 +87,9 @@
                     "required": false,
                     "primary": false,
                     "order": 2,
-                    "contains": ["file name"]
+                    "contains": [
+                        "file name"
+                    ]
                 },
                 "archive_password": {
                     "description": "Password for the file if it is password protected",
@@ -102,7 +104,13 @@
                     "required": false,
                     "primary": false,
                     "order": 4,
-                    "value_list": ["windows7", "windows10", "macos_11", "windows11", "linux"]
+                    "value_list": [
+                        "windows7",
+                        "windows10",
+                        "macos_11",
+                        "windows11",
+                        "linux"
+                    ]
                 },
                 "tags": {
                     "description": "Comma separated list of tags to assign to sample",
@@ -145,7 +153,9 @@
                 {
                     "data_path": "action_result.parameter.custom_file_name",
                     "data_type": "string",
-                    "contains": ["file name"],
+                    "contains": [
+                        "file name"
+                    ],
                     "column_name": "custom_file_name",
                     "column_order": 2
                 },
@@ -198,6 +208,10 @@
                 {
                     "data_path": "summary.total_objects_successful",
                     "data_type": "numeric"
+                },
+                {
+                    "data_path": "action_result.parameter.archive_password",
+                    "data_type": "password"
                 }
             ],
             "render": {
@@ -219,7 +233,9 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "contains": ["url"]
+                    "contains": [
+                        "url"
+                    ]
                 },
                 "crawler": {
                     "description": "Crawler method (local or cloud)",
@@ -227,7 +243,10 @@
                     "required": false,
                     "primary": false,
                     "order": 1,
-                    "value_list": ["local", "cloud"],
+                    "value_list": [
+                        "local",
+                        "cloud"
+                    ],
                     "default": "local"
                 },
                 "archive_password": {
@@ -243,14 +262,22 @@
                     "required": false,
                     "primary": false,
                     "order": 3,
-                    "value_list": ["windows7", "windows10", "macos_11", "windows11", "linux"]
+                    "value_list": [
+                        "windows7",
+                        "windows10",
+                        "macos_11",
+                        "windows11",
+                        "linux"
+                    ]
                 }
             },
             "output": [
                 {
                     "data_path": "action_result.parameter.file_url",
                     "data_type": "string",
-                    "contains": ["url"],
+                    "contains": [
+                        "url"
+                    ],
                     "column_name": "file_url",
                     "column_order": 0
                 },
@@ -291,6 +318,10 @@
                 {
                     "data_path": "summary.total_objects_successful",
                     "data_type": "numeric"
+                },
+                {
+                    "data_path": "action_result.parameter.archive_password",
+                    "data_type": "password"
                 }
             ],
             "render": {
@@ -315,7 +346,9 @@
                     "data_type": "string",
                     "required": true,
                     "primary": true,
-                    "contains": ["task id"],
+                    "contains": [
+                        "task id"
+                    ],
                     "order": 0
                 }
             },
@@ -323,7 +356,9 @@
                 {
                     "data_path": "action_result.parameter.task_id",
                     "data_type": "string",
-                    "contains": ["task id"],
+                    "contains": [
+                        "task id"
+                    ],
                     "column_name": "task_id",
                     "column_order": 0
                 },
@@ -377,14 +412,24 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "contains": ["hash", "sha1", "sha256", "md5"]
+                    "contains": [
+                        "hash",
+                        "sha1",
+                        "sha256",
+                        "md5"
+                    ]
                 }
             },
             "output": [
                 {
                     "data_path": "action_result.parameter.hash",
                     "data_type": "string",
-                    "contains": ["hash", "sha1", "sha256", "md5"],
+                    "contains": [
+                        "hash",
+                        "sha1",
+                        "sha256",
+                        "md5"
+                    ],
                     "column_name": "hash",
                     "column_order": 0
                 },
@@ -434,14 +479,24 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "contains": ["hash", "sha1", "sha256", "md5"]
+                    "contains": [
+                        "hash",
+                        "sha1",
+                        "sha256",
+                        "md5"
+                    ]
                 }
             },
             "output": [
                 {
                     "data_path": "action_result.parameter.hash",
                     "data_type": "string",
-                    "contains": ["hash", "sha1", "sha256", "md5"],
+                    "contains": [
+                        "hash",
+                        "sha1",
+                        "sha256",
+                        "md5"
+                    ],
                     "column_name": "hash",
                     "column_order": 0
                 },
@@ -495,14 +550,24 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "contains": ["hash", "sha1", "sha256", "md5"]
+                    "contains": [
+                        "hash",
+                        "sha1",
+                        "sha256",
+                        "md5"
+                    ]
                 }
             },
             "output": [
                 {
                     "data_path": "action_result.parameter.hash",
                     "data_type": "string",
-                    "contains": ["hash", "sha1", "sha256", "md5"],
+                    "contains": [
+                        "hash",
+                        "sha1",
+                        "sha256",
+                        "md5"
+                    ],
                     "column_name": "hash",
                     "column_order": 0
                 },
@@ -552,14 +617,24 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "contains": ["hash", "sha1", "sha256", "md5"]
+                    "contains": [
+                        "hash",
+                        "sha1",
+                        "sha256",
+                        "md5"
+                    ]
                 }
             },
             "output": [
                 {
                     "data_path": "action_result.parameter.hash",
                     "data_type": "string",
-                    "contains": ["hash", "sha1", "sha256", "md5"],
+                    "contains": [
+                        "hash",
+                        "sha1",
+                        "sha256",
+                        "md5"
+                    ],
                     "column_name": "hash",
                     "column_order": 0
                 },
@@ -612,7 +687,9 @@
                     "data_type": "string",
                     "required": true,
                     "primary": true,
-                    "contains": ["url"],
+                    "contains": [
+                        "url"
+                    ],
                     "order": 0
                 }
             },
@@ -620,7 +697,9 @@
                 {
                     "data_path": "action_result.parameter.url",
                     "data_type": "string",
-                    "contains": ["url"],
+                    "contains": [
+                        "url"
+                    ],
                     "column_name": "url",
                     "column_order": 0
                 },
@@ -673,7 +752,10 @@
                     "data_type": "string",
                     "required": true,
                     "primary": true,
-                    "contains": ["domain", "url"],
+                    "contains": [
+                        "domain",
+                        "url"
+                    ],
                     "order": 0
                 }
             },
@@ -681,7 +763,10 @@
                 {
                     "data_path": "action_result.parameter.domain",
                     "data_type": "string",
-                    "contains": ["domain", "url"],
+                    "contains": [
+                        "domain",
+                        "url"
+                    ],
                     "column_name": "domain",
                     "column_order": 0
                 },
@@ -734,7 +819,9 @@
                     "data_type": "string",
                     "required": true,
                     "primary": true,
-                    "contains": ["ip"],
+                    "contains": [
+                        "ip"
+                    ],
                     "order": 0
                 }
             },
@@ -742,7 +829,9 @@
                 {
                     "data_path": "action_result.parameter.ip",
                     "data_type": "string",
-                    "contains": ["ip"],
+                    "contains": [
+                        "ip"
+                    ],
                     "column_name": "ip",
                     "column_order": 0
                 },
@@ -796,7 +885,9 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "contains": ["ip"]
+                    "contains": [
+                        "ip"
+                    ]
                 },
                 "page": {
                     "description": "SHA1 hash of page",
@@ -818,7 +909,9 @@
                 {
                     "data_path": "action_result.parameter.ip",
                     "data_type": "string",
-                    "contains": ["ip"],
+                    "contains": [
+                        "ip"
+                    ],
                     "column_name": "ip",
                     "column_order": 0
                 },
@@ -884,7 +977,9 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "contains": ["ip"]
+                    "contains": [
+                        "ip"
+                    ]
                 },
                 "page": {
                     "description": "SHA1 hash of page",
@@ -906,7 +1001,9 @@
                 {
                     "data_path": "action_result.parameter.ip",
                     "data_type": "string",
-                    "contains": ["ip"],
+                    "contains": [
+                        "ip"
+                    ],
                     "column_name": "ip",
                     "column_order": 0
                 },
@@ -972,7 +1069,9 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "contains": ["ip"]
+                    "contains": [
+                        "ip"
+                    ]
                 },
                 "page": {
                     "description": "SHA1 hash of page",
@@ -994,7 +1093,9 @@
                 {
                     "data_path": "action_result.parameter.ip",
                     "data_type": "string",
-                    "contains": ["ip"],
+                    "contains": [
+                        "ip"
+                    ],
                     "column_name": "ip",
                     "column_order": 0
                 },
@@ -1060,7 +1161,9 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "contains": ["search query"]
+                    "contains": [
+                        "search query"
+                    ]
                 },
                 "limit": {
                     "description": "Maximum number of results",
@@ -1083,7 +1186,9 @@
                 {
                     "data_path": "action_result.parameter.query",
                     "data_type": "string",
-                    "contains": ["search query"],
+                    "contains": [
+                        "search query"
+                    ],
                     "column_name": "query",
                     "column_order": 0
                 },
@@ -1149,7 +1254,9 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "contains": ["search query"]
+                    "contains": [
+                        "search query"
+                    ]
                 },
                 "start_search_date": {
                     "description": "The starting date for the search (later date)",
@@ -1164,7 +1271,9 @@
                     "required": true,
                     "primary": false,
                     "order": 2,
-                    "contains": ["date"]
+                    "contains": [
+                        "date"
+                    ]
                 },
                 "sorting_order": {
                     "description": "Ascending or descending",
@@ -1172,7 +1281,10 @@
                     "required": false,
                     "primary": false,
                     "order": 3,
-                    "value_list": ["desc", "asc"],
+                    "value_list": [
+                        "desc",
+                        "asc"
+                    ],
                     "default": "desc"
                 },
                 "sorting_criteria": {
@@ -1181,7 +1293,14 @@
                     "required": false,
                     "primary": false,
                     "order": 4,
-                    "value_list": ["sha1", "firstseen", "threatname", "sampletype", "filecount", "size"],
+                    "value_list": [
+                        "sha1",
+                        "firstseen",
+                        "threatname",
+                        "sampletype",
+                        "filecount",
+                        "size"
+                    ],
                     "default": "firstseen"
                 },
                 "limit": {
@@ -1204,7 +1323,9 @@
                 {
                     "data_path": "action_result.parameter.query",
                     "data_type": "string",
-                    "contains": ["search query"],
+                    "contains": [
+                        "search query"
+                    ],
                     "column_name": "query",
                     "column_order": 0
                 },
@@ -1217,7 +1338,9 @@
                 {
                     "data_path": "action_result.parameter.end_search_date",
                     "data_type": "string",
-                    "contains": ["date"],
+                    "contains": [
+                        "date"
+                    ],
                     "column_name": "end_search_date",
                     "column_order": 2
                 },
@@ -1295,7 +1418,9 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "contains": ["search query"]
+                    "contains": [
+                        "search query"
+                    ]
                 },
                 "sorting_order": {
                     "description": "Ascending or descending",
@@ -1303,7 +1428,10 @@
                     "required": false,
                     "primary": false,
                     "order": 1,
-                    "value_list": ["desc", "asc"],
+                    "value_list": [
+                        "desc",
+                        "asc"
+                    ],
                     "default": "desc"
                 },
                 "sorting_criteria": {
@@ -1312,7 +1440,14 @@
                     "required": false,
                     "primary": false,
                     "order": 2,
-                    "value_list": ["sha1", "firstseen", "threatname", "sampletype", "filecount", "size"],
+                    "value_list": [
+                        "sha1",
+                        "firstseen",
+                        "threatname",
+                        "sampletype",
+                        "filecount",
+                        "size"
+                    ],
                     "default": "firstseen"
                 },
                 "limit": {
@@ -1335,7 +1470,9 @@
                 {
                     "data_path": "action_result.parameter.query",
                     "data_type": "string",
-                    "contains": ["search query"],
+                    "contains": [
+                        "search query"
+                    ],
                     "column_name": "query",
                     "column_order": 0
                 },
@@ -1413,14 +1550,24 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "contains": ["hash", "sha1", "sha256", "md5"]
+                    "contains": [
+                        "hash",
+                        "sha1",
+                        "sha256",
+                        "md5"
+                    ]
                 }
             },
             "output": [
                 {
                     "data_path": "action_result.parameter.hash",
                     "data_type": "string",
-                    "contains": ["hash", "sha1", "sha256", "md5"],
+                    "contains": [
+                        "hash",
+                        "sha1",
+                        "sha256",
+                        "md5"
+                    ],
                     "column_name": "hash",
                     "column_order": 0
                 },
@@ -1470,14 +1617,24 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "contains": ["hash", "sha1", "sha256", "md5"]
+                    "contains": [
+                        "hash",
+                        "sha1",
+                        "sha256",
+                        "md5"
+                    ]
                 }
             },
             "output": [
                 {
                     "data_path": "action_result.parameter.hash",
                     "data_type": "string",
-                    "contains": ["hash", "sha1", "sha256", "md5"],
+                    "contains": [
+                        "hash",
+                        "sha1",
+                        "sha256",
+                        "md5"
+                    ],
                     "column_name": "hash",
                     "column_order": 0
                 },
@@ -1531,14 +1688,24 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "contains": ["hash", "sha1", "sha256", "md5"]
+                    "contains": [
+                        "hash",
+                        "sha1",
+                        "sha256",
+                        "md5"
+                    ]
                 }
             },
             "output": [
                 {
                     "data_path": "action_result.parameter.hash",
                     "data_type": "string",
-                    "contains": ["hash", "sha1", "sha256", "md5"],
+                    "contains": [
+                        "hash",
+                        "sha1",
+                        "sha256",
+                        "md5"
+                    ],
                     "column_name": "hash",
                     "column_order": 0
                 },
@@ -1588,7 +1755,12 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "contains": ["hash", "sha1", "sha256", "md5"]
+                    "contains": [
+                        "hash",
+                        "sha1",
+                        "sha256",
+                        "md5"
+                    ]
                 },
                 "retry": {
                     "description": "If set to False there will only be one try at obtaining the analysis report",
@@ -1626,7 +1798,12 @@
                 {
                     "data_path": "action_result.parameter.hash",
                     "data_type": "string",
-                    "contains": ["hash", "sha1", "sha256", "md5"],
+                    "contains": [
+                        "hash",
+                        "sha1",
+                        "sha256",
+                        "md5"
+                    ],
                     "column_name": "hash",
                     "column_order": 0
                 },
@@ -1704,7 +1881,12 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "contains": ["hash", "sha1", "sha256", "md5"]
+                    "contains": [
+                        "hash",
+                        "sha1",
+                        "sha256",
+                        "md5"
+                    ]
                 },
                 "retry": {
                     "description": "If set to False there will only be one try at obtaining the analysis report",
@@ -1734,7 +1916,12 @@
                 {
                     "data_path": "action_result.parameter.hash",
                     "data_type": "string",
-                    "contains": ["hash", "sha1", "sha256", "md5"],
+                    "contains": [
+                        "hash",
+                        "sha1",
+                        "sha256",
+                        "md5"
+                    ],
                     "column_name": "hash",
                     "column_order": 0
                 },
@@ -1806,7 +1993,12 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "contains": ["hash", "sha1", "sha256", "md5"]
+                    "contains": [
+                        "hash",
+                        "sha1",
+                        "sha256",
+                        "md5"
+                    ]
                 },
                 "local_only": {
                     "description": "Return only local samples without querying TitaniumCloud",
@@ -1829,7 +2021,12 @@
                 {
                     "data_path": "action_result.parameter.hash",
                     "data_type": "string",
-                    "contains": ["hash", "sha1", "sha256", "md5"],
+                    "contains": [
+                        "hash",
+                        "sha1",
+                        "sha256",
+                        "md5"
+                    ],
                     "column_name": "hash",
                     "column_order": 0
                 },
@@ -1895,14 +2092,24 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "contains": ["hash", "sha1", "sha256", "md5"]
+                    "contains": [
+                        "hash",
+                        "sha1",
+                        "sha256",
+                        "md5"
+                    ]
                 }
             },
             "output": [
                 {
                     "data_path": "action_result.parameter.hash",
                     "data_type": "string",
-                    "contains": ["hash", "sha1", "sha256", "md5"],
+                    "contains": [
+                        "hash",
+                        "sha1",
+                        "sha256",
+                        "md5"
+                    ],
                     "column_name": "hash",
                     "column_order": 0
                 },
@@ -1956,7 +2163,12 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "contains": ["hash", "sha1", "sha256", "md5"]
+                    "contains": [
+                        "hash",
+                        "sha1",
+                        "sha256",
+                        "md5"
+                    ]
                 },
                 "tags": {
                     "description": "List of comma separated tags",
@@ -1970,7 +2182,12 @@
                 {
                     "data_path": "action_result.parameter.hash",
                     "data_type": "string",
-                    "contains": ["hash", "sha1", "sha256", "md5"],
+                    "contains": [
+                        "hash",
+                        "sha1",
+                        "sha256",
+                        "md5"
+                    ],
                     "column_name": "hash",
                     "column_order": 0
                 },
@@ -1981,10 +2198,10 @@
                     "column_order": 1
                 },
                 {
-                  "data_path": "action_result.status",
-                  "data_type": "string",
-                  "column_name": "status",
-                  "column_order": 2
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 2
                 },
                 {
                     "data_path": "action_result.data",
@@ -2030,7 +2247,12 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "contains": ["hash", "sha1", "sha256", "md5"]
+                    "contains": [
+                        "hash",
+                        "sha1",
+                        "sha256",
+                        "md5"
+                    ]
                 },
                 "tags": {
                     "description": "List of comma separated tags",
@@ -2044,7 +2266,12 @@
                 {
                     "data_path": "action_result.parameter.hash",
                     "data_type": "string",
-                    "contains": ["hash", "sha1", "sha256", "md5"],
+                    "contains": [
+                        "hash",
+                        "sha1",
+                        "sha256",
+                        "md5"
+                    ],
                     "column_name": "hash",
                     "column_order": 0
                 },
@@ -2104,12 +2331,20 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "contains": ["hash", "sha1", "sha256", "md5"]
+                    "contains": [
+                        "hash",
+                        "sha1",
+                        "sha256",
+                        "md5"
+                    ]
                 },
                 "system": {
                     "description": "Where to set the classification",
                     "data_type": "string",
-                    "value_list": ["local", "ticloud"],
+                    "value_list": [
+                        "local",
+                        "ticloud"
+                    ],
                     "default": "local",
                     "required": true,
                     "primary": false,
@@ -2118,7 +2353,11 @@
                 "classification": {
                     "description": "Classification to set",
                     "data_type": "string",
-                    "value_list": ["goodware", "suspicious", "malicious"],
+                    "value_list": [
+                        "goodware",
+                        "suspicious",
+                        "malicious"
+                    ],
                     "default": "malicious",
                     "required": true,
                     "primary": false,
@@ -2157,7 +2396,12 @@
                 {
                     "data_path": "action_result.parameter.hash",
                     "data_type": "string",
-                    "contains": ["hash", "sha1", "sha256", "md5"],
+                    "contains": [
+                        "hash",
+                        "sha1",
+                        "sha256",
+                        "md5"
+                    ],
                     "column_name": "hash",
                     "column_order": 0
                 },
@@ -2222,6 +2466,14 @@
                 {
                     "data_path": "summary.total_objects_successful",
                     "data_type": "numeric"
+                },
+                {
+                    "data_path": "action_result.parameter.threat_type",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.threat_name",
+                    "data_type": "string"
                 }
             ],
             "render": {
@@ -2247,12 +2499,20 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "contains": ["hash", "sha1", "sha256", "md5"]
+                    "contains": [
+                        "hash",
+                        "sha1",
+                        "sha256",
+                        "md5"
+                    ]
                 },
                 "system": {
                     "description": "Where to delete the desired classification",
                     "data_type": "string",
-                    "value_list": ["local", "ticloud"],
+                    "value_list": [
+                        "local",
+                        "ticloud"
+                    ],
                     "default": "local",
                     "required": true,
                     "primary": false,
@@ -2263,7 +2523,12 @@
                 {
                     "data_path": "action_result.parameter.hash",
                     "data_type": "string",
-                    "contains": ["hash", "sha1", "sha256", "md5"],
+                    "contains": [
+                        "hash",
+                        "sha1",
+                        "sha256",
+                        "md5"
+                    ],
                     "column_name": "hash",
                     "column_order": 0
                 },
@@ -2318,7 +2583,12 @@
                     "data_type": "string",
                     "required": false,
                     "primary": false,
-                    "value_list": ["my", "user", "system", "all"],
+                    "value_list": [
+                        "my",
+                        "user",
+                        "system",
+                        "all"
+                    ],
                     "order": 0
                 },
                 "status": {
@@ -2326,7 +2596,15 @@
                     "data_type": "string",
                     "required": false,
                     "primary": false,
-                    "value_list": ["all", "error", "active", "disabled", "pending", "invalid", "capped"],
+                    "value_list": [
+                        "all",
+                        "error",
+                        "active",
+                        "disabled",
+                        "pending",
+                        "invalid",
+                        "capped"
+                    ],
                     "order": 1
                 },
                 "source": {
@@ -2334,7 +2612,11 @@
                     "data_type": "string",
                     "required": false,
                     "primary": false,
-                    "value_list": ["all", "local", "cloud"],
+                    "value_list": [
+                        "all",
+                        "local",
+                        "cloud"
+                    ],
                     "order": 2
                 },
                 "page": {
@@ -2408,6 +2690,10 @@
                 {
                     "data_path": "summary.total_objects_successful",
                     "data_type": "numeric"
+                },
+                {
+                    "data_path": "action_result.parameter.type",
+                    "data_type": "string"
                 }
             ],
             "render": {
@@ -2433,14 +2719,18 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "contains": ["ruleset name"]
+                    "contains": [
+                        "ruleset name"
+                    ]
                 }
             },
             "output": [
                 {
                     "data_path": "action_result.parameter.ruleset_name",
                     "data_type": "string",
-                    "contains": ["ruleset name"],
+                    "contains": [
+                        "ruleset name"
+                    ],
                     "column_name": "ruleset_name",
                     "column_order": 0
                 },
@@ -2494,7 +2784,9 @@
                     "required": false,
                     "primary": false,
                     "order": 0,
-                    "contains": ["ruleset name"]
+                    "contains": [
+                        "ruleset name"
+                    ]
                 },
                 "page": {
                     "description": "Page",
@@ -2515,7 +2807,9 @@
                 {
                     "data_path": "action_result.parameter.ruleset_name",
                     "data_type": "string",
-                    "contains": ["ruleset name"],
+                    "contains": [
+                        "ruleset name"
+                    ],
                     "column_name": "name",
                     "column_order": 0
                 },
@@ -2581,7 +2875,9 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "contains": ["ruleset name"]
+                    "contains": [
+                        "ruleset name"
+                    ]
                 },
                 "ruleset_text": {
                     "description": "Text of the yara ruleset",
@@ -2609,7 +2905,9 @@
                 {
                     "data_path": "action_result.parameter.ruleset_name",
                     "data_type": "string",
-                    "contains": ["ruleset name"],
+                    "contains": [
+                        "ruleset name"
+                    ],
                     "column_name": "ruleset_name",
                     "column_order": 0
                 },
@@ -2656,6 +2954,10 @@
                 {
                     "data_path": "summary.total_objects_successful",
                     "data_type": "numeric"
+                },
+                {
+                    "data_path": "action_result.parameter.ticloud",
+                    "data_type": "boolean"
                 }
             ],
             "render": {
@@ -2681,7 +2983,9 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "contains": ["ruleset name"]
+                    "contains": [
+                        "ruleset name"
+                    ]
                 },
                 "publish": {
                     "description": "Publish to C1000 in the same cluster",
@@ -2695,7 +2999,9 @@
                 {
                     "data_path": "action_result.parameter.ruleset_name",
                     "data_type": "string",
-                    "contains": ["ruleset name"],
+                    "contains": [
+                        "ruleset name"
+                    ],
                     "column_name": "ruleset_name",
                     "column_order": 0
                 },
@@ -2755,7 +3061,9 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "contains": ["ruleset name"]
+                    "contains": [
+                        "ruleset name"
+                    ]
                 },
                 "enabled": {
                     "description": "Enable or disable the ruleset",
@@ -2776,7 +3084,9 @@
                 {
                     "data_path": "action_result.parameter.ruleset_name",
                     "data_type": "string",
-                    "contains": ["ruleset name"],
+                    "contains": [
+                        "ruleset name"
+                    ],
                     "column_name": "ruleset_name",
                     "column_order": 0
                 },
@@ -2921,6 +3231,10 @@
                 {
                     "data_path": "summary.total_objects_successful",
                     "data_type": "numeric"
+                },
+                {
+                    "data_path": "action_result.parameter.time",
+                    "data_type": "string"
                 }
             ],
             "render": {
@@ -2945,7 +3259,10 @@
                     "data_type": "string",
                     "required": true,
                     "primary": true,
-                    "value_list": ["START", "STOP"],
+                    "value_list": [
+                        "START",
+                        "STOP"
+                    ],
                     "order": 0
                 }
             },
@@ -3006,14 +3323,20 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "contains": ["ruleset name"]
+                    "contains": [
+                        "ruleset name"
+                    ]
                 },
                 "operation": {
                     "description": "START, STOP or CLEAR",
                     "data_type": "string",
                     "required": true,
                     "primary": false,
-                    "value_list": ["START", "STOP", "CLEAR"],
+                    "value_list": [
+                        "START",
+                        "STOP",
+                        "CLEAR"
+                    ],
                     "order": 1
                 }
             },
@@ -3021,7 +3344,9 @@
                 {
                     "data_path": "action_result.parameter.ruleset_name",
                     "data_type": "string",
-                    "contains": ["ruleset name"],
+                    "contains": [
+                        "ruleset name"
+                    ],
                     "column_name": "ruleset_name",
                     "column_order": 0
                 },
@@ -3126,7 +3451,9 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "contains": ["ruleset name"]
+                    "contains": [
+                        "ruleset name"
+                    ]
                 }
             },
             "output": [
@@ -3135,7 +3462,9 @@
                     "data_type": "string",
                     "column_name": "name",
                     "column_order": 0,
-                    "contains": ["ruleset name"]
+                    "contains": [
+                        "ruleset name"
+                    ]
                 },
                 {
                     "data_path": "action_result.status",
@@ -3187,14 +3516,24 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "contains": ["hash", "sha1", "sha256", "md5"]
+                    "contains": [
+                        "hash",
+                        "sha1",
+                        "sha256",
+                        "md5"
+                    ]
                 }
             },
             "output": [
                 {
                     "data_path": "action_result.hashes",
                     "data_type": "string",
-                    "contains": ["hash", "sha1", "sha256", "md5"],
+                    "contains": [
+                        "hash",
+                        "sha1",
+                        "sha256",
+                        "md5"
+                    ],
                     "column_name": "hashes",
                     "column_order": 0
                 },
@@ -3223,6 +3562,16 @@
                 {
                     "data_path": "summary.total_objects_successful",
                     "data_type": "numeric"
+                },
+                {
+                    "data_path": "action_result.parameter.hashes",
+                    "data_type": "string",
+                    "contains": [
+                        "hash",
+                        "sha1",
+                        "sha256",
+                        "md5"
+                    ]
                 }
             ],
             "render": {
@@ -3248,14 +3597,24 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "contains": ["hash", "sha1", "sha256", "md5"]
+                    "contains": [
+                        "hash",
+                        "sha1",
+                        "sha256",
+                        "md5"
+                    ]
                 }
             },
             "output": [
                 {
                     "data_path": "action_result.param.hash",
                     "data_type": "string",
-                    "contains": ["hash", "sha1", "sha256", "md5"],
+                    "contains": [
+                        "hash",
+                        "sha1",
+                        "sha256",
+                        "md5"
+                    ],
                     "column_name": "hash",
                     "column_order": 0
                 },
@@ -3274,28 +3633,40 @@
                 {
                     "data_path": "action_result.data.*.results.detail.md5",
                     "data_type": "string",
-                    "contains": ["hash", "md5"],
+                    "contains": [
+                        "hash",
+                        "md5"
+                    ],
                     "column_name": "md5",
                     "column_order": 3
                 },
                 {
                     "data_path": "action_result.data.*.results.detail.sha1",
                     "data_type": "string",
-                    "contains": ["hash", "sha1"],
+                    "contains": [
+                        "hash",
+                        "sha1"
+                    ],
                     "column_name": "sha1",
                     "column_order": 4
                 },
                 {
                     "data_path": "action_result.data.*.results.detail.sha256",
                     "data_type": "string",
-                    "contains": ["hash", "sha256"],
+                    "contains": [
+                        "hash",
+                        "sha256"
+                    ],
                     "column_name": "sha256",
                     "column_order": 5
                 },
                 {
                     "data_path": "action_result.data.*.results.detail.sha512",
                     "data_type": "string",
-                    "contains": ["hash", "sha512"],
+                    "contains": [
+                        "hash",
+                        "sha512"
+                    ],
                     "column_name": "sha512",
                     "column_order": 6
                 },
@@ -3324,6 +3695,16 @@
                 {
                     "data_path": "summary.total_objects_successful",
                     "data_type": "numeric"
+                },
+                {
+                    "data_path": "action_result.parameter.hash",
+                    "data_type": "string",
+                    "contains": [
+                        "hash",
+                        "sha1",
+                        "sha256",
+                        "md5"
+                    ]
                 }
             ],
             "render": {
@@ -3345,14 +3726,24 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "contains": ["hash", "sha1", "sha256", "md5"]
+                    "contains": [
+                        "hash",
+                        "sha1",
+                        "sha256",
+                        "md5"
+                    ]
                 }
             },
             "output": [
                 {
                     "data_path": "action_result.parameter.hash",
                     "data_type": "string",
-                    "contains": ["hash", "sha1", "sha256", "md5"],
+                    "contains": [
+                        "hash",
+                        "sha1",
+                        "sha256",
+                        "md5"
+                    ],
                     "column_name": "hash",
                     "column_order": 0
                 },
@@ -3402,7 +3793,12 @@
                     "required": true,
                     "primary": true,
                     "order": 0,
-                    "contains": ["hash", "sha1", "sha256", "md5"]
+                    "contains": [
+                        "hash",
+                        "sha1",
+                        "sha256",
+                        "md5"
+                    ]
                 },
                 "titanium_cloud": {
                     "description": "Titanium Cloud analysis",
@@ -3459,14 +3855,25 @@
                     "required": false,
                     "primary": false,
                     "order": 8,
-                    "value_list": ["windows7", "windows10", "macos_11", "windows11", "linux"]
+                    "value_list": [
+                        "windows7",
+                        "windows10",
+                        "macos_11",
+                        "windows11",
+                        "linux"
+                    ]
                 }
             },
             "output": [
                 {
                     "data_path": "action_result.hashes",
                     "data_type": "string",
-                    "contains": ["hash", "sha1", "sha256", "md5"],
+                    "contains": [
+                        "hash",
+                        "sha1",
+                        "sha256",
+                        "md5"
+                    ],
                     "column_name": "hashes",
                     "column_order": 0
                 },
@@ -3543,6 +3950,48 @@
                 {
                     "data_path": "summary.total_objects_successful",
                     "data_type": "numeric"
+                },
+                {
+                    "data_path": "action_result.parameter.hashes",
+                    "data_type": "string",
+                    "contains": [
+                        "hash",
+                        "sha1",
+                        "sha256",
+                        "md5"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.titanium_cloud",
+                    "data_type": "boolean"
+                },
+                {
+                    "data_path": "action_result.parameter.titanium_core",
+                    "data_type": "boolean"
+                },
+                {
+                    "data_path": "action_result.parameter.rl_cloud_sandbox",
+                    "data_type": "boolean"
+                },
+                {
+                    "data_path": "action_result.parameter.cuckoo_sandbox",
+                    "data_type": "boolean"
+                },
+                {
+                    "data_path": "action_result.parameter.fireeye",
+                    "data_type": "boolean"
+                },
+                {
+                    "data_path": "action_result.parameter.joe_sandbox",
+                    "data_type": "boolean"
+                },
+                {
+                    "data_path": "action_result.parameter.cape",
+                    "data_type": "boolean"
+                },
+                {
+                    "data_path": "action_result.parameter.rl_cloud_sandbox_platform",
+                    "data_type": "string"
                 }
             ],
             "render": {
