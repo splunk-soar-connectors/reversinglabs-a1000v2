@@ -1,0 +1,35 @@
+Splunk SOAR Reversinglabs A1000 v2
+Copyright (c) ReversingLabs, 2023-2025
+
+Third Party Software Attributions:
+
+Name: certifi
+Version: 2025.1.31
+Author: Kenneth Reitz
+License: MPL-2.0
+
+Name: charset-normalizer
+Version: 3.4.1
+Author: 
+License: MIT
+
+Name: idna
+Version: 3.10
+Author: 
+License: 
+
+Name: requests
+Version: 2.32.3
+Author: Kenneth Reitz
+License: Apache-2.0
+
+Name: reversinglabs-sdk-py3
+Version: 2.5.6
+Author: ReversingLabs
+License: MIT
+
+Name: urllib3
+Version: 2.3.0
+Author: 
+License: 
+
