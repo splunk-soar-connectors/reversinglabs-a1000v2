@@ -1395,6 +1395,7 @@ VARIABLE | REQUIRED | TYPE | DESCRIPTION
 -------- | -------- | ---- | -----------
 **url** | required | string | A1000 url |
 **token** | required | password | A1000 token |
+**verify_server_cert** | optional | boolean | Verify server certificate |
 
 ### Supported Actions
 

@@ -178,7 +178,7 @@ class ReversinglabsA1000V2Connector(BaseConnector):
         self.a1000 = A1000(
             host=self.a1000_url,
             token=self.a1000_token,
-            verify=False,
+            verify=config.get(phantom.APP_JSON_VERIFY, True),
             user_agent=self.USER_AGENT,
         )
 
