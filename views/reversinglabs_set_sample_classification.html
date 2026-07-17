@@ -104,7 +104,7 @@ and limitations under the License.
             <td>Classification</td>
             <td>
               <a href="javascript:;"
-                 onclick="context_menu(this, [{'contains': ['search query'], 'value': 'classification:{{ classification }}' }], 0, {{ container.id }}, null, false);"
+                 onclick="context_menu(this, [{'contains': ['search query'], 'value': 'classification:{{ classification|escapejs }}' }], 0, {{ container.id|escapejs }}, null, false);"
                  style="color: {{ classification_color }}">
                 {{ classification }}&nbsp;
                 <span class="fa fa-caret-down" style="font-size: smaller;"></span>
@@ -115,7 +115,7 @@ and limitations under the License.
             <td>Risk score</td>
             <td>
               <a href="javascript:;"
-                 onclick="context_menu(this, [{'contains': ['search query'], 'value': 'riskscore:{{ data.content.risk_score }}' }], 0, {{ container.id }}, null, false);">
+                 onclick="context_menu(this, [{'contains': ['search query'], 'value': 'riskscore:{{ data.content.risk_score|escapejs }}' }], 0, {{ container.id|escapejs }}, null, false);">
                 {{ data.content.risk_score }}&nbsp;
                 <span class="fa fa-caret-down" style="font-size: smaller;"></span>
               </a>
@@ -125,7 +125,7 @@ and limitations under the License.
             <td>Threat name</td>
             <td>
               <a href="javascript:;"
-                 onclick="context_menu(this, [{'contains': ['search query'], 'value': 'threatname:{{ data.content.threat_name }}' }], 0, {{ container.id }}, null, false);">
+                 onclick="context_menu(this, [{'contains': ['search query'], 'value': 'threatname:{{ data.content.threat_name|escapejs }}' }], 0, {{ container.id|escapejs }}, null, false);">
                 {{ data.content.threat_name }}&nbsp;
                 <span class="fa fa-caret-down" style="font-size: smaller;"></span>
               </a>

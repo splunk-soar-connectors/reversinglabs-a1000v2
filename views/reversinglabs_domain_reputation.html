@@ -116,7 +116,7 @@ and limitations under the License.
               </td>
               <td colspan="2">
                 <a href="javascript:;"
-                   onclick="context_menu(this, [{'contains': ['search query'], 'value': 'uri-source:&quot;*://{{ data.requested_domain }}/*&quot; AND classification:goodware' }], 0, {{ container.id }}, null, false);">
+                   onclick="context_menu(this, [{'contains': ['search query'], 'value': 'uri-source:&quot;*://{{ data.requested_domain|escapejs }}/*&quot; AND classification:goodware' }], 0, {{ container.id|escapejs }}, null, false);">
                   {{ data.downloaded_files_statistics.goodware }}&nbsp;
                   <span class="fa fa-caret-down" style="font-size: smaller;"></span>
                 </a>
@@ -128,7 +128,7 @@ and limitations under the License.
               </td>
               <td colspan="2">
                 <a href="javascript:;"
-                   onclick="context_menu(this, [{'contains': ['search query'], 'value': 'uri-source:&quot;*://{{ data.requested_domain }}/*&quot; AND classification:suspicious' }], 0, {{ container.id }}, null, false);">
+                   onclick="context_menu(this, [{'contains': ['search query'], 'value': 'uri-source:&quot;*://{{ data.requested_domain|escapejs }}/*&quot; AND classification:suspicious' }], 0, {{ container.id|escapejs }}, null, false);">
                   {{ data.downloaded_files_statistics.suspicious }}&nbsp;
                   <span class="fa fa-caret-down" style="font-size: smaller;"></span>
                 </a>
@@ -140,7 +140,7 @@ and limitations under the License.
               </td>
               <td colspan="2">
                 <a href="javascript:;"
-                   onclick="context_menu(this, [{'contains': ['search query'], 'value': 'uri-source:&quot;*://{{ data.requested_domain }}/*&quot; AND classification:malicious' }], 0, {{ container.id }}, null, false);">
+                   onclick="context_menu(this, [{'contains': ['search query'], 'value': 'uri-source:&quot;*://{{ data.requested_domain|escapejs }}/*&quot; AND classification:malicious' }], 0, {{ container.id|escapejs }}, null, false);">
                   {{ data.downloaded_files_statistics.malicious }}&nbsp;
                   <span class="fa fa-caret-down" style="font-size: smaller;"></span>
                 </a>
@@ -152,7 +152,7 @@ and limitations under the License.
               </td>
               <td colspan="2">
                 <a href="javascript:;"
-                   onclick="context_menu(this, [{'contains': ['search query'], 'value': 'uri-source:&quot;*://{{ data.requested_domain }}/*&quot; AND classification:unknown' }], 0, {{ container.id }}, null, false);">
+                   onclick="context_menu(this, [{'contains': ['search query'], 'value': 'uri-source:&quot;*://{{ data.requested_domain|escapejs }}/*&quot; AND classification:unknown' }], 0, {{ container.id|escapejs }}, null, false);">
                   {{ data.downloaded_files_statistics.unknown }}&nbsp;
                   <span class="fa fa-caret-down" style="font-size: smaller;"></span>
                 </a>
@@ -180,14 +180,14 @@ and limitations under the License.
               <tr>
                 <td>
                   <a href="javascript:;"
-                     onclick="context_menu(this, [{'contains': ['search query'], 'value': 'uri-source:&quot;*://{{ data.requested_domain }}/*&quot; AND threatname:{{ x.threat_name }}' }], 0, {{ container.id }}, null, false);">
+                     onclick="context_menu(this, [{'contains': ['search query'], 'value': 'uri-source:&quot;*://{{ data.requested_domain|escapejs }}/*&quot; AND threatname:{{ x.threat_name|escapejs }}' }], 0, {{ container.id|escapejs }}, null, false);">
                     {{ x.threat_name }}&nbsp;
                     <span class="fa fa-caret-down" style="font-size: smaller;"></span>
                   </a>
                 </td>
                 <td>
                   <a href="javascript:;"
-                     onclick="context_menu(this, [{'contains': ['search query'], 'value': 'uri-source:&quot;*://{{ data.requested_domain }}/*&quot; AND riskscore:{{ x.risk_score }}' }], 0, {{ container.id }}, null, false);">
+                     onclick="context_menu(this, [{'contains': ['search query'], 'value': 'uri-source:&quot;*://{{ data.requested_domain|escapejs }}/*&quot; AND riskscore:{{ x.risk_score|escapejs }}' }], 0, {{ container.id|escapejs }}, null, false);">
                     {{ x.risk_score }}&nbsp;
                     <span class="fa fa-caret-down" style="font-size: smaller;"></span>
                   </a>

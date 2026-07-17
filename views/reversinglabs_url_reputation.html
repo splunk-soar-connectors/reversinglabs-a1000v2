@@ -109,7 +109,7 @@ and limitations under the License.
             <td class="td-header">Classification</td>
             <td colspan="2">
               <a href="javascript:;"
-                 onclick="context_menu(this, [{'contains': ['search query'], 'value': 'classification:{{ classification }}' }], 0, {{ container.id }}, null, false);"
+                 onclick="context_menu(this, [{'contains': ['search query'], 'value': 'classification:{{ classification|escapejs }}' }], 0, {{ container.id|escapejs }}, null, false);"
                  style="color: {{ classification_color }}">
                 {{ classification }}&nbsp;
                 <span class="fa fa-caret-down" style="font-size: smaller;"></span>
@@ -148,7 +148,7 @@ and limitations under the License.
               <td class="td-header">Domain</td>
               <td>
                 <a href="javascript:;"
-                   onclick="context_menu(this, [{'contains': ['search query'], 'value': 'domain:{{ data.analysis.last_analysis.domain }}' }], 0, {{ container.id }}, null, false);">
+                   onclick="context_menu(this, [{'contains': ['search query'], 'value': 'domain:{{ data.analysis.last_analysis.domain|escapejs }}' }], 0, {{ container.id|escapejs }}, null, false);">
                   {{ data.analysis.last_analysis.domain }}&nbsp;
                   <span class="fa fa-caret-down" style="font-size: smaller;"></span>
                 </a>

@@ -97,7 +97,7 @@ and limitations under the License.
               <td>SHA1</td>
               <td>
                 <a href="javascript:;"
-                   onclick="context_menu(this, [{'contains': ['sha1'], 'value': '{{ data.report.sample_summary.sha1 }}' }], 0, {{ container.id }}, null, false);">
+                   onclick="context_menu(this, [{'contains': ['sha1'], 'value': '{{ data.report.sample_summary.sha1|escapejs }}' }], 0, {{ container.id|escapejs }}, null, false);">
                   {{ data.report.sample_summary.sha1 }}&nbsp;
                   <span class="fa fa-caret-down" style="font-size: smaller;"></span>
                 </a>
@@ -107,7 +107,7 @@ and limitations under the License.
               <td>SHA256</td>
               <td>
                 <a href="javascript:;"
-                   onclick="context_menu(this, [{'contains': ['sha256'], 'value': '{{ data.report.sample_summary.sha256 }}' }], 0, {{ container.id }}, null, false);">
+                   onclick="context_menu(this, [{'contains': ['sha256'], 'value': '{{ data.report.sample_summary.sha256|escapejs }}' }], 0, {{ container.id|escapejs }}, null, false);">
                   {{ data.report.sample_summary.sha256 }}&nbsp;
                   <span class="fa fa-caret-down" style="font-size: smaller;"></span>
                 </a>
@@ -117,7 +117,7 @@ and limitations under the License.
               <td>SHA512</td>
               <td>
                 <a href="javascript:;"
-                   onclick="context_menu(this, [{'contains': ['sha512'], 'value': '{{ data.report.sample_summary.sha512 }}' }], 0, {{ container.id }}, null, false);">
+                   onclick="context_menu(this, [{'contains': ['sha512'], 'value': '{{ data.report.sample_summary.sha512|escapejs }}' }], 0, {{ container.id|escapejs }}, null, false);">
                   {{ data.report.sample_summary.sha512 }}&nbsp;
                   <span class="fa fa-caret-down" style="font-size: smaller;"></span>
                 </a>
@@ -139,7 +139,7 @@ and limitations under the License.
               <td>Classification</td>
               <td>
                 <a href="javascript:;"
-                   onclick="context_menu(this, [{'contains': ['search query'], 'value': 'classification:{{ classification }}' }], 0, {{ container.id }}, null, false);"
+                   onclick="context_menu(this, [{'contains': ['search query'], 'value': 'classification:{{ classification|escapejs }}' }], 0, {{ container.id|escapejs }}, null, false);"
                    style="color: {{ entry.classification_color }}">
                   {{ classification }}&nbsp;
                   <span class="fa fa-caret-down" style="font-size: smaller;"></span>
