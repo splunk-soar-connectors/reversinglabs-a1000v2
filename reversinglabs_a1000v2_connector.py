@@ -1,6 +1,6 @@
 # File: reversinglabs_a1000v2_connector.py
 #
-# Copyright (c) ReversingLabs, 2023-2025
+# Copyright (c) ReversingLabs, 2023-2026
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -280,7 +280,7 @@ class ReversinglabsA1000V2Connector(BaseConnector):
         with open(file_path, "wb") as file_obj:
             file_obj.write(response.content)
 
-        success, msg, vault_id = vault.vault_add(
+        success, msg, _vault_id = vault.vault_add(
             file_location=file_path, container=self.get_container_id(), file_name="{}.pdf".format(param.get("hash"))
         )
         if not success:
@@ -482,7 +482,7 @@ class ReversinglabsA1000V2Connector(BaseConnector):
         with open(file_path, "wb") as file_obj:
             file_obj.write(response.content)
 
-        success, msg, vault_id = vault.vault_add(
+        success, msg, _vault_id = vault.vault_add(
             file_location=file_path, container=self.get_container_id(), file_name="dynamic-{}.pdf".format(param.get("hash"))
         )
         if not success:
@@ -736,7 +736,7 @@ class ReversinglabsA1000V2Connector(BaseConnector):
         with open(file_path, "wb") as file_obj:
             file_obj.write(response.content)
 
-        success, msg, vault_id = vault.vault_add(
+        success, msg, _vault_id = vault.vault_add(
             file_location=file_path, container=self.get_container_id(), file_name="extracted_from-{}.zip".format(param.get("hash"))
         )
         if not success:

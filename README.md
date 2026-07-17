@@ -1,9 +1,9 @@
 # Reversinglabs A1000 v2
 
-Publisher: ReversingLabs \
-Connector Version: 1.1.2 \
-Product Vendor: ReversingLabs \
-Product Name: A1000 \
+Publisher: ReversingLabs <br>
+Connector Version: 1.1.2 <br>
+Product Vendor: ReversingLabs <br>
+Product Name: A1000 <br>
 Minimum Product Version: 6.2.1
 
 App integrates with ReversingLabs A1000 Malware Analysis Appliance APIs
@@ -11,7 +11,7 @@ App integrates with ReversingLabs A1000 Malware Analysis Appliance APIs
 # Reversinglabs A1000 v2
 
 Publisher: ReversingLabs\
-Connector Version: 1.1.2\
+Connector Version: 1.1.1\
 Product Vendor: ReversingLabs\
 Product Name: A1000\
 Product Version Supported (regex): ".\*"\
@@ -1398,56 +1398,56 @@ VARIABLE | REQUIRED | TYPE | DESCRIPTION
 
 ### Supported Actions
 
-[test connectivity](#action-test-connectivity) - Validate the asset configuration for connectivity using supplied configuration \
-[detonate file](#action-detonate-file) - Upload file to A1000 \
-[submit url](#action-submit-url) - Detonate file from url \
-[check submitted url status](#action-check-submitted-url-status) - Check submitted url status \
-[create pdf report](#action-create-pdf-report) - Create pdf report \
-[check pdf report creation](#action-check-pdf-report-creation) - Check pdf report creation \
-[download pdf report](#action-download-pdf-report) - Download pdf report \
-[get titaniumcore report](#action-get-titaniumcore-report) - Get TitaniumCore report \
-[url reputation](#action-url-reputation) - Queries URL info \
-[domain reputation](#action-domain-reputation) - Queries domain info \
-[ip reputation](#action-ip-reputation) - Queries IP info \
-[network ip to domain](#action-network-ip-to-domain) - Get a list of IP-to-domain mappings \
-[network urls from ip](#action-network-urls-from-ip) - Get a list of URLs hosted on the requested IP address \
-[network files from ip](#action-network-files-from-ip) - Get a a list of hashes and classifications for files found on the requested IP address \
-[advanced search](#action-advanced-search) - Search for samples using multi-part search criteria \
-[advanced search ticloud](#action-advanced-search-ticloud) - Search for samples available on the TitaniumCloud \
-[advanced search local](#action-advanced-search-local) - Search for samples available on the A1000 appliance \
-[create dynamic analysis report](#action-create-dynamic-analysis-report) - Initiate the creation of dynamic analysis PDF report \
-[check dynamic analysis report status](#action-check-dynamic-analysis-report-status) - Get status of the report previously requested \
-[download dynamic analysis report](#action-download-dynamic-analysis-report) - Download previously requested dynamic analysis report in pdf \
-[get summary report](#action-get-summary-report) - Get a summary report for hash \
-[get detailed report](#action-get-detailed-report) - Get detailed analysis report \
-[get classification](#action-get-classification) - Get classification for a sample \
-[get user tags](#action-get-user-tags) - List existing tags for the requested sample \
-[create user tags](#action-create-user-tags) - Add one or more user tags \
-[delete user tags](#action-delete-user-tags) - Remove one or more user tags \
-[set sample classification](#action-set-sample-classification) - Set the classification of a sample \
-[delete sample classification](#action-delete-sample-classification) - Delete the (user set) classification of a sample \
-[yara get rulesets](#action-yara-get-rulesets) - Get a list of YARA rulesets that are on the A1000 \
-[yara get ruleset text](#action-yara-get-ruleset-text) - Get the full contents of the requested ruleset \
-[yara get matches](#action-yara-get-matches) - Retrieve the list of YARA matches \
-[yara create or update ruleset](#action-yara-create-or-update-ruleset) - Creates a new YARA ruleset if it doesn't exist \
-[yara delete ruleset](#action-yara-delete-ruleset) - Delete a specific YARA ruleset and its matches \
-[yara enable or disable ruleset](#action-yara-enable-or-disable-ruleset) - Enable or disable a ruleset on the appliance \
-[yara get synchronization time](#action-yara-get-synchronization-time) - Get the current synchronization time \
-[yara set ruleset synchronization time](#action-yara-set-ruleset-synchronization-time) - Modify the TiCloud sync time for TiCloud enabled rulesets \
-[yara start or stop local retro scan](#action-yara-start-or-stop-local-retro-scan) - Allow users to start or stop the Local Retro scan on the appliance \
-[yara manage cloud retro scan](#action-yara-manage-cloud-retro-scan) - Allow users to start, stop or clear a Cloud Retro scan \
-[yara status retro scan local](#action-yara-status-retro-scan-local) - Allow users to check the status of a Local Retro scan \
-[yara status retro scan cloud](#action-yara-status-retro-scan-cloud) - Allow users to check the status of Cloud Retro scan for specified ruleset \
-[list containers for hash](#action-list-containers-for-hash) - Get a list of containers from which the requested samples has been extracted \
-[delete sample](#action-delete-sample) - Delete the sample with the requested hash value \
-[download extracted files](#action-download-extracted-files) - Download files extracted from local sample \
+[test connectivity](#action-test-connectivity) - Validate the asset configuration for connectivity using supplied configuration <br>
+[detonate file](#action-detonate-file) - Upload file to A1000 <br>
+[submit url](#action-submit-url) - Detonate file from url <br>
+[check submitted url status](#action-check-submitted-url-status) - Check submitted url status <br>
+[create pdf report](#action-create-pdf-report) - Create pdf report <br>
+[check pdf report creation](#action-check-pdf-report-creation) - Check pdf report creation <br>
+[download pdf report](#action-download-pdf-report) - Download pdf report <br>
+[get titaniumcore report](#action-get-titaniumcore-report) - Get TitaniumCore report <br>
+[url reputation](#action-url-reputation) - Queries URL info <br>
+[domain reputation](#action-domain-reputation) - Queries domain info <br>
+[ip reputation](#action-ip-reputation) - Queries IP info <br>
+[network ip to domain](#action-network-ip-to-domain) - Get a list of IP-to-domain mappings <br>
+[network urls from ip](#action-network-urls-from-ip) - Get a list of URLs hosted on the requested IP address <br>
+[network files from ip](#action-network-files-from-ip) - Get a a list of hashes and classifications for files found on the requested IP address <br>
+[advanced search](#action-advanced-search) - Search for samples using multi-part search criteria <br>
+[advanced search ticloud](#action-advanced-search-ticloud) - Search for samples available on the TitaniumCloud <br>
+[advanced search local](#action-advanced-search-local) - Search for samples available on the A1000 appliance <br>
+[create dynamic analysis report](#action-create-dynamic-analysis-report) - Initiate the creation of dynamic analysis PDF report <br>
+[check dynamic analysis report status](#action-check-dynamic-analysis-report-status) - Get status of the report previously requested <br>
+[download dynamic analysis report](#action-download-dynamic-analysis-report) - Download previously requested dynamic analysis report in pdf <br>
+[get summary report](#action-get-summary-report) - Get a summary report for hash <br>
+[get detailed report](#action-get-detailed-report) - Get detailed analysis report <br>
+[get classification](#action-get-classification) - Get classification for a sample <br>
+[get user tags](#action-get-user-tags) - List existing tags for the requested sample <br>
+[create user tags](#action-create-user-tags) - Add one or more user tags <br>
+[delete user tags](#action-delete-user-tags) - Remove one or more user tags <br>
+[set sample classification](#action-set-sample-classification) - Set the classification of a sample <br>
+[delete sample classification](#action-delete-sample-classification) - Delete the (user set) classification of a sample <br>
+[yara get rulesets](#action-yara-get-rulesets) - Get a list of YARA rulesets that are on the A1000 <br>
+[yara get ruleset text](#action-yara-get-ruleset-text) - Get the full contents of the requested ruleset <br>
+[yara get matches](#action-yara-get-matches) - Retrieve the list of YARA matches <br>
+[yara create or update ruleset](#action-yara-create-or-update-ruleset) - Creates a new YARA ruleset if it doesn't exist <br>
+[yara delete ruleset](#action-yara-delete-ruleset) - Delete a specific YARA ruleset and its matches <br>
+[yara enable or disable ruleset](#action-yara-enable-or-disable-ruleset) - Enable or disable a ruleset on the appliance <br>
+[yara get synchronization time](#action-yara-get-synchronization-time) - Get the current synchronization time <br>
+[yara set ruleset synchronization time](#action-yara-set-ruleset-synchronization-time) - Modify the TiCloud sync time for TiCloud enabled rulesets <br>
+[yara start or stop local retro scan](#action-yara-start-or-stop-local-retro-scan) - Allow users to start or stop the Local Retro scan on the appliance <br>
+[yara manage cloud retro scan](#action-yara-manage-cloud-retro-scan) - Allow users to start, stop or clear a Cloud Retro scan <br>
+[yara status retro scan local](#action-yara-status-retro-scan-local) - Allow users to check the status of a Local Retro scan <br>
+[yara status retro scan cloud](#action-yara-status-retro-scan-cloud) - Allow users to check the status of Cloud Retro scan for specified ruleset <br>
+[list containers for hash](#action-list-containers-for-hash) - Get a list of containers from which the requested samples has been extracted <br>
+[delete sample](#action-delete-sample) - Delete the sample with the requested hash value <br>
+[download extracted files](#action-download-extracted-files) - Download files extracted from local sample <br>
 [reanalyze local samples](#action-reanalyze-local-samples) - Submit a set of samples that already exist on the A1000
 
 ## action: 'test connectivity'
 
 Validate the asset configuration for connectivity using supplied configuration
 
-Type: **test** \
+Type: **test** <br>
 Read only: **True**
 
 Validate the asset configuration for connectivity using supplied configuration.
@@ -1464,7 +1464,7 @@ No Output
 
 Upload file to A1000
 
-Type: **investigate** \
+Type: **investigate** <br>
 Read only: **True**
 
 Upload file to A1000.
@@ -1505,7 +1505,7 @@ action_result.parameter.archive_password | password | | |
 
 Detonate file from url
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **False**
 
 Detonate file from url.
@@ -1538,7 +1538,7 @@ action_result.parameter.archive_password | password | | |
 
 Check submitted url status
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **False**
 
 Check submitted url status. Returns report if ready.
@@ -1565,7 +1565,7 @@ summary.total_objects_successful | numeric | | |
 
 Create pdf report
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **False**
 
 Initiate pdf report creation.
@@ -1592,7 +1592,7 @@ summary.total_objects_successful | numeric | | |
 
 Check pdf report creation
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **False**
 
 Check pdf report creation status.
@@ -1619,7 +1619,7 @@ summary.total_objects_successful | numeric | | |
 
 Download pdf report
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **False**
 
 Download pdf report.
@@ -1646,7 +1646,7 @@ summary.total_objects_successful | numeric | | |
 
 Get TitaniumCore report
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **False**
 
 Accepts a single hash string and gets the full TitaniumCore static analysis report for the requested sample.The requested sample must be present on the appliance. If the optional fields parameter is not provided in the request, all available parts of the static analysis report are returned in the response.
@@ -1673,7 +1673,7 @@ summary.total_objects_successful | numeric | | |
 
 Queries URL info
 
-Type: **investigate** \
+Type: **investigate** <br>
 Read only: **True**
 
 Queries URL info.
@@ -1700,7 +1700,7 @@ summary.total_objects_successful | numeric | | |
 
 Queries domain info
 
-Type: **investigate** \
+Type: **investigate** <br>
 Read only: **True**
 
 Queries domain info.
@@ -1727,7 +1727,7 @@ summary.total_objects_successful | numeric | | |
 
 Queries IP info
 
-Type: **investigate** \
+Type: **investigate** <br>
 Read only: **True**
 
 Queries IP info.
@@ -1754,7 +1754,7 @@ summary.total_objects_successful | numeric | | |
 
 Get a list of IP-to-domain mappings
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **False**
 
 Accepts an IP address string and returns a list of IP-to-domain mappings.
@@ -1785,7 +1785,7 @@ summary.total_objects_successful | numeric | | |
 
 Get a list of URLs hosted on the requested IP address
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **False**
 
 Accepts an IP address string and returns a list of URLs hosted on the requested IP address.
@@ -1816,7 +1816,7 @@ summary.total_objects_successful | numeric | | |
 
 Get a a list of hashes and classifications for files found on the requested IP address
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **False**
 
 Accepts an IP address string and returns a list of hashes and classifications for files found on the requested IP address.
@@ -1847,7 +1847,7 @@ summary.total_objects_successful | numeric | | |
 
 Search for samples using multi-part search criteria
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **True**
 
 Search for samples available on the local A1000 instance and TitaniumCloud using the Advanced Search capabilities.
@@ -1878,7 +1878,7 @@ summary.total_objects_successful | numeric | | |
 
 Search for samples available on the TitaniumCloud
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **False**
 
 All restricted words and characters must be escaped with double quotation marks. This action will work only if A1000 is set up with access to TiCloud.
@@ -1917,7 +1917,7 @@ summary.total_objects_successful | numeric | | |
 
 Search for samples available on the A1000 appliance
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **True**
 
 All restricted words and characters must be escaped with double quotation marks.
@@ -1952,7 +1952,7 @@ summary.total_objects_successful | numeric | | |
 
 Initiate the creation of dynamic analysis PDF report
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **False**
 
 Accepts a single hash string and and a report format and initiates the creation of PDF or HTML reports for samples that have gone through dynamic analysis in the ReversingLabs Cloud Sandbox.
@@ -1979,7 +1979,7 @@ summary.total_objects_successful | numeric | | |
 
 Get status of the report previously requested
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **False**
 
 Accepts a single hash string and report format parameters that should correspond to the parameters used in the request with create_dynamic_analysis_report method. The response includes an informative message about the status of the report previously requested.
@@ -2006,7 +2006,7 @@ summary.total_objects_successful | numeric | | |
 
 Download previously requested dynamic analysis report in pdf
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **False**
 
 Accepts a single hash string and report format parameters that should correspond to the parameters used in the request with create_dynamic_analysis_report method.
@@ -2033,7 +2033,7 @@ summary.total_objects_successful | numeric | | |
 
 Get a summary report for hash
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **False**
 
 Get a summary report for hash.
@@ -2068,7 +2068,7 @@ summary.total_objects_successful | numeric | | |
 
 Get detailed analysis report
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **False**
 
 Get detailed analysis report for sample.
@@ -2101,7 +2101,7 @@ summary.total_objects_successful | numeric | | |
 
 Get classification for a sample
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **False**
 
 Get classification for one sample. The default value of local_only is False, which, if not changed, will send a request to TitaniumCloud to get the sample. The av_scanners parameter decides if the AV scanner results will be included in the classification report.
@@ -2132,7 +2132,7 @@ summary.total_objects_successful | numeric | | |
 
 List existing tags for the requested sample
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **True**
 
 List existing tags for the requested sample, if there are any.
@@ -2159,7 +2159,7 @@ summary.total_objects_successful | numeric | | |
 
 Add one or more user tags
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **False**
 
 Add one or more User Tags to the sample, regardless of whether the sample already has any tags.
@@ -2188,7 +2188,7 @@ summary.total_objects_successful | numeric | | |
 
 Remove one or more user tags
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **False**
 
 Remove one or more User Tags from the requested sample.
@@ -2217,7 +2217,7 @@ summary.total_objects_successful | numeric | | |
 
 Set the classification of a sample
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **False**
 
 This API allows the user to set the classification of a sample, either in TitaniumCloud or locally on the A1000.
@@ -2258,7 +2258,7 @@ action_result.parameter.threat_name | string | | |
 
 Delete the (user set) classification of a sample
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **False**
 
 This API allows the user to delete the classification of a sample, either in TitaniumCloud or locally on the A1000.
@@ -2287,7 +2287,7 @@ summary.total_objects_successful | numeric | | |
 
 Get a list of YARA rulesets that are on the A1000
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **True**
 
 For every ruleset in the list, the output includes additional info such as: rule name, number of matches, last matched date, and more.
@@ -2323,7 +2323,7 @@ action_result.parameter.type | string | | |
 
 Get the full contents of the requested ruleset
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **True**
 
 Get the full contents of the requested ruleset in raw text. All rulesets can be retrieved.
@@ -2350,7 +2350,7 @@ summary.total_objects_successful | numeric | | |
 
 Retrieve the list of YARA matches
 
-Type: **investigate** \
+Type: **investigate** <br>
 Read only: **True**
 
 Retrieve the list of YARA matches (local & cloud) for requested ruleset. Names are case-sensitive.
@@ -2381,7 +2381,7 @@ summary.total_objects_successful | numeric | | |
 
 Creates a new YARA ruleset if it doesn't exist
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **False**
 
 Creates a new YARA ruleset if it doesn't exist. If it exists a new revision is created. TiCloud rules cannot be updated using this API.
@@ -2415,7 +2415,7 @@ action_result.parameter.ticloud | boolean | | |
 
 Delete a specific YARA ruleset and its matches
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **False**
 
 Delete a specific YARA ruleset and its matches from the appliance.
@@ -2444,7 +2444,7 @@ summary.total_objects_successful | numeric | | |
 
 Enable or disable a ruleset on the appliance
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **False**
 
 Administrators can manage any ruleset while regular A1000 users can only manage their own.
@@ -2475,7 +2475,7 @@ summary.total_objects_successful | numeric | | |
 
 Get the current synchronization time
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **True**
 
 Provides information about the current synchronization status for TiCloud enabled rulesets.
@@ -2499,7 +2499,7 @@ summary.total_objects_successful | numeric | | |
 
 Modify the TiCloud sync time for TiCloud enabled rulesets
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **False**
 
 Modify the TiCloud sync time for TiCloud enabled rulesets. Time parameter must be a UTC timestamp <YYYY-MM-DD hh:mm:ss>.
@@ -2527,7 +2527,7 @@ action_result.parameter.time | string | | |
 
 Allow users to start or stop the Local Retro scan on the appliance
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **False**
 
 Allow users to start or stop the Local Retro scan on the appliance.
@@ -2554,7 +2554,7 @@ summary.total_objects_successful | numeric | | |
 
 Allow users to start, stop or clear a Cloud Retro scan
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **False**
 
 Start/Stop or Clear a Cloud Retro scan for a specified ruleset on the A1000.
@@ -2583,7 +2583,7 @@ summary.total_objects_successful | numeric | | |
 
 Allow users to check the status of a Local Retro scan
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **True**
 
 The response indicates the current state of Local Retro scan, time and date when the latest Local Retro scan was started and/or stopped, and a list of previous Local Retro scans with same details.
@@ -2607,7 +2607,7 @@ summary.total_objects_successful | numeric | | |
 
 Allow users to check the status of Cloud Retro scan for specified ruleset
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **True**
 
 The response indicates the current state of Cloud Retro, time and date when the latest Cloud Retro scan was started and/or stopped, and a list of previous Cloud Retro scans with the same details.
@@ -2634,7 +2634,7 @@ summary.total_objects_successful | numeric | | |
 
 Get a list of containers from which the requested samples has been extracted
 
-Type: **investigate** \
+Type: **investigate** <br>
 Read only: **True**
 
 Get a list of all top-level containers from which the requested samples have been extracted during analysis. If a requested hash doesn't have a container, it will not be included in the response.
@@ -2662,7 +2662,7 @@ action_result.parameter.hashes | string | `hash` `sha1` `sha256` `md5` | |
 
 Delete the sample with the requested hash value
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **False**
 
 All related data, including extracted samples and metadata, will be deleted from the current A1000 instance.
@@ -2696,7 +2696,7 @@ action_result.parameter.hash | string | `hash` `sha1` `sha256` `md5` | |
 
 Download files extracted from local sample
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **True**
 
 The files are obtained through the unpacking process during sample analysis with the TitaniumCore static analysis engine.
@@ -2723,7 +2723,7 @@ summary.total_objects_successful | numeric | | |
 
 Submit a set of samples that already exist on the A1000
 
-Type: **investigate** \
+Type: **investigate** <br>
 Read only: **False**
 
 Submit a set of samples that were previously uploaded to be analyzed with one or more supported services.
@@ -2775,7 +2775,7 @@ ______________________________________________________________________
 
 Auto-generated Splunk SOAR Connector documentation.
 
-Copyright 2025 Splunk Inc.
+Copyright 2026 Splunk Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
