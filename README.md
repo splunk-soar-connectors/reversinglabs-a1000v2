@@ -1,7 +1,7 @@
 # Reversinglabs A1000 v2
 
 Publisher: ReversingLabs <br>
-Connector Version: 1.1.3 <br>
+Connector Version: 1.1.4 <br>
 Product Vendor: ReversingLabs <br>
 Product Name: A1000 <br>
 Minimum Product Version: 6.2.1
@@ -11,7 +11,7 @@ App integrates with ReversingLabs A1000 Malware Analysis Appliance APIs
 # Reversinglabs A1000 v2
 
 Publisher: ReversingLabs\
-Connector Version: 1.1.3\
+Connector Version: 1.1.1\
 Product Vendor: ReversingLabs\
 Product Name: A1000\
 Product Version Supported (regex): ".\*"\
